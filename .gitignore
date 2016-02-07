@@ -1,0 +1,17 @@
+daiquiri_app/local.py
+
+static_root
+media_root
+bower_root
+
+*~
+*.pyc
+*.swp
+.DS_Store
+
+*.sqlite3
+
+env
+
+.coverage
+htmlcov
