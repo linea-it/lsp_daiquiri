@@ -1,4 +1,4 @@
-daiquiri_app/local.py
+daiquiri_app/settings/local.py
 
 static_root
 media_root
