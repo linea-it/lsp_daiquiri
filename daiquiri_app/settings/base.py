@@ -4,7 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 SITE_ID = 1
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 SECRET_KEY = 'this is not a very secret key'
 
@@ -32,10 +33,8 @@ INSTALLED_APPS = (
     'daiquiri_uws',
     # 3rd party modules
     'rest_framework',
-    'widget_tweaks',
     'markdown',
     'compressor',
-    'registration',
     'djangobower'
 )
 
@@ -57,7 +56,7 @@ ROOT_URLCONF = 'daiquiri_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
+        'DIRS': [os.path.join(PROJECT_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
