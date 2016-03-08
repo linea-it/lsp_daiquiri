@@ -35,7 +35,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'markdown',
     'compressor',
-    'djangobower'
+    'djangobower',
+    'widget_tweaks'
 )
 
 MIDDLEWARE_CLASSES = (
