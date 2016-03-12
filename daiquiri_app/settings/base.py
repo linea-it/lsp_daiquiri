@@ -127,7 +127,8 @@ BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'bower_root/')
 BOWER_INSTALLED_APPS = (
     'jquery',
     'angular',
-    'bootstrap'
+    'bootstrap',
+    'ngInfiniteScroll'
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
