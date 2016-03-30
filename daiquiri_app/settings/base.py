@@ -4,6 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 SITE_ID = 1
 
+HTTPS = False
+
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -27,10 +29,10 @@ INSTALLED_APPS = (
     'daiquiri_auth',
     'daiquiri_contact',
     'daiquiri_core',
+    'daiquiri_jobs',
     'daiquiri_meetings',
     'daiquiri_query',
     'daiquiri_serve',
-    'daiquiri_uws',
     # 3rd party modules
     'rest_framework',
     'markdown',

@@ -8,6 +8,7 @@ from daiquiri_auth.views import login, logout
 urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'^auth/', include('daiquiri_auth.urls')),
+    url(r'^uws/', include('daiquiri_jobs.urls', namespace='uws')),
     url(r'^%s/' % settings.LOGIN_URL.strip('/'), login, name='login'),
     url(r'^%s/' % settings.LOGOUT_URL.strip('/'), logout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
