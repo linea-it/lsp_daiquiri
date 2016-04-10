@@ -1,0 +1,19 @@
+[run]
+source =
+    .
+    ../daiquiri/daiquiri_auth
+    ../daiquiri/daiquiri_contact
+    ../daiquiri/daiquiri_core
+    ../daiquiri/daiquiri_jobs
+    ../daiquiri/daiquiri_meetings
+    ../daiquiri/daiquiri_query
+    ../daiquiri/daiquiri_serve
+    ../daiquiri/daiquiri_uws
+
+[report]
+omit =
+    env/*
+
+exclude_lines =
+    raise Exception
+    except ImportError:
