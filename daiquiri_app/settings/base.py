@@ -38,7 +38,10 @@ INSTALLED_APPS = (
     'markdown',
     'compressor',
     'djangobower',
-    'widget_tweaks'
+    'widget_tweaks',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,6 +78,18 @@ TEMPLATES = [
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
+ACCOUNT_EMAIL_VERIFICATION = 'madatory'
+#ACCOUNT_USER_DISPLAY = 'some.module.callable_name(user)'
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+ACCOUNT_PASSWORD_MIN_LENGTH = 4
 
 WSGI_APPLICATION = 'daiquiri_app.wsgi.application'
 
