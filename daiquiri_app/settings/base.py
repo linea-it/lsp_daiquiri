@@ -84,10 +84,13 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+ACCOUNT_SIGNUP_FORM_CLASS = 'daiquiri_auth.forms.SignupForm'
+ACCOUNT_USER_DISPLAY = 'daiquiri_auth.utils.get_fullname'
+
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
-ACCOUNT_EMAIL_VERIFICATION = 'madatory'
-#ACCOUNT_USER_DISPLAY = 'some.module.callable_name(user)'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_PASSWORD_MIN_LENGTH = 4
 
