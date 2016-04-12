@@ -84,8 +84,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'daiquiri_auth.forms.SignupForm'
-ACCOUNT_USER_DISPLAY = 'daiquiri_auth.utils.get_fullname'
+ACCOUNT_SIGNUP_FORM_CLASS = 'daiquiri_auth.forms.ProfileForm'
+ACCOUNT_USER_DISPLAY = 'daiquiri_auth.utils.get_full_name'
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
