@@ -84,7 +84,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'daiquiri_auth.forms.ProfileForm'
+ACCOUNT_ADAPTER = 'daiquiri_auth.adapter.DaiquiriAccountAdapter'
+ACCOUNT_SIGNUP_FORM_CLASS = 'daiquiri_auth.forms.SignupForm'
 ACCOUNT_USER_DISPLAY = 'daiquiri_auth.utils.get_full_name'
 
 ACCOUNT_EMAIL_REQUIRED = True
@@ -93,6 +94,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_PASSWORD_MIN_LENGTH = 4
+
+ACCOUNT_WORKFLOW = 'confirmation'
+#ACCOUNT_WORKFLOW = 'activation'
 
 WSGI_APPLICATION = 'daiquiri_app.wsgi.application'
 
@@ -121,9 +125,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_URL = '/logout/'
+LOGOUT_URL = '/accounts/logout/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root/')
@@ -154,7 +158,8 @@ BOWER_INSTALLED_APPS = (
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_FROM = 'info@example.com'
 
-ACCOUNT_ACTIVATION_DAYS = 7
+
+
 REGISTRATION_EMAIL_HTML = False
 
 # try to override with local configuration
