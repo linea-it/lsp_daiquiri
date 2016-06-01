@@ -44,8 +44,8 @@ ALLOWED_HOSTS = ['localhost']
 # LOGIN_REDIRECT_URL = '/'
 # LOGOUT_URL = '/logout/'
 
-# ACCOUNT_ACTIVATION_DAYS = 7
-# REGISTRATION_EMAIL_HTML = False
+# ACCOUNT_WORKFLOW = 'confirmation'
+# ACCOUNT_WORKFLOW = 'activation'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'localhost'

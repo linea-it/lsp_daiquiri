@@ -38,7 +38,9 @@ INSTALLED_APPS = (
     'markdown',
     'compressor',
     'djangobower',
-    'widget_tweaks'
+    'widget_tweaks',
+    'allauth',
+    'allauth.account',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,6 +78,68 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+LOGGING_DIR = os.path.join(BASE_DIR, 'log')
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
+    },
+    'handlers': {
+        'django': {
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(LOGGING_DIR, 'django.log'),
+            'formatter': 'standard'
+        },
+        'auth': {
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(LOGGING_DIR, 'auth.log'),
+            'formatter': 'standard'
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'filters': ['require_debug_true'],
+            'formatter': 'standard'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'django'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO')
+        },
+        'daiquiri_auth': {
+            'handlers': ['console', 'auth'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO')
+        }
+    }
+}
+
+
+ACCOUNT_ADAPTER = 'daiquiri_auth.adapter.DaiquiriAccountAdapter'
+ACCOUNT_SIGNUP_FORM_CLASS = 'daiquiri_auth.forms.SignupForm'
+ACCOUNT_USER_DISPLAY = 'daiquiri_auth.utils.get_full_name'
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+ACCOUNT_PASSWORD_MIN_LENGTH = 4
+
 WSGI_APPLICATION = 'daiquiri_app.wsgi.application'
 
 DATABASES = {
@@ -103,9 +167,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_URL = '/logout/'
+LOGOUT_URL = '/accounts/logout/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root/')
@@ -136,11 +200,13 @@ BOWER_INSTALLED_APPS = (
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_FROM = 'info@example.com'
 
-ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_EMAIL_HTML = False
-
 # try to override with local configuration
 try:
     from .local import *
 except ImportError:
+    pass
+
+try:
+    INSTALLED_APPS = INSTALLED_APPS + LOCAL_APPS
+except NameError:
     pass
