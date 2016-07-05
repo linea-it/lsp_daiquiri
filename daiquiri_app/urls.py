@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'^auth/', include('daiquiri_auth.urls_auth')),
     url(r'^accounts/', include('daiquiri_auth.urls_accounts')),
+    url(r'^metadata/', include('daiquiri_metadata.urls')),
     url(r'^query/', include('daiquiri_query.urls')),
     url(r'^uws/', include('daiquiri_jobs.urls', namespace='uws')),
     url(r'^%s/' % settings.LOGIN_URL.strip('/'), login, name='login'),
