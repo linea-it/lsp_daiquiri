@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     'daiquiri_core',
     'daiquiri_jobs',
     'daiquiri_meetings',
+    'daiquiri_metadata',
     'daiquiri_query',
     'daiquiri_serve',
     # 3rd party modules
