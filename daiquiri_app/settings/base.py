@@ -203,6 +203,16 @@ BOWER_INSTALLED_APPS = (
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_FROM = 'info@example.com'
 
+QUERY = {
+    'queues': (
+        ('default', 'Default'),
+    ),
+    'query_languages': (
+        ('mysql', 'MySQL SQL'),
+        ('adql', 'ADQL'),
+    )
+}
+
 # try to override with local configuration
 try:
     from .local import *
