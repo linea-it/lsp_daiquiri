@@ -193,17 +193,18 @@ STATICFILES_FINDERS = (
 BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'bower_root/')
 
 BOWER_INSTALLED_APPS = (
-    'jquery',
+    'jquery#1.9.1',
     'angular',
     'angular-resource',
-    'bootstrap',
-    'ngInfiniteScroll'
+    'bootstrap#3.3.7',
+    'ngInfiniteScroll#1.2.0'
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_FROM = 'info@example.com'
 
 QUERY = {
+    'backend': 'direct',
     'queues': (
         ('default', 'Default'),
     ),
