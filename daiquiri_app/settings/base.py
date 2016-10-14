@@ -193,9 +193,8 @@ STATICFILES_FINDERS = (
 BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'bower_root/')
 
 BOWER_INSTALLED_APPS = (
-    'jquery#1.9.1',
-    'angular',
-    'angular-resource',
+    'angular#1.5.8',
+    'angular-resource#1.5.8',
     'bootstrap#3.3.7',
     'ngInfiniteScroll#1.2.0'
 )
