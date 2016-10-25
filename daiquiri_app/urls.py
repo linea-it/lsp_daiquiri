@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^metadata/', include('daiquiri_metadata.urls')),
     url(r'^serve/', include('daiquiri_serve.urls')),
     url(r'^query/', include('daiquiri_query.urls')),
+    url(r'^contact/', include('daiquiri_contact.urls')),
     url(r'^uws/', include('daiquiri_jobs.urls', namespace='uws')),
     url(r'^admin/', include(admin.site.urls)),
 
