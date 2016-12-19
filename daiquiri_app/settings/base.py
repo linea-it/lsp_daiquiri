@@ -196,7 +196,10 @@ BOWER_INSTALLED_APPS = (
     'angular#1.5.8',
     'angular-resource#1.5.8',
     'bootstrap#3.3.7',
-    'ngInfiniteScroll#1.2.0'
+    'ngInfiniteScroll#1.2.0',
+    'codemirror#~5.18.2',
+    'components-font-awesome#~4.6.3',
+    'moment#~2.14.1'
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
