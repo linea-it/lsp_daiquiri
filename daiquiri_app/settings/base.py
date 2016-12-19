@@ -208,12 +208,26 @@ EMAIL_FROM = 'info@example.com'
 QUERY = {
     'backend': 'direct',
     'queues': (
-        ('default', 'Default'),
+        ['default', 'Default'],
     ),
     'query_languages': (
-        ('mysql', 'MySQL SQL'),
-        ('adql', 'ADQL'),
-    )
+        ['mysql', 'MySQL SQL'],
+        ['adql', 'ADQL'],
+    ),
+    'forms': [
+        {
+            'key': 'sql',
+            'label': 'SQL query',
+            'help': 'Place your SQL statement directly in the text area below and submit your request using the button.',
+            'template': 'query/query_form_sql.html'
+        },
+        {
+            'key': 'cone',
+            'label': 'Cone search',
+            'help': 'Please specify a coordinate in right ascension (RA) and declination (DEC) and a cone radius. The query will result in objects that have coordinates in the search cone.',
+            'template': 'query/query_form_cone.html'
+        },
+    ]
 }
 
 # try to override with local configuration
