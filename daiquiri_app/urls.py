@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.i18n import javascript_catalog
 
 from daiquiri_core.views import home
 from daiquiri_auth.views import login, logout
@@ -16,4 +17,6 @@ urlpatterns = [
     url(r'^%s/' % settings.LOGIN_URL.strip('/'), login, name='login'),
     url(r'^%s/' % settings.LOGOUT_URL.strip('/'), logout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^jsi18n/$', javascript_catalog, name='javascript-catalog'),
 ]
