@@ -218,13 +218,19 @@ QUERY = {
         {
             'key': 'sql',
             'label': 'SQL query',
-            'help': 'Place your SQL statement directly in the text area below and submit your request using the button.',
+            'service': 'query/js/forms/sql.js',
             'template': 'query/query_form_sql.html'
+        },
+        {
+            'key': 'box',
+            'label': 'Box search',
+            'service': 'query/js/forms/box.js',
+            'template': 'query/query_form_box.html'
         },
         {
             'key': 'cone',
             'label': 'Cone search',
-            'help': 'Please specify a coordinate in right ascension (RA) and declination (DEC) and a cone radius. The query will result in objects that have coordinates in the search cone.',
+            'service': 'query/js/forms/cone.js',
             'template': 'query/query_form_cone.html'
         },
     ]
