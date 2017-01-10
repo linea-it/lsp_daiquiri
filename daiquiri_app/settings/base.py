@@ -199,7 +199,8 @@ BOWER_INSTALLED_APPS = (
     'ngInfiniteScroll#1.2.0',
     'codemirror#~5.18.2',
     'components-font-awesome#~4.6.3',
-    'moment#~2.14.1'
+    'moment#~2.14.1',
+    'angular-file-saver'
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -233,6 +234,33 @@ QUERY = {
             'service': 'query/js/forms/cone.js',
             'template': 'query/query_form_cone.html'
         },
+    ],
+    'download_dir': '/store/daiquiri/download/',
+    'download_formats': [
+        {
+            'key': 'csv',
+            'extension': 'csv',
+            'label': 'Comma separated Values',
+            'help': 'A text file with a line for each row of the table. The fields are delimited by a comma and quoted by double quotes. Use this option for a later import into a spreadsheed application or a custom script. Use this option if you are unsure what to use.'
+        },
+        {
+            'key': 'votable',
+            'extension': 'votable.xml',
+            'label': 'IVOA VOTable XML file - ASCII Format',
+            'help': 'A XML file using the IVOA VOTable format. Use this option if you intend to use VO compatible software to further process the data.'
+        },
+        {
+            'key': 'votableB1',
+            'extension': 'votable.b1.xml',
+            'label': 'IVOA VOTable XML file - BINARY 1 Format',
+            'help': 'A XML file using the IVOA VOTable format (BINARY Serialization). Use this option if you intend to use VO compatible software to process the data and prefer the use of a binary file.'
+        },
+        {
+            'key': 'votableB2',
+            'extension': 'votable.b2.xml',
+            'label': 'IVOA VOTable XML file - BINARY 2 Format',
+            'help': 'A XML file using the IVOA VOTable format (BINARY2 Serialization). Use this option if you intend to use VO compatible software to process the data and prefer the use of a binary file.'
+        }
     ]
 }
 
