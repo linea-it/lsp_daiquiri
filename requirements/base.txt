@@ -7,6 +7,7 @@ django-allauth
 django-libsass==0.4
 django-bower>=5.0.4
 django-allauth
+django-sendfile
 markdown==2.6.4
 iso8601
 lxml
