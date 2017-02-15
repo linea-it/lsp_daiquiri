@@ -208,6 +208,9 @@ EMAIL_FROM = 'info@example.com'
 
 QUERY = {
     'backend': 'direct',
+    'quota': {
+        'users': '10Gb'
+    },
     'queues': (
         ['default', 'Default'],
     ),
@@ -234,6 +237,25 @@ QUERY = {
             'service': 'query/js/forms/cone.js',
             'template': 'query/query_form_cone.html'
         },
+    ],
+    'dropdowns': [
+        {
+            'key': 'simbad',
+            'service': 'query/js/dropdowns/simbad.js',
+            'template': 'query/query_dropdown_simbad.html',
+            'options': {
+                'url': 'http://simbad.u-strasbg.fr/simbad/sim-id'
+            }
+        },
+        {
+            'key': 'vizier',
+            'service': 'query/js/dropdowns/vizier.js',
+            'template': 'query/query_dropdown_vizier.html',
+            'options': {
+                'url': 'http://vizier.u-strasbg.fr/viz-bin/votable',
+                'catalogs': ['I/322A', 'I/259']
+            }
+        }
     ],
     'download_dir': '/store/daiquiri/download/',
     'download_formats': [
