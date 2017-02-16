@@ -53,3 +53,5 @@ ALLOWED_HOSTS = ['localhost']
 # EMAIL_HOST_USER = ''
 # EMAIL_HOST_PASSWORD = ''
 # EMAIL_USE_TLS = True
+
+#SENDFILE_BACKEND = 'sendfile.backends.development'
