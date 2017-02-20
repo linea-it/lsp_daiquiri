@@ -17,7 +17,7 @@ ALLOWED_HOSTS = ['localhost']
 
 INTERNAL_IPS = ('127.0.0.1',)
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,9 +43,9 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-)
+]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,7 +56,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware'
-)
+]
 
 ROOT_URLCONF = 'daiquiri_app.urls'
 
@@ -206,6 +206,37 @@ BOWER_INSTALLED_APPS = (
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_FROM = 'info@example.com'
 
+AUTH = {
+    'detail_keys': [
+        {
+            'key': 'gender',
+            'label': 'Gender',
+            'data_type': 'radio',
+            'help_text': 'The gender you identify with.',
+            'options': [
+                {
+                    'id': 'female',
+                    'label': 'Female'
+                },
+                {
+                    'id': 'male',
+                    'label': 'Male'
+                },
+                {
+                    'id': 'other',
+                    'label': 'Other'
+                },
+                {
+                    'id': 'prefer_not_to_say',
+                    'label': 'Prefer not to say'
+                }
+            ],
+            'required': True
+        }
+    ]
+}
+
+
 QUERY = {
     'backend': 'direct',
     'quota': {
@@ -293,6 +324,6 @@ except ImportError:
     pass
 
 try:
-    INSTALLED_APPS = INSTALLED_APPS + LOCAL_APPS
+    INSTALLED_APPS = INSTALLED_APPS + ADDITIONAL_APPS
 except NameError:
     pass
