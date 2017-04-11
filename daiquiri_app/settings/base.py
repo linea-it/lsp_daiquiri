@@ -238,7 +238,8 @@ AUTH = {
 
 
 QUERY = {
-    'backend': 'direct',
+    'async': False,
+    'user_database_prefix': 'daiquiri_user_',
     'quota': {
         'users': '10Gb'
     },
