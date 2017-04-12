@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django_settings_export.settings_export',
             ],
         },
     },
@@ -84,6 +85,13 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+
+
+SETTINGS_EXPORT = [
+    'LOGIN_URL',
+    'LOGOUT_URL',
+    'QUERY'
+]
 
 LOGGING_DIR = os.path.join(BASE_DIR, 'log')
 LOGGING = {
@@ -244,7 +252,8 @@ QUERY = {
         'users': '10Gb'
     },
     'queues': (
-        ['default', 'Default'],
+        ['10s', '10 Seconds'],
+        ['60s', '1 Minute']
     ),
     'query_languages': (
         ['mysql', 'MySQL SQL'],
