@@ -144,9 +144,9 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-ACCOUNT_ADAPTER = 'daiquiri_auth.adapter.DaiquiriAccountAdapter'
-ACCOUNT_SIGNUP_FORM_CLASS = 'daiquiri_auth.forms.SignupForm'
-ACCOUNT_USER_DISPLAY = 'daiquiri_auth.utils.get_full_name'
+ACCOUNT_ADAPTER = 'daiquiri.auth.adapter.DaiquiriAccountAdapter'
+ACCOUNT_SIGNUP_FORM_CLASS = 'daiquiri.auth.forms.SignupForm'
+ACCOUNT_USER_DISPLAY = 'daiquiri.auth.utils.get_full_name'
 
 '''
 Configuration for django-bower

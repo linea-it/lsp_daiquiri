@@ -3,14 +3,14 @@ import os
 from . import BASE_DIR, INSTALLED_APPS
 
 INSTALLED_APPS += [
-    'daiquiri_auth',
-    'daiquiri_contact',
-    'daiquiri_core',
-    'daiquiri_jobs',
-    'daiquiri_meetings',
-    'daiquiri_metadata',
-    'daiquiri_query',
-    'daiquiri_serve',
+    'daiquiri.auth',
+    'daiquiri.contact',
+    'daiquiri.core',
+    'daiquiri.jobs',
+    'daiquiri.meetings',
+    'daiquiri.metadata',
+    'daiquiri.query',
+    'daiquiri.serve',
 ]
 
 ROOT_URLCONF = 'daiquiri_app.urls'
