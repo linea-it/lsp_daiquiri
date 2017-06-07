@@ -148,7 +148,7 @@ BOWER_INSTALLED_APPS = (
     'angular#1.5.8',
     'angular-resource#1.5.8',
     'bootstrap#3.3.7',
-    'ngInfiniteScroll#1.2.0',
+    'ngInfiniteScroll#1.3.0',
     'codemirror#~5.18.2',
     'components-font-awesome#~4.6.3',
     'moment#~2.14.1',
@@ -181,6 +181,7 @@ from .local import *
 # include 3rd party apps after the daiquiri apps from base.py
 INSTALLED_APPS += [
     'rest_framework',
+    'django_filters',
     'markdown',
     'compressor',
     'djangobower',
