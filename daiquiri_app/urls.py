@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
 from django.views.i18n import javascript_catalog
 
 from daiquiri.core.views import home
@@ -15,5 +16,6 @@ urlpatterns = [
     url(r'^uws/', include('daiquiri.jobs.urls', namespace='uws')),
     url(r'^admin/', include(admin.site.urls)),
 
+    url(r'^layout/$', TemplateView.as_view(template_name='core/layout.html'), name='layout'),
     url(r'^jsi18n/$', javascript_catalog, name='javascript-catalog'),
 ]
