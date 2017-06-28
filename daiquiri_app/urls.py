@@ -16,6 +16,5 @@ urlpatterns = [
     url(r'^uws/', include('daiquiri.jobs.urls', namespace='uws')),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^layout/$', TemplateView.as_view(template_name='core/layout.html'), name='layout'),
     url(r'^jsi18n/$', javascript_catalog, name='javascript-catalog'),
 ]

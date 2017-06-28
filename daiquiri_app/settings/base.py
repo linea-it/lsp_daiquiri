@@ -25,6 +25,8 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_PASSWORD_MIN_LENGTH = 4
 
+ASYNC = False
+
 LOGGING_DIR = os.path.join(BASE_DIR, 'log')
 LOGGING = {
     'version': 1,
@@ -45,10 +47,20 @@ LOGGING = {
             'filename': os.path.join(LOGGING_DIR, 'django.log'),
             'formatter': 'standard'
         },
+        'sql': {
+            'class': 'logging.FileHandler',
+            'level': 'DEBUG',
+            'filename': os.path.join(LOGGING_DIR, 'sql.log'),
+        },
         'auth': {
             'class': 'logging.FileHandler',
             'filename': os.path.join(LOGGING_DIR, 'auth.log'),
             'formatter': 'standard'
+        },
+        'rules': {
+             'class': 'logging.FileHandler',
+             'level': 'DEBUG',
+             'filename': os.path.join(LOGGING_DIR, 'rules.log'),
         },
         'console': {
             'level': 'DEBUG',
@@ -62,12 +74,23 @@ LOGGING = {
             'handlers': ['console', 'django'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO')
         },
-        'daiquiri_auth': {
+        'django.db.backends': {
+            'handlers': ['sql'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'auth': {
             'handlers': ['console', 'auth'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO')
-        }
+        },
+        'rules': {
+            'handlers': ['rules'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
     }
 }
+
 
 AUTH = {
     'detail_keys': [
@@ -100,7 +123,6 @@ AUTH = {
 }
 
 QUERY = {
-    'async': False,
     'user_database_prefix': 'daiquiri_user_',
     'quota': {
         'users': '10Gb'

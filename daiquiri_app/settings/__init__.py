@@ -130,6 +130,7 @@ Configuration for django-allauth
 '''
 
 AUTHENTICATION_BACKENDS = (
+    'rules.permissions.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
@@ -189,6 +190,7 @@ INSTALLED_APPS += [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'rules'
 ]
 
 # prepend the local.BASE_URL to the different URL settings
