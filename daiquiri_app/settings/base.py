@@ -11,6 +11,7 @@ DAIQUIRI_APPS = [
     'daiquiri.metadata',
     'daiquiri.query',
     'daiquiri.serve',
+    'daiquiri.tap
 ]
 
 INSTALLED_APPS = []

@@ -13,7 +13,8 @@ urlpatterns = [
     url(r'^serve/', include('daiquiri.serve.urls')),
     url(r'^query/', include('daiquiri.query.urls')),
     url(r'^contact/', include('daiquiri.contact.urls')),
-    url(r'^uws/', include('daiquiri.jobs.urls', namespace='uws')),
+    url(r'^uws/', include('daiquiri.jobs.urls')),
+    url(r'^tap/', include('daiquiri.tap.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^jsi18n/$', javascript_catalog, name='javascript-catalog'),
