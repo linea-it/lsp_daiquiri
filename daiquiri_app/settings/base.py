@@ -129,18 +129,37 @@ AUTH = {
 }
 
 QUERY = {
+    'anonymous': True,
     'user_database_prefix': 'daiquiri_user_',
     'quota': {
         'users': '10Gb'
     },
-    'queues': (
-        ['10s', '10 Seconds'],
-        ['60s', '1 Minute']
-    ),
-    'query_languages': (
-        ['mysql', 'MySQL SQL'],
-        ['adql', 'ADQL'],
-    ),
+    'queues': [
+        {
+            'key': '10s',
+            'label': '10 Seconds',
+            'timeout': 10,
+            'priority': 1
+        },
+        {
+            'key': '1m',
+            'label': '1 Minute',
+            'timeout': 60,
+            'priority': 2
+        }
+    ],
+    'query_languages': [
+        {
+            'key': 'mariadb',
+            'version': 10.1,
+            'label': 'MariaDB SQL'
+        },
+        {
+            'key': 'adql',
+            'version': 2.0,
+            'label': 'ADQL'
+        }
+    ],
     'forms': [
         {
             'key': 'sql',
