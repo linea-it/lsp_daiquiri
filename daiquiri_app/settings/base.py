@@ -6,12 +6,14 @@ DAIQUIRI_APPS = [
     'daiquiri.auth',
     'daiquiri.contact',
     'daiquiri.core',
+    'daiquiri.dali',
     'daiquiri.jobs',
     'daiquiri.meetings',
     'daiquiri.metadata',
     'daiquiri.query',
     'daiquiri.serve',
-    'daiquiri.tap'
+    'daiquiri.tap',
+    'daiquiri.uws'
 ]
 
 INSTALLED_APPS = []
@@ -152,12 +154,14 @@ QUERY = {
         {
             'key': 'mariadb',
             'version': 10.1,
-            'label': 'MariaDB SQL'
+            'label': 'MariaDB SQL',
+            'description': 'The SQL dialect used by MariaDB 10.1'
         },
         {
             'key': 'adql',
             'version': 2.0,
-            'label': 'ADQL'
+            'label': 'ADQL',
+            'description':  'The IVOA Astronomical Data Query Language. Version 2.0'
         }
     ],
     'forms': [
@@ -224,6 +228,16 @@ QUERY = {
             'extension': 'votable.b2.xml',
             'label': 'IVOA VOTable XML file - BINARY 2 Format',
             'help': 'A XML file using the IVOA VOTable format (BINARY2 Serialization). Use this option if you intend to use VO compatible software to process the data and prefer the use of a binary file.'
+        }
+    ]
+}
+
+UWS = {
+    'resources': [
+        {
+            'prefix': r'query',
+            'viewset': 'daiquiri.query.viewsets.AsyncQueryJobViewSet',
+            'base_name': 'uws_query'
         }
     ]
 }
