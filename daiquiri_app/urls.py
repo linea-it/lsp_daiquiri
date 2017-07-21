@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^serve/', include('daiquiri.serve.urls')),
     url(r'^query/', include('daiquiri.query.urls')),
     url(r'^contact/', include('daiquiri.contact.urls')),
-    url(r'^uws/', include('daiquiri.jobs.urls')),
+    url(r'^uws/', include('daiquiri.uws.urls')),
     url(r'^tap/', include('daiquiri.tap.urls')),
     url(r'^admin/', include(admin.site.urls)),
 

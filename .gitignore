@@ -13,6 +13,7 @@ log
 *.sqlite3
 
 env
+env3
 
 .coverage
 htmlcov
