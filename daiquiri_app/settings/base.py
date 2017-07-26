@@ -134,7 +134,8 @@ QUERY = {
     'anonymous': True,
     'user_database_prefix': 'daiquiri_user_',
     'quota': {
-        'users': '10Gb'
+        'anonymous': '100Mb',
+        'user': '1Gb'
     },
     'queues': [
         {
