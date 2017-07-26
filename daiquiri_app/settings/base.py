@@ -208,25 +208,29 @@ QUERY = {
         {
             'key': 'csv',
             'extension': 'csv',
+            'content_type': 'text/csv',
             'label': 'Comma separated Values',
             'help': 'A text file with a line for each row of the table. The fields are delimited by a comma and quoted by double quotes. Use this option for a later import into a spreadsheed application or a custom script. Use this option if you are unsure what to use.'
         },
         {
             'key': 'votable',
             'extension': 'votable.xml',
-            'label': 'IVOA VOTable XML file - ASCII Format',
+            'content_type': 'application/xml',
+            'label': 'IVOA VOTable XML file - TABLEDATA serialization',
             'help': 'A XML file using the IVOA VOTable format. Use this option if you intend to use VO compatible software to further process the data.'
         },
         {
-            'key': 'votableB1',
-            'extension': 'votable.b1.xml',
-            'label': 'IVOA VOTable XML file - BINARY 1 Format',
+            'key': 'votable-binary',
+            'extension': 'votable.binary.xml',
+            'content_type': 'application/xml',
+            'label': 'IVOA VOTable XML file - BINARY serialization',
             'help': 'A XML file using the IVOA VOTable format (BINARY Serialization). Use this option if you intend to use VO compatible software to process the data and prefer the use of a binary file.'
         },
         {
-            'key': 'votableB2',
-            'extension': 'votable.b2.xml',
-            'label': 'IVOA VOTable XML file - BINARY 2 Format',
+            'key': 'votable-binary2',
+            'extension': 'votable.binary2.xml',
+            'content_type': 'application/xml',
+            'label': 'IVOA VOTable XML file - BINARY 2 serialization',
             'help': 'A XML file using the IVOA VOTable format (BINARY2 Serialization). Use this option if you intend to use VO compatible software to process the data and prefer the use of a binary file.'
         }
     ]

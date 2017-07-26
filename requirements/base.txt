@@ -15,10 +15,12 @@ django-settings-export==1.2.1
 django-sendfile==0.3.11
 
 celery==4.0.2
+redis==2.10.5
 rules==1.2
 jsonfield==1.0.0
 Markdown==2.6.8
 iso8601==0.1.11
 lxml==3.7.3
+bitstring==3.1.5
 
 queryparser==0.1
