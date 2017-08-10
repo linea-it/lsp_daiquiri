@@ -1,5 +1,5 @@
 # include settimgs from daiquiri
-from daiquiri.core.settings import *
+from daiquiri.core.settings.base import *
 
 # include settings from base.py
 from .base import *
@@ -9,6 +9,10 @@ from .local import *
 
 # include 3rd party apps after the daiquiri apps from base.py
 INSTALLED_APPS = DJANGO_APPS + DAIQUIRI_APPS + ADDITIONAL_APPS + INSTALLED_APPS
+
+# include logging settings from logging.py
+from daiquiri.core.settings.logging import get_logging_settings
+LOGGING = get_logging_settings(LOGGING_DIR)
 
 # prepend the local.BASE_URL to the different URL settings
 try:
