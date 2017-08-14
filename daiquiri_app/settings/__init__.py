@@ -1,5 +1,9 @@
+import os
+
 # include settimgs from daiquiri
 from daiquiri.core.settings.base import *
+from daiquiri.core.settings.daiquiri import *
+from daiquiri.core.settings.logging import *
 
 # include settings from base.py
 from .base import *
@@ -9,10 +13,6 @@ from .local import *
 
 # include 3rd party apps after the daiquiri apps from base.py
 INSTALLED_APPS = DJANGO_APPS + DAIQUIRI_APPS + ADDITIONAL_APPS + INSTALLED_APPS
-
-# include logging settings from logging.py
-from daiquiri.core.settings.logging import get_logging_settings
-LOGGING = get_logging_settings(LOGGING_DIR)
 
 # prepend the local.BASE_URL to the different URL settings
 try:
@@ -28,3 +28,8 @@ try:
     SESSION_COOKIE_PATH = BASE_URL + '/'
 except NameError:
     pass
+
+# prepend the LOGGING_DIR to the filenames in LOGGING
+for handler in LOGGING['handlers'].values():
+    if 'filename' in handler:
+        handler['filename'] = os.path.join(LOGGING_DIR, handler['filename'])
