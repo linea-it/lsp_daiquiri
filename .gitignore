@@ -2,7 +2,9 @@ daiquiri_app/settings/local.py
 
 static_root
 media_root
-bower_root
+
+node_modules
+
 log
 
 *~
