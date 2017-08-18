@@ -1,38 +1,32 @@
-# SECRET_KEY = 'this is not a very secret key'
+SECRET_KEY = 'this is not a very secret key'
 
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': '',
-#         'USER': '',
-#         'PASSWORD': '',
-#         'HOST': '',
-#         'PORT': '',
-#     }
-#     'data': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': '',
-#         'USER': '',
-#         'PASSWORD': '',
-#         'HOST': '',
-#         'PORT': '',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'daiquiri_app',
+        'USER': 'daiquiri_app',
+        'PASSWORD': 'daiquiri_app'
+    },
+    'tap': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'TAP_SCHEMA',
+        'USER': 'daiquiri_tap',
+        'PASSWORD': 'daiquiri_tap',
+        'HOST': ''
+    },
+    'data': {
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'daiquiri_data',
+        'PASSWORD': 'daiquiri_data',
+        'HOST': ''
+    }
+}
 
-# LANGUAGE_CODE = 'en-us'
-
-# TIME_ZONE = 'Europe/Berlin'
-
-# MEDIA_URL = '/media/'
-# STATIC_URL = '/static/'
-
-# LOGIN_URL = '/login/'
-# LOGIN_REDIRECT_URL = '/'
-# LOGOUT_URL = '/logout/'
+# BASE_URL = ''
 
 # ACCOUNT_WORKFLOW = 'confirmation'
 # ACCOUNT_WORKFLOW = 'activation'
@@ -44,4 +38,4 @@ ALLOWED_HOSTS = ['localhost']
 # EMAIL_HOST_PASSWORD = ''
 # EMAIL_USE_TLS = True
 
-#SENDFILE_BACKEND = 'sendfile.backends.development'
+# SENDFILE_BACKEND = 'sendfile.backends.development'
