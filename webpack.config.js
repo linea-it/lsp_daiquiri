@@ -17,7 +17,7 @@ module.exports = {
         'users': path.resolve(daiquiri_path, 'auth/static/auth/lib/users.js')
     },
     output: {
-        path: __dirname + '/webpack/lib/',
+        path: __dirname + '/bundles/lib/',
         filename: '[name].js'
     },
     module: {

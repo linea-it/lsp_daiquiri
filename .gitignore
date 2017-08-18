@@ -3,10 +3,11 @@ daiquiri_app/settings/local.py
 static_root
 media_root
 
+bundles
 node_modules
-webpack
 
 log
+download
 
 *~
 *.pyc
