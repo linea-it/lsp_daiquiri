@@ -2,12 +2,8 @@ from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
 
-# import sys
-# sys.path.append('/home/jochen/code/django-daiquiri/daiquiri')
-
-
 # set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'daiquiri_app.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
 app = Celery('daiquiri')
 
