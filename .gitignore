@@ -1,18 +1,20 @@
-daiquiri_app/settings/local.py
+config/settings/local.py
 
-static_root
+download
+log
+vendor
+
 media_root
+static_root
 
-bundles
 node_modules
 
-log
-download
-
 *~
-*.pyc
 *.swp
 .DS_Store
+
+*.pyc
+__pycache__
 
 *.sqlite3
 
