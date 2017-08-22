@@ -4,7 +4,11 @@ var execSync = require('child_process').execSync;
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var daiquiri_path = execSync('python manage.py daiquiri_path').toString().trim();
+var daiquiri_path = execSync('python manage.py daiquiri_path', {
+    'env': {
+        'PATH': path.resolve(process.env.VIRTUAL_ENV, 'bin')
+    }
+}).toString().trim();
 
 module.exports = {
     entry: {
