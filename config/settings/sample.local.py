@@ -4,7 +4,7 @@ DEBUG = False
 
 ASYNC = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'ip6-localhost', '127.0.0.1', '[::1]']
 
 DATABASES = {
     'default': {
