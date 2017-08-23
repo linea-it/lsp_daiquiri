@@ -2,6 +2,8 @@ SECRET_KEY = 'this is not a very secret key'
 
 DEBUG = False
 
+ASYNC = False
+
 ALLOWED_HOSTS = ['localhost']
 
 DATABASES = {
