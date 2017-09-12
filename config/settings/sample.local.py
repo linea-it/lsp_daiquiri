@@ -30,8 +30,8 @@ DATABASES = {
 
 # BASE_URL = ''
 
-# ACCOUNT_WORKFLOW = 'confirmation'
-# ACCOUNT_WORKFLOW = 'activation'
+# AUTH_WORKFLOW = 'confirmation'
+# AUTH_WORKFLOW = 'activation'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'localhost'
