@@ -2,6 +2,7 @@ DAIQUIRI_APPS = [
     'daiquiri.auth',
     'daiquiri.contact',
     'daiquiri.core',
+    'daiquiri.files',
     'daiquiri.jobs',
     'daiquiri.meetings',
     'daiquiri.metadata',
