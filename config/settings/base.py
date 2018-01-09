@@ -1,4 +1,5 @@
 DAIQUIRI_APPS = [
+    'daiquiri.archive',
     'daiquiri.auth',
     'daiquiri.contact',
     'daiquiri.core',
@@ -58,3 +59,5 @@ QUERY_LANGUAGES = [
         'quote_char': '"'
     }
 ]
+
+VENDOR_CDN = False
