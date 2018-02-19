@@ -20,3 +20,8 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
 ]
+
+handler400 = 'daiquiri.core.views.bad_request'
+handler403 = 'daiquiri.core.views.forbidden'
+handler404 = 'daiquiri.core.views.not_found'
+handler500 = 'daiquiri.core.views.internal_server_error'
