@@ -10,11 +10,13 @@ urlpatterns = [
 
     url(r'^archive/', include('daiquiri.archive.urls', namespace='archive')),
     url(r'^auth/', include('daiquiri.auth.urls_auth', namespace='auth')),
+    url(r'^conesearch/', include('daiquiri.conesearch.urls', namespace='conesearch')),
     url(r'^contact/', include('daiquiri.contact.urls', namespace='contact')),
     url(r'^files/', include('daiquiri.files.urls', namespace='files')),
     url(r'^meetings/', include('daiquiri.meetings.urls', namespace='meetings')),
     url(r'^metadata/', include('daiquiri.metadata.urls', namespace='metadata')),
     url(r'^serve/', include('daiquiri.serve.urls', namespace='serve')),
+    url(r'^stats/', include('daiquiri.stats.urls', namespace='stats')),
     url(r'^query/', include('daiquiri.query.urls', namespace='query')),
     url(r'^tap/', include('daiquiri.tap.urls', namespace='tap')),
     url(r'^uws/', include('daiquiri.uws.urls', namespace='uws')),
