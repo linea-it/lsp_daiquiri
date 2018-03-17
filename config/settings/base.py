@@ -24,6 +24,11 @@ CONESEARCH_STMT = 'SELECT * FROM daiquiri_data_obs.stars WHERE SQRT(POWER(ra - %
 
 AUTH_DETAIL_KEYS = []
 
+CONESEARCH_ANONYMOUS = True
+CONESEARCH_ADAPTER = 'daiquiri.conesearch.adapter.SimpleConeSearchAdapter'
+CONESEARCH_SCHEMA = 'daiquiri_data_obs'
+CONESEARCH_TABLE = 'stars'
+
 MEETINGS_PARTICIPANT_DETAIL_KEYS = [
     {
         'key': 'affiliation',
