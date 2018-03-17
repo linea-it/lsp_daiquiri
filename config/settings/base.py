@@ -1,6 +1,10 @@
+import os
+from . import BASE_DIR
+
 DAIQUIRI_APPS = [
     'daiquiri.archive',
     'daiquiri.auth',
+    'daiquiri.conesearch',
     'daiquiri.contact',
     'daiquiri.core',
     'daiquiri.files',
@@ -15,41 +19,3 @@ DAIQUIRI_APPS = [
 ]
 
 INSTALLED_APPS = []
-
-ACCOUNT_USERNAME_MIN_LENGTH = 4
-ACCOUNT_PASSWORD_MIN_LENGTH = 4
-
-CONESEARCH_ANONYMOUS = True
-CONESEARCH_STMT = 'SELECT * FROM daiquiri_data_obs.stars WHERE SQRT(POWER(ra - %(RA)s, 2) + POWER(de - %(DEC)s, 2)) <= %(SR)s'
-
-AUTH_DETAIL_KEYS = []
-
-CONESEARCH_ANONYMOUS = True
-CONESEARCH_ADAPTER = 'daiquiri.conesearch.adapter.SimpleConeSearchAdapter'
-CONESEARCH_SCHEMA = 'daiquiri_data_obs'
-CONESEARCH_TABLE = 'stars'
-
-MEETINGS_PARTICIPANT_DETAIL_KEYS = [
-    {
-        'key': 'affiliation',
-        'label': 'Affiliation',
-        'data_type': 'text',
-        'required': True
-    },
-    {
-        'key': 'dinner',
-        'label': 'Conference dinner',
-        'data_type': 'radio',
-        'required': True,
-        'options': [
-            {'id': 'yes', 'label': 'yes'},
-            {'id': 'no', 'label': 'no'}
-        ]
-    }
-]
-
-QUERY_QUOTA = {
-    'user': '1Gb'
-}
-
-VENDOR_CDN = False

@@ -17,6 +17,11 @@ Use Celery to run tasks asyncronous
 ASYNC = False
 
 '''
+Use a CDN for the vendor css and js files
+'''
+VENDOR_CDN = True
+
+'''
 The list of URLs und which this application available
 '''
 ALLOWED_HOSTS = ['localhost', 'ip6-localhost', '127.0.0.1', '[::1]']
@@ -25,26 +30,27 @@ ALLOWED_HOSTS = ['localhost', 'ip6-localhost', '127.0.0.1', '[::1]']
 The database connection to be used, see also:
 http://rdmo.readthedocs.io/en/latest/configuration/databases.html
 '''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'daiquiri_app',
-        'USER': 'daiquiri_app',
-        'PASSWORD': 'daiquiri_app',
-        'HOST': '',
-        'PORT': ''
-    },
-    'data': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'TAP_SCHEMA',
-        'USER': 'daiquiri_data',
-        'PASSWORD': 'daiquiri_data',
-        'HOST': '',
-        'PORT': ''
-    }
-}
-ADAPTER_DATABASE = 'daiquiri.core.adapter.database.mysql.MySQLAdapter'
-ADAPTER_DOWNLOAD = 'daiquiri.core.adapter.download.mysqldump.MysqldumpAdapter'
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'daiquiri_app',
+#         'USER': 'daiquiri_app',
+#         'PASSWORD': 'daiquiri_app',
+#         'HOST': '',
+#         'PORT': ''
+#     },
+#     'data': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'TAP_SCHEMA',
+#         'USER': 'daiquiri_data',
+#         'PASSWORD': 'daiquiri_data',
+#         'HOST': '',
+#         'PORT': ''
+#     }
+# }
+# ADAPTER_DATABASE = 'daiquiri.core.adapter.database.mysql.MySQLAdapter'
+# ADAPTER_DOWNLOAD = 'daiquiri.core.adapter.download.mysqldump.MysqldumpAdapter'
 
 # DATABASES = {
 #     'default': {
