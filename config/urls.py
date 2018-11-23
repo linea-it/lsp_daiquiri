@@ -1,27 +1,31 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from daiquiri.core.views import home
 
+
 urlpatterns = [
-    url(r'^$', home, name='home'),
+    path('', home, name='home'),
 
-    url(r'^accounts/', include('daiquiri.auth.urls_accounts')),
+    path('accounts/', include('daiquiri.auth.urls_accounts')),
 
-    url(r'^archive/', include('daiquiri.archive.urls', namespace='archive')),
-    url(r'^auth/', include('daiquiri.auth.urls_auth', namespace='auth')),
-    url(r'^conesearch/', include('daiquiri.conesearch.urls', namespace='conesearch')),
-    url(r'^contact/', include('daiquiri.contact.urls', namespace='contact')),
-    url(r'^files/', include('daiquiri.files.urls', namespace='files')),
-    url(r'^meetings/', include('daiquiri.meetings.urls', namespace='meetings')),
-    url(r'^metadata/', include('daiquiri.metadata.urls', namespace='metadata')),
-    url(r'^serve/', include('daiquiri.serve.urls', namespace='serve')),
-    url(r'^stats/', include('daiquiri.stats.urls', namespace='stats')),
-    url(r'^query/', include('daiquiri.query.urls', namespace='query')),
-    url(r'^tap/', include('daiquiri.tap.urls', namespace='tap')),
-    url(r'^uws/', include('daiquiri.uws.urls', namespace='uws')),
+    path('archive/', include('daiquiri.archive.urls', namespace='archive')),
+    path('auth/', include('daiquiri.auth.urls_auth', namespace='auth')),
+    path('conesearch/', include('daiquiri.conesearch.urls', namespace='conesearch')),
+    path('contact/', include('daiquiri.contact.urls', namespace='contact')),
+    path('files/', include('daiquiri.files.urls', namespace='files')),
+    path('meetings/', include('daiquiri.meetings.urls', namespace='meetings')),
+    path('metadata/', include('daiquiri.metadata.urls', namespace='metadata')),
+    path('serve/', include('daiquiri.serve.urls', namespace='serve')),
+    path('stats/', include('daiquiri.stats.urls', namespace='stats')),
+    path('query/', include('daiquiri.query.urls', namespace='query')),
+    path('tap/', include('daiquiri.tap.urls', namespace='tap')),
+    path('uws/', include('daiquiri.uws.urls', namespace='uws')),
 
-    url(r'^admin/', include(admin.site.urls)),
+    path('layout/', TemplateView.as_view(template_name='wordpress/layout.html'), name='layout'),
+
+    path('admin/', admin.site.urls),
 ]
 
 handler400 = 'daiquiri.core.views.bad_request'

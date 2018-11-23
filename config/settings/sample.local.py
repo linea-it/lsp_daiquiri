@@ -1,5 +1,5 @@
 import os
-from . import BASE_DIR
+from . import BASE_DIR, TAP_SCHEMA
 
 '''
 Secret key, use something random in production
@@ -19,7 +19,7 @@ ASYNC = False
 '''
 Use a CDN for the vendor css and js files
 '''
-VENDOR_CDN = True
+VENDOR_CDN = False
 
 '''
 The list of URLs und which this application available
@@ -42,7 +42,7 @@ http://rdmo.readthedocs.io/en/latest/configuration/databases.html
 #     },
 #     'data': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'TAP_SCHEMA',
+#         'NAME': TAP_SCHEMA,
 #         'USER': 'daiquiri_data',
 #         'PASSWORD': 'daiquiri_data',
 #         'HOST': '',
@@ -63,7 +63,7 @@ http://rdmo.readthedocs.io/en/latest/configuration/databases.html
 #     'data': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #          'OPTIONS': {
-#             'options': '-c search_path=TAP_SCHEMA'
+#             'options': '-c search_path=%s,public' % TAP_SCHEMA
 #         },
 #         'NAME': 'daiquiri_data',
 #         'USER': 'daiquiri_data',
