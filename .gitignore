@@ -6,6 +6,7 @@ vendor
 
 media_root
 static_root
+upload_root
 
 node_modules
 
