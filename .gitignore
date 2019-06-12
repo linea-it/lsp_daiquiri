@@ -1,12 +1,12 @@
 config/settings/local.py
 
 download
+upload
 log
 vendor
 
 media_root
 static_root
-upload_root
 
 node_modules
 
