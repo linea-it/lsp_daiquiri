@@ -1,7 +1,6 @@
 import os
 from . import BASE_DIR, DJANGO_APPS, ADDITIONAL_APPS
 
-SITE_URL = os.getenv('SITE_URL')
 SITE_IDENTIFIER = 'example.com'
 SITE_TITLE = 'example.com'
 SITE_DESCRIPTION = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
