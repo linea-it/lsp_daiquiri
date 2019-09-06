@@ -28,6 +28,3 @@ INSTALLED_APPS = DJANGO_APPS + [
     'daiquiri.tap',
     'daiquiri.uws'
 ] + ADDITIONAL_APPS
-
-ADAPTER_DATABASE = 'daiquiri.core.adapter.database.postgres.PostgreSQLAdapter'
-ADAPTER_DOWNLOAD = 'daiquiri.core.adapter.download.pgdump.PgDumpAdapter'
