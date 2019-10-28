@@ -26,5 +26,6 @@ INSTALLED_APPS = DJANGO_APPS + [
     'daiquiri.serve',
     'daiquiri.stats',
     'daiquiri.tap',
-    'daiquiri.uws'
+    'daiquiri.uws',
+    'daiquiri.wordpress',
 ] + ADDITIONAL_APPS
