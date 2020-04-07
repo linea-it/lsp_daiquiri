@@ -25,6 +25,7 @@ urlpatterns = [
     path('tap/', include('daiquiri.tap.urls', namespace='tap')),
     path('uws/', include('daiquiri.uws.urls', namespace='uws')),
 
+    path('robots.txt', TemplateView.as_view(template_name='site/robots.txt', content_type='text/plain'), name='robots'),
     path('layout/', TemplateView.as_view(template_name='wordpress/layout.html'), name='layout'),
 
     path('admin/', admin.site.urls),
