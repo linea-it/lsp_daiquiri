@@ -9,6 +9,7 @@ from daiquiri.archive.settings import *
 from daiquiri.auth.settings import *
 from daiquiri.conesearch.settings import *
 from daiquiri.cutout.settings import *
+from daiquiri.datalink.settings import *
 from daiquiri.files.settings import *
 from daiquiri.meetings.settings import *
 from daiquiri.metadata.settings import *

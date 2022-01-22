@@ -23,6 +23,7 @@ INSTALLED_APPS = DJANGO_APPS + [
     'daiquiri.conesearch',
     'daiquiri.contact',
     'daiquiri.core',
+    'daiquiri.datalink',
     'daiquiri.files',
     'daiquiri.jobs',
     'daiquiri.meetings',
