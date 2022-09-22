@@ -18,7 +18,6 @@ SITE_CREATED = '2019-01-01'
 SITE_UPDATED = '2019-04-01'
 
 INSTALLED_APPS = DJANGO_APPS + [
-    'daiquiri.archive',
     'daiquiri.auth',
     'daiquiri.conesearch',
     'daiquiri.contact',
@@ -26,7 +25,6 @@ INSTALLED_APPS = DJANGO_APPS + [
     'daiquiri.datalink',
     'daiquiri.files',
     'daiquiri.jobs',
-    'daiquiri.meetings',
     'daiquiri.metadata',
     'daiquiri.oai',
     'daiquiri.query',
@@ -35,5 +33,4 @@ INSTALLED_APPS = DJANGO_APPS + [
     'daiquiri.stats',
     'daiquiri.tap',
     'daiquiri.uws',
-    'daiquiri.wordpress',
 ] + ADDITIONAL_APPS
