@@ -7,6 +7,8 @@ Autenticação com CILogon:
   - https://django-allauth.readthedocs.io/en/latest/providers.html
   - https://www.cilogon.org/oidc
 
+Como escrever querys com ADQL https://www.cosmos.esa.int/web/gaia-users/archive/writing-queries
+
 This application is meant to be used with the Django version of the [Daiquiri Framework](https://github.com/aipescience/django-daiquiri).
 
 This project is currently in an early stage of development and by no means production ready.

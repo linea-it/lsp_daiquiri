@@ -12,12 +12,17 @@ services:
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
-
+    environment:
+      LOG_DIR: log
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:db
+    # network_mode: service:db
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
-
+    networks:
+      - daiquiri-network
+    depends_on:
+      - db
+      - rabbitmq
   db:
     image: postgres:latest
     restart: unless-stopped
@@ -31,7 +36,31 @@ services:
       - 54322:5432
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
+    networks:
+      - daiquiri-network
+
+  rabbitmq:
+    image: rabbitmq:3.11.8-management-alpine
+    ports:
+      #  - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/
+      # - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq      
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: daiquiri_vhost
+    # network_mode: service:app
+    networks:
+      - daiquiri-network
 
 volumes:
   postgres-data:
   daiquiri-data:
+  rabbitmq-data:
+
+
+networks:
+  daiquiri-network:
+    driver: bridge
