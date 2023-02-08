@@ -29,10 +29,10 @@ docker-compose run app python manage.py sqlcreate
 OU
 
 ```bash
-docker-compose exec db psql -U postgres -c "CREATE DATABASE daiquiri_app WITH OWNER postgres;"
-docker-compose exec db psql -U postgres -c "CREATE DATABASE daiquiri_data WITH OWNER postgres;"
-docker-compose exec db psql -U postgres -c "GRANT CREATE ON DATABASE daiquiri_data TO postgres;"
-docker-compose exec db psql -U postgres -d daiquiri_data -c "CREATE SCHEMA tap_schema AUTHORIZATION postgres;CREATE SCHEMA tap_upload AUTHORIZATION postgres;CREATE SCHEMA oai_schema AUTHORIZATION postgres;"
+docker-compose exec database psql -U postgres -c "CREATE DATABASE daiquiri_app WITH OWNER postgres;"
+docker-compose exec database psql -U postgres -c "CREATE DATABASE daiquiri_data WITH OWNER postgres;"
+docker-compose exec database psql -U postgres -c "GRANT CREATE ON DATABASE daiquiri_data TO postgres;"
+docker-compose exec database psql -U postgres -d daiquiri_data -c "CREATE SCHEMA tap_schema AUTHORIZATION postgres;CREATE SCHEMA tap_upload AUTHORIZATION postgres;CREATE SCHEMA oai_schema AUTHORIZATION postgres;"
 ```
 
 ```bash

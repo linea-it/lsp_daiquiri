@@ -4,6 +4,10 @@ BASE_HOST = "http://localhost:8000"
 # A list of strings representing the host/domain names that this Django site can serve.
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '::1']
 
+SENDFILE_BACKEND = 'django_sendfile.backends.nginx'
+SENDFILE_URL = '/download'
+SENDFILE_ROOT = '/data/download'
+
 QUERY_DROPDOWNS = [
     {
         'key': 'simbad',

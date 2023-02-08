@@ -20,7 +20,21 @@ WORKDIR /app
 
 COPY requirements.txt .
 
+# Install postgresql client
+# RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+#     && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+
 # this section to install additional OS packages.
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends \ 
+#     build-essential \
+#     libxml2-dev libxslt-dev \
+#     zlib1g-dev \
+#     libssl-dev \
+#     python3-dev \
+#     libpq-dev \
+#     postgresql-client
+
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \ 
     build-essential \
@@ -28,7 +42,9 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     zlib1g-dev \
     libssl-dev \
     python3-dev \
-    libpq-dev 
+    libpq-dev \
+    postgresql-client-13
+
 
 RUN pip3 install --upgrade pip setuptools wheel  && \
     pip3 --disable-pip-version-check --no-cache-dir install -r requirements.txt \
