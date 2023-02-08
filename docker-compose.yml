@@ -1,0 +1,76 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: ./daiquiri
+      dockerfile: ./Dockerfile
+    # user: "1000:1000"
+    env_file:
+      - .env
+    volumes:
+      - ./daiquiri:/app
+      - ./local.py:/app/config/settings/local.py:ro
+      - ./log:/data/log/
+      - ./data/files:/data/files
+      - ./data/download:/data/download
+      - ./data/upload:/data/upload
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: ./entrypoint.sh
+    depends_on:
+      - database
+
+  database:
+    # image: postgres:latest
+    image: postgres:13.9-alpine
+    restart: always
+    # restart: unless-stopped
+    volumes:
+      # - postgres-data:/var/lib/postgresql/data
+      - ./pg_data:/var/lib/postgresql/data
+      - ./database_sample:/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+    # ports:
+    #   - 54322:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    # rabbitmq:
+    #   image: rabbitmq:3.11.8-management-alpine
+    #   # ports:
+    #   #  - 5672:5672
+    #   # - 15672:15672
+    #   volumes:
+    #     - rabbitmq-data:/var/lib/rabbitmq/
+    #     # - ./log/rabbitmq/:/var/log/rabbitmq
+    #   environment:
+    #     RABBITMQ_DEFAULT_USER: guest
+    #     RABBITMQ_DEFAULT_PASS: guest
+    #     RABBITMQ_DEFAULT_VHOST: daiquiri_vhost
+
+    # Servidor Web NGINX
+  nginx:
+    image: nginx:1.21.6-alpine
+    ports:
+      - 80:80
+    volumes:
+      # Arquivo de configuração do Ngnix para este ambiente.
+      - ./nginx-proxy-development.conf:/etc/nginx/conf.d/default.conf:ro
+      # Diretório onde o backend manipula arquivos, e que deve ficar acessivel ao servidor web.
+      - ./data/download:/var/www/data/download
+    depends_on:
+      - app
+    # volumes:
+    #   postgres-data:
+    # daiquiri-data:
+    # rabbitmq-data:
+
+    # networks:
+    #   daiquiri-network:
+    #     driver: bridge
+    #     external:
