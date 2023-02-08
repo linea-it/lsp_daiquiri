@@ -1,0 +1,6 @@
+**/vendor/
+**/static_root/
+*/local.py
+.env
+*.log
+.git
