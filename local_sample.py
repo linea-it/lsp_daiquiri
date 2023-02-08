@@ -4,9 +4,13 @@ BASE_HOST = "http://localhost:8000"
 # A list of strings representing the host/domain names that this Django site can serve.
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '::1']
 
+# NÃO ALTERAR: Estas variaveis estão relacionadas a rota /protected/ no ngnix.
+# São necessárias para o funcionamento do Download.
+# https://django-sendfile2.readthedocs.io/en/latest/backends.html#nginx-backend
 SENDFILE_BACKEND = 'django_sendfile.backends.nginx'
-SENDFILE_URL = '/download'
-SENDFILE_ROOT = '/data/download'
+SENDFILE_ROOT = '/data/download/protected'
+SENDFILE_URL = '/protected'
+
 
 QUERY_DROPDOWNS = [
     {
