@@ -46,3 +46,22 @@ docker-compose up -d
 ```bash
 docker-compose exec app python manage.py createsuperuser
 ```
+
+Load Query Sample Data
+
+```bash
+docker-compose exec app python manage.py loaddata /app/fixtures/query_samples.json
+```
+
+
+Dump Query Sample Data
+
+```bash
+docker-compose exec app python manage.py dumpdata daiquiri_query.example > fixtures/query_samples.json
+```
+
+Load Query Sample Data
+
+```bash
+docker-compose exec app python manage.py loaddata /app/fixtures/query_samples.json
+```

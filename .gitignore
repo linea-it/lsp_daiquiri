@@ -22,6 +22,6 @@ daiquiri/htmlcov
 
 data/*
 log/*
-db/*
+pg_data/*
 local.py
 .env

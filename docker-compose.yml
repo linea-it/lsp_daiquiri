@@ -11,6 +11,7 @@ services:
     volumes:
       - ./daiquiri:/app
       - ./local.py:/app/config/settings/local.py:ro
+      - ./fixtures:/app/fixtures
       - ./log:/data/log/
       - ./data/files:/data/files
       - ./data/download:/data/download
