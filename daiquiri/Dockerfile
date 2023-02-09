@@ -16,7 +16,6 @@ RUN python -m venv /opt/venv
 
 ENV PATH="/opt/venv/bin:$PATH"
 
-WORKDIR /app
 
 COPY requirements.txt .
 
@@ -57,6 +56,7 @@ RUN pip3 install --upgrade pip setuptools wheel  && \
 # COPY --from=builder /opt/venv /opt/venv
 
 # WORKDIR /app
+# && chmod -R 765 /app
 
 # ENV PATH="/opt/venv/bin:$PATH"
 # add user so we can run things as non-root
@@ -64,10 +64,14 @@ RUN pip3 install --upgrade pip setuptools wheel  && \
 RUN groupadd --gid $USER_GID $USERNAME
 RUN useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 
+WORKDIR /app
+
 COPY ./entrypoint.sh .
 
 COPY . .
 
-USER $USERNAME
+RUN chown -R $USER_UID:$USER_GID /app
 
-ENTRYPOINT ./entrypoint.sh
+USER $USERNAME
+CMD [ "./entrypoint.sh" ]
+# ENTRYPOINT ./entrypoint.sh
