@@ -77,3 +77,19 @@ services:
     #   daiquiri-network:
     #     driver: bridge
     #     external:
+
+
+    # daiquiri:
+    #   image: linea/lsp_daiquiri:b0536ad
+    #   command: ./entrypoint.sh
+    #   env_file:
+    #     - .env_lsp_daiquiri
+    #   volumes:
+    #     # Local Vars
+    #     - .local_vars_lsp_daiquiri.py:/app/config/settings/local.py:ro
+    #     # Diretório de logs do Daiquiri
+    #     - ./log/lsp_daiquiri:/data/log/
+    #     # Diretórios onde o backend pode manipular arquivos. 
+    #     - ./tmp_data/files:/data/files
+    #     - ./tmp_data/download:/data/download
+    #     - ./tmp_data/upload:/data/upload

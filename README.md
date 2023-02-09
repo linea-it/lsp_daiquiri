@@ -65,3 +65,7 @@ Load Query Sample Data
 ```bash
 docker-compose exec app python manage.py loaddata /app/fixtures/query_samples.json
 ```
+
+
+# TODO: Bug no daiquiri framework quando o tablename tem espaço!
+# Download VOTable falha se a tabela não tiver os ucds associados as colunas
