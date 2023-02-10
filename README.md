@@ -36,7 +36,8 @@ docker-compose exec database psql -U postgres -d daiquiri_data -c "CREATE SCHEMA
 ```
 
 ```bash
-docker-compose exec database psql -U postgres -d daiquiri_data -f /data/gaia_dump.sql
+docker-compose exec database psql -U postgres -d daiquiri_data -f /data/gaia_dr2_sample.sql
+docker-compose exec database psql -U postgres -d daiquiri_data -f /data/des_dr2_sample.sql
 ```
 
 ```bash
@@ -54,10 +55,12 @@ docker-compose exec app python manage.py loaddata /app/fixtures/query_samples.js
 ```
 
 
+
+
 Dump Query Sample Data
 
 ```bash
-docker-compose exec app python manage.py dumpdata daiquiri_query.example > fixtures/query_samples.json
+docker-compose exec app python manage.py dumpdata daiquiri_query.example > daiquiri/fixtures/query_samples.json
 ```
 
 Load Query Sample Data
