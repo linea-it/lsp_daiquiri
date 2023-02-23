@@ -8,6 +8,14 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # This option has no effect on the stdin stream.
 ENV PYTHONUNBUFFERED=1
 
+ARG USERNAME=daiquiri
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+# Create the non-root user up front
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
+
 RUN python -m venv /opt/venv
 
 ENV PATH="/opt/venv/bin:$PATH"
@@ -35,25 +43,18 @@ RUN pip3 install --upgrade pip setuptools wheel  && \
     && rm -rf /tmp/pip-tmp
 
 
-FROM python:3.9-slim-bullseye
-
-COPY --from=builder /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu
-COPY --from=builder /opt/venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-
-# Create the non-root user up front
-ARG USERNAME=daiquiri
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
-
+# # Este bloco funciona
+# # add user so we can run things as non-root
+# RUN groupadd --gid $USER_GID $USERNAME
+# RUN useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 WORKDIR /app
 
 COPY ./entrypoint.sh .
 
 COPY . .
+
+# Este bloco funciona
+# RUN chown -R $USER_UID:$USER_GID /app
 
 RUN mkdir /data /data/log /data/files /data/download /data/upload \
     && chown -R $USER_UID:$USER_GID /data /data/log /data/files /data/download /data/upload \
@@ -62,6 +63,7 @@ RUN mkdir /data /data/log /data/files /data/download /data/upload \
 # Basic Settings necessary for run download_vendor_files during build process
 ENV FILES_BASE_PATH=/data/files
 ENV QUERY_DOWNLOAD_DIR=/data/download
+
 
 RUN python manage.py download_vendor_files \
     && python manage.py collectstatic --clear --noinput --verbosity 0 \

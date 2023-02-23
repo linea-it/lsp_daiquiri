@@ -19,6 +19,7 @@ dj-database-url==0.5.0
 Django==4.0.8
 django-allauth==0.51.0
 django-appconf==1.0.5
+django-auth-ldap==4.1.0
 django-compressor==4.3.1
 django-daiquiri @ git+https://github.com/django-daiquiri/daiquiri@b6db6bc0c6394585363f87a70fd7bd150ffc0dd5
 django-extensions==3.2.1
