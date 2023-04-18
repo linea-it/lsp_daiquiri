@@ -1,9 +1,9 @@
 version: '3.9'
 
 services:
-  app:
+  daiquiri:
     build:
-      context: ./daiquiri
+      context: .
       dockerfile: ./Dockerfile
     # user: "1000:1000"
     env_file:
@@ -12,13 +12,11 @@ services:
       - ./daiquiri:/app
       - ./local.py:/app/config/settings/local.py:ro
       - ./fixtures:/app/fixtures
-      - ./log:/data/log/
+      - ./data/log:/data/log/
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
-
-    # Overrides default command so things don't shut down after the process ends.
-    command: ./entrypoint.sh
+    command: /start.sh
     depends_on:
       - database
 
@@ -28,8 +26,8 @@ services:
     restart: always
     # restart: unless-stopped
     volumes:
-      # - postgres-data:/var/lib/postgresql/data
-      - ./pg_data:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+      - postgres-data:/var/lib/postgresql/data
       - ./database_sample:/data
     environment:
       POSTGRES_USER: postgres
@@ -67,7 +65,10 @@ services:
       # Diretório de logs do servidor web. 
       - ./log:/var/log/nginx
     depends_on:
-      - app
+      - daiquiri
+
+volumes:
+  postgres-data:      
     # volumes:
     #   postgres-data:
     # daiquiri-data:

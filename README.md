@@ -16,14 +16,20 @@ This project is currently in an early stage of development and by no means produ
 
 The PHP version of Daiquiri can be found [here](https://github.com/aipescience/daiquiri).
 
+Copy Enviroment file and config 
+```bash
+cp .env.sample .env
+cp local_sample.py local.py
+```
+
 Create Dirs
 
 ```bash
-mkdir data data/files data/download data/upload log log/celery log/daiquiri
+mkdir data data/files data/download data/upload data/log data/log/celery data/log/daiquiri
 ```
 
 ```bash
-docker-compose run app python manage.py sqlcreate
+docker-compose run daiquiri python manage.py sqlcreate
 ```
 
 OU
@@ -45,13 +51,13 @@ docker-compose up -d
 ```
 
 ```bash
-docker-compose exec app python manage.py createsuperuser
+docker-compose exec daiquiri python manage.py createsuperuser
 ```
 
 Load Query Sample Data
 
 ```bash
-docker-compose exec app python manage.py loaddata /app/fixtures/query_samples.json
+docker-compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
 
@@ -60,13 +66,13 @@ docker-compose exec app python manage.py loaddata /app/fixtures/query_samples.js
 Dump Query Sample Data
 
 ```bash
-docker-compose exec app python manage.py dumpdata daiquiri_query.example > daiquiri/fixtures/query_samples.json
+docker-compose exec daiquiri python manage.py dumpdata daiquiri_query.example > daiquiri/fixtures/query_samples.json
 ```
 
 Load Query Sample Data
 
 ```bash
-docker-compose exec app python manage.py loaddata /app/fixtures/query_samples.json
+docker-compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
 
