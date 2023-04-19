@@ -16,17 +16,45 @@ This project is currently in an early stage of development and by no means produ
 
 The PHP version of Daiquiri can be found [here](https://github.com/aipescience/daiquiri).
 
+Sobre Cone Search ADQL Postgresql
+
+- <https://gaia.aip.de/cms/services/adql-postgresql/>
+- <https://gaia.aip.de/cms/services/cone-search/>
+
+Copy Enviroment file and config
+
+```bash
+cp .env.sample .env
+cp local_sample.py local.py
+```
+
 Create Dirs
 
 ```bash
-mkdir data data/files data/download data/upload log log/celery log/daiquiri
+mkdir data data/files data/download data/upload data/log data/log/celery data/log/daiquiri
 ```
+
+Iniciar o serviço de banco de dados, a primeira vez deve criar os bancos e os schemas na inicialização.
 
 ```bash
-docker-compose run app python manage.py sqlcreate
+docker-compose up database
 ```
 
-OU
+Procure na saida do terminal por estas mensagens:
+
+```bash
+...
+lsp_daiquiri-database-1  | /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/init-db.sh
+lsp_daiquiri-database-1  | CREATE DATABASE
+lsp_daiquiri-database-1  | CREATE DATABASE
+lsp_daiquiri-database-1  | GRANT
+lsp_daiquiri-database-1  | CREATE SCHEMA
+lsp_daiquiri-database-1  | CREATE SCHEMA
+lsp_daiquiri-database-1  | CREATE SCHEMA
+...
+```
+
+Caso os databases não tenham sido criados na inicialização execute os comandos a seguir para crialos.
 
 ```bash
 docker-compose exec database psql -U postgres -c "CREATE DATABASE daiquiri_app WITH OWNER postgres;"
@@ -34,6 +62,8 @@ docker-compose exec database psql -U postgres -c "CREATE DATABASE daiquiri_data 
 docker-compose exec database psql -U postgres -c "GRANT CREATE ON DATABASE daiquiri_data TO postgres;"
 docker-compose exec database psql -U postgres -d daiquiri_data -c "CREATE SCHEMA tap_schema AUTHORIZATION postgres;CREATE SCHEMA tap_upload AUTHORIZATION postgres;CREATE SCHEMA oai_schema AUTHORIZATION postgres;"
 ```
+
+Execute estes comandos para importar alguns dados de teste:
 
 ```bash
 docker-compose exec database psql -U postgres -d daiquiri_data -f /data/gaia_dr2_sample.sql
@@ -45,30 +75,39 @@ docker-compose up -d
 ```
 
 ```bash
-docker-compose exec app python manage.py createsuperuser
+docker-compose exec daiquiri python manage.py createsuperuser
+```
+
+[Setup groups](https://django-daiquiri.github.io/docs/administration/)
+
+```bash
+docker-compose exec daiquiri python manage.py setup_groups
+```
+
+[Setup TAP_SCHEMA](https://django-daiquiri.github.io/docs/administration/)
+
+```bash
+docker-compose exec daiquiri python manage.py setup_tap_metadata
 ```
 
 Load Query Sample Data
 
 ```bash
-docker-compose exec app python manage.py loaddata /app/fixtures/query_samples.json
+docker-compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
-
-
-
 
 Dump Query Sample Data
 
 ```bash
-docker-compose exec app python manage.py dumpdata daiquiri_query.example > daiquiri/fixtures/query_samples.json
+docker-compose exec daiquiri python manage.py dumpdata daiquiri_query.example > daiquiri/fixtures/query_samples.json
 ```
 
 Load Query Sample Data
 
 ```bash
-docker-compose exec app python manage.py loaddata /app/fixtures/query_samples.json
+docker-compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
+# TODO: Bug no daiquiri framework quando o tablename tem espaço
 
-# TODO: Bug no daiquiri framework quando o tablename tem espaço!
 # Download VOTable falha se a tabela não tiver os ucds associados as colunas
