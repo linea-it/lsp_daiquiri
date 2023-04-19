@@ -83,3 +83,5 @@ wcwidth==0.2.6
 XlsxWriter==3.0.7
 zipp==3.11.0
 uWSGI==2.0.21
+pyvo==1.4.1
+astroquery==0.4.6
