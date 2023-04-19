@@ -16,7 +16,13 @@ This project is currently in an early stage of development and by no means produ
 
 The PHP version of Daiquiri can be found [here](https://github.com/aipescience/daiquiri).
 
-Copy Enviroment file and config 
+Sobre Cone Search ADQL Postgresql
+
+- <https://gaia.aip.de/cms/services/adql-postgresql/>
+- <https://gaia.aip.de/cms/services/cone-search/>
+
+Copy Enviroment file and config
+
 ```bash
 cp .env.sample .env
 cp local_sample.py local.py
@@ -28,10 +34,12 @@ Create Dirs
 mkdir data data/files data/download data/upload data/log data/log/celery data/log/daiquiri
 ```
 
-Iniciar o serviço de banco de dados, a primeira vez deve criar os bancos e os schemas na inicialização. 
+Iniciar o serviço de banco de dados, a primeira vez deve criar os bancos e os schemas na inicialização.
+
 ```bash
 docker-compose up database
 ```
+
 Procure na saida do terminal por estas mensagens:
 
 ```bash
@@ -56,6 +64,7 @@ docker-compose exec database psql -U postgres -d daiquiri_data -c "CREATE SCHEMA
 ```
 
 Execute estes comandos para importar alguns dados de teste:
+
 ```bash
 docker-compose exec database psql -U postgres -d daiquiri_data -f /data/gaia_dr2_sample.sql
 docker-compose exec database psql -U postgres -d daiquiri_data -f /data/des_dr2_sample.sql
@@ -69,14 +78,23 @@ docker-compose up -d
 docker-compose exec daiquiri python manage.py createsuperuser
 ```
 
+[Setup groups](https://django-daiquiri.github.io/docs/administration/)
+
+```bash
+docker-compose exec daiquiri python manage.py setup_groups
+```
+
+[Setup TAP_SCHEMA](https://django-daiquiri.github.io/docs/administration/)
+
+```bash
+docker-compose exec daiquiri python manage.py setup_tap_metadata
+```
+
 Load Query Sample Data
 
 ```bash
 docker-compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
-
-
-
 
 Dump Query Sample Data
 
@@ -90,6 +108,6 @@ Load Query Sample Data
 docker-compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
+# TODO: Bug no daiquiri framework quando o tablename tem espaço
 
-# TODO: Bug no daiquiri framework quando o tablename tem espaço!
 # Download VOTable falha se a tabela não tiver os ucds associados as colunas
