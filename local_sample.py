@@ -2,7 +2,7 @@
 BASE_HOST = "http://localhost/daiquiri"
 
 # A list of strings representing the host/domain names that this Django site can serve.
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1", "*"]
 
 # Public URL of the Daiquiri site. Used for VO and OAI metadata.
 # Default: http://localhost:8000
@@ -140,3 +140,9 @@ QUERY_LANGUAGES = [
         "quote_char": '"',
     },
 ]
+
+# daiquiri.query.settings
+# Designates if the query interface can be accessed by anonymus users.
+# The permissions on schemas and tables need to be configured using the metadata interface.
+# Default: False
+QUERY_ANONYMOUS = True
