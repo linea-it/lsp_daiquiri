@@ -8,7 +8,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # This option has no effect on the stdin stream.
 ENV PYTHONUNBUFFERED=1
 
-
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \ 
     build-essential \
@@ -24,26 +23,18 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     ldap-utils \
     git
 
-
 # Install python packages
 COPY ./requirements.txt /tmp/pip-tmp/
 RUN pip install --upgrade pip setuptools wheel  && \
     pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
     && rm -rf /tmp/pip-tmp
 
-# FROM python:3.9-slim-bullseye
-
-# COPY --from=builder /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu
-# COPY --from=builder /opt/venv /opt/venv
-# ENV PATH="/opt/venv/bin:$PATH"
+ENV PATH="/home/daiquiri/.local/bin:$PATH"
 
 # Create the non-root user up front
 ARG USERNAME=daiquiri
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-
-# RUN groupadd --gid $USER_GID $USERNAME \
-#     && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 RUN groupadd --gid ${USER_GID} $USERNAME \
     && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
