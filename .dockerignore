@@ -2,3 +2,5 @@
 .env
 *.log
 .git
+daiquiri/vendor
+daiquiri/static_root
