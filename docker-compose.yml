@@ -1,7 +1,14 @@
 version: '3.9'
+# Exemplo de como declarar variaveis comuns aos serviços
+# https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/
+# 
+# x-common-variables: &common-variables
+#   MYSQL_DATABASE: books
+#   MYSQL_USER: MYSQL_USER
+#   MYSQL_PASSWORD: MYSQL_PASSWORD
 
 services:
-  daiquiri:
+  daiquiri: &daiquiri
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -12,18 +19,26 @@ services:
       - ./daiquiri:/app
       - ./local.py:/app/config/settings/local.py:ro
       - ./fixtures:/app/fixtures
-      - ./data/log:/data/log/
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
+      - ./data/log:/var/log/daiquiri      
+      - ./data/log:/var/log/celery      
     command: /start.sh
     depends_on:
       - database
+      - rabbit
+
+  celery_flower: &celery_flower
+    <<: *daiquiri
+    command: celery -A config flower --url-prefix=flower
+    depends_on:
+      - daiquiri
 
   database:
     # image: postgres:latest
     image: postgres:13.9-alpine
-    restart: always
+    #restart: always
     # restart: unless-stopped
     volumes:
       # - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
@@ -36,23 +51,17 @@ services:
     # ports:
     #   - 54322:5432
 
-    # adminer:
-    #   image: adminer
-    #   restart: always
-    # rabbitmq:
-    #   image: rabbitmq:3.11.8-management-alpine
-    #   # ports:
-    #   #  - 5672:5672
-    #   # - 15672:15672
-    #   volumes:
-    #     - rabbitmq-data:/var/lib/rabbitmq/
-    #     # - ./log/rabbitmq/:/var/log/rabbitmq
-    #   environment:
-    #     RABBITMQ_DEFAULT_USER: guest
-    #     RABBITMQ_DEFAULT_PASS: guest
-    #     RABBITMQ_DEFAULT_VHOST: daiquiri_vhost
+  # Message-Broker Software RabbitMQ
+  rabbit:
+    image: rabbitmq:3-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: daiquiri
+      RABBITMQ_DEFAULT_PASS: adminadmin
+      RABBITMQ_DEFAULT_VHOST: daiquiri_vhost
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/
 
-    # Servidor Web NGINX
+  # Servidor Web NGINX
   nginx:
     image: nginx:1.21.6-alpine
     ports:
@@ -66,31 +75,6 @@ services:
       - ./log:/var/log/nginx
     depends_on:
       - daiquiri
-
 volumes:
   postgres-data:      
-    # volumes:
-    #   postgres-data:
-    # daiquiri-data:
-    # rabbitmq-data:
-
-    # networks:
-    #   daiquiri-network:
-    #     driver: bridge
-    #     external:
-
-
-    # daiquiri:
-    #   image: linea/lsp_daiquiri:b0536ad
-    #   command: ./entrypoint.sh
-    #   env_file:
-    #     - .env_lsp_daiquiri
-    #   volumes:
-    #     # Local Vars
-    #     - .local_vars_lsp_daiquiri.py:/app/config/settings/local.py:ro
-    #     # Diretório de logs do Daiquiri
-    #     - ./log/lsp_daiquiri:/data/log/
-    #     # Diretórios onde o backend pode manipular arquivos. 
-    #     - ./tmp_data/files:/data/files
-    #     - ./tmp_data/download:/data/download
-    #     - ./tmp_data/upload:/data/upload
+  rabbitmq-data:

@@ -38,9 +38,11 @@ ARG USER_GID=$USER_UID
 
 RUN groupadd --gid ${USER_GID} $USERNAME \
     && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
-    && mkdir -p /app /data \
+    && mkdir -p /app /data /celery /var/run/celery \
     && chown -R ${USER_UID}:${USER_GID} /app \
-    && chown -R ${USER_UID}:${USER_GID} /data
+    && chown -R ${USER_UID}:${USER_GID} /data \
+    && chown -R ${USER_UID}:${USER_GID} /celery \
+    && chown -R ${USER_UID}:${USER_GID} /var/run/celery 
 
 # Copy app files into container
 WORKDIR /app
@@ -48,10 +50,11 @@ COPY ./daiquiri /app
 
 # Basic Settings necessary for run download_vendor_files during build process
 # NÃO ALTERAR os paths utilizar os volumes no docker-compose para indicar os diretórios.
-ENV FILES_BASE_PATH=/data/files
+ENV FILES_BASE_PATH=/data/download
+ENV FILES_BASE_URL=/download
 ENV QUERY_DOWNLOAD_DIR=/data/download
 ENV QUERY_UPLOAD_DIR=/data/upload
-ENV ARCHIVE_BASE_PATH=/data/files
+ENV ARCHIVE_BASE_PATH=/data/download
 ENV ARCHIVE_DOWNLOAD_DIR=/data/download
 
 COPY --chmod=0755 ./entrypoint.sh /entrypoint.sh
