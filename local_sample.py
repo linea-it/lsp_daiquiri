@@ -50,19 +50,6 @@ SITE_CREATED = "2023-04-19"
 # Default: None
 SITE_UPDATED = "2023-04-19"
 
-
-# NÃO ALTERAR: Estas variaveis estão relacionadas a rota /protected/ no ngnix.
-# São necessárias para o funcionamento do Download.
-# https://django-sendfile2.readthedocs.io/en/latest/backends.html#nginx-backend
-SENDFILE_BACKEND = "django_sendfile.backends.nginx"
-SENDFILE_ROOT = "/data/download/protected"
-SENDFILE_URL = "/protected"
-
-# NÃO ALTERAR: Esta variavel estão relacionada a rota /daiquiri_static/ no ngnix e no uWSGI.
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_URL = "/daiquiri_static/"
-
 QUERY_DROPDOWNS = [
     {
         "key": "simbad",
@@ -96,34 +83,6 @@ QUERY_DROPDOWNS = [
     },
 ]
 
-
-QUERY_QUEUES = [
-    {
-        "key": "default",
-        "label": "30 Seconds",
-        "timeout": 30,
-        "priority": 1,
-        "access_level": "PUBLIC",
-        "groups": [],
-    },
-    {
-        "key": "five_minutes",
-        "label": "5 Minutes",
-        "timeout": 300,
-        "priority": 2,
-        "access_level": "PUBLIC",
-        "groups": [],
-    },
-    {
-        "key": "fifteen_minutes",
-        "label": "15 Minutes",
-        "timeout": 900,
-        "priority": 3,
-        "access_level": "PUBLIC",
-        "groups": [],
-    },
-]
-
 QUERY_LANGUAGES = [
     {
         "key": "adql",
@@ -146,3 +105,90 @@ QUERY_LANGUAGES = [
 # The permissions on schemas and tables need to be configured using the metadata interface.
 # Default: False
 QUERY_ANONYMOUS = True
+
+# daiquiri.query.settings
+# Sets the timeout for syncronous (TAP) queries in seconds.
+# Default: 'daiquiri_user_'
+QUERY_USER_SCHEMA_PREFIX = 'mydb_'
+
+# daiquiri.query.settings
+# Sets the maximum quota for tables in a user’s personal schema. 
+# The quota need to be set for the anonymous user as well as regular loggen in users (user). 
+# Additionally, users or groups can be asigned individual quotas, e.g.:
+QUERY_QUOTA = {
+    'anonymous': '100Mb',
+    'user': '10000Mb',
+    'users': {
+        'admin': '1000Gb'
+    },
+    'groups': {
+        'collab': '100Gb'
+    }
+}
+
+# daiquiri.query.settings
+# Sets the timeout for syncronous (TAP) queries in seconds.
+# Default: 5
+QUERY_SYNC_TIMEOUT = 120
+
+# daiquiri.query.settings
+# Set the different queue, which can be selected by the users. 
+# Each queue is represented by a dictionary where:
+QUERY_QUEUES = [
+    {
+        "key": "default",
+        "label": "30 Seconds",
+        "timeout": 30,
+        "concurency": 1,
+        "priority": 1,
+        "access_level": "PUBLIC",
+        "groups": [],
+    },
+    {
+        "key": "five_minutes",
+        "label": "5 Minutes",
+        "timeout": 300,
+        "priority": 2,
+        "concurency": 5,
+        "access_level": "PUBLIC",
+        "groups": [],
+    },
+    {
+        "key": "fifteen_minutes",
+        "label": "15 Minutes",
+        "timeout": 900,
+        "concurency": 5,
+        "priority": 3,
+        "access_level": "PUBLIC",
+        "groups": [],
+    },
+]
+
+# STATS_RESOURCE_TYPES = [
+#     {
+#         'key': 'ARCHIVE_DOWNLOAD',
+#         'label': 'Archive downloads'
+#     },
+#     {
+#         'key': 'CONESEARCH',
+#         'label': 'Performed cone searches'
+#     },
+#     {
+#         'key': 'CUTOUT',
+#         'label': 'Performed cutouts'
+#     },
+#     {
+#         'key': 'FILE',
+#         'label': 'File downloads'
+#     },
+#     {
+#         'key': 'QUERY',
+#         'label': 'Queries'
+#     }
+# ]
+
+# Setado no .env
+# QUERY_DEFAULT_DOWNLOAD_FORMAT
+# QUERY_UPLOAD
+# QUERY_UPLOAD_LIMIT
+

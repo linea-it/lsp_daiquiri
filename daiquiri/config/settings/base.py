@@ -40,3 +40,22 @@ INSTALLED_APPS = (
 )
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+# NÃO ALTERAR: Estas variaveis estão relacionadas a rota /protected/ no ngnix.
+# São necessárias para o funcionamento do Download.
+# https://django-sendfile2.readthedocs.io/en/latest/backends.html#nginx-backend
+SENDFILE_BACKEND = 'django_sendfile.backends.nginx'
+SENDFILE_ROOT = '/data/download/'
+SENDFILE_URL = '/download'
+
+# NÃO ALTERAR: Esta variavel estão relacionada a rota /daiquiri_static/ no ngnix e no uWSGI.
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_URL = "/daiquiri_static/"
+
+# Diretorio onde ficam os arquivos de PID do celery
+# Não alterar este path por que ele está sendo utilizado no script start.sh
+CELERY_PIDFILE_PATH = '/tmp'
+
+
+SERVE_DOWNLOAD_DIR = '/data/download'
