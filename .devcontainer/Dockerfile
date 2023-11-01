@@ -24,6 +24,12 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     ldap-utils \
     git
 
+# Install python Development packages
+COPY ./requirements-dev.txt /tmp/pip-tmp/
+RUN pip install --upgrade pip setuptools wheel  && \
+    pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements-dev.txt \
+    && rm -rf /tmp/pip-tmp
+
 # Install python packages
 COPY ./requirements.txt /tmp/pip-tmp/
 RUN pip install --upgrade pip setuptools wheel  && \

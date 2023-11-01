@@ -5,56 +5,23 @@
 
 {% block page %}
 <div class="home">
-    <h1>Daiquiri</h1>
+    <h1>Lorem ipsum</h1>
 
-    <h2>A framework for the publication of scientific databases</h2>
+    <h2>dolor sit amet</h2>
 
     <div class="row">
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <img style="margin-top: 5px;" src="{% static 'core/img/daiquiri.jpg' %}" />
-        </div>
+        </div> -->
 
         <div class="col-md-8"><a href=""></a>
+            <p>{{ settings.AUTH_SHIB_ENABLED }}</p>
             <p>
-                Today, the publication of research data plays an important role in astronomy
-                and astrophysics. On the one hand, dedicated programs, such as surveys like
-                <a href="http://www.sdss.org/">SDSS</a> and
-                <a href="http://www.rave-survey.aip.de/rave/">RAVE</a>,
-                data intensive instruments like <a href="http://www.lofar.org/">LOFAR</a>,
-                or massive simulations
-                like <a href="http://www.mpa-garching.mpg.de/millennium/">Millennium</a> and
-                <a href="http://cas.sdss-mirror.de/dr7/en/">MultiDark</a>
-                are initially planned to release their data
-                for the community. On the other hand, for more traditionally oriented research
-                projects data publication becomes a key requirement demanded by the funding
-                agencies.
-            </p>
-            <p>
-                The common approach is to publish this data via dedicated web sites. This
-                includes rather simple HTML forms as well as complex query systems such as
-                <a href="http://casjobs.sdss.org/CasJobs/">SDSS-CAS</a> or the
-                <a href="http://www.rave-survey.aip.de/rave/pages/database/">RAVE database query interface</a>.
-                Most of these web sites are
-                tailor made for the particular case and are therefore not easily transferrable
-                to future projects.
-            </p>
-            <p>
-                At AIP, we gained experience with both the maintenance and the
-                development of such applications. The
-                <a href="http://www.rave-survey.aip.de/rave/pages/database/">RAVE</a>
-                and <a href="http://www.multidark.org/MultiDark/">MultiDark</a>
-                databases, the <a href="http://cas.sdss-mirror.de/dr7/en/">German SDSS mirror</a>,
-                and several smaller web sites are written or at least maintained by us. It became, however,
-                apparent that already the current plethora of applications constitutes a major challenge
-                for maintenance expenses and scalability.
-            </p>
-            <p>
-                In order to address these issues, we are developing a new web framework, which
-                is particularly designed to allow for different highly customizable web applications
-                based on a common easily maintainable code base. It is called <b>Daiquiri</b>. As a service
-                to the community the software is open source. Download <a href="https://github.com/aipescience/django-daiquiri">
-                Daiquiri</a> and this <a href="https://github.com/aipescience/django-daiquiri-app">Daiquiri application</a>
-                as a template / starting point.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis molestie felis vel tempus iaculis. Aenean congue auctor nulla, nec ultrices elit congue in. Fusce id auctor velit, sit amet accumsan risus. Vestibulum fringilla, metus id maximus molestie, eros enim tempus dolor, in feugiat odio mi eu libero. Fusce eu metus auctor, luctus nisl et, blandit odio. Aenean libero justo, ullamcorper sit amet velit ac, convallis lacinia elit. Curabitur vel justo eu massa mollis varius. Aliquam quis luctus nisi, id blandit ligula. Nunc maximus ultricies nisl, vel imperdiet nulla congue eu. Sed purus libero, blandit vel turpis eleifend, facilisis rhoncus magna. Donec tellus nunc, laoreet id metus vitae, blandit aliquet mauris. Quisque ligula elit, sagittis sed metus sit amet, porta tempus urna. Pellentesque fringilla mi tincidunt eros malesuada, sed eleifend leo tempus. Aenean vitae auctor magna, vitae suscipit augue. Duis tempus, ex in accumsan ullamcorper, erat sem viverra erat, vitae lacinia tortor ex eget eros. Sed ultrices odio vitae ipsum sollicitudin posuere.
+
+Fusce vel fermentum nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis posuere vitae ex id tempor. Nunc et erat ut dolor aliquam feugiat a non turpis. Nunc tincidunt lacinia aliquet. Suspendisse nulla nulla, tincidunt blandit laoreet eget, convallis ut mauris. Aenean blandit ultricies odio, eu consequat risus tincidunt at. Maecenas dignissim lorem ac semper rhoncus. Sed interdum lorem ac ante rutrum, a sagittis tortor facilisis. Pellentesque dictum eros et auctor volutpat.
+
+Proin rhoncus malesuada urna sit amet blandit. Praesent tristique lectus eleifend dapibus dictum. Pellentesque viverra, mauris et ultricies hendrerit, magna lacus tempus ex, sed bibendum massa enim quis magna. Pellentesque imperdiet eros a nibh porta pharetra. Vestibulum eleifend magna justo, eget luctus metus rhoncus nec. Proin porta ut felis eget blandit. Donec bibendum nisi eu iaculis hendrerit. Suspendisse eu mauris quis metus posuere feugiat. Pellentesque sem massa, eleifend vitae tristique eu, mollis ut erat.
             </p>
         </div>
         <div class="col-md-12">
@@ -75,7 +42,7 @@
 
 {% block sidebar %}
 
-{% if not user.is_authenticated %}
+{% if not user.is_authenticated and not settings.AUTH_SHIB_ENABLED %}
 <div class="home">
     <h2>Login</h2>
 

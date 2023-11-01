@@ -12,10 +12,10 @@
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/devcontainers-contrib/features/black:2": {},
-		"ghcr.io/devcontainers-contrib/features/flake8:2": {},
-		"ghcr.io/devcontainers-contrib/features/isort:2": {},
-		"ghcr.io/devcontainers-contrib/features/mkdocs:2": {},
+		// "ghcr.io/devcontainers-contrib/features/black:2": {},
+		// "ghcr.io/devcontainers-contrib/features/flake8:2": {},
+		// "ghcr.io/devcontainers-contrib/features/isort:2": {},
+		// "ghcr.io/devcontainers-contrib/features/mkdocs:2": {},
 		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
 		"ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {},
 		"ghcr.io/dhoeric/features/act:1": {},
@@ -33,7 +33,20 @@
 		"vscode": {
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "zsh"
-			}
+			},
+			"extensions": [
+					"ms-python.python",
+					"alefragnani.Bookmarks",
+					"mikestead.dotenv",
+					"RandomFractalsInc.vscode-data-preview",
+					"eamodio.gitlens",
+					"oderwat.indent-rainbow",
+					"DavidAnson.vscode-markdownlint",
+					"mervin.markdown-formatter",
+					"ms-python.isort",
+					"ms-python.black-formatter",
+					"njpwerner.autodocstring"
+			]
 		}
 	}
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.

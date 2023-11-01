@@ -22,8 +22,8 @@ services:
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
-      - ./data/log:/var/log/daiquiri      
-      - ./data/log:/var/log/celery      
+      - ./data/log:/data/log/     
+      - ./data/log/celery:/var/log/celery      
     command: /start.sh
     depends_on:
       - database
@@ -72,7 +72,7 @@ services:
       # Diretório onde o backend manipula arquivos, e que deve ficar acessivel ao servidor web.
       - ./data/download:/data/download
       # Diretório de logs do servidor web. 
-      - ./log:/var/log/nginx
+      - ./data/log/nginx:/var/log/nginx
     depends_on:
       - daiquiri
 volumes:

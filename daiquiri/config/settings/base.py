@@ -1,6 +1,15 @@
 import os
 
-from . import ADDITIONAL_APPS, BASE_DIR, DJANGO_APPS
+# import daiquiri.core.env as env
+from . import (
+    ADDITIONAL_APPS,
+    DJANGO_APPS,
+    MIDDLEWARE,
+    BASE_URL,
+    SETTINGS_EXPORT,
+    LOGIN_URL,
+    LOGOUT_URL,
+)
 
 SITE_IDENTIFIER = "example.com"
 SITE_TITLE = "example.com"
@@ -16,6 +25,8 @@ SITE_CONTACT = {
 SITE_PUBLISHER = "At vero eos et accusam"
 SITE_CREATED = "2019-01-01"
 SITE_UPDATED = "2019-04-01"
+
+LINEA_APPS = ["shibboleth"]
 
 INSTALLED_APPS = (
     DJANGO_APPS
@@ -37,6 +48,7 @@ INSTALLED_APPS = (
         "daiquiri.uws",
     ]
     + ADDITIONAL_APPS
+    + LINEA_APPS
 )
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
@@ -44,9 +56,9 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 # NÃO ALTERAR: Estas variaveis estão relacionadas a rota /protected/ no ngnix.
 # São necessárias para o funcionamento do Download.
 # https://django-sendfile2.readthedocs.io/en/latest/backends.html#nginx-backend
-SENDFILE_BACKEND = 'django_sendfile.backends.nginx'
-SENDFILE_ROOT = '/data/download/'
-SENDFILE_URL = '/download'
+SENDFILE_BACKEND = "django_sendfile.backends.nginx"
+SENDFILE_ROOT = "/data/download/"
+SENDFILE_URL = "/download"
 
 # NÃO ALTERAR: Esta variavel estão relacionada a rota /daiquiri_static/ no ngnix e no uWSGI.
 # Static files (CSS, JavaScript, Images)
@@ -55,7 +67,45 @@ STATIC_URL = "/daiquiri_static/"
 
 # Diretorio onde ficam os arquivos de PID do celery
 # Não alterar este path por que ele está sendo utilizado no script start.sh
-CELERY_PIDFILE_PATH = '/tmp'
+CELERY_PIDFILE_PATH = "/tmp"
 
 
-SERVE_DOWNLOAD_DIR = '/data/download'
+SERVE_DOWNLOAD_DIR = "/data/download"
+
+# -----------------------------------------------
+# LInea Specific
+# -----------------------------------------------
+
+# Em desenvolvimento não é possivel acessar o Shibboleth
+# Desenvolvedores devem usar a auth nativa do Django.
+LINEA_LOGIN_URL = LOGIN_URL
+LINEA_LOGOUT_URL = LOGOUT_URL
+
+# Shibboleth Authentication
+# AUTH_SHIB_ENABLED = env.get_bool('AUTH_SHIB_ENABLED', False)
+AUTH_SHIB_ENABLED = True
+if AUTH_SHIB_ENABLED:
+    SHIB_LOGIN_GOOGLE_URL = "todo_url_login_google"
+    LINEA_LOGIN_URL = BASE_URL + "todo_shibboleth_url"
+    LINEA_LOGOUT_URL = BASE_URL + "todo_logout_url"
+
+    # Including Shibboleth Middleware
+    MIDDLEWARE.append(
+        "linea.shibboleth.ShibbolethMiddleware",
+    )
+
+#     # https://github.com/Brown-University-Library/django-shibboleth-remoteuser
+#     SHIBBOLETH_ATTRIBUTE_MAP = {
+#         "eppn": (True, "username"),
+#         "cn": (True, "first_name"),
+#         "sn": (True, "last_name"),
+#         "mail": (True, "email"),
+#     }
+
+
+# Including Shibboleth authentication:
+# AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
+
+#     SHIB_LOGIN_GOOGLE_URL = None
+
+SETTINGS_EXPORT += ["LINEA_LOGIN_URL", "LINEA_LOGOUT_URL", "AUTH_SHIB_ENABLED"]
