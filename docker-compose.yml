@@ -22,7 +22,7 @@ services:
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
-      - ./data/log:/data/log/     
+      - ./data/log:/var/log/daiquiri     
       - ./data/log/celery:/var/log/celery      
     command: /start.sh
     depends_on:

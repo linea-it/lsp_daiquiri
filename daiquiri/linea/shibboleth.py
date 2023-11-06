@@ -4,10 +4,7 @@ from django.contrib.auth.models import Group
 
 from shibboleth.middleware import ShibbolethRemoteUserMiddleware
 
-print("Importou o shibboleth")
-log = logging.getLogger("shibboleth")
-log.info("Teste log Shibboleth")
-
+from django.conf import settings
 
 class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
     def make_profile(self, user, shib_meta):
@@ -17,12 +14,13 @@ class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
         from the Shib provided attributes.  By default it does nothing.
         """
         log = logging.getLogger("shibboleth")
-        # log.debug("Shib Meta:")
-        # log.debug(shib_meta)
+        log.debug(settings.MIDDLEWARE)
+        log.debug(settings.AUTHENTICATION_BACKENDS)
+        log.debug(settings.SHIBBOLETH_ATTRIBUTE_MAP)
 
-        # log.debug("User:")
-        # log.debug(user)
-
+        log.info("Shibboleth::make_profile()")
+        log.debug(f"Shib Meta: {shib_meta}")
+        log.debug(f"User: {user}")
         # Guardar o email do usuario
         user.email = shib_meta["email"]
         # log.info("Updated user email")

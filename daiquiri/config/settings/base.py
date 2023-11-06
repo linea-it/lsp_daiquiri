@@ -1,6 +1,6 @@
 import os
 
-# import daiquiri.core.env as env
+import daiquiri.core.env as env
 from . import (
     ADDITIONAL_APPS,
     DJANGO_APPS,
@@ -9,6 +9,7 @@ from . import (
     SETTINGS_EXPORT,
     LOGIN_URL,
     LOGOUT_URL,
+    AUTHENTICATION_BACKENDS
 )
 
 SITE_IDENTIFIER = "example.com"
@@ -82,30 +83,32 @@ LINEA_LOGIN_URL = LOGIN_URL
 LINEA_LOGOUT_URL = LOGOUT_URL
 
 # Shibboleth Authentication
-# AUTH_SHIB_ENABLED = env.get_bool('AUTH_SHIB_ENABLED', False)
-AUTH_SHIB_ENABLED = True
+AUTH_SHIB_ENABLED = env.get_bool('AUTH_SHIB_ENABLED', False)
+# AUTH_SHIB_ENABLED = True
 if AUTH_SHIB_ENABLED:
-    SHIB_LOGIN_GOOGLE_URL = "todo_url_login_google"
-    LINEA_LOGIN_URL = BASE_URL + "todo_shibboleth_url"
-    LINEA_LOGOUT_URL = BASE_URL + "todo_logout_url"
+    LINEA_LOGIN_URL = 'https://scienceserver-dev.linea.org.br/Shibboleth.sso/Login?target=https://scienceserver-dev.linea.org.br/daiquiri/shib?next=/daiquiri/query&entityID=https://satosa.linea.org.br/linea_saml/proxy'
+    LINEA_LOGOUT_URL = LOGOUT_URL
+    SHIB_LOGIN_GOOGLE_URL = 'https://scienceserver-dev.linea.org.br/Shibboleth.sso/Login?target=https://scienceserver-dev.linea.org.br/daiquiri/shib?next=/daiquiri/query&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29t'
 
     # Including Shibboleth Middleware
     MIDDLEWARE.append(
         "linea.shibboleth.ShibbolethMiddleware",
     )
 
-#     # https://github.com/Brown-University-Library/django-shibboleth-remoteuser
-#     SHIBBOLETH_ATTRIBUTE_MAP = {
-#         "eppn": (True, "username"),
-#         "cn": (True, "first_name"),
-#         "sn": (True, "last_name"),
-#         "mail": (True, "email"),
-#     }
+    # Including Shibboleth authentication:
+    AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
+
+    # https://github.com/Brown-University-Library/django-shibboleth-remoteuser
+    SHIBBOLETH_ATTRIBUTE_MAP = {
+        "eppn": (True, "username"),
+        "cn": (True, "first_name"),
+        "sn": (True, "last_name"),
+        "mail": (True, "email"),
+    }
 
 
-# Including Shibboleth authentication:
-# AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
 
-#     SHIB_LOGIN_GOOGLE_URL = None
+
+
 
 SETTINGS_EXPORT += ["LINEA_LOGIN_URL", "LINEA_LOGOUT_URL", "AUTH_SHIB_ENABLED"]
