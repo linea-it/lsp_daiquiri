@@ -31,6 +31,9 @@ RUN pip install --upgrade pip setuptools wheel  && \
 
 ENV PATH="/home/daiquiri/.local/bin:$PATH"
 
+# FIX: django-shibboleth-remoteuser Incompativel com Vesão 4.x do Django.
+COPY ./shibboleth/urls.py /usr/local/lib/python3.9/site-packages/shibboleth/urls.py
+
 # Create the non-root user up front
 ARG USERNAME=daiquiri
 ARG USER_UID=1000
@@ -43,6 +46,7 @@ RUN groupadd --gid ${USER_GID} $USERNAME \
     && chown -R ${USER_UID}:${USER_GID} /data \
     && chown -R ${USER_UID}:${USER_GID} /celery \
     && chown -R ${USER_UID}:${USER_GID} /var/run/celery 
+
 
 # Copy app files into container
 WORKDIR /app

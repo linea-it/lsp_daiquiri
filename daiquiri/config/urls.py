@@ -5,12 +5,9 @@ from django.views.generic import TemplateView
 from daiquiri.core.views import home
 # from django.conf import settings
 
-
 urlpatterns = [
     path('daiquiri/', home, name='home'),
-
     path('daiquiri/accounts/', include('daiquiri.auth.urls_accounts')),
-
     path('daiquiri/auth/', include('daiquiri.auth.urls_auth', namespace='auth')),
     path('daiquiri/conesearch/', include('daiquiri.conesearch.urls', namespace='conesearch')),
     path('daiquiri/contact/', include('daiquiri.contact.urls', namespace='contact')),
@@ -29,7 +26,11 @@ urlpatterns = [
     path('daiquiri/layout/', TemplateView.as_view(template_name='wordpress/layout.html'), name='layout'),
 
     path('daiquiri/admin/', admin.site.urls),
+
+    # Auth Shibboleth
+    path('daiquiri/shib/', include("shibboleth.urls", namespace="shibboleth")),
 ]
+
 # # Add 'prefix' to all urlpatterns
 # if settings.BASE_URL != '/':
 #     urlpatterns = [path(f'{settings.BASE_URL}', include(urlpatterns))]

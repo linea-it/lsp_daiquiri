@@ -28,3 +28,8 @@ try:
     from .local import *
 except ImportError:
     pass
+
+try:
+    from .logging import *
+except ImportError:
+    pass
