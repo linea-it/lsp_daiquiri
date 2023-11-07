@@ -79,6 +79,7 @@ SERVE_DOWNLOAD_DIR = "/data/download"
 
 # Em desenvolvimento não é possivel acessar o Shibboleth
 # Desenvolvedores devem usar a auth nativa do Django.
+# Essas variaveis são usadas nos templates para criar os links de login.
 LINEA_LOGIN_URL = LOGIN_URL
 LINEA_LOGOUT_URL = LOGOUT_URL
 
@@ -86,9 +87,16 @@ LINEA_LOGOUT_URL = LOGOUT_URL
 AUTH_SHIB_ENABLED = env.get_bool('AUTH_SHIB_ENABLED', False)
 # AUTH_SHIB_ENABLED = True
 if AUTH_SHIB_ENABLED:
-    LINEA_LOGIN_URL = 'https://scienceserver-dev.linea.org.br/Shibboleth.sso/Login?target=https://scienceserver-dev.linea.org.br/daiquiri/shib?next=/daiquiri/query&entityID=https://satosa.linea.org.br/linea_saml/proxy'
+    LINEA_LOGIN_URL = env.get_url('LINEA_LOGIN_URL')
+    SHIB_LOGIN_GOOGLE_URL = env.get_url('SHIB_LOGIN_GOOGLE_URL')
+    # TODO: Não sei se logout tem uma url diferente. temporariamente recebe o valor que já tinha.
     LINEA_LOGOUT_URL = LOGOUT_URL
-    SHIB_LOGIN_GOOGLE_URL = 'https://scienceserver-dev.linea.org.br/Shibboleth.sso/Login?target=https://scienceserver-dev.linea.org.br/daiquiri/shib?next=/daiquiri/query&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29t'
+
+    # Essas variaveis são usadas internamente no django no fluxo de autenticação.
+    LOGIN_URL = LINEA_LOGIN_URL
+    LOGOUT_URL = LINEA_LOGOUT_URL
+    
+
 
     # Including Shibboleth Middleware
     MIDDLEWARE.append(
@@ -105,10 +113,5 @@ if AUTH_SHIB_ENABLED:
         "sn": (True, "last_name"),
         "mail": (True, "email"),
     }
-
-
-
-
-
 
 SETTINGS_EXPORT += ["LINEA_LOGIN_URL", "LINEA_LOGOUT_URL", "AUTH_SHIB_ENABLED"]
