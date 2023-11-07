@@ -6,29 +6,29 @@ from daiquiri.core.views import home
 # from django.conf import settings
 
 urlpatterns = [
-    path('daiquiri/', home, name='home'),
-    path('daiquiri/accounts/', include('daiquiri.auth.urls_accounts')),
-    path('daiquiri/auth/', include('daiquiri.auth.urls_auth', namespace='auth')),
-    path('daiquiri/conesearch/', include('daiquiri.conesearch.urls', namespace='conesearch')),
-    path('daiquiri/contact/', include('daiquiri.contact.urls', namespace='contact')),
-    path('daiquiri/datalink/', include('daiquiri.datalink.urls', namespace='datalink')),
-    path('daiquiri/files/', include('daiquiri.files.urls', namespace='files')),
-    path('daiquiri/metadata/', include('daiquiri.metadata.urls', namespace='metadata')),
-    path('daiquiri/oai/', include('daiquiri.oai.urls', namespace='oai')),
-    path('daiquiri/registry/', include('daiquiri.registry.urls', namespace='registry')),
-    path('daiquiri/serve/', include('daiquiri.serve.urls', namespace='serve')),
-    path('daiquiri/stats/', include('daiquiri.stats.urls', namespace='stats')),
-    path('daiquiri/query/', include('daiquiri.query.urls', namespace='query')),
-    path('daiquiri/tap/', include('daiquiri.tap.urls', namespace='tap')),
-    path('daiquiri/uws/', include('daiquiri.uws.urls', namespace='uws')),
+    path('', home, name='home'),
+    path('accounts/', include('daiquiri.auth.urls_accounts')),
+    path('auth/', include('daiquiri.auth.urls_auth', namespace='auth')),
+    path('conesearch/', include('daiquiri.conesearch.urls', namespace='conesearch')),
+    path('contact/', include('daiquiri.contact.urls', namespace='contact')),
+    path('datalink/', include('daiquiri.datalink.urls', namespace='datalink')),
+    path('files/', include('daiquiri.files.urls', namespace='files')),
+    path('metadata/', include('daiquiri.metadata.urls', namespace='metadata')),
+    path('oai/', include('daiquiri.oai.urls', namespace='oai')),
+    path('registry/', include('daiquiri.registry.urls', namespace='registry')),
+    path('serve/', include('daiquiri.serve.urls', namespace='serve')),
+    path('stats/', include('daiquiri.stats.urls', namespace='stats')),
+    path('query/', include('daiquiri.query.urls', namespace='query')),
+    path('tap/', include('daiquiri.tap.urls', namespace='tap')),
+    path('uws/', include('daiquiri.uws.urls', namespace='uws')),
 
-    path('daiquiri/robots.txt', TemplateView.as_view(template_name='site/robots.txt', content_type='text/plain'), name='robots'),
-    path('daiquiri/layout/', TemplateView.as_view(template_name='wordpress/layout.html'), name='layout'),
+    path('robots.txt', TemplateView.as_view(template_name='site/robots.txt', content_type='text/plain'), name='robots'),
+    path('layout/', TemplateView.as_view(template_name='wordpress/layout.html'), name='layout'),
 
-    path('daiquiri/admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
 
     # Auth Shibboleth
-    path('daiquiri/shib/', include("shibboleth.urls", namespace="shibboleth")),
+    path('shib/', include("shibboleth.urls", namespace="shibboleth")),
 ]
 
 # # Add 'prefix' to all urlpatterns

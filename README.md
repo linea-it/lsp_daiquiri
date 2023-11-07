@@ -5,8 +5,8 @@ Instalation: <https://django-daiquiri.github.io/docs/installation/>
 
 Autenticação com CILogon:
 
-- <https://django-allauth.readthedocs.io/en/latest/providers.html>
-- <https://www.cilogon.org/oidc>
+* <https://django-allauth.readthedocs.io/en/latest/providers.html>
+* <https://www.cilogon.org/oidc>
 
 Como escrever querys com ADQL <https://www.cosmos.esa.int/web/gaia-users/archive/writing-queries>
 
@@ -18,8 +18,8 @@ The PHP version of Daiquiri can be found [here](https://github.com/aipescience/d
 
 Sobre Cone Search ADQL Postgresql
 
-- <https://gaia.aip.de/cms/services/adql-postgresql/>
-- <https://gaia.aip.de/cms/services/cone-search/>
+* <https://gaia.aip.de/cms/services/adql-postgresql/>
+* <https://gaia.aip.de/cms/services/cone-search/>
 
 Copy Enviroment file and config
 
@@ -106,6 +106,14 @@ Load Query Sample Data
 
 ```bash
 docker-compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
+```
+
+Build Manual da Imagem docker
+
+```bash
+docker build -t linea/lsp_daiquiri:$(git describe --always) .
+
+docker push linea/lsp_daiquiri:5635e8c
 ```
 
 # TODO: Bug no daiquiri framework quando o tablename tem espaço
