@@ -79,7 +79,7 @@
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        {{ user.profile.full_name }}<span class="caret"></span>
+                        {{ user.first_name }}<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- <li>
@@ -108,7 +108,9 @@
 
                 <li>
                     <!-- <a href="{% url 'account_login' %}">{% trans 'Login' %}</a> -->
-                    <a href="{{ settings.LINEA_LOGIN_URL }}">{% trans 'Login' %}</a>
+                    <!-- <a href="{{ settings.LINEA_LOGIN_URL|slice:':-1' }}">{% trans 'Login' %}</a> -->
+                    <a href="https://userquery-dev.linea.org.br/Shibboleth.sso/Login?target=https://userquery-dev.linea.org.br/shib/?next=/query/&entityID=https://satosa.linea.org.br/linea_saml/proxy">{% trans 'Login' %}</a>
+                    
                 </li>
 
                 {% endif %}

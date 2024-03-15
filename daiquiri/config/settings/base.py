@@ -93,8 +93,8 @@ if AUTH_SHIB_ENABLED:
     LINEA_LOGOUT_URL = LOGOUT_URL
 
     # Essas variaveis são usadas internamente no django no fluxo de autenticação.
-    LOGIN_URL = LINEA_LOGIN_URL
-    LOGOUT_URL = LINEA_LOGOUT_URL
+    LOGIN_URL = LINEA_LOGIN_URL.strip('/')
+    LOGOUT_URL = LINEA_LOGOUT_URL.strip('/')
     
 
 
@@ -111,7 +111,7 @@ if AUTH_SHIB_ENABLED:
         "eppn": (True, "username"),
         "cn": (True, "first_name"),
         "sn": (True, "last_name"),
-        "mail": (True, "email"),
+        # "mail": (True, "email"),
     }
 
 SETTINGS_EXPORT += ["LINEA_LOGIN_URL", "LINEA_LOGOUT_URL", "AUTH_SHIB_ENABLED"]
