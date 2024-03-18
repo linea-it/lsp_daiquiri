@@ -43,9 +43,9 @@ COPY ./shibboleth/urls.py /usr/local/lib/python3.9/site-packages/shibboleth/urls
 # Create the non-root user up front
 RUN groupadd --gid ${USER_GID} $USERNAME \
     && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
-    && mkdir -p /app /data /celery /var/run/celery /var/log/daiquiri/\
-    && chown -R ${USER_UID}:${USER_GID} /app /data /celery /var/run/celery /var/log/daiquiri/ \
-    && chmod -R g+w /app /data /celery /var/run/celery /var/log/daiquiri/
+    && mkdir -p /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces \
+    && chown -R ${USER_UID}:${USER_GID} /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces \
+    && chmod -R g+w /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces
 
 # Copy app files into container
 WORKDIR /app

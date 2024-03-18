@@ -8,23 +8,24 @@ services:
 
     volumes:
       - ..:/workspaces:cached
+      - ./daiquiri:/app
       - ./local.py:/app/config/settings/local.py:ro
       - ./fixtures:/app/fixtures
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
       - ./data/log:/var/log/daiquiri     
-      - ./data/log/celery:/var/log/celery
+      - ./data/log:/var/log/celery        
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
-    environment:
-      LOG_DIR: /data/log/
-      FILES_BASE_PATH: /data/files
-      QUERY_DOWNLOAD_DIR: /data/download
-      QUERY_UPLOAD_DIR: /data/upload
-      ARCHIVE_BASE_PATH: /data/files
-      ARCHIVE_DOWNLOAD_DIR: /data/download      
+    # environment:
+    #   LOG_DIR: /data/log/
+    #   FILES_BASE_PATH: /data/files
+    #   QUERY_DOWNLOAD_DIR: /data/download
+    #   QUERY_UPLOAD_DIR: /data/upload
+    #   ARCHIVE_BASE_PATH: /data/files
+    #   ARCHIVE_DOWNLOAD_DIR: /data/download      
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
     env_file:
