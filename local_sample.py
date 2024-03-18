@@ -116,7 +116,7 @@ QUERY_USER_SCHEMA_PREFIX = 'mydb_'
 # The quota need to be set for the anonymous user as well as regular loggen in users (user). 
 # Additionally, users or groups can be asigned individual quotas, e.g.:
 QUERY_QUOTA = {
-    'anonymous': '100Mb',
+    'anonymous': '1Gb',
     'user': '10000Mb',
     'users': {
         'admin': '1000Gb'
