@@ -2,9 +2,9 @@ version: '3.9'
 
 services:
   daiquiri: &daiquiri
-    build:
+    build: 
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./compose/local/daiquiri/Dockerfile
     # user: "1000:1000"
     env_file:
       - .env

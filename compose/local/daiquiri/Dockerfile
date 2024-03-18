@@ -1,5 +1,10 @@
 FROM python:3.9-slim-bullseye as builder
 
+ARG BUILD_ENVIRONMENT=local
+ARG USERNAME=daiquiri
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
 # If this is set to a non-empty string, Python won’t try
 # to write .pyc files on the import of source modules
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -24,9 +29,10 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     git
 
 # Install python packages
-COPY ./requirements.txt /tmp/pip-tmp/
+# Create Python Dependency and Sub-Dependency.
+COPY ./requirements /tmp/pip-tmp/
 RUN pip install --upgrade pip setuptools wheel  && \
-    pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
+    pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/${BUILD_ENVIRONMENT}.txt \
     && rm -rf /tmp/pip-tmp
 
 ENV PATH="/home/daiquiri/.local/bin:$PATH"
@@ -35,10 +41,6 @@ ENV PATH="/home/daiquiri/.local/bin:$PATH"
 COPY ./shibboleth/urls.py /usr/local/lib/python3.9/site-packages/shibboleth/urls.py
 
 # Create the non-root user up front
-ARG USERNAME=daiquiri
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
 RUN groupadd --gid ${USER_GID} $USERNAME \
     && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
     && mkdir -p /app /data /celery /var/run/celery /var/log/daiquiri/\
@@ -59,8 +61,8 @@ ENV QUERY_UPLOAD_DIR=/data/upload
 ENV ARCHIVE_BASE_PATH=/data/download
 ENV ARCHIVE_DOWNLOAD_DIR=/data/download
 
-COPY --chmod=0755 ./entrypoint.sh /entrypoint.sh
-COPY --chmod=0755 ./start.sh /start.sh
+COPY --chmod=0755 ./compose/local/daiquiri/entrypoint.sh /entrypoint.sh
+COPY --chmod=0755 ./compose/local/daiquiri/start.sh /start.sh
 
 USER $USERNAME
 
