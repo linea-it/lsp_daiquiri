@@ -23,14 +23,17 @@ services:
       - rabbit
 
   database:
+    build: 
+      context: .
+      dockerfile: ./compose/local/postgres/Dockerfile
     # image: postgres:latest
-    image: postgres:13.9-alpine
+    # image: postgres:13.9-alpine
     #restart: always
     # restart: unless-stopped
     volumes:
-      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
-      - postgres-data:/var/lib/postgresql/data
+      - ./compose/local/postgres/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
       - ./database_sample:/data
+      - postgres-data:/var/lib/postgresql/data
     env_file:
       - .env
     ports:
