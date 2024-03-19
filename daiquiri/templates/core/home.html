@@ -15,7 +15,6 @@
         </div> -->
 
         <div class="col-md-8"><a href=""></a>
-            <p>{{ settings.AUTH_SHIB_ENABLED }}</p>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis molestie felis vel tempus iaculis. Aenean congue auctor nulla, nec ultrices elit congue in. Fusce id auctor velit, sit amet accumsan risus. Vestibulum fringilla, metus id maximus molestie, eros enim tempus dolor, in feugiat odio mi eu libero. Fusce eu metus auctor, luctus nisl et, blandit odio. Aenean libero justo, ullamcorper sit amet velit ac, convallis lacinia elit. Curabitur vel justo eu massa mollis varius. Aliquam quis luctus nisi, id blandit ligula. Nunc maximus ultricies nisl, vel imperdiet nulla congue eu. Sed purus libero, blandit vel turpis eleifend, facilisis rhoncus magna. Donec tellus nunc, laoreet id metus vitae, blandit aliquet mauris. Quisque ligula elit, sagittis sed metus sit amet, porta tempus urna. Pellentesque fringilla mi tincidunt eros malesuada, sed eleifend leo tempus. Aenean vitae auctor magna, vitae suscipit augue. Duis tempus, ex in accumsan ullamcorper, erat sem viverra erat, vitae lacinia tortor ex eget eros. Sed ultrices odio vitae ipsum sollicitudin posuere.
 
@@ -42,7 +41,7 @@ Proin rhoncus malesuada urna sit amet blandit. Praesent tristique lectus eleifen
 
 {% block sidebar %}
 
-{% if not user.is_authenticated and not settings.AUTH_SHIB_ENABLED %}
+{% if not user.is_authenticated and settings.AUTH_SHIB_ENABLED == False %}
 <div class="home">
     <h2>Login</h2>
 

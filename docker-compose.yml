@@ -1,17 +1,11 @@
 version: '3.9'
-# Exemplo de como declarar variaveis comuns aos serviços
-# https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/
-# 
-# x-common-variables: &common-variables
-#   MYSQL_DATABASE: books
-#   MYSQL_USER: MYSQL_USER
-#   MYSQL_PASSWORD: MYSQL_PASSWORD
 
 services:
   daiquiri: &daiquiri
+    image: linea/lsp_daiquiri
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./compose/local/daiquiri/Dockerfile
     # user: "1000:1000"
     env_file:
       - .env
@@ -22,44 +16,43 @@ services:
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
-      - ./data/log:/var/log/daiquiri     
-      - ./data/log/celery:/var/log/celery      
+      - ./data/log:/var/log/daiquiri
+      - ./data/log:/var/log/celery
     command: /start.sh
     depends_on:
       - database
       - rabbit
+
+  database:
+    build:
+      context: .
+      dockerfile: ./compose/local/postgres/Dockerfile
+    # image: postgres:latest
+    # image: postgres:13.9-alpine
+    #restart: always
+    # restart: unless-stopped
+    volumes:
+      - ./compose/local/postgres/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+      - ./database_sample:/data
+      - postgres-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
+
+  # Message-Broker Software RabbitMQ
+  rabbit:
+    image: rabbitmq:3-management-alpine
+    env_file:
+      - .env
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/
 
   celery_flower: &celery_flower
     <<: *daiquiri
     command: celery -A config flower --url-prefix=flower
     depends_on:
       - daiquiri
-
-  database:
-    # image: postgres:latest
-    image: postgres:13.9-alpine
-    #restart: always
-    # restart: unless-stopped
-    volumes:
-      # - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
-      - postgres-data:/var/lib/postgresql/data
-      - ./database_sample:/data
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: postgres
-    # ports:
-    #   - 54322:5432
-
-  # Message-Broker Software RabbitMQ
-  rabbit:
-    image: rabbitmq:3-management-alpine
-    environment:
-      RABBITMQ_DEFAULT_USER: daiquiri
-      RABBITMQ_DEFAULT_PASS: adminadmin
-      RABBITMQ_DEFAULT_VHOST: daiquiri_vhost
-    volumes:
-      - rabbitmq-data:/var/lib/rabbitmq/
 
   # Servidor Web NGINX
   nginx:
@@ -76,5 +69,5 @@ services:
     depends_on:
       - daiquiri
 volumes:
-  postgres-data:      
+  postgres-data:
   rabbitmq-data:
