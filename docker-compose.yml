@@ -18,6 +18,7 @@ services:
       - ./data/upload:/data/upload
       - ./data/log:/var/log/daiquiri
       - ./data/log:/var/log/celery
+      - ..:/workspaces
     command: /start.sh
     depends_on:
       - database

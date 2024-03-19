@@ -7,11 +7,6 @@
     "init": true,
     "mounts": [
         {
-            "source": "../",
-            "target": "/workspaces",
-            "type": "bind"
-        },
-        {
             "source": "./.devcontainer/bash_history",
             "target": "/home/dev-user/.bash_history",
             "type": "bind"
@@ -41,7 +36,7 @@
     "customizations": {
         "vscode": {
             "settings": {
-                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.defaultProfile.linux": "bash",
                 "terminal.integrated.profiles.linux": {
                     "zsh": {
                         "path": "/bin/zsh"
