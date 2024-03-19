@@ -2,7 +2,8 @@ version: '3.9'
 
 services:
   daiquiri: &daiquiri
-    build: 
+    image: linea/lsp_daiquiri
+    build:
       context: .
       dockerfile: ./compose/local/daiquiri/Dockerfile
     # user: "1000:1000"
@@ -15,15 +16,15 @@ services:
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
-      - ./data/log:/var/log/daiquiri     
-      - ./data/log:/var/log/celery      
+      - ./data/log:/var/log/daiquiri
+      - ./data/log:/var/log/celery
     command: /start.sh
     depends_on:
       - database
       - rabbit
 
   database:
-    build: 
+    build:
       context: .
       dockerfile: ./compose/local/postgres/Dockerfile
     # image: postgres:latest
@@ -68,5 +69,5 @@ services:
     depends_on:
       - daiquiri
 volumes:
-  postgres-data:      
+  postgres-data:
   rabbitmq-data:
