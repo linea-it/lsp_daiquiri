@@ -32,7 +32,7 @@ services:
     #restart: always
     # restart: unless-stopped
     volumes:
-      - ./compose/local/postgres/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+      - ./compose/local/postgres/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
       - ./database_sample:/data
       - postgres-data:/var/lib/postgresql/data
     env_file:
