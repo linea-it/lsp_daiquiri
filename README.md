@@ -1,6 +1,8 @@
 Daiquiri Application (Django version)
 =====================================
 
+## Anotações
+
 Instalation: <https://django-daiquiri.github.io/docs/installation/>
 
 Autenticação com CILogon:
@@ -20,6 +22,17 @@ Sobre Cone Search ADQL Postgresql
 
 * <https://gaia.aip.de/cms/services/adql-postgresql/>
 * <https://gaia.aip.de/cms/services/cone-search/>
+
+## Development
+
+Clone Repository and create base folders.
+
+```bash
+git clone https://github.com/linea-it/lsp_daiquiri.git daiquiri \
+&& cd daiquiri \
+&& mkdir -p data data/download data/files data/upload logs \
+&& chmod -R g+w data logs
+```
 
 Copy Enviroment file and config
 

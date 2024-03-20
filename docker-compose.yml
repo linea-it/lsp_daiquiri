@@ -16,8 +16,8 @@ services:
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
-      - ./data/log:/var/log/daiquiri
-      - ./data/log:/var/log/celery
+      - ./logs:/var/log/daiquiri
+      - ./logs:/var/log/celery
       - ..:/workspaces
     command: /start.sh
     depends_on:
@@ -28,8 +28,6 @@ services:
     build:
       context: .
       dockerfile: ./compose/local/postgres/Dockerfile
-    # image: postgres:latest
-    # image: postgres:13.9-alpine
     #restart: always
     # restart: unless-stopped
     volumes:
