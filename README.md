@@ -41,7 +41,7 @@ Este projeto possui **devcontainer** configurado, mas é necessário executar a 
 >
 >- Maquina local do desenvolvedor
 >- Usuario 1000 Grupo 1000
->- Instalação feita no path: `/home/<user>/linea/tno`
+>- Instalação feita no path: `/home/<user>/linea/daiquiri`
 
 ---
 
@@ -57,6 +57,34 @@ git clone https://github.com/linea-it/lsp_daiquiri.git daiquiri \
 && cp compose/local/nginx-proxy.conf nginx-proxy.conf \
 && cp compose/local/docker-compose.yml docker-compose.yml 
 
+```
+
+### Configuração das Variaveis de ambiente
+
+Os arquivos de configuração .env e local_settings.py já estão preenchidos com valores compativeis com o ambiente local. 
+
+Mas é necessário alterar/preencher as variaveis relacionadas a segurança e acessos.
+
+```bash
+vim .env
+```
+
+No momento deste documento as variaveis a serem editadas são:
+
+- SECRET_KEY
+- POSTGRES_PASSWORD
+- RABBITMQ_DEFAULT_PASS
+
+> Para preencher a variavel de ambiente `.env/SECRET_KEY` é necessário executar um comando dentro do container daiquiri para gerar uma chave aleatória.
+
+```bash
+docker compose run -it --rm daiquiri python -c "import secrets; print(secrets.token_urlsafe())"
+```
+
+Alterar o arquivo de configuração do Django de acordo com a necessidade.
+
+```bash
+vim local_settings.py
 ```
 
 Build Docker images
@@ -75,15 +103,12 @@ Procure na saida do terminal por esta mensagem: `LOG:  database system is ready 
 Após a inicialização do banco de dados, pare o serviço com comando `CTRL+C`. 
 
 Agora inicie o serviço daiquiri.
+
 ```bash
 docker compose up daiquiri
 ```
-Espere pelas mensagens: 
-```bash
-daiquiri-1  | *** uWSGI is running in multiple interpreter mode ***
-daiquiri-1  | spawned uWSGI master process ...
-```
-Após o daiquiri ter sido iniciado corretamente, encerre o serviço com comando `CTRL+C`. 
+
+Espere pela mensagem `*** uWSGI is running in multiple interpreter mode ***` apos a mensagem, desligue o container pressionando `ctrl + c` e inicie o serviço novamente com parametro `-d`
 
 ### Start all services in background
 O parametro `-d` coloca todos os serviços para executar em background não prendendo o terminal. 
@@ -131,7 +156,9 @@ Load Query Sample Data
 docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
-Neste ponto o ambiente está pronto. Acesse a url localhost no navegador e teste o ambiente.
+Neste ponto o ambiente está pronto. 
+
+Acesse a url localhost no navegador e teste o ambiente.
 
 ## Useful commands
 
@@ -152,7 +179,15 @@ docker compose stats
 with backend service running
 
 ```bash
-docker-compose exec backend bash
+docker compose exec backend bash
+```
+
+### Run Django Manage.py
+
+with all services running 
+
+```bash
+docker compose exec backend python manage.py --help
 ```
 
 ### Dump Query Sample Data
