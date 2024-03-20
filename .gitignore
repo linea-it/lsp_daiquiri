@@ -25,3 +25,6 @@ log/*
 pg_data
 local.py
 .env
+docker-compose.yml
+local_settings.py
+nginx-proxy.conf

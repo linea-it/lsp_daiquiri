@@ -1,9 +1,12 @@
-Daiquiri Application (Django version)
-=====================================
+# Daiquiri Application (Django version)
+
+This application is meant to be used with the Django version of the [Daiquiri Framework](https://github.com/aipescience/django-daiquiri).
+
+This project is currently in an early stage of development and by no means production ready.
 
 ## Anotações
 
-Instalation: <https://django-daiquiri.github.io/docs/installation/>
+Manual de Instalação do Daiquiri: <https://django-daiquiri.github.io/docs/installation/>
 
 Autenticação com CILogon:
 
@@ -11,10 +14,6 @@ Autenticação com CILogon:
 * <https://www.cilogon.org/oidc>
 
 Como escrever querys com ADQL <https://www.cosmos.esa.int/web/gaia-users/archive/writing-queries>
-
-This application is meant to be used with the Django version of the [Daiquiri Framework](https://github.com/aipescience/django-daiquiri).
-
-This project is currently in an early stage of development and by no means production ready.
 
 The PHP version of Daiquiri can be found [here](https://github.com/aipescience/daiquiri).
 
@@ -25,29 +24,27 @@ Sobre Cone Search ADQL Postgresql
 
 ## Development
 
-Clone Repository and create base folders.
+Clone Repository, create directories and copy local settings.
 
 ```bash
 git clone https://github.com/linea-it/lsp_daiquiri.git daiquiri \
 && cd daiquiri \
 && mkdir -p data data/download data/files data/upload logs \
-&& chmod -R g+w data logs
+&& chmod -R g+w data logs \
+&& cp compose/local/local_settings_sample.py local_settings.py \
+&& cp compose/local/.env.sample .env \
+&& cp compose/local/nginx-proxy.conf nginx-proxy.conf \
+&& cp compose/local/docker-compose.yml docker-compose.yml 
+
 ```
 
-Copy Enviroment file and config
+Build Docker images
 
 ```bash
-cp .env.sample .env
-cp local_sample.py local.py
+docker compose build
 ```
 
-Create Dirs
-
-```bash
-mkdir data data/files data/download data/upload data/log data/log/celery data/log/daiquiri
-```
-
-Iniciar o serviço de banco de dados, a primeira vez deve criar os bancos e os schemas na inicialização.
+Iniciar o serviço de banco de dados, Na primeira vez é executado o script init_db.sh, que vai criar os dois bancos (admin e catalogs), os schemas e algumas tabelas de exemplo.
 
 ```bash
 docker-compose up database

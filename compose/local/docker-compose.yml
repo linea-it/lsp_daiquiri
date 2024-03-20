@@ -1,17 +1,21 @@
 version: '3.9'
 
+volumes:
+  postgres-data:
+  rabbitmq-data:
+
 services:
   daiquiri: &daiquiri
     image: linea/lsp_daiquiri
     build:
       context: .
       dockerfile: ./compose/local/daiquiri/Dockerfile
-    # user: "1000:1000"
+    user: "1000:1000"
     env_file:
       - .env
     volumes:
       - ./daiquiri:/app
-      - ./local.py:/app/config/settings/local.py:ro
+      - ./local_settings.py:/app/config/settings/local.py:ro
       - ./fixtures:/app/fixtures
       - ./data/files:/data/files
       - ./data/download:/data/download
@@ -28,8 +32,6 @@ services:
     build:
       context: .
       dockerfile: ./compose/local/postgres/Dockerfile
-    #restart: always
-    # restart: unless-stopped
     volumes:
       - ./compose/local/postgres/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
       - ./database_sample:/data
@@ -60,13 +62,10 @@ services:
       - 80:80
     volumes:
       # Arquivo de configuração do Ngnix para este ambiente.
-      - ./nginx-proxy-development.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx-proxy.conf:/etc/nginx/conf.d/default.conf:ro
       # Diretório onde o backend manipula arquivos, e que deve ficar acessivel ao servidor web.
       - ./data/download:/data/download
       # Diretório de logs do servidor web. 
-      - ./data/log/nginx:/var/log/nginx
+      - ./logs:/var/log/nginx
     depends_on:
       - daiquiri
-volumes:
-  postgres-data:
-  rabbitmq-data:
