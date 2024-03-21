@@ -1,15 +1,16 @@
 import os
 
 import daiquiri.core.env as env
+
 from . import (
     ADDITIONAL_APPS,
-    DJANGO_APPS,
-    MIDDLEWARE,
+    AUTHENTICATION_BACKENDS,
     BASE_URL,
-    SETTINGS_EXPORT,
+    DJANGO_APPS,
     LOGIN_URL,
     LOGOUT_URL,
-    AUTHENTICATION_BACKENDS
+    MIDDLEWARE,
+    SETTINGS_EXPORT,
 )
 
 SITE_IDENTIFIER = "example.com"
@@ -84,23 +85,23 @@ LINEA_LOGIN_URL = LOGIN_URL
 LINEA_LOGOUT_URL = LOGOUT_URL
 
 # Shibboleth Authentication
-AUTH_SHIB_ENABLED = env.get_bool('AUTH_SHIB_ENABLED')
+AUTH_SHIB_ENABLED = env.get_bool("AUTH_SHIB_ENABLED")
 # print("TESTE: %s" % AUTH_SHIB_ENABLED)
 # print("TESTE: %s" % type(AUTH_SHIB_ENABLED))
 # AUTH_SHIB_ENABLED = True
 if AUTH_SHIB_ENABLED == True:
-    LINEA_LOGIN_URL = env.get_url('AUTH_SHIB_LOGIN_URL').strip('/')
+    LINEA_LOGIN_URL = env.get_url("AUTH_SHIB_LOGIN_URL").strip("/")
     print("TESTE: %s" % LINEA_LOGIN_URL)
 
     # SHIB_LOGIN_GOOGLE_URL = env.get_url('AUTH_SHIB_LOGIN_URL_GOOGLE_URL').strip('/')
-    
+
     # TODO: Não sei se logout tem uma url diferente. temporariamente recebe o valor que já tinha.
     LINEA_LOGOUT_URL = LOGOUT_URL
 
     # Essas variaveis são usadas internamente no django no fluxo de autenticação.
-    LOGIN_URL = LINEA_LOGIN_URL.strip('/')
+    LOGIN_URL = LINEA_LOGIN_URL.strip("/")
     LOGOUT_URL = LINEA_LOGOUT_URL
-    
+
     # Including Shibboleth Middleware
     MIDDLEWARE.append(
         "linea.shibboleth.ShibbolethMiddleware",
@@ -119,4 +120,8 @@ if AUTH_SHIB_ENABLED == True:
 
     AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
 
-SETTINGS_EXPORT += [ "AUTH_SHIB_ENABLED", "LINEA_LOGIN_URL", "LINEA_LOGOUT_URL",]
+SETTINGS_EXPORT += [
+    "AUTH_SHIB_ENABLED",
+    "LINEA_LOGIN_URL",
+    "LINEA_LOGOUT_URL",
+]

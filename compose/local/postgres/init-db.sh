@@ -22,7 +22,7 @@ EOSQL
 
 # Create Table DR2 SAMPLE SCHEMA
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "daiquiri_data" <<-EOSQL
-    \i /data/des_dr2_sample.sql;    
+    \i /data/des_dr2_sample.sql;
 EOSQL
 # -- CREATE INDEX coadd_objects_ra_dec ON des_dr2.coadd_objects USING btree (q3c_ang2ipix(ra, "dec"));
 
@@ -30,5 +30,3 @@ EOSQL
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "daiquiri_data" <<-EOSQL
     \i /data/gaia_dr2_sample.sql;
 EOSQL
-
-

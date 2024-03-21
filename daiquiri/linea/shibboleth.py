@@ -1,10 +1,9 @@
 import logging
 
+from django.conf import settings
 from django.contrib.auth.models import Group
-
 from shibboleth.middleware import ShibbolethRemoteUserMiddleware
 
-from django.conf import settings
 
 class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
     def make_profile(self, user, shib_meta):
