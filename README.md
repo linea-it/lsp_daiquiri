@@ -150,11 +150,12 @@ docker compose exec daiquiri python manage.py setup_groups
 docker compose exec daiquiri python manage.py setup_tap_metadata
 ```
 
-Load Query Sample Data
+Load Initial Data
 
 ```bash
-docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
+docker compose exec daiquiri python manage.py loaddata /app/fixtures/initial_data.json
 ```
+
 
 Neste ponto o ambiente está pronto. 
 
@@ -174,12 +175,12 @@ docker compose stop
 docker compose stats
 ```
 
-### Open bash in backend container
+### Open bash in daiquiri container
 
-with backend service running
+with daiquiri service running
 
 ```bash
-docker compose exec backend bash
+docker compose exec daiquiri bash
 ```
 
 ### Run Django Manage.py
@@ -187,13 +188,19 @@ docker compose exec backend bash
 with all services running 
 
 ```bash
-docker compose exec backend python manage.py --help
+docker compose exec daiquiri python manage.py --help
 ```
 
-### Dump Query Sample Data
+### Dump / Load Query Sample Data
 
 ```bash
-docker-compose exec daiquiri python manage.py dumpdata daiquiri_query.example > daiquiri/fixtures/query_samples.json
+docker-compose exec daiquiri python manage.py dumpdata daiquiri_query.example > database_subset/query_samples.json
+```
+
+Load Query Sample Data
+
+```bash
+docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
 ### Build Manual da Imagem docker
