@@ -109,21 +109,17 @@ QUERY_ANONYMOUS = True
 # daiquiri.query.settings
 # Sets the timeout for syncronous (TAP) queries in seconds.
 # Default: 'daiquiri_user_'
-QUERY_USER_SCHEMA_PREFIX = 'mydb_'
+QUERY_USER_SCHEMA_PREFIX = "mydb_"
 
 # daiquiri.query.settings
 # Sets the maximum quota for tables in a user’s personal schema.
 # The quota need to be set for the anonymous user as well as regular loggen in users (user).
 # Additionally, users or groups can be asigned individual quotas, e.g.:
 QUERY_QUOTA = {
-    'anonymous': '1Gb',
-    'user': '10000Mb',
-    'users': {
-        'admin': '1000Gb'
-    },
-    'groups': {
-        'collab': '100Gb'
-    }
+    "anonymous": "1Gb",
+    "user": "10000Mb",
+    "users": {"admin": "1000Gb"},
+    "groups": {"collab": "100Gb"},
 }
 
 # daiquiri.query.settings

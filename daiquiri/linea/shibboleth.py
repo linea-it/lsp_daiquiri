@@ -6,6 +6,7 @@ from shibboleth.middleware import ShibbolethRemoteUserMiddleware
 
 from django.conf import settings
 
+
 class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
     def make_profile(self, user, shib_meta):
         """
