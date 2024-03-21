@@ -227,6 +227,52 @@ docker build -t linea/lsp_daiquiri:$(git describe --always) .
 docker push linea/lsp_daiquiri:$(git describe --always)
 ```
 
+### Run CI Github Actions Locally
+
+O devcontainer do repositório já está configurado com as dependencias (github cli, act, docker) necessárias para executar os github actions localmente.
+é necessário criar um arquivo .secrets com as variaveis de acesso ao Dockerhub e o token de login do github.
+
+Primeiro faça a autenticação no github cli usando o comando
+
+```bash
+gh auth login
+```
+
+Após realizar o login com sucesso, execute o comando
+
+```bash
+gh auth token
+```
+
+Copie o Token gerado.
+
+Crie um arquivo .secrets com as seguintes variaveis:
+
+```bash
+GITHUB_TOKEN=<Token gerado pelo gh auth token>
+DOCKERHUB_USERNAME=<Usuario do dokerhub>
+DOCKERHUB_TOKEN=<Senha do dockerhub>
+```
+
+Utilize os seguintes comandos para testar os pipelines:
+
+```bash
+# Command structure:
+act [<event>] [options]
+
+# List all actions for all events:
+act -l
+
+# Executa o job build_backend simulando um pull_request
+act pull_request --secret-file .secrets  -j build_backend
+
+# Executa o job build_backend simulando um push
+act pull --secret-file .secrets  -j build_backend
+
+# Executa o job pre-commit como se estivesse rodando no github.
+act pull -j pre-commit
+```
+
 ## Anotações
 
 Manual de Instalação do Daiquiri: <https://django-daiquiri.github.io/docs/installation/>
