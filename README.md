@@ -11,7 +11,6 @@ This application is meant to be used with the Django version of the [Daiquiri Fr
 - Vscode + devcontainer extension
 - Acesso ao banco de dados desdb4 - **prod_gavo**
 
-
 ## Development URLs
 
 - **Github Repository:** <https://github.com/linea-it/lsp_daiquiri>
@@ -20,7 +19,6 @@ This application is meant to be used with the Django version of the [Daiquiri Fr
 - **Django Admin:** <http://localhost/admin/>
 - **Celery Flower:** <http://localhost/flower/>
 - **Rabbitmq:** <http://localhost/rabbitmq/>
-
 
 ## Docs
 
@@ -36,7 +34,6 @@ This application is meant to be used with the Django version of the [Daiquiri Fr
 
 Este projeto possui **devcontainer** configurado, mas é necessário executar a instalação convencional primeiro. depois de feito estes passos, basta abrir o vscode na pasta do projeto e executar o devcontainer normalmente.
 
-
 >Este passos foram escritos considerando :
 >
 >- Maquina local do desenvolvedor
@@ -45,7 +42,7 @@ Este projeto possui **devcontainer** configurado, mas é necessário executar a 
 
 ---
 
-Clone Repository, create directories and copy local settings.
+Clone Repository, create directories and copy local settings. Run these commands in the linux terminal or windows WSL.
 
 ```bash
 git clone https://github.com/linea-it/lsp_daiquiri.git daiquiri \
@@ -111,6 +108,7 @@ docker compose up daiquiri
 Espere pela mensagem `*** uWSGI is running in multiple interpreter mode ***` apos a mensagem, desligue o container pressionando `ctrl + c` e inicie o serviço novamente com parametro `-d`
 
 ### Start all services in background
+
 O parametro `-d` coloca todos os serviços para executar em background não prendendo o terminal.
 
 ```bash
@@ -128,15 +126,10 @@ A saida do comando informa se todos os serviços foram iniciados corretamente.
  ✔ Container daiquiri-nginx-1          Started            0.0s
 ```
 
-
 ### Configuração Inicial do Daiquiri
 
 Os Comandos a seguir são executados **com todos os serviços ligados**.
 
-Crie um usuario administrativo no Django.
-```bash
-docker compose exec daiquiri python manage.py createsuperuser
-```
 Estes comandos são expecificos do Daiquiri:
 [Setup groups](https://django-daiquiri.github.io/docs/administration/)
 
@@ -156,6 +149,11 @@ Load Initial Data
 docker compose exec daiquiri python manage.py loaddata /app/fixtures/initial_data.json
 ```
 
+Crie um usuario administrativo no Django.
+
+```bash
+docker compose exec daiquiri python manage.py createsuperuser
+```
 
 Neste ponto o ambiente está pronto.
 
@@ -213,6 +211,7 @@ docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_sampl
 ```
 
 ### Build Manual da Imagem docker
+
 Estando logado no dockerhub pelo terminal execute o build e o push da imagem do daiquiri.
 
 Docker Hub: <https://hub.docker.com/repository/docker/linea/lsp_daiquiri/>
@@ -281,17 +280,15 @@ Como escrever querys com ADQL <https://www.cosmos.esa.int/web/gaia-users/archive
 
 Sobre Cone Search ADQL Postgresql
 
-* <https://gaia.aip.de/cms/services/adql-postgresql/>
-* <https://gaia.aip.de/cms/services/cone-search/>
+- <https://gaia.aip.de/cms/services/adql-postgresql/>
+- <https://gaia.aip.de/cms/services/cone-search/>
 
 Autenticação com CILogon (Para estudo/testes):
 
-* <https://django-allauth.readthedocs.io/en/latest/providers.html>
-* <https://www.cilogon.org/oidc>
+- <https://django-allauth.readthedocs.io/en/latest/providers.html>
+- <https://www.cilogon.org/oidc>
 
-
-
-### TODOS:
+### TODOS
 
 - Bug no daiquiri framework quando o tablename tem espaço (foi aberto issue no repositório oficial)
 - Download VOTable falha se a tabela não tiver os ucds associados as colunas (foi aberto issue no repositório oficial)
