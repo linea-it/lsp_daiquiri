@@ -1,15 +1,16 @@
 import os
 
 import daiquiri.core.env as env
+
 from . import (
     ADDITIONAL_APPS,
-    DJANGO_APPS,
-    MIDDLEWARE,
+    AUTHENTICATION_BACKENDS,
     BASE_URL,
-    SETTINGS_EXPORT,
+    DJANGO_APPS,
     LOGIN_URL,
     LOGOUT_URL,
-    AUTHENTICATION_BACKENDS,
+    MIDDLEWARE,
+    SETTINGS_EXPORT,
 )
 
 SITE_IDENTIFIER = "example.com"

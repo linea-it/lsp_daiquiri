@@ -24,15 +24,28 @@
     // "remoteEnv": {"PATH": "/home/dev-user/.local/bin:${containerEnv:PATH}"},
     "remoteUser": "daiquiri",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    // Features to add to the dev container. More info: https://containers.dev/features.
     "features": {
-        // "ghcr.io/devcontainers/features/github-cli:1": {},
-        // "ghcr.io/devcontainers-contrib/features/act:1": {},
-        "ghcr.io/devcontainers/features/common-utils:2": {
-            "configureZshAsDefaultShell": true
+        "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+            "plugins": "ssh-agent npm",
+            "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions",
+            "username": "root"
         },
-        "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {},
         "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
-        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "moby": true,
+            "azureDnsAutoDetection": true,
+            "installDockerBuildx": true,
+            "installDockerComposeSwitch": true,
+            "version": "latest",
+            "dockerDashComposeVersion": "latest"
+        },
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+            "moby": true,
+            "installDockerBuildx": true,
+            "version": "latest",
+            "dockerDashComposeVersion": "v2"
+        }
     },
     // Set *default* container specific settings.json values on container create.
     "customizations": {

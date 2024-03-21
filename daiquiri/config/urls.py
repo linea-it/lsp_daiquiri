@@ -1,8 +1,7 @@
-from django.urls import include, path
-from django.contrib import admin
-from django.views.generic import TemplateView
-
 from daiquiri.core.views import home
+from django.contrib import admin
+from django.urls import include, path
+from django.views.generic import TemplateView
 
 # from django.conf import settings
 
