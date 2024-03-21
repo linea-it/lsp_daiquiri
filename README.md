@@ -161,6 +161,13 @@ Neste ponto o ambiente está pronto.
 
 Acesse a url localhost no navegador e teste o ambiente.
 
+Para testar a interface query. 
+Digite a query abaixo no campo *SQL Query* e em *Query Language* escolha *ADQL* depois clique em *Submit new SQL Query*, na tela de resultado deve aparecer no campo *Job status* a palavra *Completed*
+
+```sql
+select top 10 * from gaia.gaia_dr2
+```
+
 ## Useful commands
 
 ### Stop all services
@@ -192,6 +199,8 @@ docker compose exec daiquiri python manage.py --help
 ```
 
 ### Dump / Load Query Sample Data
+
+Dump Queries sample 
 
 ```bash
 docker-compose exec daiquiri python manage.py dumpdata daiquiri_query.example > database_subset/query_samples.json
