@@ -65,7 +65,7 @@ services:
       - ./nginx-proxy.conf:/etc/nginx/conf.d/default.conf:ro
       # Diretório onde o backend manipula arquivos, e que deve ficar acessivel ao servidor web.
       - ./data/download:/data/download
-      # Diretório de logs do servidor web. 
+      # Diretório de logs do servidor web.
       - ./logs:/var/log/nginx
     depends_on:
       - daiquiri

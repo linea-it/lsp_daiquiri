@@ -112,8 +112,8 @@ QUERY_ANONYMOUS = True
 QUERY_USER_SCHEMA_PREFIX = 'mydb_'
 
 # daiquiri.query.settings
-# Sets the maximum quota for tables in a user’s personal schema. 
-# The quota need to be set for the anonymous user as well as regular loggen in users (user). 
+# Sets the maximum quota for tables in a user’s personal schema.
+# The quota need to be set for the anonymous user as well as regular loggen in users (user).
 # Additionally, users or groups can be asigned individual quotas, e.g.:
 QUERY_QUOTA = {
     'anonymous': '1Gb',
@@ -132,7 +132,7 @@ QUERY_QUOTA = {
 QUERY_SYNC_TIMEOUT = 120
 
 # daiquiri.query.settings
-# Set the different queue, which can be selected by the users. 
+# Set the different queue, which can be selected by the users.
 # Each queue is represented by a dictionary where:
 QUERY_QUEUES = [
     {
@@ -191,4 +191,3 @@ QUERY_QUEUES = [
 # QUERY_DEFAULT_DOWNLOAD_FORMAT
 # QUERY_UPLOAD
 # QUERY_UPLOAD_LIMIT
-

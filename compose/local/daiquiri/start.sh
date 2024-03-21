@@ -8,7 +8,7 @@ NO_COLOR='\033[0m'
 if [ ! -e /app/vendor ]; then
     echo "${YELLOW}Running Download Vendor.${NO_COLOR}"
     mkdir /app/vendor /app/static
-    python manage.py download_vendor_files 
+    python manage.py download_vendor_files
 fi
 
 python manage.py collectstatic --clear --noinput --verbosity 0

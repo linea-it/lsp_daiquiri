@@ -93,14 +93,14 @@ if AUTH_SHIB_ENABLED == True:
     print("TESTE: %s" % LINEA_LOGIN_URL)
 
     # SHIB_LOGIN_GOOGLE_URL = env.get_url('AUTH_SHIB_LOGIN_URL_GOOGLE_URL').strip('/')
-    
+
     # TODO: Não sei se logout tem uma url diferente. temporariamente recebe o valor que já tinha.
     LINEA_LOGOUT_URL = LOGOUT_URL
 
     # Essas variaveis são usadas internamente no django no fluxo de autenticação.
     LOGIN_URL = LINEA_LOGIN_URL.strip('/')
     LOGOUT_URL = LINEA_LOGOUT_URL
-    
+
     # Including Shibboleth Middleware
     MIDDLEWARE.append(
         "linea.shibboleth.ShibbolethMiddleware",

@@ -55,13 +55,13 @@ git clone https://github.com/linea-it/lsp_daiquiri.git daiquiri \
 && cp compose/local/local_settings_sample.py local_settings.py \
 && cp compose/local/.env.sample .env \
 && cp compose/local/nginx-proxy.conf nginx-proxy.conf \
-&& cp compose/local/docker-compose.yml docker-compose.yml 
+&& cp compose/local/docker-compose.yml docker-compose.yml
 
 ```
 
 ### Configuração das Variaveis de ambiente
 
-Os arquivos de configuração .env e local_settings.py já estão preenchidos com valores compativeis com o ambiente local. 
+Os arquivos de configuração .env e local_settings.py já estão preenchidos com valores compativeis com o ambiente local.
 
 Mas é necessário alterar/preencher as variaveis relacionadas a segurança e acessos.
 
@@ -100,7 +100,7 @@ docker compose up database
 ```
 
 Procure na saida do terminal por esta mensagem: `LOG:  database system is ready to accept connections`
-Após a inicialização do banco de dados, pare o serviço com comando `CTRL+C`. 
+Após a inicialização do banco de dados, pare o serviço com comando `CTRL+C`.
 
 Agora inicie o serviço daiquiri.
 
@@ -111,17 +111,17 @@ docker compose up daiquiri
 Espere pela mensagem `*** uWSGI is running in multiple interpreter mode ***` apos a mensagem, desligue o container pressionando `ctrl + c` e inicie o serviço novamente com parametro `-d`
 
 ### Start all services in background
-O parametro `-d` coloca todos os serviços para executar em background não prendendo o terminal. 
+O parametro `-d` coloca todos os serviços para executar em background não prendendo o terminal.
 
 ```bash
 docker compose up -d
 ```
 
-A saida do comando informa se todos os serviços foram iniciados corretamente. 
+A saida do comando informa se todos os serviços foram iniciados corretamente.
 
 ```bash
 [+] Running 5/5
- ✔ Container daiquiri-database-1       Started            0.0s  
+ ✔ Container daiquiri-database-1       Started            0.0s
  ✔ Container daiquiri-rabbit-1         Started            0.0s
  ✔ Container daiquiri-daiquiri-1       Started            0.0s
  ✔ Container daiquiri-celery_flower-1  Started            0.0s
@@ -157,11 +157,11 @@ docker compose exec daiquiri python manage.py loaddata /app/fixtures/initial_dat
 ```
 
 
-Neste ponto o ambiente está pronto. 
+Neste ponto o ambiente está pronto.
 
 Acesse a url localhost no navegador e teste o ambiente.
 
-Para testar a interface query. 
+Para testar a interface query.
 Digite a query abaixo no campo *SQL Query* e em *Query Language* escolha *ADQL* depois clique em *Submit new SQL Query*, na tela de resultado deve aparecer no campo *Job status* a palavra *Completed*
 
 ```sql
@@ -192,7 +192,7 @@ docker compose exec daiquiri bash
 
 ### Run Django Manage.py
 
-with all services running 
+with all services running
 
 ```bash
 docker compose exec daiquiri python manage.py --help
@@ -200,7 +200,7 @@ docker compose exec daiquiri python manage.py --help
 
 ### Dump / Load Query Sample Data
 
-Dump Queries sample 
+Dump Queries sample
 
 ```bash
 docker-compose exec daiquiri python manage.py dumpdata daiquiri_query.example > database_subset/query_samples.json
@@ -217,7 +217,7 @@ Estando logado no dockerhub pelo terminal execute o build e o push da imagem do 
 
 Docker Hub: <https://hub.docker.com/repository/docker/linea/lsp_daiquiri/>
 
-A identificação unica de cada imagem pode ser o numero de versão exemplo: `linea/lsp_daiquiri:v0.1` ou o hash do commit para versões de desenvolvimento: `linea/lsp_daiquiri:8816330`. 
+A identificação unica de cada imagem pode ser o numero de versão exemplo: `linea/lsp_daiquiri:v0.1` ou o hash do commit para versões de desenvolvimento: `linea/lsp_daiquiri:8816330`.
 
 >Para obter o hash do commit usar o comando `$(git describe --always)`
 
@@ -245,7 +245,7 @@ Autenticação com CILogon (Para estudo/testes):
 
 
 
-### TODOS: 
+### TODOS:
 
 - Bug no daiquiri framework quando o tablename tem espaço (foi aberto issue no repositório oficial)
 - Download VOTable falha se a tabela não tiver os ucds associados as colunas (foi aberto issue no repositório oficial)

@@ -14,7 +14,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends \ 
+    && apt-get -y install --no-install-recommends \
     build-essential \
     libxml2-dev \
     libxslt-dev \
