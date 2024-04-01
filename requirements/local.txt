@@ -1,5 +1,9 @@
 -r base.txt
 
+# Jupyter Notebooks
+ipykernel==6.29.4
+ipython==8.18.1
+
 # Testing
 # ------------------------------------------------------------------------------
 mypy  # https://github.com/python/mypy

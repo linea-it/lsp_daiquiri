@@ -59,7 +59,6 @@ oauthlib==3.2.2
 packaging==23.0
 pluggy==1.0.0
 prometheus-client==0.17.0
-prompt-toolkit==3.0.36
 psycopg2-binary==2.9.5
 py==1.11.0
 pyasn1==0.5.0

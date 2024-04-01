@@ -99,6 +99,7 @@
                 "ms-python.vscode-pylance",
                 "ms-python.isort",
                 "ms-python.black-formatter",
+                "ms-toolsai.jupyter"
                 // django
                 "batisteo.vscode-django"
             ]
