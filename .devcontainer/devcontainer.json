@@ -65,7 +65,7 @@
                     "editor.tabSize": 4,
                     "analysis.autoImportCompletions": true,
                     "analysis.typeCheckingMode": "basic",
-                    "defaultInterpreterPath": "/usr/local/bin/python",
+                    "defaultInterpreterPath": "/usr/bin/python3",
                     "editor.codeActionsOnSave": {
                         "source.organizeImports": "explicit"
                     },
@@ -99,7 +99,7 @@
                 "ms-python.vscode-pylance",
                 "ms-python.isort",
                 "ms-python.black-formatter",
-                "ms-toolsai.jupyter"
+                "ms-toolsai.jupyter",
                 // django
                 "batisteo.vscode-django"
             ]
