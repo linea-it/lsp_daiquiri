@@ -93,7 +93,6 @@ AUTH_SHIB_ENABLED = env.get_bool("AUTH_SHIB_ENABLED")
 # AUTH_SHIB_ENABLED = True
 if AUTH_SHIB_ENABLED == True:
     LINEA_LOGIN_URL = env.get_url("AUTH_SHIB_LOGIN_URL").strip("/")
-    print("TESTE: %s" % LINEA_LOGIN_URL)
 
     # SHIB_LOGIN_GOOGLE_URL = env.get_url('AUTH_SHIB_LOGIN_URL_GOOGLE_URL').strip('/')
 
