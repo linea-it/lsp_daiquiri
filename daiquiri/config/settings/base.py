@@ -74,6 +74,8 @@ CELERY_PIDFILE_PATH = "/tmp"
 
 SERVE_DOWNLOAD_DIR = "/data/download"
 
+ANNOUNCEMENT_MESSAGE_FILTER = "linea.filters.LineaMessageFilter"
+
 # -----------------------------------------------
 # LInea Specific
 # -----------------------------------------------
