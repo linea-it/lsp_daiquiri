@@ -1,9 +1,8 @@
-from daiquiri.core.views import home
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 
-# from django.conf import settings
+from daiquiri.core.views import home
 
 urlpatterns = [
     path("", home, name="home"),
@@ -37,10 +36,6 @@ urlpatterns = [
     # Auth Shibboleth
     path("shib/", include("shibboleth.urls", namespace="shibboleth")),
 ]
-
-# # Add 'prefix' to all urlpatterns
-# if settings.BASE_URL != '/':
-#     urlpatterns = [path(f'{settings.BASE_URL}', include(urlpatterns))]
 
 handler400 = "daiquiri.core.views.bad_request"
 handler403 = "daiquiri.core.views.forbidden"

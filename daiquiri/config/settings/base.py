@@ -74,6 +74,36 @@ CELERY_PIDFILE_PATH = "/tmp"
 
 SERVE_DOWNLOAD_DIR = "/data/download"
 
+ANNOUNCEMENT_MESSAGE_FILTER = "linea.filters.LineaMessageFilter"
+
+CONESEARCH_ADAPTER = "daiquiri.conesearch.adapter.SimpleConeSearchAdapter"
+CONESEARCH_ANONYMOUS = True
+CONESEARCH_SCHEMA = "des_dr2"
+CONESEARCH_TABLE = "coadd_objects"
+CONESEARCH_SUBJECTS = ["cone search"]
+
+QUERY_FORMS = [
+    {
+        "key": "sql",
+        "label": "SQL query",
+        "service": "query/js/forms/sql.js",
+        "template": "query/query_form_sql.html",
+    },
+    # {
+    #     "key": "cone",
+    #     "label": "Cone search",
+    #     "service": "query/js/forms/cone.js",
+    #     "template": "query/query_form_cone.html",
+    # },
+    {
+        "key": "upload",
+        "label": "Upload VOTable",
+        "service": "query/js/forms/upload.js",
+        "template": "query/query_form_upload.html",
+    },
+]
+
+
 # -----------------------------------------------
 # LInea Specific
 # -----------------------------------------------
@@ -91,7 +121,6 @@ AUTH_SHIB_ENABLED = env.get_bool("AUTH_SHIB_ENABLED")
 # AUTH_SHIB_ENABLED = True
 if AUTH_SHIB_ENABLED == True:
     LINEA_LOGIN_URL = env.get_url("AUTH_SHIB_LOGIN_URL").strip("/")
-    print("TESTE: %s" % LINEA_LOGIN_URL)
 
     # SHIB_LOGIN_GOOGLE_URL = env.get_url('AUTH_SHIB_LOGIN_URL_GOOGLE_URL').strip('/')
 

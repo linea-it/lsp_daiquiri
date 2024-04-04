@@ -1,8 +1,13 @@
 -r base.txt
 
 # Jupyter Notebooks
+# ------------------------------------------------------------------------------
 ipykernel==6.29.4
 ipython==8.18.1
+
+# Science
+pyvo==1.5.1
+# ------------------------------------------------------------------------------
 
 # Testing
 # ------------------------------------------------------------------------------
@@ -18,7 +23,7 @@ pytest-pythonpath
 # ------------------------------------------------------------------------------
 flake8==6.1.0  # https://github.com/PyCQA/flake8
 flake8-isort==6.0.0  # https://github.com/gforcada/flake8-isort
-coverage==6.4.2  # https://github.com/nedbat/coveragepy
+coverage==7.2.7  # https://github.com/nedbat/coveragepy
 black==23.7.0  # https://github.com/psf/black
 djlint==1.32.1  # https://github.com/Riverside-Healthcare/djLint
 pylint-django==2.5.3  # https://github.com/PyCQA/pylint-django

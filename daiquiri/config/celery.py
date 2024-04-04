@@ -1,7 +1,8 @@
 import os
 
-from daiquiri.core.celery import get_celery_app
 from dotenv import load_dotenv
+
+from daiquiri.core.celery import get_celery_app
 
 load_dotenv()
 
