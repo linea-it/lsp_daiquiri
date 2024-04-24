@@ -137,11 +137,9 @@ if AUTH_SHIB_ENABLED == True:
     # https://github.com/Brown-University-Library/django-shibboleth-remoteuser
     SHIBBOLETH_ATTRIBUTE_MAP = {
         "eppn": (True, "username"),
-        "givenName": (True, "first_name"),
+        "cn": (True, "first_name"),
         "sn": (True, "last_name"),
-        "inetOrgPerson-mail": (True, "email"),
-        # "cn": (True, "first_name"),
-        # "sn": (True, "last_name"),
+        "Shib-inetOrgPerson-mail": (False, "email"),
         # "mail": (True, "email"),
     }
 
