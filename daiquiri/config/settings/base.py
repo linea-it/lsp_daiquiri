@@ -139,8 +139,7 @@ if AUTH_SHIB_ENABLED == True:
         "eppn": (True, "username"),
         "cn": (True, "first_name"),
         "sn": (True, "last_name"),
-        "Shib-inetOrgPerson-mail": (False, "email"),
-        # "mail": (True, "email"),
+        "Shib-inetOrgPerson-mail": (True, "email"),
     }
 
     # Including Shibboleth authentication:

@@ -24,23 +24,17 @@ class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
         log.info("Shibboleth::make_profile()")
         log.debug(f"Shib Meta: {shib_meta}")
         log.debug(f"User: {user}")
+
         # Guardar o email do usuario
-        # user.email = shib_meta["email"]
-        # log.info("Updated user email")
-        # Adiciona um display name para o usuario
-        # if user.profile.display_name is None or user.profile.display_name == user.username:
-        #     user.profile.display_name = user.email.split('@')[0]
-        #     user.profile.save()
-        #     log.info("Added user profile display name")
-        # if user.profile.display_name is None or user.profile.display_name == user.username:
-        #     user.profile.display_name = shib_meta["first_name"]
+        user.email = shib_meta["email"]
+        log.info("Updated user email")
 
         user.save()
 
-        # Adicionar o usuario ao grupo Shibboleth
         try:
+            # Adicionar o usuario ao grupo Shibboleth
             group, created = Group.objects.get_or_create(name="Shibboleth")
-            group.user_set.add(user)
+            user.groups.add(group)
             log.info("Added user to Shibboleth group")
         except Exception as e:
             log.error("Failed on add user to group shibboleth. Error: %s" % e)
