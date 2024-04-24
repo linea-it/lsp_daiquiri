@@ -110,15 +110,10 @@ QUERY_FORMS = [
 
 # Em desenvolvimento não é possivel acessar o Shibboleth
 # Desenvolvedores devem usar a auth nativa do Django.
-# Essas variaveis são usadas nos templates para criar os links de login.
-LINEA_LOGIN_URL = LOGIN_URL
-LINEA_LOGOUT_URL = LOGOUT_URL
 
 # Shibboleth Authentication
 AUTH_SHIB_ENABLED = env.get_bool("AUTH_SHIB_ENABLED")
-# print("TESTE: %s" % AUTH_SHIB_ENABLED)
-# print("TESTE: %s" % type(AUTH_SHIB_ENABLED))
-# AUTH_SHIB_ENABLED = True
+
 if AUTH_SHIB_ENABLED == True:
     LINEA_LOGIN_URL = env.get_url("AUTH_SHIB_LOGIN_URL").strip("/")
 
@@ -136,21 +131,25 @@ if AUTH_SHIB_ENABLED == True:
         "linea.shibboleth.ShibbolethMiddleware",
     )
 
-    # Including Shibboleth authentication:
-    AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
+    # Usar essa url depois de logado para ver os atributos disponiveis
+    # https://userquery-dev.linea.org.br/Shibboleth.sso/Session
 
     # https://github.com/Brown-University-Library/django-shibboleth-remoteuser
     SHIBBOLETH_ATTRIBUTE_MAP = {
         "eppn": (True, "username"),
-        "cn": (True, "first_name"),
+        "givenName": (True, "first_name"),
         "sn": (True, "last_name"),
+        "inetOrgPerson-mail": (True, "email"),
+        # "cn": (True, "first_name"),
+        # "sn": (True, "last_name"),
         # "mail": (True, "email"),
     }
 
+    # Including Shibboleth authentication:
     AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
 
 SETTINGS_EXPORT += [
     "AUTH_SHIB_ENABLED",
-    "LINEA_LOGIN_URL",
-    "LINEA_LOGOUT_URL",
+    "LOGIN_URL",
+    "LOGOUT_URL"
 ]

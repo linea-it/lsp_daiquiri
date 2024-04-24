@@ -41,8 +41,11 @@ Proin rhoncus malesuada urna sit amet blandit. Praesent tristique lectus eleifen
 
 {% block sidebar %}
 
+
+
 {% if not user.is_authenticated and settings.AUTH_SHIB_ENABLED == False %}
 <div class="home">
+
     <h2>Login</h2>
 
     {% include 'account/login_form.html' %}

@@ -104,11 +104,9 @@
                 </li>
 
                 {% else %}
-
-                <li>
-                    <a href="{% url 'account_login' %}">{% trans 'Login' %}</a>
-                </li>
-
+                    <li>
+                        <a href="{{ settings.LOGIN_URL }}">{% trans 'Login' %}</a>
+                    </li>
                 {% endif %}
 
             </ul>

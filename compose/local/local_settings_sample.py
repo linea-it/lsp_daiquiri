@@ -10,7 +10,7 @@ SITE_URL = "http://localhost"
 
 # Identifier for the Daiquiri site. Usually the URL without the protocol. Used for VO and OAI metadata.
 # Default: None
-SITE_IDENTIFIER = "localhost/daiquiri"
+SITE_IDENTIFIER = "daiquiri.com"
 
 # The title for the Daiquiri site. Used for VO and OAI metadata.
 # Default: None

@@ -18,6 +18,9 @@ class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
         log.debug(settings.AUTHENTICATION_BACKENDS)
         log.debug(settings.SHIBBOLETH_ATTRIBUTE_MAP)
 
+        # Usar essa url depois de logado para ver os atributos disponiveis
+        # https://userquery-dev.linea.org.br/Shibboleth.sso/Session
+
         log.info("Shibboleth::make_profile()")
         log.debug(f"Shib Meta: {shib_meta}")
         log.debug(f"User: {user}")
