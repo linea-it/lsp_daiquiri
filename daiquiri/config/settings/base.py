@@ -146,8 +146,4 @@ if AUTH_SHIB_ENABLED == True:
     # Including Shibboleth authentication:
     AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
 
-SETTINGS_EXPORT += [
-    "AUTH_SHIB_ENABLED",
-    "LOGIN_URL",
-    "LOGOUT_URL"
-]
+SETTINGS_EXPORT += ["AUTH_SHIB_ENABLED", "LOGIN_URL", "LOGOUT_URL"]
