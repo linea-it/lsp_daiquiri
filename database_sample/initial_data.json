@@ -3,22 +3,6 @@
   "model": "auth.group",
   "pk": 1,
   "fields": {
-    "name": "wordpress_editor",
-    "permissions": []
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 2,
-  "fields": {
-    "name": "wordpress_admin",
-    "permissions": []
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 3,
-  "fields": {
     "name": "contact_manager",
     "permissions": [
       33,
@@ -30,63 +14,55 @@
 },
 {
   "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "metadata_manager",
+    "permissions": [
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      65,
+      66,
+      67,
+      68,
+      61,
+      62,
+      63,
+      64
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 3,
+  "fields": {
+    "name": "stats_manager",
+    "permissions": [
+      92
+    ]
+  }
+},
+{
+  "model": "auth.group",
   "pk": 4,
   "fields": {
-    "name": "meetings_manager",
-    "permissions": []
+    "name": "query_manager",
+    "permissions": [
+      77,
+      78,
+      79,
+      80
+    ]
   }
 },
 {
   "model": "auth.group",
   "pk": 5,
-  "fields": {
-    "name": "metadata_manager",
-    "permissions": [
-      49,
-      50,
-      51,
-      52,
-      53,
-      54,
-      55,
-      56,
-      61,
-      62,
-      63,
-      64,
-      57,
-      58,
-      59,
-      60
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 6,
-  "fields": {
-    "name": "stats_manager",
-    "permissions": [
-      88
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 7,
-  "fields": {
-    "name": "query_manager",
-    "permissions": [
-      73,
-      74,
-      75,
-      76
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 8,
   "fields": {
     "name": "user_manager",
     "permissions": [
@@ -99,282 +75,26 @@
   "model": "auth.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$320000$VTXjXLd38BROxIMy7YbJgB$b3CRLMvPOc6SWsUL3noz/b7ETb0efhnnGHs5qmM1GG0=",
-    "last_login": "2024-03-20T23:58:15.375Z",
+    "password": "pbkdf2_sha256$600000$dkyY0E4tyE1m55vAB571Vd$SfCO0mzuZjTssayW3fG9S3GJB83Q157pgJquI0RwzU4=",
+    "last_login": "2024-04-25T20:35:58.167Z",
     "is_superuser": true,
     "username": "gverde",
     "first_name": "",
     "last_name": "",
-    "email": "glauber.costa@linea.org.br",
+    "email": "",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2024-03-20T23:02:43.055Z",
+    "date_joined": "2024-04-25T20:35:53.986Z",
     "groups": [],
     "user_permissions": []
   }
 },
 {
-  "model": "contenttypes.contenttype",
-  "pk": 1,
-  "fields": {
-    "app_label": "admin",
-    "model": "logentry"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 2,
-  "fields": {
-    "app_label": "auth",
-    "model": "permission"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 3,
-  "fields": {
-    "app_label": "auth",
-    "model": "group"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 4,
-  "fields": {
-    "app_label": "auth",
-    "model": "user"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 5,
-  "fields": {
-    "app_label": "contenttypes",
-    "model": "contenttype"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 6,
-  "fields": {
-    "app_label": "sessions",
-    "model": "session"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 7,
-  "fields": {
-    "app_label": "sites",
-    "model": "site"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 8,
-  "fields": {
-    "app_label": "daiquiri_auth",
-    "model": "profile"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 9,
-  "fields": {
-    "app_label": "daiquiri_contact",
-    "model": "contactmessage"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 10,
-  "fields": {
-    "app_label": "daiquiri_datalink",
-    "model": "datalink"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 11,
-  "fields": {
-    "app_label": "daiquiri_files",
-    "model": "directory"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 12,
-  "fields": {
-    "app_label": "daiquiri_jobs",
-    "model": "job"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 13,
-  "fields": {
-    "app_label": "daiquiri_metadata",
-    "model": "column"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 14,
-  "fields": {
-    "app_label": "daiquiri_metadata",
-    "model": "function"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 15,
-  "fields": {
-    "app_label": "daiquiri_metadata",
-    "model": "table"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 16,
-  "fields": {
-    "app_label": "daiquiri_metadata",
-    "model": "schema"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 17,
-  "fields": {
-    "app_label": "daiquiri_oai",
-    "model": "record"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 18,
-  "fields": {
-    "app_label": "daiquiri_query",
-    "model": "queryjob"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 19,
-  "fields": {
-    "app_label": "daiquiri_query",
-    "model": "example"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 20,
-  "fields": {
-    "app_label": "daiquiri_query",
-    "model": "downloadjob"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 21,
-  "fields": {
-    "app_label": "daiquiri_query",
-    "model": "queryarchivejob"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 22,
-  "fields": {
-    "app_label": "daiquiri_stats",
-    "model": "record"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 23,
-  "fields": {
-    "app_label": "daiquiri_tap",
-    "model": "column"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 24,
-  "fields": {
-    "app_label": "daiquiri_tap",
-    "model": "schema"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 25,
-  "fields": {
-    "app_label": "daiquiri_tap",
-    "model": "table"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 26,
-  "fields": {
-    "app_label": "authtoken",
-    "model": "token"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 27,
-  "fields": {
-    "app_label": "authtoken",
-    "model": "tokenproxy"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 28,
-  "fields": {
-    "app_label": "account",
-    "model": "emailaddress"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 29,
-  "fields": {
-    "app_label": "account",
-    "model": "emailconfirmation"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 30,
-  "fields": {
-    "app_label": "socialaccount",
-    "model": "socialaccount"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 31,
-  "fields": {
-    "app_label": "socialaccount",
-    "model": "socialapp"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 32,
-  "fields": {
-    "app_label": "socialaccount",
-    "model": "socialtoken"
-  }
-},
-{
   "model": "sessions.session",
-  "pk": "6wpibah2yvxlxm50rbwuqzh6l4fevxdt",
+  "pk": "q0mku39lmkch1cvi46tclbiae2d9pv67",
   "fields": {
-    "session_data": ".eJxVjEEOwiAURO_C2hALFD5duvcM5AO_FjVgoE00xrvbJl3oZhYzb96bOVzmyS2NqkuRDaxjh9_OY7hR3oZ4xXwpPJQ81-T5hvB9bfxcIt1PO_snmLBN61sIMJYsCAvBCzXSGgC97UPsFEpCEaRVWoIZfa9VZ7TR6MF4iGFEITdpo9ZSyY6ej1RfbDh-vmTdPqQ:1rn5p1:ezdJJZ5ydT8RuDcR8Z2GpnGg6irZngOsphN44cY0-Lg",
-    "expire_date": "2024-04-03T23:58:15.378Z"
+    "session_data": ".eJxVjEEOwiAURO_C2hDgQyku3fcM5MMHqRpISrsy3t026UJ3k3lv5s08bmvxW0-Ln4ldmWSX3y5gfKZ6AHpgvTceW12XOfBD4SftfGqUXrfT_Tso2Mu-VlnoIUlLAQ3obEgKS87pRKCkySOMaKMWRqqQ92Cdxog2CFBBwQDIPl_UHzdi:1s05p0:JnX76VrDyorKfjAX-zD5Hi6aIRKOs4C5cJ2s_Etnr-U",
+    "expire_date": "2024-05-09T20:35:58.170Z"
   }
 },
 {
@@ -424,13 +144,13 @@
   "model": "daiquiri_metadata.schema",
   "pk": 2,
   "fields": {
-    "order": 1,
+    "order": 0,
     "name": "des_dr2",
     "title": "DES DR2",
-    "description": "DES DR2 Schema\nSample data only for development.",
+    "description": "DES DR2 sample data",
     "long_description": "",
     "attribution": "",
-    "license": "",
+    "license": "PD",
     "doi": "",
     "related_identifiers": [],
     "utype": "",
@@ -447,10 +167,10 @@
   "model": "daiquiri_metadata.schema",
   "pk": 3,
   "fields": {
-    "order": 2,
+    "order": 0,
     "name": "gaia",
-    "title": "GAIA DR2",
-    "description": "GAIA DR2\nSample table only for development",
+    "title": "GAIA",
+    "description": "GAIA Sample data",
     "long_description": "",
     "attribution": "",
     "license": "",
@@ -581,11 +301,11 @@
     "schema": 2,
     "order": null,
     "name": "coadd_objects",
-    "title": "DES DR2 Coadd Objects",
-    "description": "Coadd Objects table\nSample data only for development.",
+    "title": "",
+    "description": "",
     "long_description": "",
     "attribution": "",
-    "license": "",
+    "license": "PD",
     "doi": "",
     "related_identifiers": [],
     "type": "table",
@@ -608,8 +328,8 @@
     "schema": 3,
     "order": null,
     "name": "gaia_dr2",
-    "title": "GAIA DR2",
-    "description": "GAIA DR2 Table \nSample data only for development",
+    "title": "",
+    "description": "",
     "long_description": "",
     "attribution": "",
     "license": "",

@@ -14,12 +14,6 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "daiquiri_data" <<-
     CREATE SCHEMA oai_schema AUTHORIZATION $POSTGRES_USER;
 EOSQL
 
-# psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "daiquiri_data" <<-EOSQL
-#     CREATE EXTENSION q3c;
-#     SELECT q3c_version();
-# EOSQL
-
-
 # Create Table DR2 SAMPLE SCHEMA
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "daiquiri_data" <<-EOSQL
     \i /data/des_dr2_sample.sql;
