@@ -37,8 +37,8 @@ uwsgi \
     --wsgi-file /app/config/wsgi.py \
     --module config.wsgi:application \
     --buffer-size=32768 \
-    --processes=4 \
-    --threads=2 \
+    --processes=${DJANGO_UWSGI_PROCESSES:-1} \
+    --threads=${DJANGO_UWSGI_THREADS:-1} \
     --http-timeout=180 \
-    --py-autoreload=1 \
+    --py-autoreload=${DJANGO_UWSGI_AUTORELEAD:-1} \
     --static-map /daiquiri_static=/app/static_root

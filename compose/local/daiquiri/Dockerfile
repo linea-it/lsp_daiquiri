@@ -31,7 +31,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     ldap-utils \
     git \
     zsh \
-    wget
+    wget \
+    vim
 
 # Install python packages
 # Create Python Dependency and Sub-Dependency.
