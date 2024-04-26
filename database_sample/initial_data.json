@@ -72,21 +72,11 @@
   }
 },
 {
-  "model": "auth.user",
-  "pk": 1,
+  "model": "sessions.session",
+  "pk": "mwowc8108r68oa57fws0wxo1g1b5tr6y",
   "fields": {
-    "password": "pbkdf2_sha256$600000$dkyY0E4tyE1m55vAB571Vd$SfCO0mzuZjTssayW3fG9S3GJB83Q157pgJquI0RwzU4=",
-    "last_login": "2024-04-25T20:35:58.167Z",
-    "is_superuser": true,
-    "username": "gverde",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2024-04-25T20:35:53.986Z",
-    "groups": [],
-    "user_permissions": []
+    "session_data": ".eJxVjEEOwiAQRe_C2pBBWlq6dO8ZyMAMFjXQlDbRGO-uTbrQ7X_vv5dwuC6jWyvPLpEYhBKH381juHHeAF0xX4oMJS9z8nJT5E6rPBfi-2l3_wIj1vH7NqSj1dqgMmQhQmxi9D3H0EblAbgJLR-NImstYtNrQh3AdmB82-sOcItWrjWV7PgxpfkpBnh_AJ-pP0M:1s0AAI:0rL3KU1dM_bzeCMFiTF3udfbf3kjw_KJmdRt-1AOHzU",
+    "expire_date": "2024-05-10T01:14:14.085Z"
   }
 },
 {
@@ -103,18 +93,6 @@
   "fields": {
     "domain": "example.com",
     "name": "example.com"
-  }
-},
-{
-  "model": "daiquiri_auth.profile",
-  "pk": 1,
-  "fields": {
-    "user": 1,
-    "is_pending": false,
-    "is_confirmed": false,
-    "details": null,
-    "attributes": null,
-    "consent": false
   }
 },
 {
