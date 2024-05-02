@@ -2,6 +2,8 @@
 {% load i18n %}
 {% load rules %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'daiquiri/css/style.css' %}" >
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 
     <div class="container">
@@ -25,10 +27,10 @@
             <ul class="nav navbar-nav">
 
                 <li>
-                    <a href="{% url 'query:query' %}">{% trans 'Query' %}</a>
+                    <a href="{% url 'query:query' %}" >{% trans 'Query' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'contact:contact' %}">{% trans 'Contact' %}</a>
+                    <a href="{% url 'contact:contact' %}" >{% trans 'Contact' %}</a>
                 </li>
 
             </ul>
