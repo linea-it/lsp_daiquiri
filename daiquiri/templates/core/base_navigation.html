@@ -1,7 +1,11 @@
+{% load static %}
 {% load i18n %}
 {% load rules %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'daiquiri/css/style.css' %}" >
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
     <div class="container">
 
         <div class="navbar-header">
@@ -11,17 +15,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'home' %}">{{ request.site.name }}</a>
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'daiquiri/imgs/linea-dark-invert.png' %}" width="75" alt="LogoLinea">
+                {% comment %}
+                    {{ request.site.name }}
+                {% endcomment %}
+            </a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
 
                 <li>
-                    <a href="{% url 'query:query' %}">{% trans 'Query' %}</a>
+                    <a href="{% url 'query:query' %}" >{% trans 'Query' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'contact:contact' %}">{% trans 'Contact' %}</a>
+                    <a href="{% url 'contact:contact' %}" >{% trans 'Contact' %}</a>
                 </li>
 
             </ul>
