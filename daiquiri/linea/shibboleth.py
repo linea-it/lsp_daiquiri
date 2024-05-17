@@ -42,16 +42,19 @@ class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
             ldap_uid = co.get_ldap_uid(identifier=eppn)
             log.debug(f"LDAP UID: {ldap_uid}")
 
-            log.debug("Updating user.profile.display_name.")
-            user.profile.display_name = ldap_uid
-            user.profile.save()
-            log.debug(f"Changed display name to {user.profile.display_name}")
+            log.debug("Updating user.first_name")
+
+            user.first_name = ldap_uid
+            user.last_name = ldap_uid
+            user.save()
+            log.debug(f"Changed display name to {user.profile.full_name}")
 
         except Exception as e:
             msg = f"Failed on retrive ldap uid from COmanager. Error: {e}"
             log.error(msg)
             raise Exception(msg)
 
+        # Adicionar o usuario a grupos está dando erro no daiquiri.
         self.setup_groups(user, shib_meta)
 
         log.debug("".rjust(40, "-"))
@@ -62,6 +65,9 @@ class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
         log = logging.getLogger("shibboleth")
 
         log.debug("Setup User Groups")
+
+        # Refresh user record
+        user.refresh_from_db()
 
         # eppn identity from shib meta atributes
         eppn = shib_meta["username"]
@@ -103,7 +109,7 @@ class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
         # Add the user to all groups in the shibboleth metadata
         for g in groups:
             group, created = Group.objects.get_or_create(name=g)
-            group.user_set.add(user)
+            user.groups.add(group)
 
         log.debug("User has been added to the following groups")
         log.debug(f"Groups: {groups}")
