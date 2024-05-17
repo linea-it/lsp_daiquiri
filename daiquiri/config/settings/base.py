@@ -145,4 +145,10 @@ if AUTH_SHIB_ENABLED == True:
     # Including Shibboleth authentication:
     AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
 
+# COmanage Autorization
+COMANAGE_SERVER_URL = "https://register.linea.org.br"
+COMANAGE_USER = ""
+COMANAGE_PASSWORD = ""
+COMANAGE_COID = 2
+
 SETTINGS_EXPORT += ["AUTH_SHIB_ENABLED", "LOGIN_URL", "LOGOUT_URL"]
