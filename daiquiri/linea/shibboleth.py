@@ -1,12 +1,16 @@
 import logging
 
-from django.conf import settings
 from django.contrib.auth.models import Group
 
 from shibboleth.middleware import ShibbolethRemoteUserMiddleware
 
+# from linea.ldap import get_ldap_username_by_email
+from linea.comanage import Comanage
+from django.conf import settings
+
 
 class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
+
     def make_profile(self, user, shib_meta):
         """
         This is here as a stub to allow subclassing of ShibbolethRemoteUserMiddleware
@@ -14,31 +18,98 @@ class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
         from the Shib provided attributes.  By default it does nothing.
         """
         log = logging.getLogger("shibboleth")
-        log.debug(settings.MIDDLEWARE)
-        log.debug(settings.AUTHENTICATION_BACKENDS)
-        log.debug(settings.SHIBBOLETH_ATTRIBUTE_MAP)
+        log.debug("Starting authentication with Shibboleth")
 
-        # Usar essa url depois de logado para ver os atributos disponiveis
-        # https://userquery-dev.linea.org.br/Shibboleth.sso/Session
-
-        log.info("Shibboleth::make_profile()")
         log.debug(f"Shib Meta: {shib_meta}")
-        log.debug(f"User: {user}")
 
-        # Guardar o email do usuario
+        # eppn identity from shib meta atributes
+        eppn = shib_meta["username"]
+
+        # Sempre atualiza o email do usuario do usuario
         user.email = shib_meta["email"]
-        log.info("Updated user email")
-
         user.save()
 
         try:
-            # Adicionar o usuario ao grupo Shibboleth
-            group, created = Group.objects.get_or_create(name="Shibboleth")
-            user.groups.add(group)
-            log.info("Added user to Shibboleth group")
-        except Exception as e:
-            log.error("Failed on add user to group shibboleth. Error: %s" % e)
+            # Instantiate Commange
+            co = Comanage(
+                service_url=settings.COMANAGE_SERVER_URL,
+                user=settings.COMANAGE_USER,
+                password=settings.COMANAGE_PASSWORD,
+                coid=settings.COMANAGE_COID,
+            )
 
-        log.debug("--------------------------")
+            log.debug("Retriving ldap uid from comanage.")
+            ldap_uid = co.get_ldap_uid(identifier=eppn)
+            log.debug(f"LDAP UID: {ldap_uid}")
+
+            log.debug("Updating user.first_name")
+
+            user.first_name = ldap_uid
+            user.last_name = ldap_uid
+            user.save()
+            log.debug(f"Changed display name to {user.profile.full_name}")
+
+        except Exception as e:
+            msg = f"Failed on retrive ldap uid from COmanager. Error: {e}"
+            log.error(msg)
+            raise Exception(msg)
+
+        # Adicionar o usuario a grupos está dando erro no daiquiri.
+        self.setup_groups(user, shib_meta)
+
+        log.debug("".rjust(40, "-"))
 
         return
+
+    def setup_groups(self, user, shib_meta):
+        log = logging.getLogger("shibboleth")
+
+        log.debug("Setup User Groups")
+
+        # Refresh user record
+        user.refresh_from_db()
+
+        # eppn identity from shib meta atributes
+        eppn = shib_meta["username"]
+
+        # Add a custom group shibboleth for mark this user make login using shibboleth.
+        groups = ["Shibboleth"]
+
+        # Recupera os grupos do usuario
+        # TODO: deveria usar o metodo: update_user_groups
+        # https://github.com/Brown-University-Library/django-shibboleth-remoteuser/blob/main/shibboleth/middleware.py#L86
+        try:
+
+            # Instantiate Commange
+            co = Comanage(
+                service_url=settings.COMANAGE_SERVER_URL,
+                user=settings.COMANAGE_USER,
+                password=settings.COMANAGE_PASSWORD,
+                coid=settings.COMANAGE_COID,
+            )
+
+            log.error("Retriving User Groups from COmanage.")
+            personid = co.get_co_person_id(eppn)
+            cogroups = co.get_groups(personid)
+
+            for group in cogroups:
+                groups.append(group["Name"])
+
+        except Exception as e:
+            msg = f"Failed on retrive groups from COmanage. Error: {e}"
+            log.error(msg)
+            raise Exception(msg)
+
+        # Remove the user from all groups that are not specified in the shibboleth metadata
+        for group in user.groups.all():
+            if group.name not in groups:
+                group.user_set.remove(user)
+                log.debug(f"User has been removed from the group {group.name}")
+
+        # Add the user to all groups in the shibboleth metadata
+        for g in groups:
+            group, created = Group.objects.get_or_create(name=g)
+            user.groups.add(group)
+
+        log.debug("User has been added to the following groups")
+        log.debug(f"Groups: {groups}")
