@@ -1,12 +1,12 @@
 import logging
 
+from django.conf import settings
 from django.contrib.auth.models import Group
-
-from shibboleth.middleware import ShibbolethRemoteUserMiddleware
 
 # from linea.ldap import get_ldap_username_by_email
 from linea.comanage import Comanage
-from django.conf import settings
+
+from shibboleth.middleware import ShibbolethRemoteUserMiddleware
 
 
 class ShibbolethMiddleware(ShibbolethRemoteUserMiddleware):
