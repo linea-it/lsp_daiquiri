@@ -15,6 +15,6 @@ $ chmod 600 mykey.key
 $ openssl req -new -key mykey.key -out mycert.csr
 $ openssl x509 -req -days 365 -in mycert.csr -signkey mykey.key -out mycert.crt
 
-$  cp server.key mykey.pem
-$  cp server.crt mycert.pem
+$  cp mycert.key mykey.pem
+$  cp mycert.crt mycert.pem
 ```

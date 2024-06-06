@@ -32,7 +32,6 @@ SITE_CREATED = "2019-01-01"
 SITE_UPDATED = "2019-04-01"
 
 LINEA_APPS = [
-    "shibboleth",
     "djangosaml2",
 ]
 
