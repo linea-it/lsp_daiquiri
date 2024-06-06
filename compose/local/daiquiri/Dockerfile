@@ -29,6 +29,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     libldap2-dev \
     libssl-dev \
     ldap-utils \
+    xmlsec1 \
     git \
     zsh \
     wget \

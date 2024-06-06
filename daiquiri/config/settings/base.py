@@ -1,6 +1,8 @@
 import os
 
 import daiquiri.core.env as env
+import saml2
+import saml2.saml
 
 from . import (
     ADDITIONAL_APPS,
@@ -11,6 +13,7 @@ from . import (
     LOGOUT_URL,
     MIDDLEWARE,
     SETTINGS_EXPORT,
+    BASE_DIR,
 )
 
 SITE_IDENTIFIER = "example.com"
@@ -28,7 +31,10 @@ SITE_PUBLISHER = "At vero eos et accusam"
 SITE_CREATED = "2019-01-01"
 SITE_UPDATED = "2019-04-01"
 
-LINEA_APPS = ["shibboleth"]
+LINEA_APPS = [
+    "shibboleth",
+    "djangosaml2",
+]
 
 INSTALLED_APPS = (
     DJANGO_APPS
@@ -112,38 +118,38 @@ QUERY_FORMS = [
 # Desenvolvedores devem usar a auth nativa do Django.
 
 # Shibboleth Authentication
-AUTH_SHIB_ENABLED = env.get_bool("AUTH_SHIB_ENABLED")
+# AUTH_SHIB_ENABLED = env.get_bool("AUTH_SHIB_ENABLED")
 
-if AUTH_SHIB_ENABLED == True:
-    LINEA_LOGIN_URL = env.get_url("AUTH_SHIB_LOGIN_URL").strip("/")
+# if AUTH_SHIB_ENABLED == True:
+#     LINEA_LOGIN_URL = env.get_url("AUTH_SHIB_LOGIN_URL").strip("/")
 
-    # SHIB_LOGIN_GOOGLE_URL = env.get_url('AUTH_SHIB_LOGIN_URL_GOOGLE_URL').strip('/')
+#     # SHIB_LOGIN_GOOGLE_URL = env.get_url('AUTH_SHIB_LOGIN_URL_GOOGLE_URL').strip('/')
 
-    # TODO: Não sei se logout tem uma url diferente. temporariamente recebe o valor que já tinha.
-    LINEA_LOGOUT_URL = LOGOUT_URL
+#     # TODO: Não sei se logout tem uma url diferente. temporariamente recebe o valor que já tinha.
+#     LINEA_LOGOUT_URL = LOGOUT_URL
 
-    # Essas variaveis são usadas internamente no django no fluxo de autenticação.
-    LOGIN_URL = LINEA_LOGIN_URL.strip("/")
-    LOGOUT_URL = LINEA_LOGOUT_URL
+#     # Essas variaveis são usadas internamente no django no fluxo de autenticação.
+#     LOGIN_URL = LINEA_LOGIN_URL.strip("/")
+#     LOGOUT_URL = LINEA_LOGOUT_URL
 
-    # Including Shibboleth Middleware
-    MIDDLEWARE.append(
-        "linea.shibboleth.ShibbolethMiddleware",
-    )
+#     # Including Shibboleth Middleware
+#     MIDDLEWARE.append(
+#         "linea.shibboleth.ShibbolethMiddleware",
+#     )
 
-    # Usar essa url depois de logado para ver os atributos disponiveis
-    # https://userquery-dev.linea.org.br/Shibboleth.sso/Session
+#     # Usar essa url depois de logado para ver os atributos disponiveis
+#     # https://userquery-dev.linea.org.br/Shibboleth.sso/Session
 
-    # https://github.com/Brown-University-Library/django-shibboleth-remoteuser
-    SHIBBOLETH_ATTRIBUTE_MAP = {
-        "eppn": (True, "username"),
-        "cn": (True, "first_name"),
-        "sn": (True, "last_name"),
-        "Shib-inetOrgPerson-mail": (True, "email"),
-    }
+#     # https://github.com/Brown-University-Library/django-shibboleth-remoteuser
+#     SHIBBOLETH_ATTRIBUTE_MAP = {
+#         "eppn": (True, "username"),
+#         "cn": (True, "first_name"),
+#         "sn": (True, "last_name"),
+#         "Shib-inetOrgPerson-mail": (True, "email"),
+#     }
 
-    # Including Shibboleth authentication:
-    AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
+#     # Including Shibboleth authentication:
+#     AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
 
 # COmanage Autorization
 COMANAGE_SERVER_URL = "https://register.linea.org.br"
@@ -151,4 +157,149 @@ COMANAGE_USER = ""
 COMANAGE_PASSWORD = ""
 COMANAGE_COID = 2
 
-SETTINGS_EXPORT += ["AUTH_SHIB_ENABLED", "LOGIN_URL", "LOGOUT_URL"]
+
+# DJANGO SAML2 Authentication
+AUTH_SAML2_ENABLED = env.get_bool("AUTH_SAML2_ENABLED")
+if AUTH_SAML2_ENABLED == True:
+
+    DOMAIN = "site.exemplo.com.br"
+    PORT = "80"
+    FQDN = "http://" + DOMAIN + ":" + PORT
+    CERT_DIR = "certificates"
+
+    # Including SAML2 Backend Authentication
+    AUTHENTICATION_BACKENDS.append("djangosaml2.backends.Saml2Backend")
+    # Including SAML2 Middleware
+    MIDDLEWARE.append("djangosaml2.backends.Saml2Backend")
+
+    # configurações relativas ao session cookie
+    SAML_SESSION_COOKIE_NAME = "saml_session"
+    SESSION_COOKIE_SECURE = True
+
+    # Qualquer view que requer um usuário autenticado deve redirecionar o navegador para esta url
+    LOGIN_URL = "/saml2/login/"
+
+    # Encerra a sessão quando o usuário fecha o navegador
+    SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+    # Tipo de binding utilizado
+    SAML_DEFAULT_BINDING = saml2.BINDING_HTTP_POST
+    SAML_IGNORE_LOGOUT_ERRORS = True
+
+    # Serviço de descoberta da cafeexpresso
+    SAML2_DISCO_URL = "https://ds.cafeexpresso.rnp.br/WAYF.php"
+
+    # Cria usuário Django a partir da asserção SAML caso o mesmo não exista
+    SAML_CREATE_UNKNOWN_USER = True
+
+    # URL para redirecionamento após a autenticação
+    LOGIN_REDIRECT_URL = "/"
+
+    SAML_ATTRIBUTE_MAPPING = {
+        "eduPersonPrincipalName": ("username",),
+        "mail": ("email",),
+        "givenName": ("first_name",),
+        "sn": ("last_name",),
+    }
+
+    SAML_CONFIG = {
+        # Configurado como 1 para fornecer informações de debug
+        "debug": 1,
+        # Biblioteca usada para assinatura e criptografia
+        "xmlsec_binary": "/usr/bin/xmlsec1",
+        "entityid": FQDN + "/saml2/metadata/",
+        # Diretório contendo os esquemas de mapeamento de atributo
+        "attribute_map_dir": os.path.join(BASE_DIR, "attribute-maps"),
+        "description": "SP Implicit",
+        # ... mais configurações
+        # Serviços a qual o servidor irá fornecer
+        "service": {
+            "sp": {
+                "name": "Exemplo SP Django",
+                "ui_info": {
+                    "display_name": {"text": "SP Django Implicit", "lang": "en"},
+                    "description": {
+                        "text": "Provedor de serviços Django Implicit",
+                        "lang": "en",
+                    },
+                    "information_url": {
+                        "text": "http://sp.information.url/",
+                        "lang": "en",
+                    },
+                    "privacy_statement_url": {
+                        "text": "http://sp.privacy.url/",
+                        "lang": "en",
+                    },
+                },
+                "name_id_format": [
+                    "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                    "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
+                ],
+                # Indica os endpoints dos serviços fornecidos
+                "endpoints": {
+                    "assertion_consumer_service": [
+                        (FQDN + "/saml2/acs/", saml2.BINDING_HTTP_POST),
+                    ],
+                    "single_logout_service": [
+                        (FQDN + "/saml2/ls/", saml2.BINDING_HTTP_REDIRECT),
+                        (FQDN + "/saml2/ls/post", saml2.BINDING_HTTP_POST),
+                    ],
+                },
+                # Algoritmos utilizados
+                "signing_algorithm": saml2.xmldsig.SIG_RSA_SHA256,
+                "digest_algorithm": saml2.xmldsig.DIGEST_SHA256,
+                "force_authn": False,
+                "name_id_format_allow_create": False,
+                # Indica que as respostas de autenticação para este SP devem ser assinadas
+                "want_response_signed": True,
+                # Indica se as solicitações de autenticação enviadas por este SP devem ser assinadas
+                "authn_requests_signed": True,
+                # Indica se este SP deseja que o IdP envie as asserções assinadas
+                "want_assertions_signed": True,
+                "only_use_keys_in_metadata": True,
+                "allow_unsolicited": False,
+            }
+        },
+        # Indica onde os metadados podem ser encontrados
+        "metadata": {
+            "remote": [
+                {
+                    "url": "https://ds.cafeexpresso.rnp.br/metadata/ds-metadata.xml",
+                    "cert": "null",
+                },
+            ]
+        },
+        # Assinatura
+        "key_file": os.path.join(BASE_DIR, CERT_DIR, "mykey.pem"),  # private part
+        "cert_file": os.path.join(BASE_DIR, CERT_DIR, "mycert.pem"),  # public part
+        # Encriptação
+        "encryption_keypairs": [
+            {
+                "key_file": os.path.join(
+                    BASE_DIR, CERT_DIR, "mykey.pem"
+                ),  # private part
+                "cert_file": os.path.join(
+                    BASE_DIR, CERT_DIR, "mycert.pem"
+                ),  # public part
+            }
+        ],
+        # Descreve a pessoa responsável pelo serviço
+        "contact_person": [
+            {
+                "given_name": "GIdLab",
+                "sur_name": "Equipe",
+                "company": "RNP",
+                "email_address": "gidlab@rnp.br",
+                "contact_type": "technical",
+            },
+        ],
+        # Descreve a organização responsável pelo serviço
+        "organization": {
+            "name": [("GIdLab", "pt-br")],
+            "display_name": [("GIdLab", "pt-br")],
+            "url": [("http://gidlab.rnp.br", "pt-br")],
+        },
+    }
+
+
+SETTINGS_EXPORT += ["AUTH_SAML2_ENABLED", "LOGIN_URL", "LOGOUT_URL"]
