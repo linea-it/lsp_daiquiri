@@ -16,7 +16,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static 'core/img/daiquiri.jpg' %}" style="height: 40px; width: 40px;" alt="Logo daiquiri">
+                <img src="{% static 'daiquiri/imgs/linea-dark-invert.png' %}" width="75" alt="Logo LIneA">
                 {% comment %}
                 {{ request.site.name }}
                 {% endcomment %}
@@ -29,6 +29,9 @@
                 <li>
                     <a href="{% url 'query:query' %}">{% trans 'Query' %}</a>
                 </li>
+                <li>
+                    <a href="https://scienceserver-dev.linea.org.br/" target="_blank">science-server</a>
+                </li>                
                 {% comment %} <li>
                     <a href="{% url 'contact:contact' %}">{% trans 'Contact' %}</a>
                 </li> {% endcomment %}
