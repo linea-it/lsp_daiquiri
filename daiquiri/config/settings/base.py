@@ -159,24 +159,25 @@ COMANAGE_COID = 2
 
 # DJANGO SAML2 Authentication
 AUTH_SAML2_ENABLED = env.get_bool("AUTH_SAML2_ENABLED")
+
 if AUTH_SAML2_ENABLED == True:
 
-    DOMAIN = "site.exemplo.com.br"
-    PORT = "80"
-    FQDN = "http://" + DOMAIN + ":" + PORT
+    DOMAIN = "userquery-dev.linea.org.br"
+    FQDN = "https://" + DOMAIN
     CERT_DIR = "certificates"
 
     # Including SAML2 Backend Authentication
-    AUTHENTICATION_BACKENDS.append("djangosaml2.backends.Saml2Backend")
+    AUTHENTICATION_BACKENDS += ("djangosaml2.backends.Saml2Backend", )
     # Including SAML2 Middleware
-    MIDDLEWARE.append("djangosaml2.backends.Saml2Backend")
+    MIDDLEWARE += ("djangosaml2.middleware.SamlSessionMiddleware", )
+
 
     # configurações relativas ao session cookie
-    SAML_SESSION_COOKIE_NAME = "saml_session"
+    SAML_SESSION_COOKIE_NAME = 'saml_session'
     SESSION_COOKIE_SECURE = True
 
-    # Qualquer view que requer um usuário autenticado deve redirecionar o navegador para esta url
-    LOGIN_URL = "/saml2/login/"
+    # Qualquer view que requer um usuário autenticado deve redirecionar o navegador para esta url 
+    LOGIN_URL = '/saml2/login/'
 
     # Encerra a sessão quando o usuário fecha o navegador
     SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -186,119 +187,125 @@ if AUTH_SAML2_ENABLED == True:
     SAML_IGNORE_LOGOUT_ERRORS = True
 
     # Serviço de descoberta da cafeexpresso
-    SAML2_DISCO_URL = "https://ds.cafeexpresso.rnp.br/WAYF.php"
+    # SAML2_DISCO_URL = 'https://ds.cafeexpresso.rnp.br/WAYF.php'
 
     # Cria usuário Django a partir da asserção SAML caso o mesmo não exista
     SAML_CREATE_UNKNOWN_USER = True
 
-    # URL para redirecionamento após a autenticação
-    LOGIN_REDIRECT_URL = "/"
+    # https://djangosaml2.readthedocs.io/contents/security.html#content-security-policy
+    SAML_CSP_HANDLER = ""
 
-    SAML_ATTRIBUTE_MAPPING = {
+    # URL para redirecionamento após a autenticação
+    LOGIN_REDIRECT_URL = '/query'
+
+    SAML_ATTRIBUTE_MAPPING = { 
         "eduPersonPrincipalName": ("username",),
-        "mail": ("email",),
         "givenName": ("first_name",),
         "sn": ("last_name",),
+        "email": ("email",)
     }
 
     SAML_CONFIG = {
-        # Configurado como 1 para fornecer informações de debug
-        "debug": 1,
         # Biblioteca usada para assinatura e criptografia
-        "xmlsec_binary": "/usr/bin/xmlsec1",
-        "entityid": FQDN + "/saml2/metadata/",
+        'xmlsec_binary': '/usr/bin/xmlsec1',
+        'entityid': FQDN + '/saml2/metadata/',
         # Diretório contendo os esquemas de mapeamento de atributo
-        "attribute_map_dir": os.path.join(BASE_DIR, "attribute-maps"),
-        "description": "SP Implicit",
-        # ... mais configurações
-        # Serviços a qual o servidor irá fornecer
-        "service": {
-            "sp": {
-                "name": "Exemplo SP Django",
-                "ui_info": {
-                    "display_name": {"text": "SP Django Implicit", "lang": "en"},
-                    "description": {
-                        "text": "Provedor de serviços Django Implicit",
-                        "lang": "en",
+        'attribute_map_dir': os.path.join(BASE_DIR, 'attribute-maps'),
+        'description': 'SP User Query',
+        'service': {
+            'sp' : {
+                'name': 'SP User Query',
+                'ui_info': {
+                    'display_name': {
+                        'text':'SP User Query',
+                        'lang':'en'
                     },
-                    "information_url": {
-                        "text": "http://sp.information.url/",
-                        "lang": "en",
+                    'description': {
+                        'text':'SP User Query',
+                        'lang':'en'
                     },
-                    "privacy_statement_url": {
-                        "text": "http://sp.privacy.url/",
-                        "lang": "en",
+                    'information_url': {
+                        'text': FQDN,
+                        'lang':'en'
                     },
+                    'privacy_statement_url': {
+                        'text': FQDN,
+                        'lang':'en'
+                    }
                 },
-                "name_id_format": [
+                'name_id_format': [
                     "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
                     "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
                 ],
                 # Indica os endpoints dos serviços fornecidos
-                "endpoints": {
-                    "assertion_consumer_service": [
-                        (FQDN + "/saml2/acs/", saml2.BINDING_HTTP_POST),
-                    ],
-                    "single_logout_service": [
-                        (FQDN + "/saml2/ls/", saml2.BINDING_HTTP_REDIRECT),
-                        (FQDN + "/saml2/ls/post", saml2.BINDING_HTTP_POST),
-                    ],
+                'endpoints': {
+                    'assertion_consumer_service': [
+                        (FQDN +'/saml2/acs/',
+                        saml2.BINDING_HTTP_POST),
+                        ],
+                    'single_logout_service': [
+                        (FQDN + '/saml2/ls/',
+                        saml2.BINDING_HTTP_REDIRECT),
+                        (FQDN + '/saml2/ls/post',
+                        saml2.BINDING_HTTP_POST),
+                        ],
                 },
                 # Algoritmos utilizados
-                "signing_algorithm": saml2.xmldsig.SIG_RSA_SHA256,
-                "digest_algorithm": saml2.xmldsig.DIGEST_SHA256,
-                "force_authn": False,
-                "name_id_format_allow_create": False,
+                #'signing_algorithm':  saml2.xmldsig.SIG_RSA_SHA256,
+                #'digest_algorithm':  saml2.xmldsig.DIGEST_SHA256,
+
+                'force_authn': False,
+                'name_id_format_allow_create': False,
+
                 # Indica que as respostas de autenticação para este SP devem ser assinadas
-                "want_response_signed": True,
+                'want_response_signed': True,
+
                 # Indica se as solicitações de autenticação enviadas por este SP devem ser assinadas
-                "authn_requests_signed": True,
+                'authn_requests_signed': True,
+
                 # Indica se este SP deseja que o IdP envie as asserções assinadas
-                "want_assertions_signed": True,
-                "only_use_keys_in_metadata": True,
-                "allow_unsolicited": False,
-            }
-        },
-        # Indica onde os metadados podem ser encontrados
-        "metadata": {
-            "remote": [
-                {
-                    "url": "https://ds.cafeexpresso.rnp.br/metadata/ds-metadata.xml",
-                    "cert": "null",
-                },
-            ]
-        },
-        # Assinatura
-        "key_file": os.path.join(BASE_DIR, CERT_DIR, "mykey.pem"),  # private part
-        "cert_file": os.path.join(BASE_DIR, CERT_DIR, "mycert.pem"),  # public part
-        # Encriptação
-        "encryption_keypairs": [
-            {
-                "key_file": os.path.join(
-                    BASE_DIR, CERT_DIR, "mykey.pem"
-                ),  # private part
-                "cert_file": os.path.join(
-                    BASE_DIR, CERT_DIR, "mycert.pem"
-                ),  # public part
-            }
-        ],
-        # Descreve a pessoa responsável pelo serviço
-        "contact_person": [
-            {
-                "given_name": "GIdLab",
-                "sur_name": "Equipe",
-                "company": "RNP",
-                "email_address": "gidlab@rnp.br",
-                "contact_type": "technical",
+                'want_assertions_signed': False,
+                
+                'only_use_keys_in_metadata': True,
+                'allow_unsolicited': False,
             },
+        },
+
+        # Indica onde os metadados podem ser encontrados
+        'metadata': {
+            'local': [
+                os.path.join(BASE_DIR, "metadatas", "satosa-prod-cafe.xml"),
+                os.path.join(BASE_DIR, "metadatas", "satosa-prod-cilogon.xml")
+            ],
+        },
+
+        # Configurado como 1 para fornecer informações de debug 
+        'debug': 1,
+
+        # Signature
+        'key_file': os.path.join(BASE_DIR, CERT_DIR, 'mykey.pem'),  # private part
+        'cert_file': os.path.join(BASE_DIR, CERT_DIR, 'mycert.pem'),  # public part
+
+        # Encriptation
+        'encryption_keypairs': [{
+            'key_file': os.path.join(BASE_DIR, CERT_DIR, 'mykey.pem'),  # private part
+            'cert_file': os.path.join(BASE_DIR, CERT_DIR, 'mycert.pem'),  # public part
+        }],
+
+        'contact_person': [
+            {'given_name': 'GIdLab',
+            'sur_name': 'Equipe',
+            'company': 'RNP',
+            'email_address': 'gidlab@rnp.br',
+            'contact_type': 'technical'},
         ],
-        # Descreve a organização responsável pelo serviço
-        "organization": {
-            "name": [("GIdLab", "pt-br")],
-            "display_name": [("GIdLab", "pt-br")],
-            "url": [("http://gidlab.rnp.br", "pt-br")],
+
+        # Descreve a organização responsável pelo serviço    
+        'organization': {
+            'name': [('GIdLab', 'pt-br')],
+            'display_name': [('GIdLab', 'pt-br')],
+            'url': [('http://gidlab.rnp.br', 'pt-br')],
         },
     }
-
 
 SETTINGS_EXPORT += ["AUTH_SAML2_ENABLED", "LOGIN_URL", "LOGOUT_URL"]

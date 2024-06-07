@@ -11,8 +11,8 @@
     <!-- <h2>dolor sit amet</h2> -->
 
     <div class="row">
-        <img style="margin-top: 5px; margin-bottom: 5px; width: 100%; background-color: black;" src="{% static 'daiquiri/imgs/dark-energy-image.png' %}"
-            alt="Dark Energy Image" />
+        <img style="margin-top: 5px; margin-bottom: 5px; width: 100%; background-color: black;"
+            src="{% static 'daiquiri/imgs/dark-energy-image.png' %}" alt="Dark Energy Image" />
         <!-- <div class="col-md-4">
             <img style="margin-top: 5px;" src="{% static 'core/img/daiquiri.jpg' %}" />
         </div>  -->
@@ -56,7 +56,7 @@
 
 
 
-{% if not user.is_authenticated and settings.AUTH_SHIB_ENABLED == False %}
+{% if not user.is_authenticated and settings.AUTH_SAML2_ENABLED == False %}
 <div class="home">
 
     <h2>Login</h2>
