@@ -113,49 +113,11 @@ QUERY_FORMS = [
 # LInea Specific
 # -----------------------------------------------
 
-# Em desenvolvimento não é possivel acessar o Shibboleth
-# Desenvolvedores devem usar a auth nativa do Django.
-
-# Shibboleth Authentication
-# AUTH_SHIB_ENABLED = env.get_bool("AUTH_SHIB_ENABLED")
-
-# if AUTH_SHIB_ENABLED == True:
-#     LINEA_LOGIN_URL = env.get_url("AUTH_SHIB_LOGIN_URL").strip("/")
-
-#     # SHIB_LOGIN_GOOGLE_URL = env.get_url('AUTH_SHIB_LOGIN_URL_GOOGLE_URL').strip('/')
-
-#     # TODO: Não sei se logout tem uma url diferente. temporariamente recebe o valor que já tinha.
-#     LINEA_LOGOUT_URL = LOGOUT_URL
-
-#     # Essas variaveis são usadas internamente no django no fluxo de autenticação.
-#     LOGIN_URL = LINEA_LOGIN_URL.strip("/")
-#     LOGOUT_URL = LINEA_LOGOUT_URL
-
-#     # Including Shibboleth Middleware
-#     MIDDLEWARE.append(
-#         "linea.shibboleth.ShibbolethMiddleware",
-#     )
-
-#     # Usar essa url depois de logado para ver os atributos disponiveis
-#     # https://userquery-dev.linea.org.br/Shibboleth.sso/Session
-
-#     # https://github.com/Brown-University-Library/django-shibboleth-remoteuser
-#     SHIBBOLETH_ATTRIBUTE_MAP = {
-#         "eppn": (True, "username"),
-#         "cn": (True, "first_name"),
-#         "sn": (True, "last_name"),
-#         "Shib-inetOrgPerson-mail": (True, "email"),
-#     }
-
-#     # Including Shibboleth authentication:
-#     AUTHENTICATION_BACKENDS += ("shibboleth.backends.ShibbolethRemoteUserBackend",)
-
 # COmanage Autorization
 COMANAGE_SERVER_URL = "https://register.linea.org.br"
 COMANAGE_USER = ""
 COMANAGE_PASSWORD = ""
 COMANAGE_COID = 2
-
 
 # DJANGO SAML2 Authentication
 AUTH_SAML2_ENABLED = env.get_bool("AUTH_SAML2_ENABLED")
