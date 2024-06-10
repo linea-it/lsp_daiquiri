@@ -167,7 +167,9 @@ if AUTH_SAML2_ENABLED == True:
     CERT_DIR = "certificates"
 
     # Including SAML2 Backend Authentication
-    AUTHENTICATION_BACKENDS += ("djangosaml2.backends.Saml2Backend", )
+    # AUTHENTICATION_BACKENDS += ("djangosaml2.backends.Saml2Backend", )
+    # Custom Saml2 Backend for LIneA
+    AUTHENTICATION_BACKENDS += ("linea.saml2.LineaSaml2Backend", )
     # Including SAML2 Middleware
     MIDDLEWARE += ("djangosaml2.middleware.SamlSessionMiddleware", )
 
