@@ -29,6 +29,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     libldap2-dev \
     libssl-dev \
     ldap-utils \
+    xmlsec1 \
     git \
     zsh \
     wget \
@@ -64,9 +65,6 @@ FROM daiquiri-$BUILD_ENVIRONMENT
 
 ENV PATH="/home/daiquiri/.local/bin:$PATH"
 
-# FIX: django-shibboleth-remoteuser Incompativel com Vesão 4.x do Django.
-COPY ./shibboleth/urls.py /usr/local/lib/python3.9/site-packages/shibboleth/urls.py
-
 # Create the non-root user up front
 RUN groupadd --gid ${USER_GID} $USERNAME \
     && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
@@ -76,7 +74,12 @@ RUN groupadd --gid ${USER_GID} $USERNAME \
 
 # Copy app files into container
 WORKDIR /app
+# Daiquiri APP 
 COPY ./daiquiri /app
+# Django SAML Settings and Dependencies
+COPY ./attribute-maps /app/attribute-maps
+COPY ./certificates /app/certificates
+COPY ./metadatas /app/metadatas
 
 # Basic Settings necessary for run download_vendor_files during build process
 # NÃO ALTERAR os paths utilizar os volumes no docker-compose para indicar os diretórios.

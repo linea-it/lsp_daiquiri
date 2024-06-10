@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
-
 from daiquiri.core.views import home
 
 urlpatterns = [
@@ -33,8 +32,8 @@ urlpatterns = [
         name="layout",
     ),
     path("admin/", admin.site.urls),
-    # Auth Shibboleth
-    path("shib/", include("shibboleth.urls", namespace="shibboleth")),
+    # Auth SAML2
+    path("saml2/", include("djangosaml2.urls")),
 ]
 
 handler400 = "daiquiri.core.views.bad_request"

@@ -14,14 +14,22 @@ services:
     env_file:
       - .env
     volumes:
+      # Django Src
       - ./daiquiri:/app
+      # Django Settings
       - ./local_settings.py:/app/config/settings/local.py:ro
+      # Django SAML
+      - ./certificates:/app/certificates
+      - ./metadatas:/app/metadatas
+      # Data folders
       - ./database_sample:/app/fixtures
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
+      # Logs
       - ./logs:/var/log/daiquiri
       - ./logs:/var/log/celery
+      # Development workspace
       - ..:/workspaces
     command: /start.sh
     depends_on:
