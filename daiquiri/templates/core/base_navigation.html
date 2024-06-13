@@ -98,15 +98,15 @@
                         <li>
                             <a href="{% url 'account_profile' %}">{% trans 'Update profile' %}</a>
                         </li>
-                        <li>
+                        {% comment %} <li>
                             <a href="{% url 'account_email' %}">{% trans 'Update email' %}</a>
-                        </li>
-                        <li>
+                        </li> {% endcomment %}
+                        {% comment %} <li>
                             <a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a>
-                        </li>
-                        <li>
+                        </li> {% endcomment %}
+                        {% comment %} <li>
                             <a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a>
-                        </li>
+                        </li> {% endcomment %}
                         <li>
                             <a href="{% url 'account_token' %}">{% trans 'API token' %}</a>
                         </li>
