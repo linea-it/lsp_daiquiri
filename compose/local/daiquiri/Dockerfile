@@ -74,7 +74,7 @@ RUN groupadd --gid ${USER_GID} $USERNAME \
 
 # Copy app files into container
 WORKDIR /app
-# Daiquiri APP 
+# Daiquiri APP
 COPY ./daiquiri /app
 # Django SAML Settings and Dependencies
 COPY ./attribute-maps /app/attribute-maps
