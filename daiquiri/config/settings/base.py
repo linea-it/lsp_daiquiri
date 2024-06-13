@@ -1,8 +1,9 @@
 import os
 
-import daiquiri.core.env as env
 import saml2
 import saml2.saml
+
+import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
@@ -16,20 +17,54 @@ from . import (
     SETTINGS_EXPORT,
 )
 
+# the hostname and port number of the current Server
+BASE_HOST = env.get("SITE_URL")
+
+# Public URL of the Daiquiri site. Used for VO and OAI metadata.
+# Default: http://localhost:8000
+SITE_URL = env.get("SITE_URL")
+
+# Identifier for the Daiquiri site. Usually the URL without the protocol. Used for VO and OAI metadata.
+# Default: None
 SITE_IDENTIFIER = env.get("DOMAIN")
-SITE_TITLE = "example.com"
-SITE_DESCRIPTION = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
-SITE_LICENSE = "CC0"
-SITE_CREATOR = "Anna Admin"
+# The title for the Daiquiri site. Used for VO and OAI metadata.
+# Default: None
+SITE_TITLE = "LIneA TAP Service"
+
+# The description for the Daiquiri site. Used for VO and OAI metadata.
+# Default: None
+SITE_DESCRIPTION = "The TAP Service registry for linea.org.br"
+
+# A license for the Daiquiri site.
+# See https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/core/constants.py for the available choices. Used in various metadata fields.
+# Default: None
+SITE_LICENSE = None
+
+# Creator of the Daiquiri site. Used in the VO registry entry. Has to be of the following form:
+# Default: None
+SITE_CREATOR = "LIneA"
+SITE_LOGO_URL = "https://linea.org.br/favicon.ico"
+
+# List of contacts for the Daiquiri site. Used in the VO registry entry. Has to be of the following form:
+# Default: None
 SITE_CONTACT = {
-    "name": "Anna Admin",
-    "address": "Example Road 1",
-    "email": "admin@example.com",
-    "telephone": "+01 234 56789",
+    "name": "LIneA Helpdesk",
+    "address": "Rio de Janeiro, Brasil",
+    "email": "helpdesk@linea.org.br",
+    "telephone": "55 21 96937 9224",
 }
-SITE_PUBLISHER = "At vero eos et accusam"
-SITE_CREATED = "2019-01-01"
-SITE_UPDATED = "2019-04-01"
+
+# Publisher of the Daiquiri site. Used for VO and OAI metadata.
+# Default: None
+SITE_PUBLISHER = "LIneA - Laboratório Interinstitucional de e-Astronomia"
+
+# Date of the creation of the Daiquiri site. Used for VO and OAI metadata. Has to be of the form
+# Default: None
+SITE_CREATED = "2023-04-19"
+
+# Date of the last update of the Daiquiri site. Used for VO and OAI metadata. Has to be of the form
+# Default: None
+SITE_UPDATED = "2024-06-13"
 
 LINEA_APPS = [
     "djangosaml2",

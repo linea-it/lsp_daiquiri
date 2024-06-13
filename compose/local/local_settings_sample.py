@@ -1,5 +1,5 @@
 # the hostname and port number of the current Server
-BASE_HOST = "http://localhost/daiquiri"
+BASE_HOST = "http://localhost"
 
 # A list of strings representing the host/domain names that this Django site can serve.
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1", "*"]
