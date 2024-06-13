@@ -1,54 +1,5 @@
-# the hostname and port number of the current Server
-BASE_HOST = "http://localhost"
-
 # A list of strings representing the host/domain names that this Django site can serve.
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1", "*"]
-
-# Public URL of the Daiquiri site. Used for VO and OAI metadata.
-# Default: http://localhost:8000
-SITE_URL = "http://localhost"
-
-# Identifier for the Daiquiri site. Usually the URL without the protocol. Used for VO and OAI metadata.
-# Default: None
-SITE_IDENTIFIER = "daiquiri.com"
-
-# The title for the Daiquiri site. Used for VO and OAI metadata.
-# Default: None
-SITE_TITLE = "LIneA TAP Service"
-
-# The description for the Daiquiri site. Used for VO and OAI metadata.
-# Default: None
-SITE_DESCRIPTION = "The TAP Service registry for linea.org.br"
-
-# A license for the Daiquiri site. See https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/core/constants.py for the available choices. Used in various metadata fields.
-# Default: None
-SITE_LICENSE = None
-
-# Creator of the Daiquiri site. Used in the VO registry entry. Has to be of the following form:
-# Default: None
-SITE_CREATOR = "LIneA"
-SITE_LOGO_URL = "https://scienceserver.linea.org.br/favicon.png"
-
-# List of contacts for the Daiquiri site. Used in the VO registry entry. Has to be of the following form:
-# Default: None
-SITE_CONTACT = {
-    "name": "LIneA Helpdesk",
-    "address": "Rio de Janeiro, Brasil",
-    "email": "helpdesk@linea.org.br",
-    "telephone": "",
-}
-
-# Publisher of the Daiquiri site. Used for VO and OAI metadata.
-# Default: None
-SITE_PUBLISHER = "LIneA - Laboratório Interinstitucional de e-Astronomia"
-
-# Date of the creation of the Daiquiri site. Used for VO and OAI metadata. Has to be of the form
-# Default: None
-SITE_CREATED = "2023-04-19"
-
-# Date of the last update of the Daiquiri site. Used for VO and OAI metadata. Has to be of the form
-# Default: None
-SITE_UPDATED = "2023-04-19"
 
 QUERY_DROPDOWNS = [
     {

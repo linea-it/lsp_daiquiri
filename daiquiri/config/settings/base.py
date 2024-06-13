@@ -149,10 +149,10 @@ QUERY_FORMS = [
 # -----------------------------------------------
 
 # COmanage Autorization
-COMANAGE_SERVER_URL = "https://register.linea.org.br"
-COMANAGE_USER = ""
-COMANAGE_PASSWORD = ""
-COMANAGE_COID = 2
+COMANAGE_SERVER_URL = env.get("COMANAGE_SERVER_URL", "https://register.linea.org.br")
+COMANAGE_USER = env.get("COMANAGE_USER")
+COMANAGE_PASSWORD = env.get("COMANAGE_PASSWORD")
+COMANAGE_COID = env.get("COMANAGE_COID", 2)
 
 # DJANGO SAML2 Authentication
 AUTH_SAML2_ENABLED = env.get_bool("AUTH_SAML2_ENABLED", False)
