@@ -75,7 +75,7 @@ if LOG_DIR:
                 "class": "logging.FileHandler",
                 "filename": os.path.join(LOG_DIR, "saml.log"),
                 "formatter": "default",
-            },            
+            },
         },
         "loggers": {
             "django": {"handlers": ["console"], "level": "INFO", "propagate": False},
@@ -113,6 +113,6 @@ if LOG_DIR:
                 "handlers": ["saml2_log"],
                 "level": LOG_LEVEL,
                 "propagate": False,
-            },            
+            },
         },
     }

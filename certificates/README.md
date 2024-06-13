@@ -1,6 +1,6 @@
 # Diretório contendo os certificados
 
-Inclua no diretório seus certificados para assinatura e encriptação das asserções SAML. 
+Inclua no diretório seus certificados para assinatura e encriptação das asserções SAML.
 
 Caso não possua certificados válidos gere um certificado autoassinado através do comando abaixo:
 

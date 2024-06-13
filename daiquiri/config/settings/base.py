@@ -1,35 +1,70 @@
 import os
 
-import daiquiri.core.env as env
 import saml2
 import saml2.saml
+
+import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
     AUTHENTICATION_BACKENDS,
+    BASE_DIR,
     BASE_URL,
     DJANGO_APPS,
     LOGIN_URL,
     LOGOUT_URL,
     MIDDLEWARE,
     SETTINGS_EXPORT,
-    BASE_DIR,
 )
 
-SITE_IDENTIFIER = "example.com"
-SITE_TITLE = "example.com"
-SITE_DESCRIPTION = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
-SITE_LICENSE = "CC0"
-SITE_CREATOR = "Anna Admin"
+# the hostname and port number of the current Server
+BASE_HOST = env.get("SITE_URL")
+
+# Public URL of the Daiquiri site. Used for VO and OAI metadata.
+# Default: http://localhost:8000
+SITE_URL = env.get("SITE_URL")
+
+# Identifier for the Daiquiri site. Usually the URL without the protocol. Used for VO and OAI metadata.
+# Default: None
+SITE_IDENTIFIER = env.get("DOMAIN")
+# The title for the Daiquiri site. Used for VO and OAI metadata.
+# Default: None
+SITE_TITLE = "LIneA TAP Service"
+
+# The description for the Daiquiri site. Used for VO and OAI metadata.
+# Default: None
+SITE_DESCRIPTION = "The TAP Service registry for linea.org.br"
+
+# A license for the Daiquiri site.
+# See https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/core/constants.py for the available choices. Used in various metadata fields.
+# Default: None
+SITE_LICENSE = None
+
+# Creator of the Daiquiri site. Used in the VO registry entry. Has to be of the following form:
+# Default: None
+SITE_CREATOR = "LIneA"
+SITE_LOGO_URL = "https://linea.org.br/favicon.ico"
+
+# List of contacts for the Daiquiri site. Used in the VO registry entry. Has to be of the following form:
+# Default: None
 SITE_CONTACT = {
-    "name": "Anna Admin",
-    "address": "Example Road 1",
-    "email": "admin@example.com",
-    "telephone": "+01 234 56789",
+    "name": "LIneA Helpdesk",
+    "address": "Rio de Janeiro, Brasil",
+    "email": "helpdesk@linea.org.br",
+    "telephone": "55 21 96937 9224",
 }
-SITE_PUBLISHER = "At vero eos et accusam"
-SITE_CREATED = "2019-01-01"
-SITE_UPDATED = "2019-04-01"
+
+# Publisher of the Daiquiri site. Used for VO and OAI metadata.
+# Default: None
+SITE_PUBLISHER = "LIneA - Laboratório Interinstitucional de e-Astronomia"
+
+# Date of the creation of the Daiquiri site. Used for VO and OAI metadata. Has to be of the form
+# Default: None
+SITE_CREATED = "2023-04-19"
+
+# Date of the last update of the Daiquiri site. Used for VO and OAI metadata. Has to be of the form
+# Default: None
+SITE_UPDATED = "2024-06-13"
 
 LINEA_APPS = [
     "djangosaml2",
@@ -114,34 +149,42 @@ QUERY_FORMS = [
 # -----------------------------------------------
 
 # COmanage Autorization
-COMANAGE_SERVER_URL = "https://register.linea.org.br"
-COMANAGE_USER = ""
-COMANAGE_PASSWORD = ""
-COMANAGE_COID = 2
+COMANAGE_SERVER_URL = env.get("COMANAGE_SERVER_URL", "https://register.linea.org.br")
+COMANAGE_USER = env.get("COMANAGE_USER")
+COMANAGE_PASSWORD = env.get("COMANAGE_PASSWORD")
+COMANAGE_COID = env.get("COMANAGE_COID", 2)
 
 # DJANGO SAML2 Authentication
-AUTH_SAML2_ENABLED = env.get_bool("AUTH_SAML2_ENABLED")
+AUTH_SAML2_ENABLED = env.get_bool("AUTH_SAML2_ENABLED", False)
+AUTH_SAML2_LOGIN_URL_CAFE = None
+AUTH_SAML2_LOGIN_URL_CILOGON = None
 
 if AUTH_SAML2_ENABLED == True:
 
-    DOMAIN = "userquery-dev.linea.org.br"
-    FQDN = "https://" + DOMAIN
+    # DOMAIN Exemplo: userquery-dev.linea.org.br
+    DOMAIN = env.get("DOMAIN")
+
+    # FQDN Exemplo:https://userquery-dev.linea.org.br
+    FQDN = env.get("SITE_URL")
+    # FQDN = "https://" + DOMAIN
     CERT_DIR = "certificates"
 
     # Including SAML2 Backend Authentication
     # AUTHENTICATION_BACKENDS += ("djangosaml2.backends.Saml2Backend", )
     # Custom Saml2 Backend for LIneA
-    AUTHENTICATION_BACKENDS += ("linea.saml2.LineaSaml2Backend", )
+    AUTHENTICATION_BACKENDS += ("linea.saml2.LineaSaml2Backend",)
     # Including SAML2 Middleware
-    MIDDLEWARE += ("djangosaml2.middleware.SamlSessionMiddleware", )
-
+    MIDDLEWARE += ("djangosaml2.middleware.SamlSessionMiddleware",)
 
     # configurações relativas ao session cookie
-    SAML_SESSION_COOKIE_NAME = 'saml_session'
+    SAML_SESSION_COOKIE_NAME = "saml_session"
     SESSION_COOKIE_SECURE = True
 
-    # Qualquer view que requer um usuário autenticado deve redirecionar o navegador para esta url 
-    LOGIN_URL = '/saml2/login/'
+    # Qualquer view que requer um usuário autenticado deve redirecionar o navegador para esta url
+    # LOGIN_URL = "/saml2/login/"
+    LOGIN_URL = "/login/"
+    AUTH_SAML2_LOGIN_URL_CAFE = env.get("AUTH_SAML2_LOGIN_URL_CAFE")
+    AUTH_SAML2_LOGIN_URL_CILOGON = env.get("AUTH_SAML2_LOGIN_URL_CILOGON")
 
     # Encerra a sessão quando o usuário fecha o navegador
     SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -160,116 +203,102 @@ if AUTH_SAML2_ENABLED == True:
     SAML_CSP_HANDLER = ""
 
     # URL para redirecionamento após a autenticação
-    LOGIN_REDIRECT_URL = '/query'
+    LOGIN_REDIRECT_URL = "/query"
 
-    SAML_ATTRIBUTE_MAPPING = { 
+    SAML_ATTRIBUTE_MAPPING = {
         "eduPersonPrincipalName": ("username",),
         "givenName": ("first_name",),
         "sn": ("last_name",),
-        "email": ("email",)
+        "email": ("email",),
     }
 
     SAML_CONFIG = {
         # Biblioteca usada para assinatura e criptografia
-        'xmlsec_binary': '/usr/bin/xmlsec1',
-        'entityid': FQDN + '/saml2/metadata/',
+        "xmlsec_binary": "/usr/bin/xmlsec1",
+        "entityid": FQDN + "/saml2/metadata/",
         # Diretório contendo os esquemas de mapeamento de atributo
-        'attribute_map_dir': os.path.join(BASE_DIR, 'attribute-maps'),
-        'description': 'SP User Query',
-        'service': {
-            'sp' : {
-                'name': 'SP User Query',
-                'ui_info': {
-                    'display_name': {
-                        'text':'SP User Query',
-                        'lang':'en'
-                    },
-                    'description': {
-                        'text':'SP User Query',
-                        'lang':'en'
-                    },
-                    'information_url': {
-                        'text': FQDN,
-                        'lang':'en'
-                    },
-                    'privacy_statement_url': {
-                        'text': FQDN,
-                        'lang':'en'
-                    }
+        "attribute_map_dir": os.path.join(BASE_DIR, "attribute-maps"),
+        "description": "SP User Query",
+        "service": {
+            "sp": {
+                "name": "SP User Query",
+                "ui_info": {
+                    "display_name": {"text": "SP User Query", "lang": "en"},
+                    "description": {"text": "SP User Query", "lang": "en"},
+                    "information_url": {"text": FQDN, "lang": "en"},
+                    "privacy_statement_url": {"text": FQDN, "lang": "en"},
                 },
-                'name_id_format': [
+                "name_id_format": [
                     "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
                     "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
                 ],
                 # Indica os endpoints dos serviços fornecidos
-                'endpoints': {
-                    'assertion_consumer_service': [
-                        (FQDN +'/saml2/acs/',
-                        saml2.BINDING_HTTP_POST),
-                        ],
-                    'single_logout_service': [
-                        (FQDN + '/saml2/ls/',
-                        saml2.BINDING_HTTP_REDIRECT),
-                        (FQDN + '/saml2/ls/post',
-                        saml2.BINDING_HTTP_POST),
-                        ],
+                "endpoints": {
+                    "assertion_consumer_service": [
+                        (FQDN + "/saml2/acs/", saml2.BINDING_HTTP_POST),
+                    ],
+                    "single_logout_service": [
+                        (FQDN + "/saml2/ls/", saml2.BINDING_HTTP_REDIRECT),
+                        (FQDN + "/saml2/ls/post", saml2.BINDING_HTTP_POST),
+                    ],
                 },
                 # Algoritmos utilizados
                 #'signing_algorithm':  saml2.xmldsig.SIG_RSA_SHA256,
                 #'digest_algorithm':  saml2.xmldsig.DIGEST_SHA256,
-
-                'force_authn': False,
-                'name_id_format_allow_create': False,
-
+                "force_authn": False,
+                "name_id_format_allow_create": False,
                 # Indica que as respostas de autenticação para este SP devem ser assinadas
-                'want_response_signed': True,
-
+                "want_response_signed": True,
                 # Indica se as solicitações de autenticação enviadas por este SP devem ser assinadas
-                'authn_requests_signed': True,
-
+                "authn_requests_signed": True,
                 # Indica se este SP deseja que o IdP envie as asserções assinadas
-                'want_assertions_signed': False,
-                
-                'only_use_keys_in_metadata': True,
-                'allow_unsolicited': False,
+                "want_assertions_signed": False,
+                "only_use_keys_in_metadata": True,
+                "allow_unsolicited": False,
             },
         },
-
         # Indica onde os metadados podem ser encontrados
-        'metadata': {
-            'local': [
+        "metadata": {
+            "local": [
                 os.path.join(BASE_DIR, "metadatas", "satosa-prod-cafe.xml"),
-                os.path.join(BASE_DIR, "metadatas", "satosa-prod-cilogon.xml")
+                os.path.join(BASE_DIR, "metadatas", "satosa-prod-cilogon.xml"),
             ],
         },
-
-        # Configurado como 1 para fornecer informações de debug 
-        'debug': 1,
-
+        # Configurado como 1 para fornecer informações de debug
+        "debug": 1,
         # Signature
-        'key_file': os.path.join(BASE_DIR, CERT_DIR, 'mykey.pem'),  # private part
-        'cert_file': os.path.join(BASE_DIR, CERT_DIR, 'mycert.pem'),  # public part
-
+        "key_file": os.path.join(BASE_DIR, CERT_DIR, "mykey.pem"),  # private part
+        "cert_file": os.path.join(BASE_DIR, CERT_DIR, "mycert.pem"),  # public part
         # Encriptation
-        'encryption_keypairs': [{
-            'key_file': os.path.join(BASE_DIR, CERT_DIR, 'mykey.pem'),  # private part
-            'cert_file': os.path.join(BASE_DIR, CERT_DIR, 'mycert.pem'),  # public part
-        }],
-
-        'contact_person': [
-            {'given_name': 'GIdLab',
-            'sur_name': 'Equipe',
-            'company': 'RNP',
-            'email_address': 'gidlab@rnp.br',
-            'contact_type': 'technical'},
+        "encryption_keypairs": [
+            {
+                "key_file": os.path.join(
+                    BASE_DIR, CERT_DIR, "mykey.pem"
+                ),  # private part
+                "cert_file": os.path.join(
+                    BASE_DIR, CERT_DIR, "mycert.pem"
+                ),  # public part
+            }
         ],
-
-        # Descreve a organização responsável pelo serviço    
-        'organization': {
-            'name': [('GIdLab', 'pt-br')],
-            'display_name': [('GIdLab', 'pt-br')],
-            'url': [('http://gidlab.rnp.br', 'pt-br')],
+        "contact_person": [
+            {
+                "given_name": "GIdLab",
+                "sur_name": "Equipe",
+                "company": "RNP",
+                "email_address": "gidlab@rnp.br",
+                "contact_type": "technical",
+            },
+        ],
+        # Descreve a organização responsável pelo serviço
+        "organization": {
+            "name": [("GIdLab", "pt-br")],
+            "display_name": [("GIdLab", "pt-br")],
+            "url": [("http://gidlab.rnp.br", "pt-br")],
         },
     }
 
-SETTINGS_EXPORT += ["AUTH_SAML2_ENABLED", "LOGIN_URL", "LOGOUT_URL"]
+SETTINGS_EXPORT += [
+    "AUTH_SAML2_ENABLED",
+    "LOGIN_URL",
+    "LOGOUT_URL",
+]

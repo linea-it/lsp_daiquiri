@@ -1,18 +1,17 @@
 import logging
-
-from django.contrib.auth.models import Group
-from djangosaml2.backends import Saml2Backend
 from typing import Any, Optional, Tuple
 
 from django.apps import apps
 from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured, MultipleObjectsReturned
-
 from django.contrib import auth
 from django.contrib.auth.backends import ModelBackend
+from django.contrib.auth.models import Group
+from django.core.exceptions import ImproperlyConfigured, MultipleObjectsReturned
+from djangosaml2.backends import Saml2Backend
 from linea.comanage import Comanage
 
 logger = logging.getLogger("djangosaml2")
+
 
 class LineaSaml2Backend(Saml2Backend):
 
@@ -27,8 +26,8 @@ class LineaSaml2Backend(Saml2Backend):
         )
 
     def _extract_user_identifier_params(
-            self, session_info: dict, attributes: dict, attribute_mapping: dict
-        ) -> Tuple[str, Optional[Any]]:
+        self, session_info: dict, attributes: dict, attribute_mapping: dict
+    ) -> Tuple[str, Optional[Any]]:
         """Returns the attribute to perform a user lookup on, and the value to use for it.
         The value could be the name_id, or any other saml attribute from the request.
         """
@@ -55,10 +54,9 @@ class LineaSaml2Backend(Saml2Backend):
 
         self.log.debug(f"User Lookup Value: {user_lookup_value}")
 
-
         # Utiliza o identificador de usuario do SAML (eppn)
         # para fazer uma consulta ao COmanage do LIneA
-        # e descobrir UID do LDAP para este usuario. 
+        # e descobrir UID do LDAP para este usuario.
         try:
             eppn = user_lookup_value
             self.eppn = eppn
@@ -77,7 +75,6 @@ class LineaSaml2Backend(Saml2Backend):
 
             return user_lookup_key, user_lookup_value
 
-
     def clean_user_main_attribute(self, main_attribute: Any) -> Any:
         """Hook to clean the extracted user-identifying value. No-op by default."""
         main_attribute = main_attribute.split("@")[0]
@@ -92,7 +89,7 @@ class LineaSaml2Backend(Saml2Backend):
         **kwargs,
     ) -> bool:
         """Hook to allow custom authorization policies based on SAML attributes. True by default."""
-        return True        
+        return True
 
     def user_can_authenticate(self, user) -> bool:
         """
@@ -102,16 +99,15 @@ class LineaSaml2Backend(Saml2Backend):
         is_active = getattr(user, "is_active", None)
         return is_active or is_active is None
 
-
     def save_user(self, user, *args, **kwargs):
         user = super().save_user(user, *args, **kwargs)
         # Tratamento dos grupos que o usuario pertence
-        self.setup_groups(user)        
+        self.setup_groups(user)
         return user
 
     def setup_groups(self, user):
         self.log.debug("Setup User Groups")
-        
+
         # Add a custom group saml for mark this user make login using djangosaml2.
         groups = ["saml2"]
 
@@ -128,7 +124,7 @@ class LineaSaml2Backend(Saml2Backend):
             msg = f"Failed on retrive groups from COmanage. Error: {e}"
             self.log.error(msg)
 
-        # Remove the user from all groups that are not specified  
+        # Remove the user from all groups that are not specified
         for group in user.groups.all():
             if group.name not in groups:
                 group.user_set.remove(user)
