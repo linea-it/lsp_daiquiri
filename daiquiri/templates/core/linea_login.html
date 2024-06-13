@@ -1,0 +1,48 @@
+{% extends 'core/page.html' %}
+{% load static %}
+{% load i18n %}
+{% load core_tags %}
+
+{% block page %}
+
+<div class="home">
+
+  <div class="container" style="background-color: #fdfdfd; padding-top: 64px;">
+    <div class="row justify-content-center">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="panel-group">
+          <div class="panel panel-default" style="padding: 24px;">
+            <div class="panel-body">
+              <div class="media">
+                <a href="https://linea.org.br/">
+                  <img class="media-object" src="https://identity.linea.org.br/eds/images/linea-logo.png" alt="..."
+                    width="128px" class="img-responsive" style="margin:0 auto;">
+                </a>
+              </div>
+              <h4 class="card-title" style="text-align: center;">Associação Laboratório Interinstitucional de
+                e-Astronomia</h4>
+              <div>
+                <a href="{{ AUTH_SAML2_LOGIN_URL_CAFE }}" class="btn btn-primary btn-block btn-lg"
+                  style="margin-top: 32px; margin-bottom: 16px;">Login
+                  with
+                  CAFE</a>
+                <a href="{{ AUTH_SAML2_LOGIN_URL_CILOGON }}" class="btn btn-primary btn-block btn-lg"
+                  style="margin-bottom: 16px;">Login with CILogon</a>
+              </div>
+              <p> </p>
+              <p class="card-text" style="font-size: 12px">In case you have any problem authenticating or registering,
+                please <a href="mailto:helpdesk@linea.org.br">contact our helpdesk.</a></p>
+              <p class="card-text" style="font-size: 12px">You must read, agree with, and accept all of the <a
+                  href="https://identity.linea.org.br/terms.html"> terms
+                  and conditions.</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

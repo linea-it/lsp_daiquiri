@@ -1,7 +1,8 @@
+from daiquiri.core.views import home
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
-from daiquiri.core.views import home
+from linea.views import linea_login
 
 urlpatterns = [
     path("", home, name="home"),
@@ -34,6 +35,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # Auth SAML2
     path("saml2/", include("djangosaml2.urls")),
+    path("login/", linea_login, name="login"),
 ]
 
 handler400 = "daiquiri.core.views.bad_request"
