@@ -1,0 +1,23 @@
+{% extends 'core/page.html' %}
+{% load static %}
+{% load i18n %}
+{% load core_tags %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-dataindexpage{% endblock %}
+
+{% block content %}
+    <div class="container" style="padding-top: 100px;">
+        <h1>{{ page.title }}</h1>
+
+        <div class="intro">{{ page.intro|richtext }}</div>
+
+        {% comment %} {% for post in page.get_children %}
+            <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+            {{ post.specific.intro }}
+            {{ post.specific.body|richtext }}
+        {% endfor %} {% endcomment %}
+    </div>
+
+{% endblock %}

@@ -1,9 +1,13 @@
+from daiquiri.core.views import home
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 from linea.views import linea_login
-
-from daiquiri.core.views import home
+from wagtail import urls as wagtail_urls
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.documents import urls as wagtaildocs_urls
 
 urlpatterns = [
     path("", home, name="home"),
@@ -37,7 +41,11 @@ urlpatterns = [
     # Auth SAML2
     path("saml2/", include("djangosaml2.urls")),
     path("login/", linea_login, name="login"),
-]
+    # Watail CMS
+    path("wagtail/", include(wagtailadmin_urls)),
+    # path('documents/', include(wagtaildocs_urls)),
+    path("cms/", include(wagtail_urls)),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler400 = "daiquiri.core.views.bad_request"
 handler403 = "daiquiri.core.views.forbidden"
