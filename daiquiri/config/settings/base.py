@@ -66,23 +66,8 @@ SITE_CREATED = "2023-04-19"
 # Default: None
 SITE_UPDATED = "2024-06-13"
 
-LINEA_APPS = ["djangosaml2", "services", "data"]
-
-WAGTAIL_APPS = [
-    "wagtail.contrib.forms",
-    "wagtail.contrib.redirects",
-    "wagtail.embeds",
-    "wagtail.sites",
-    "wagtail.users",
-    "wagtail.snippets",
-    "wagtail.documents",
-    "wagtail.images",
-    "wagtail.search",
-    "wagtail.admin",
-    "wagtail",
-    "modelcluster",
-    "taggit",
-    "wagtailmarkdown",
+LINEA_APPS = [
+    "djangosaml2",
 ]
 
 INSTALLED_APPS = (
@@ -106,87 +91,7 @@ INSTALLED_APPS = (
     ]
     + ADDITIONAL_APPS
     + LINEA_APPS
-    + WAGTAIL_APPS
 )
-
-# -----------------------------------------------
-# Wagtail - CMS for custom pages
-# https://docs.wagtail.org/en/stable/getting_started/integrating_into_django.html
-# -----------------------------------------------
-MIDDLEWARE += ("wagtail.contrib.redirects.middleware.RedirectMiddleware",)
-
-# STATIC_ROOT está definido no core do daiquiri
-# https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/core/settings/django.py
-# STATIC_ROOT = BASE_DIR / 'static_root/'
-
-# STATIC_URL: NÃO ALTERAR: Esta variavel estão relacionada a rota /daiquiri_static/ no ngnix e no uWSGI.
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_URL = "/daiquiri_static/"
-
-# MEDIA_ROOT está definido no core do daiquiri
-# https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/core/settings/django.py#L158
-# MEDIA_URL = BASE_URL + 'media/'
-# MEDIA_ROOT = BASE_DIR / 'media_root/'
-
-# this will be displayed on the main dashboard of the Wagtail admin backend:
-WAGTAIL_SITE_NAME = "LIneA Userquery"
-
-# WAGTAILADMIN_BASE_URL - this is the base URL used by the Wagtail admin site.
-# It is typically used for generating URLs to include in notification emails
-WAGTAILADMIN_BASE_URL = SITE_URL
-
-# WAGTAILDOCS_EXTENSIONS setting to specify the file types that Wagtail
-# will allow to be uploaded as documents.
-# https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
-WAGTAILDOCS_EXTENSIONS = [
-    "csv",
-    "docx",
-    "key",
-    "odt",
-    "pdf",
-    "pptx",
-    "rtf",
-    "txt",
-    "xlsx",
-    "zip",
-]
-
-# WAGTAIL MARKDOWN
-# https://github.com/torchbox/wagtail-markdown
-WAGTAILMARKDOWN = {
-    "autodownload_fontawesome": True,
-    "allowed_tags": [],  # optional. a list of HTML tags. e.g. ['div', 'p', 'a']
-    "allowed_styles": [],  # optional. a list of styles
-    "allowed_attributes": {},  # optional. a dict with HTML tag as key and a list of attributes as value
-    "allowed_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
-    "extensions": [
-        "extra",
-        "abbr",
-        "attr_list",
-        "def_list",
-        "fenced_code",
-        "footnotes",
-        "md_in_html",
-        "tables",
-        "admonition",
-        "codehilite",
-        "legacy_attrs",
-        "legacy_em",
-        "meta",
-        "nl2br",
-        "sane_lists",
-        "smarty",
-        "toc",
-        "wikilinks",
-    ],  # optional. a list of python-markdown supported extensions
-    "extension_configs": {},  # optional. a dictionary with the extension name as key, and its configuration as value
-    "extensions_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
-    "tab_length": 4,  # optional. Sets the length of tabs used by python-markdown to render the output. This is the number of spaces used to replace with a tab character. Defaults to 4.
-}
-
-# -----------------------------------------------
-
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
@@ -197,6 +102,10 @@ SENDFILE_BACKEND = "django_sendfile.backends.nginx"
 SENDFILE_ROOT = "/data/download/"
 SENDFILE_URL = "/download"
 
+# NÃO ALTERAR: Esta variavel estão relacionada a rota /daiquiri_static/ no ngnix e no uWSGI.
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_URL = "/daiquiri_static/"
 
 # Diretorio onde ficam os arquivos de PID do celery
 # Não alterar este path por que ele está sendo utilizado no script start.sh
