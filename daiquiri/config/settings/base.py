@@ -1,8 +1,9 @@
 import os
 
-import daiquiri.core.env as env
 import saml2
 import saml2.saml
+
+import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
@@ -160,10 +161,25 @@ WAGTAILMARKDOWN = {
     "allowed_attributes": {},  # optional. a dict with HTML tag as key and a list of attributes as value
     "allowed_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
     "extensions": [
-        "extra", "abbr", "attr_list", "def_list", "fenced_code", 
-        "footnotes", "md_in_html", "tables", "admonition", "codehilite",
-        "legacy_attrs", "legacy_em", "meta", "nl2br", "sane_lists", 
-        "smarty", "toc", "wikilinks"],  # optional. a list of python-markdown supported extensions
+        "extra",
+        "abbr",
+        "attr_list",
+        "def_list",
+        "fenced_code",
+        "footnotes",
+        "md_in_html",
+        "tables",
+        "admonition",
+        "codehilite",
+        "legacy_attrs",
+        "legacy_em",
+        "meta",
+        "nl2br",
+        "sane_lists",
+        "smarty",
+        "toc",
+        "wikilinks",
+    ],  # optional. a list of python-markdown supported extensions
     "extension_configs": {},  # optional. a dictionary with the extension name as key, and its configuration as value
     "extensions_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
     "tab_length": 4,  # optional. Sets the length of tabs used by python-markdown to render the output. This is the number of spaces used to replace with a tab character. Defaults to 4.

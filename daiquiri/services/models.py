@@ -3,9 +3,10 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.models import Page
 from wagtailmarkdown.fields import MarkdownField
 
+
 class ServicesIndexPage(Page):
 
-    body = MarkdownField(default='')
+    body = MarkdownField(default="")
 
     content_panels = Page.content_panels + [
         FieldPanel("body"),

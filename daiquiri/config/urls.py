@@ -1,4 +1,3 @@
-from daiquiri.core.views import home
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -8,6 +7,8 @@ from linea.views import linea_login
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
+
+from daiquiri.core.views import home
 
 urlpatterns = [
     path("", home, name="home"),
