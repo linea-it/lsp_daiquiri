@@ -4,3 +4,5 @@ django-shibboleth-remoteuser==0.12 # https://pypi.org/project/django-shibboleth-
 flower==1.2.0 # https://pypi.org/project/flower/
 uWSGI==2.0.21 # https://pypi.org/project/uWSGI/
 psycopg2-binary==2.9.9 # https://pypi.org/project/psycopg2-binary/
+wagtail==6.0.5 # https://pypi.org/project/wagtail/
+wagtail-markdown==0.12.1 # https://pypi.org/project/wagtail-markdown/

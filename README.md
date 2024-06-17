@@ -210,6 +210,33 @@ Load Query Sample Data
 docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
+### Dump / Load CMS Wagtail pages
+
+Dump wagtail cms pages.
+
+```bash
+ docker compose exec daiquiri python manage.py dumpdata --natural-foreign --indent 2 \
+    -e contenttypes \
+    -e auth \
+    -e account \
+    -e admin \
+    -e authtoken \
+    -e daiquiri_auth \
+    -e daiquiri_contact \
+    -e daiquiri_datalink \
+    -e daiquiri_files \
+    -e daiquiri_jobs \
+    -e daiquiri_metadata \
+    -e daiquiri_oai \
+    -e daiquiri_query \
+    -e daiquiri_stats \
+    -e daiquiri_tap \
+    -e wagtailcore.groupcollectionpermission \
+    -e wagtailcore.grouppagepermission \
+    -e wagtailimages.rendition \
+    -e sessions > cms.json
+```
+
 ### Build Manual da Imagem docker
 
 Estando logado no dockerhub pelo terminal execute o build e o push da imagem do daiquiri.
