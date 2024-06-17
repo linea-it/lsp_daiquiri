@@ -36,9 +36,9 @@
                         <li>
                             <a href="{% slugurl 'query-interface' %}">{% trans 'Query interface' %}</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="{% slugurl 'cone-search' %}">{% trans 'Cone Search' %}</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
             </ul>
@@ -130,9 +130,9 @@
                         {{ user.first_name }}<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
+                        {% comment %}<li>
                             <a href="{% url 'account_profile' %}">{% trans 'Update profile' %}</a>
-                        </li>
+                        </li>{% endcomment %}
                         {% comment %} <li>
                             <a href="{% url 'account_email' %}">{% trans 'Update email' %}</a>
                         </li> {% endcomment %}

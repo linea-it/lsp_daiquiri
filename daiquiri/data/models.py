@@ -1,12 +1,14 @@
 from django.db import models
 from wagtail.admin.panels import FieldPanel
-from wagtail.fields import RichTextField
 
-# Add these:
+
 from wagtail.models import Page
 
+from wagtailmarkdown.fields import MarkdownField
 
 class DataIndexPage(Page):
-    intro = RichTextField(blank=True)
+    body = MarkdownField(default='')
 
-    content_panels = Page.content_panels + [FieldPanel("intro")]
+    content_panels = Page.content_panels + [
+        FieldPanel("body"),
+    ]
