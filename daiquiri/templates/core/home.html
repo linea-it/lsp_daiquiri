@@ -3,40 +3,29 @@
 {% load i18n %}
 {% load core_tags %}
 
+{% block wide %}
+{% include 'core/banner.html' %}
+{% endblock %}
+
 {% block page %}
 
 <div class="home">
-    <h1>LIneA User Query</h1>
-
-    <!-- <h2>dolor sit amet</h2> -->
 
     <div class="row">
-        <img style="margin-top: 5px; margin-bottom: 5px; width: 100%; background-color: black;"
-            src="{% static 'daiquiri/imgs/dark-energy-image.png' %}" alt="Dark Energy Image" />
-        <!-- <div class="col-md-4">
-            <img style="margin-top: 5px;" src="{% static 'core/img/daiquiri.jpg' %}" />
-        </div>  -->
-
-        <div class="col-md-8"><a href=""></a>
-            <p>
-                The <a href="https://www.darkenergysurvey.org/">Dark Energy Survey (DES)</a> is a photometric survey in
-                5 bands
-                from optical to infrared (<em>grizY</em>) whose main goal is to determine the equation of state of dark
-                energy.
-                DES observed ~700 million objects detected in ~5000 square degrees in the Southern Hemisphere over 6
-                years. The articles with the main results of the data analysis from the first three years of observation
-                are available <a href="https://www.darkenergysurvey.org/des-year-3-cosmology-results-papers/">on this
-                    page</a>.
-            </p>
-            <img style="margin-top: 5px; width: 100%;" src="{% static 'daiquiri/imgs/data-release.png' %}"
-                alt="Data Release Image" />
-            <p style="font-size: small; text-align: center; margin-top: 5px;">
-                Figure: Footprint Data Release 2 (source: <a
-                    href="https://www.darkenergysurvey.org/wp-content/uploads/2021/06/dr2_footprint.png">www.darkenergysurvey.org</a>).
-            </p>
+        <div class="col-md-12">
+            <h2 style="text-align: center">Titulo</h2>
         </div>
+    </div>
 
-        <div class="col-md-12" style="margin-top: 15px;">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <p>
+                The Dark Energy Survey (DES) is a photometric survey in 5 bands from optical to infrared (grizY)
+                whose main goal is to determine the equation of state of dark energy.
+                DES observed ~700 million objects detected in ~5000 square degrees in the Southern Hemisphere over 6 years.
+                The articles with the main results of the data analysis from the first three years of observation are available on this page.
+            </p>
             <p>
                 The <a href="https://des.ncsa.illinois.edu/releases/dr2">second <em>data release</em> (DR2)</a>, already
                 containing data from six years of observation, is available to the public and can be accessed at LIneA
@@ -46,23 +35,20 @@
                 LIneA User Query is based on daiquiri, a framework for the publication of scientific databases. For
                 details, visit the <a href="https://django-daiquiri.github.io/docs/">daiquiri documentation page</a>.
             </p>
+
         </div>
+        <div class="col-md-1"></div>
     </div>
+
+
+    {% comment %} <img style="margin-top: 5px; width: 100%;" src="{% static 'daiquiri/imgs/data-release.png' %}"
+        alt="Data Release Image" />
+    <p style="font-size: small; text-align: center; margin-top: 5px;">
+        Figure: Footprint Data Release 2 (source: <a
+            href="https://www.darkenergysurvey.org/wp-content/uploads/2021/06/dr2_footprint.png">www.darkenergysurvey.org</a>).
+    </p> {% endcomment %}
+
+
 </div>
-
-{% endblock %}
-
-{% block sidebar %}
-
-
-
-{% if not user.is_authenticated and settings.AUTH_SAML2_ENABLED == False %}
-<div class="home">
-
-    <h2>Login</h2>
-
-    {% include 'account/login_form.html' %}
-</div>
-{% endif %}
 
 {% endblock %}
