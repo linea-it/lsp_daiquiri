@@ -22,5 +22,5 @@ EOSQL
 
 # Create Table GAIA SAMPLE SCHEMA
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "daiquiri_data" <<-EOSQL
-    \i /data/gaia_dr2_sample.sql;
+    \i /data/gaia_dr3_sample.sql;
 EOSQL
