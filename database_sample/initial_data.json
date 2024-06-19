@@ -1,298 +1,10 @@
 [
 {
-  "model": "auth.group",
-  "pk": 1,
-  "fields": {
-    "name": "contact_manager",
-    "permissions": [
-      [
-        "add_contactmessage",
-        "daiquiri_contact",
-        "contactmessage"
-      ],
-      [
-        "change_contactmessage",
-        "daiquiri_contact",
-        "contactmessage"
-      ],
-      [
-        "delete_contactmessage",
-        "daiquiri_contact",
-        "contactmessage"
-      ],
-      [
-        "view_contactmessage",
-        "daiquiri_contact",
-        "contactmessage"
-      ]
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 2,
-  "fields": {
-    "name": "metadata_manager",
-    "permissions": [
-      [
-        "add_column",
-        "daiquiri_metadata",
-        "column"
-      ],
-      [
-        "change_column",
-        "daiquiri_metadata",
-        "column"
-      ],
-      [
-        "delete_column",
-        "daiquiri_metadata",
-        "column"
-      ],
-      [
-        "view_column",
-        "daiquiri_metadata",
-        "column"
-      ],
-      [
-        "add_function",
-        "daiquiri_metadata",
-        "function"
-      ],
-      [
-        "change_function",
-        "daiquiri_metadata",
-        "function"
-      ],
-      [
-        "delete_function",
-        "daiquiri_metadata",
-        "function"
-      ],
-      [
-        "view_function",
-        "daiquiri_metadata",
-        "function"
-      ],
-      [
-        "add_schema",
-        "daiquiri_metadata",
-        "schema"
-      ],
-      [
-        "change_schema",
-        "daiquiri_metadata",
-        "schema"
-      ],
-      [
-        "delete_schema",
-        "daiquiri_metadata",
-        "schema"
-      ],
-      [
-        "view_schema",
-        "daiquiri_metadata",
-        "schema"
-      ],
-      [
-        "add_table",
-        "daiquiri_metadata",
-        "table"
-      ],
-      [
-        "change_table",
-        "daiquiri_metadata",
-        "table"
-      ],
-      [
-        "delete_table",
-        "daiquiri_metadata",
-        "table"
-      ],
-      [
-        "view_table",
-        "daiquiri_metadata",
-        "table"
-      ]
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 3,
-  "fields": {
-    "name": "stats_manager",
-    "permissions": [
-      [
-        "view_record",
-        "daiquiri_stats",
-        "record"
-      ]
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 4,
-  "fields": {
-    "name": "query_manager",
-    "permissions": [
-      [
-        "add_example",
-        "daiquiri_query",
-        "example"
-      ],
-      [
-        "change_example",
-        "daiquiri_query",
-        "example"
-      ],
-      [
-        "delete_example",
-        "daiquiri_query",
-        "example"
-      ],
-      [
-        "view_example",
-        "daiquiri_query",
-        "example"
-      ]
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 5,
-  "fields": {
-    "name": "user_manager",
-    "permissions": [
-      [
-        "change_profile",
-        "daiquiri_auth",
-        "profile"
-      ],
-      [
-        "view_profile",
-        "daiquiri_auth",
-        "profile"
-      ]
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 6,
-  "fields": {
-    "name": "Moderators",
-    "permissions": [
-      [
-        "access_admin",
-        "wagtailadmin",
-        "admin"
-      ],
-      [
-        "add_document",
-        "wagtaildocs",
-        "document"
-      ],
-      [
-        "change_document",
-        "wagtaildocs",
-        "document"
-      ],
-      [
-        "choose_document",
-        "wagtaildocs",
-        "document"
-      ],
-      [
-        "delete_document",
-        "wagtaildocs",
-        "document"
-      ],
-      [
-        "add_image",
-        "wagtailimages",
-        "image"
-      ],
-      [
-        "change_image",
-        "wagtailimages",
-        "image"
-      ],
-      [
-        "choose_image",
-        "wagtailimages",
-        "image"
-      ],
-      [
-        "delete_image",
-        "wagtailimages",
-        "image"
-      ]
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 7,
-  "fields": {
-    "name": "Editors",
-    "permissions": [
-      [
-        "access_admin",
-        "wagtailadmin",
-        "admin"
-      ],
-      [
-        "add_document",
-        "wagtaildocs",
-        "document"
-      ],
-      [
-        "change_document",
-        "wagtaildocs",
-        "document"
-      ],
-      [
-        "choose_document",
-        "wagtaildocs",
-        "document"
-      ],
-      [
-        "delete_document",
-        "wagtaildocs",
-        "document"
-      ],
-      [
-        "add_image",
-        "wagtailimages",
-        "image"
-      ],
-      [
-        "change_image",
-        "wagtailimages",
-        "image"
-      ],
-      [
-        "choose_image",
-        "wagtailimages",
-        "image"
-      ],
-      [
-        "delete_image",
-        "wagtailimages",
-        "image"
-      ]
-    ]
-  }
-},
-{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$600000$dkyY0E4tyE1m55vAB571Vd$SfCO0mzuZjTssayW3fG9S3GJB83Q157pgJquI0RwzU4=",
-    "last_login": "2024-06-18T17:18:49.003Z",
+    "last_login": "2024-06-18T20:33:47.717Z",
     "is_superuser": true,
     "username": "gverde",
     "first_name": "Glauber",
@@ -380,7 +92,7 @@
     "schema": 4,
     "order": null,
     "name": "coadd_objects",
-    "title": "",
+    "title": "DES DR2",
     "description": "",
     "long_description": "",
     "attribution": "",
@@ -388,14 +100,14 @@
     "doi": "",
     "related_identifiers": [],
     "type": "table",
-    "nrows": null,
+    "nrows": 691483608,
     "size": null,
     "utype": "",
     "creators": [],
     "contributors": [],
     "published": null,
     "updated": null,
-    "access_level": "PRIVATE",
+    "access_level": "PUBLIC",
     "metadata_access_level": "PUBLIC",
     "groups": []
   }
