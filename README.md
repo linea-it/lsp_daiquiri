@@ -210,31 +210,16 @@ Load Query Sample Data
 docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
-### Dump / Load CMS Wagtail pages
+### Dump initial data with CMS Wagtail pages
 
-Dump wagtail cms pages.
+https://www.accordbox.com/blog/how-export-restore-wagtail-site/
 
 ```bash
- docker compose exec daiquiri python manage.py dumpdata --natural-foreign --indent 2 \
-    -e contenttypes \
-    -e auth \
-    -e account \
-    -e admin \
-    -e authtoken \
-    -e daiquiri_auth \
-    -e daiquiri_contact \
-    -e daiquiri_datalink \
-    -e daiquiri_files \
-    -e daiquiri_jobs \
-    -e daiquiri_metadata \
-    -e daiquiri_oai \
-    -e daiquiri_query \
-    -e daiquiri_stats \
-    -e daiquiri_tap \
+docker compose exec daiquiri python manage.py  dumpdata --natural-foreign --indent 2 \
+    -e contenttypes -e auth.permission \
     -e wagtailcore.groupcollectionpermission \
-    -e wagtailcore.grouppagepermission \
-    -e wagtailimages.rendition \
-    -e sessions > cms.json
+    -e wagtailcore.grouppagepermission -e wagtailimages.rendition \
+    -e sessions > initial_data.json
 ```
 
 ### Build Manual da Imagem docker
@@ -248,7 +233,7 @@ A identificação unica de cada imagem pode ser o numero de versão exemplo: `li
 >Para obter o hash do commit usar o comando `$(git describe --always)`
 
 ```bash
-docker build -t linea/lsp_daiquiri:$(git describe --always) .
+docker build -f compose/local/daiquiri/Dockerfile -t linea/lsp_daiquiri:$(git describe --always) .
 
 docker push linea/lsp_daiquiri:$(git describe --always)
 ```
@@ -319,3 +304,13 @@ Autenticação com CILogon (Para estudo/testes):
 
 - Bug no daiquiri framework quando o tablename tem espaço (foi aberto issue no repositório oficial)
 - Download VOTable falha se a tabela não tiver os ucds associados as colunas (foi aberto issue no repositório oficial)
+
+
+- Q3C no ambiente de desenvolvimento
+- PG_Sphere para o Cone Search?
+- Página Home
+- Falhar a autenticação quando não houver registro no COmanage.
+- Preencher metadados da tabela DES DR2
+- Preencher metadados da tabela Gaia DR3
+- Documentar o Deploy de Staging/Production
+- Páginas de documentação/Services

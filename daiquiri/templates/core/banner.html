@@ -1,0 +1,28 @@
+{% load static %}
+{% load i18n %}
+{% load core_tags %}
+
+
+<!-- {% comment %}Baseado neste exemplo do Bootstrap https://getbootstrap.com/docs/3.3/examples/carousel/ {% endcomment %} -->
+<section class="wide">
+    <div class="banner">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img class="first-slide" style="width: 100%; height:550px;"
+                        src="{% static 'daiquiri/imgs/userquery_banner.jpg' %}" alt="First slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 style="color: #fff;">Linea Userquery</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut
+                                labore et dolore magna aliqua. Ut quis nostrud exercitation ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -22,7 +22,7 @@ services:
       - ./certificates:/app/certificates
       - ./metadatas:/app/metadatas
       # Data folders
-      - ./database_sample:/app/fixtures
+      # - ./database_sample:/app/fixtures
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload

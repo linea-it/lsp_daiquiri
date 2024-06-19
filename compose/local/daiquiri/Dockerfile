@@ -81,6 +81,10 @@ COPY ./attribute-maps /app/attribute-maps
 COPY ./certificates /app/certificates
 COPY ./metadatas /app/metadatas
 
+# # Database Fixtures Initial Data
+COPY --chmod=0765 ./database_sample/initial_data.json /app/fixtures/initial_data.json
+COPY --chmod=0765 ./database_sample/query_samples.json /app/fixtures/query_samples.json
+
 # Basic Settings necessary for run download_vendor_files during build process
 # NÃO ALTERAR os paths utilizar os volumes no docker-compose para indicar os diretórios.
 ENV LOG_DIR=/var/log/daiquiri/

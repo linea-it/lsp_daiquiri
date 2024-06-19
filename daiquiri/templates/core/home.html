@@ -1,68 +1,139 @@
-{% extends 'core/page.html' %}
+{% extends 'core/base.html' %}
 {% load static %}
 {% load i18n %}
 {% load core_tags %}
 
-{% block page %}
+{% block content %}
 
-<div class="home">
-    <h1>LIneA User Query</h1>
 
-    <!-- <h2>dolor sit amet</h2> -->
+{% include 'core/banner.html' %}
+
+<main class="container" style="padding-top: 48px;">
 
     <div class="row">
-        <img style="margin-top: 5px; margin-bottom: 5px; width: 100%; background-color: black;"
-            src="{% static 'daiquiri/imgs/dark-energy-image.png' %}" alt="Dark Energy Image" />
-        <!-- <div class="col-md-4">
-            <img style="margin-top: 5px;" src="{% static 'core/img/daiquiri.jpg' %}" />
-        </div>  -->
-
-        <div class="col-md-8"><a href=""></a>
-            <p>
-                The <a href="https://www.darkenergysurvey.org/">Dark Energy Survey (DES)</a> is a photometric survey in
-                5 bands
-                from optical to infrared (<em>grizY</em>) whose main goal is to determine the equation of state of dark
-                energy.
-                DES observed ~700 million objects detected in ~5000 square degrees in the Southern Hemisphere over 6
-                years. The articles with the main results of the data analysis from the first three years of observation
-                are available <a href="https://www.darkenergysurvey.org/des-year-3-cosmology-results-papers/">on this
-                    page</a>.
-            </p>
-            <img style="margin-top: 5px; width: 100%;" src="{% static 'daiquiri/imgs/data-release.png' %}"
-                alt="Data Release Image" />
-            <p style="font-size: small; text-align: center; margin-top: 5px;">
-                Figure: Footprint Data Release 2 (source: <a
-                    href="https://www.darkenergysurvey.org/wp-content/uploads/2021/06/dr2_footprint.png">www.darkenergysurvey.org</a>).
-            </p>
-        </div>
-
-        <div class="col-md-12" style="margin-top: 15px;">
-            <p>
-                The <a href="https://des.ncsa.illinois.edu/releases/dr2">second <em>data release</em> (DR2)</a>, already
-                containing data from six years of observation, is available to the public and can be accessed at LIneA
-                via User Query (<a href="#">here</a>) or the Python library <code>dblinea</code> on LIneA JupyterHub.
-            </p>
-            <p>
-                LIneA User Query is based on daiquiri, a framework for the publication of scientific databases. For
-                details, visit the <a href="https://django-daiquiri.github.io/docs/">daiquiri documentation page</a>.
-            </p>
+        <div class="col-md-12">
+            <h2 style="text-align: center">Welcome to LIneA services</h2>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a dui vitae enim vestibulum gravida non
+                congue risus.
+                Pellentesque id tortor sit amet elit aliquam iaculis. Donec molestie consectetur tristique.
+                Quisque tincidunt luctus gravida. Nullam vehicula erat nibh, nec tempor odio sodales quis.
+            </p>
+            <p>
+                Nulla vehicula at felis vel faucibus. Vivamus lobortis nisi ante, eu pulvinar nunc eleifend id.
+                Sed dui erat, fringilla non nisi vel, hendrerit pretium turpis.
+                Nulla laoreet turpis dolor, nec posuere dolor bibendum in.
+                Donec non ligula neque. Quisque aliquam dolor nisi, in ultrices purus lobortis in.
+                Etiam quis nisl eu nunc facilisis tempor quis eget enim. Nam in dictum dolor.
+                Praesent dapibus mi eget interdum laoreet. Nam mollis dapibus lacus aliquam porttitor.
+                Nunc vehicula lorem lacus. Pellentesque rutrum interdum velit eu interdum. Ut rutrum porta condimentum.
+                Donec sagittis nunc nec dolor rhoncus aliquam et a dui. Sed non neque urna.
+            </p>
+            <p>
+                Vestibulum pellentesque eu diam suscipit tempus. Vivamus mi dui, fringilla luctus ante id, hendrerit
+                dictum nisl.
+                Duis rutrum ornare magna non mollis. Morbi vestibulum augue enim, sit amet vehicula nulla bibendum at.
+                Integer posuere volutpat lorem, ut sollicitudin lacus mollis eu. Phasellus consequat nibh ut efficitur
+                aliquam..
+            </p>
 
-{% endblock %}
+            <p style="text-align: right">
+                <small><b>Picture credits</b>: <a href="https://rubin.canto.com/v/gallery"
+                        target="_blank">https://rubin.canto.com/v/gallery</a></small>
+            </p>
 
-{% block sidebar %}
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 48px;">
+        <div class="col-md-3">
+            <svg xmlns="http://www.w3.org/2000/svg" height="124" width="124"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#283663"
+                    d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z" />
+            </svg>
+            <h3>Data Access</h3>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
+                porta felis euismod semper.</p>
+            <p><a class="btn btn-default" href="/query/" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-3">
+            <svg xmlns="http://www.w3.org/2000/svg" height="124" width="124"
+                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#283663"
+                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+            </svg>
+            <h3>Documentation</h3>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
+                porta felis euismod semper</p>
+            <p><a class="btn btn-default" href="/cms/services" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-3">
+            <svg xmlns="http://www.w3.org/2000/svg" height="124" width="124"
+                viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#283663"
+                    d="M264.5 5.2c14.9-6.9 32.1-6.9 47 0l218.6 101c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 149.8C37.4 145.8 32 137.3 32 128s5.4-17.9 13.9-21.8L264.5 5.2zM476.9 209.6l53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 277.8C37.4 273.8 32 265.3 32 256s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0l152-70.2zm-152 198.2l152-70.2 53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 405.8C37.4 401.8 32 393.3 32 384s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0z" />
+            </svg>
+            <h3>Science Server</h3>
+            <p>Deve ser um link para página com a lista de serviços do LIneA, Science Server, Jupiter Notebook e
+                documentações.</p>
+            <p><a class="btn btn-default" href="https://scienceserver-dev.linea.org.br/" taget="_blank"
+                    role="button">View details
+                    »</a></p>
+        </div>
+        <div class="col-md-3">
+            <svg xmlns="http://www.w3.org/2000/svg" height="124" width="124"
+                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#283663"
+                    d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z" />
+            </svg>
+            <h3>Login</h3>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. </p>
+            <p><a class="btn btn-default" href="/login" role="button">View details »</a></p>
+        </div>
+    </div>
 
 
 
-{% if not user.is_authenticated and settings.AUTH_SAML2_ENABLED == False %}
-<div class="home">
+    <!-- <div class="row">
+        <div class="col-md-12">
 
-    <h2>Login</h2>
+            <div class="teaser-icon-section">
+                <div class="teaser-icon-item">
+                    <div>
+                        <a class="teaser-icon-link" href="/query/">
+                            <span class="teaser-icon fa fa-database"></span>
+                            <div class="teaser-icon-text">Data access</div>
+                        </a>
+                    </div>
+                </div>
 
-    {% include 'account/login_form.html' %}
-</div>
-{% endif %}
+                <div class="teaser-icon-item">
+                    <div>
+                        <a class="teaser-icon-link" href="/cms/services/services/">
+                            <span class="teaser-icon fa fa-info-circle"></span>
+                            <div class="teaser-icon-text">Documentation</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="teaser-icon-item">
+                    <div>
+                        <a class="teaser-icon-link" href="/accounts/login/">
+                            <span class="teaser-icon fa fa-sign-in"></span>
+                            <div class="teaser-icon-text">Login</div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+</main>
+
 
 {% endblock %}
