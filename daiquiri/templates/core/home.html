@@ -1,54 +1,99 @@
-{% extends 'core/page.html' %}
+{% extends 'core/base.html' %}
 {% load static %}
 {% load i18n %}
 {% load core_tags %}
 
-{% block wide %}
+{% block content %}
+
+
 {% include 'core/banner.html' %}
-{% endblock %}
 
-{% block page %}
-
-<div class="home">
-
-    <div class="row">
-        <div class="col-md-12">
-            <h2 style="text-align: center">Titulo</h2>
-        </div>
-    </div>
+<main class="container">
 
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="text-align: center">Welcome to LIneA services</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
             <p>
-                The Dark Energy Survey (DES) is a photometric survey in 5 bands from optical to infrared (grizY)
-                whose main goal is to determine the equation of state of dark energy.
-                DES observed ~700 million objects detected in ~5000 square degrees in the Southern Hemisphere over 6 years.
-                The articles with the main results of the data analysis from the first three years of observation are available on this page.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a dui vitae enim vestibulum gravida non
+                congue risus.
+                Pellentesque id tortor sit amet elit aliquam iaculis. Donec molestie consectetur tristique.
+                Quisque tincidunt luctus gravida. Nullam vehicula erat nibh, nec tempor odio sodales quis.
             </p>
             <p>
-                The <a href="https://des.ncsa.illinois.edu/releases/dr2">second <em>data release</em> (DR2)</a>, already
-                containing data from six years of observation, is available to the public and can be accessed at LIneA
-                via User Query (<a href="#">here</a>) or the Python library <code>dblinea</code> on LIneA JupyterHub.
+                Nulla vehicula at felis vel faucibus. Vivamus lobortis nisi ante, eu pulvinar nunc eleifend id.
+                Sed dui erat, fringilla non nisi vel, hendrerit pretium turpis.
+                Nulla laoreet turpis dolor, nec posuere dolor bibendum in.
+                Donec non ligula neque. Quisque aliquam dolor nisi, in ultrices purus lobortis in.
+                Etiam quis nisl eu nunc facilisis tempor quis eget enim. Nam in dictum dolor.
+                Praesent dapibus mi eget interdum laoreet. Nam mollis dapibus lacus aliquam porttitor.
+                Nunc vehicula lorem lacus. Pellentesque rutrum interdum velit eu interdum. Ut rutrum porta condimentum.
+                Donec sagittis nunc nec dolor rhoncus aliquam et a dui. Sed non neque urna.
             </p>
             <p>
-                LIneA User Query is based on daiquiri, a framework for the publication of scientific databases. For
-                details, visit the <a href="https://django-daiquiri.github.io/docs/">daiquiri documentation page</a>.
+                Vestibulum pellentesque eu diam suscipit tempus. Vivamus mi dui, fringilla luctus ante id, hendrerit
+                dictum nisl.
+                Duis rutrum ornare magna non mollis. Morbi vestibulum augue enim, sit amet vehicula nulla bibendum at.
+                Integer posuere volutpat lorem, ut sollicitudin lacus mollis eu. Phasellus consequat nibh ut efficitur
+                aliquam..
+            </p>
+
+            <p style="text-align: right">
+                <small><b>Picture credits</b>: <a href="https://rubin.canto.com/v/gallery"
+                        target="_blank">https://rubin.canto.com/v/gallery</a></small>
             </p>
 
         </div>
         <div class="col-md-1"></div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12">
 
-    {% comment %} <img style="margin-top: 5px; width: 100%;" src="{% static 'daiquiri/imgs/data-release.png' %}"
-        alt="Data Release Image" />
-    <p style="font-size: small; text-align: center; margin-top: 5px;">
-        Figure: Footprint Data Release 2 (source: <a
-            href="https://www.darkenergysurvey.org/wp-content/uploads/2021/06/dr2_footprint.png">www.darkenergysurvey.org</a>).
-    </p> {% endcomment %}
+            <div class="teaser-icon-section">
+                <div class="teaser-icon-item">
+                    <div>
+                        <a class="teaser-icon-link" href="/query/">
+                            <span class="teaser-icon fa fa-database"></span>
+                            <div class="teaser-icon-text">Data access</div>
+                        </a>
+                    </div>
+                </div>
 
+                <div class="teaser-icon-item">
+                    <div>
+                        <a class="teaser-icon-link" href="/cms/services/services/">
+                            <span class="teaser-icon fa fa-info-circle"></span>
+                            <div class="teaser-icon-text">Documentation</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="teaser-icon-item">
+                    <div>
+                        <a class="teaser-icon-link" href="/accounts/login/">
+                            <span class="teaser-icon fa fa-sign-in"></span>
+                            <div class="teaser-icon-text">Login</div>
+                        </a>
+                    </div>
+                </div>
 
-</div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
 
 {% endblock %}
