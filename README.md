@@ -56,6 +56,17 @@ git clone https://github.com/linea-it/lsp_daiquiri.git daiquiri \
 
 ```
 
+### Setup Database
+
+Inicie o serviço de banco de dados. Na primeira vez será executado o script `init_db.sh`, que vai criar os dois bancos (daiquiri_admin e daiquiri_data), os schemas e algumas tabelas de exemplo.
+
+```bash
+docker compose up database
+```
+
+Procure na saida do terminal por esta mensagem: `LOG:  database system is ready to accept connections`
+Após a inicialização do banco de dados, pare o serviço com comando `CTRL+C`.
+
 ### Configuração das Variaveis de ambiente
 
 Os arquivos de configuração .env e local_settings.py já estão preenchidos com valores compativeis com o ambiente local.
@@ -89,15 +100,6 @@ Build Docker images
 ```bash
 docker compose build
 ```
-
-Inicie o serviço de banco de dados. Na primeira vez será executado o script `init_db.sh`, que vai criar os dois bancos (daiquiri_admin e daiquiri_data), os schemas e algumas tabelas de exemplo.
-
-```bash
-docker compose up database
-```
-
-Procure na saida do terminal por esta mensagem: `LOG:  database system is ready to accept connections`
-Após a inicialização do banco de dados, pare o serviço com comando `CTRL+C`.
 
 Agora inicie o serviço daiquiri.
 
