@@ -132,6 +132,16 @@ A saida do comando informa se todos os serviços foram iniciados corretamente.
 
 Os Comandos a seguir são executados **com todos os serviços ligados**.
 
+Load Initial Data
+
+```bash
+docker compose exec daiquiri python manage.py loaddata /app/fixtures/initial_data.json
+```
+
+```bash
+docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
+```
+
 Estes comandos são expecificos do Daiquiri:
 [Setup groups](https://django-daiquiri.github.io/docs/administration/)
 
@@ -143,12 +153,6 @@ docker compose exec daiquiri python manage.py setup_groups
 
 ```bash
 docker compose exec daiquiri python manage.py setup_tap_metadata
-```
-
-Load Initial Data
-
-```bash
-docker compose exec daiquiri python manage.py loaddata /app/fixtures/initial_data.json
 ```
 
 Crie um usuario administrativo no Django.
@@ -218,11 +222,41 @@ https://www.accordbox.com/blog/how-export-restore-wagtail-site/
 
 ```bash
 docker compose exec daiquiri python manage.py  dumpdata --natural-foreign --indent 2 \
+        -e contenttypes \
+        -e auth.permission \
+        -e auth.group \
+        -e admin.logentry \
+        -e sessions \
+        -e daiquiri_auth \
+        -e daiquiri_conesearch \
+        -e daiquiri_contact \
+        -e daiquiri_datalink \
+        -e daiquiri_files \
+        -e daiquiri_jobs \
+        -e daiquiri_metadata \
+        -e daiquiri_oai \
+        -e daiquiri_query \
+        -e daiquiri_registry \
+        -e daiquiri_serve \
+        -e daiquiri_stats \
+        -e daiquiri_tap \
+        -e wagtailcore.groupcollectionpermission \
+        -e wagtailcore.grouppagepermission -e wagtailimages.rendition \
+        > initial_data.json
+```
+
+```bash
+docker compose exec daiquiri python manage.py  dumpdata --natural-foreign --indent 2 \
     -e contenttypes -e auth.permission \
     -e wagtailcore.groupcollectionpermission \
     -e wagtailcore.grouppagepermission -e wagtailimages.rendition \
     -e sessions > initial_data.json
 ```
+
+
+
+
+
 
 ### Build Manual da Imagem docker
 
