@@ -373,18 +373,18 @@ if AUTH_SAML2_ENABLED == True:
         ],
         "contact_person": [
             {
-                "given_name": "GIdLab",
-                "sur_name": "Equipe",
-                "company": "RNP",
-                "email_address": "gidlab@rnp.br",
+                "given_name": "Service",
+                "sur_name": "Desk",
+                "company": "LIneA",
+                "email_address": "helpdesk@linea.org.br",
                 "contact_type": "technical",
             },
         ],
         # Descreve a organização responsável pelo serviço
         "organization": {
-            "name": [("GIdLab", "pt-br")],
-            "display_name": [("GIdLab", "pt-br")],
-            "url": [("http://gidlab.rnp.br", "pt-br")],
+            "name": [("LIneA", "pt-br")],
+            "display_name": [("LIneA", "pt-br")],
+            "url": [("https://www.linea.org.br", "pt-br")],
         },
     }
 
