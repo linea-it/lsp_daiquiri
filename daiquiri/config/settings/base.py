@@ -241,41 +241,53 @@ QUERY_USER_SCHEMA_PREFIX = "mydb_"
 
 QUERY_DROPDOWNS = [
     {
-        'key': 'simbad',
-        'service': 'query/js/dropdowns/simbad.js',
-        'template': 'query/query_dropdown_simbad.html',
-        'options': {
-            'url': 'https://simbad.u-strasbg.fr/simbad/sim-id'
-        }
+        "key": "simbad",
+        "service": "query/js/dropdowns/simbad.js",
+        "template": "query/query_dropdown_simbad.html",
+        "options": {"url": "https://simbad.u-strasbg.fr/simbad/sim-id"},
     },
     {
-        'key': 'vizier',
-        'service': 'query/js/dropdowns/vizier.js',
-        'template': 'query/query_dropdown_vizier.html',
-        'options': {
-            'url': 'https://vizier.u-strasbg.fr/viz-bin/votable',
-            'catalogs': ['I/322A', 'I/259', 'II/281', 'II/246', 'V/139', 'V/147', 'I/317', 'II/328/allwise', 'II/312/ais', 'I/345', 'I/350', 'I/329', 'II/349', 'II/342']
-        }
+        "key": "vizier",
+        "service": "query/js/dropdowns/vizier.js",
+        "template": "query/query_dropdown_vizier.html",
+        "options": {
+            "url": "https://vizier.u-strasbg.fr/viz-bin/votable",
+            "catalogs": [
+                "I/322A",
+                "I/259",
+                "II/281",
+                "II/246",
+                "V/139",
+                "V/147",
+                "I/317",
+                "II/328/allwise",
+                "II/312/ais",
+                "I/345",
+                "I/350",
+                "I/329",
+                "II/349",
+                "II/342",
+            ],
+        },
     },
 ]
 
 QUERY_LANGUAGES = [
     {
-        'key': 'adql',
-        'version': 2.0,
-        'label': 'ADQL',
-        'description': '',
-        'quote_char': '"'
+        "key": "adql",
+        "version": 2.0,
+        "label": "ADQL",
+        "description": "",
+        "quote_char": '"',
     },
     {
-        'key': 'postgresql',
-        'version': 13.9,
-        'label': 'PostgreSQL',
-        'description': '',
-        'quote_char': '"'
-    }
+        "key": "postgresql",
+        "version": 13.9,
+        "label": "PostgreSQL",
+        "description": "",
+        "quote_char": '"',
+    },
 ]
-
 
 
 # -----------------------------------------------
