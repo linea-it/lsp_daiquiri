@@ -1,7 +1,7 @@
 
 ARG BUILD_ENVIRONMENT=local
 
-FROM python:3.9-slim-bullseye as base
+FROM python:3.9-slim-bullseye AS base
 
 ARG BUILD_ENVIRONMENT
 ARG USERNAME=daiquiri
@@ -42,7 +42,7 @@ RUN pip install --upgrade pip setuptools wheel  && \
     pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/$BUILD_ENVIRONMENT.txt \
     && rm -rf /tmp/pip-tmp
 
-FROM base as daiquiri-local
+FROM base AS daiquiri-local
 # Install Github CLI
 # https://github.com/cli/cli/blob/trunk/docs/install_linux.md
 RUN mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
@@ -58,7 +58,7 @@ RUN wget -qO act.tar.gz https://github.com/nektos/act/releases/latest/download/a
     && act --version \
     && rm -rf act.tar.gz
 
-FROM base as daiquiri-production
+FROM base AS daiquiri-production
 
 
 FROM daiquiri-$BUILD_ENVIRONMENT
