@@ -1,7 +1,8 @@
 
 ARG BUILD_ENVIRONMENT=local
 
-FROM python:3.9-slim-bullseye AS base
+# FROM python:3.9.19-slim-bookworm AS base
+FROM python:3.11-slim-bookworm AS base
 
 ARG BUILD_ENVIRONMENT
 ARG USERNAME=daiquiri
@@ -19,17 +20,21 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
     build-essential \
+    ca-certificates \
+    less \
     libxml2-dev \
     libxslt-dev \
     zlib1g-dev \
     libpq-dev \
+    gnupg \
     python3-dev \
-    postgresql-client-13 \
+    postgresql-client-15 \
     libsasl2-dev \
     libldap2-dev \
     libssl-dev \
     ldap-utils \
     xmlsec1 \
+    gnupg \
     git \
     zsh \
     wget \

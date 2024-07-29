@@ -29,3 +29,5 @@ docker-compose.yml
 local_settings.py
 nginx-proxy.conf
 .secrets
+rabbitmq-data
+postgres-data
