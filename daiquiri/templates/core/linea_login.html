@@ -4,43 +4,67 @@
 {% load core_tags %}
 
 {% block page %}
+<style>
+  body.container {
+    background-image: url("{% static 'daiquiri/imgs/background.jpg' %}");
+    background-repeat: round;
+    background-attachment: fixed;
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+</style>
 
 <div class="home">
 
-  <div class="container" style="background-color: #fdfdfd; padding-top: 64px;">
-    <div class="row justify-content-center">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <div class="panel-group">
-          <div class="panel panel-default" style="padding: 24px;">
-            <div class="panel-body">
-              <div class="media">
-                <a href="https://linea.org.br/">
-                  <img class="media-object" src="https://identity.linea.org.br/eds/images/linea-logo.png" alt="..."
-                    width="128px" class="img-responsive" style="margin:0 auto;">
-                </a>
-              </div>
-              <h4 class="card-title" style="text-align: center;">Associação Laboratório Interinstitucional de
-                e-Astronomia</h4>
-              <div>
-                <a href="{{ AUTH_SAML2_LOGIN_URL_CAFE }}" class="btn btn-primary btn-block btn-lg"
-                  style="margin-top: 32px; margin-bottom: 16px;">Login
-                  with
-                  CAFE</a>
-                <a href="{{ AUTH_SAML2_LOGIN_URL_CILOGON }}" class="btn btn-primary btn-block btn-lg"
-                  style="margin-bottom: 16px;">Login with CILogon</a>
-              </div>
-              <p> </p>
-              <p class="card-text" style="font-size: 12px">In case you have any problem authenticating or registering,
-                please <a href="mailto:helpdesk@linea.org.br">contact our helpdesk.</a></p>
-              <p class="card-text" style="font-size: 12px">You must read, agree with, and accept all of the <a
-                  href="https://identity.linea.org.br/terms.html"> terms
-                  and conditions.</a></p>
-            </div>
+  <div class="container">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="logo">
+            <img src="{% static 'daiquiri/imgs/linea-logo.png' %}" alt="LIneA Logo" />
           </div>
         </div>
+
+        <div class="col-md-6">
+          <div class="card-header">
+            <h3 style="margin-bottom: 0px; margin-top: 3rem;">Welcome to LIneA User Query</h3>
+            <h3 id="edsTitle"></h3>
+          </div>
+
+          <div class="MuiFormControl-root">
+            <a href="{{ AUTH_SAML2_LOGIN_URL_CAFE }}" class="btn btn-cafe">
+              <div class="cafe-icon-wrapper">
+                <img class="cafe-icon" src="{% static 'daiquiri/imgs/cafe_logo.png' %}" />
+              </div>
+              <span>Login with CAFe</span>
+            </a>
+          </div>
+
+          <div class="MuiFormControl-root">
+            <a href="{{ AUTH_SAML2_LOGIN_URL_CILOGON }}" class="btn btn-cilogon">
+              <div class="cilogon-icon-wrapper">
+                <img class="cilogon-icon" src="{% static 'daiquiri/imgs/cilogon_logo.png' %}" />
+              </div>
+              <span>Login with CILogon</span>
+            </a>
+          </div>
+
+          <p class="new-user">
+            New user? <a href="https://docs.linea.org.br/primeiros_passos.html" target="_blank" style="color: #095ce0;">Register here</a>.
+          </p>
+        </div>
       </div>
-      <div class="col-md-3"></div>
+
+      <div class="terms-and-info">
+        <p style="color: #283661; margin-top: 2rem; margin-bottom: 0rem; text-align: center;">
+          Any problem authenticating or registering? <a href="mailto:helpdesk@linea.org.br" target="_blank">Contact our helpdesk</a>.
+        </p>
+      </div>
     </div>
   </div>
 </div>
