@@ -210,7 +210,7 @@ ANNOUNCEMENT_MESSAGE_FILTER = "linea.filters.LineaMessageFilter"
 CONESEARCH_ADAPTER = "daiquiri.conesearch.adapter.SimpleConeSearchAdapter"
 CONESEARCH_ANONYMOUS = True
 CONESEARCH_SCHEMA = "des_dr2"
-CONESEARCH_TABLE = "coadd_objects"
+CONESEARCH_TABLE = "main"
 CONESEARCH_SUBJECTS = ["cone search"]
 
 QUERY_FORMS = [
