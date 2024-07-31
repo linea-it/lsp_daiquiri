@@ -55,41 +55,22 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false">
-                        {% trans 'Data' %}<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="{% slugurl 'catalogs' %}">{% trans 'Catalogs' %}</a>
-                        </li>
-                        <li>
-                            <a href="{% slugurl 'des-dr2' %}">{% trans 'DES DR2' %}</a>
-                        </li>
-                        <li>
-                            <a href="{% slugurl 'gaia-dr3' %}">{% trans 'Gaia DR3' %}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">
                         {% trans 'Database Tables' %}<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="/metadata/des">{% trans 'DES DR2' %}</a>
+                            <a href="/metadata/des_dr2">{% trans 'DES DR2' %}</a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="/metadata/des/main/">des.main</a>
+                                    <a href="/metadata/des_dr2/main/">des_dr2.main</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/metadata/gaia">{% trans 'Gaia DR3' %}</a>
+                            <a href="/metadata/gaia_dr3">{% trans 'Gaia DR3' %}</a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="/metadata/gaia/dr3">gaia.dr3</a>
+                                    <a href="/metadata/gaia_dr3/source">gaia_dr3.source</a>
                                 </li>
                             </ul>
                         </li>
@@ -100,9 +81,6 @@
                 <li>
                     <a href="{% url 'query:query' %}">{% trans 'Query' %}</a>
                 </li>
-                <!-- <li>
-                    <a href="https://scienceserver-dev.linea.org.br/" target="_blank">Science-Server</a>
-                </li> -->
                 {% comment %} <li>
                     <a href="{% url 'contact:contact' %}">{% trans 'Contact' %}</a>
                 </li> {% endcomment %}
