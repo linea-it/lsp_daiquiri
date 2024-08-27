@@ -1,0 +1,733 @@
+- name: gaia_dr3
+  title: Gaia - Data Release 3
+  description: >
+    The Gaia DR3 catalogue builds upon the Early Data Release 3 (released on 3 December 2020) and combines, for the same stretch of time and the same set of observations, these already-published data products, with numerous new data products such as extended objects and non-single stars.
+  long_description: >
+    <p>(paragraph extracted from the <a href="https://gaia.aip.de/cms/data/gdr3/">Gaia DR3 release page</a>)</p>
+
+    <i>"Gaia Data Release 3 (Gaia DR3) was released on 13th of June 2022. The data are available through the Gaia Archive (and through the partner data centres). The Gaia DR3 catalogue builds upon the Early Data Release 3 (released on 3 December 2020) and combines, for the same stretch of time and the same set of observations, these already-published data products, with numerous new data products such as extended objects and non-single stars."</i>
+  attribution: >
+    <p>If you have used Gaia DR3 data in your research from this site, please use the following acknowledgement:</p>
+
+    <blockquote><p>This work has made use of data from the European Space Agency (ESA) mission Gaia <a href="https://www.cosmos.esa.int/gaia" target="_blank" rel="noopener">https://www.cosmos.esa.int/gaia</a>, processed by the Gaia Data Processing and Analysis Consortium (DPAC, <a href="https://www.cosmos.esa.int/web/gaia/dpac/consortium" target="_blank" rel="noopener">https://www.cosmos.esa.int/web/gaia/dpac/consortium</a>). Funding for the DPAC has been provided by national institutions, in particular the institutions participating in the Gaia Multilateral Agreement.</p>
+
+    <p>Database access and other data services are provided by the Associação Laboratório Interinstitucional de e-Astronomia (LIneA) with the financial support from INCT do e-Universo (Processo n.º 465376/2014-2).</p></blockquote>
+  order: 1
+  license: PD
+  doi:
+  published: 2020-01-01
+  updated: 2018-01-01
+  access_level: PUBLIC
+  metadata_access_level: PUBLIC
+  # creators:
+  # - name: Anna Admin
+  #   first_name: Anna
+  #   last_name: Admin
+  #   orcid: https://orcid.org/0000-0001-2345-6789
+  #   affiliations: "Institute of applied Administration\nInstitute of theoretical Managament"
+  # - name: Manni Manager
+  #   orcid: https://orcid.org/0000-0001-2345-6790
+  #   affiliations: Institute of theoretical Managament
+  # contributors:
+  # - name: Some computer guy
+
+  tables:
+    - name: source
+      title: GAIA DR3
+      description: >
+        <p>(paragraph extracted from the <a href="https://gea.esac.esa." target="_blank" rel="noopener">DR3 Documentation release</a> int/archive/documentation/GDR3/)</p>
+
+        <i>"The third Gaia data release, Gaia DR3, contains the astrometry and broad-band photometry already published as part of Gaia EDR3 and introduces a large variety of new data products."</i>
+
+        For more information, click on the table name.
+        long_description: >
+        <p>(paragraph extracted from the <a href="https://gea.esac.esa.">DR3 Documentation release</a> int/archive/documentation/GDR3/)</p>
+        <p>EXECUTIVE SUMMARY</p>
+
+        <p>The third Gaia data release, Gaia DR3, contains the astrometry and broad-band photometry already published as part of Gaia EDR3 and introduces a large variety of new data products:</p>
+        <ul>
+          <li> A much expanded radial velocity survey, as well as magnitudes of sources in the GRVS band, and a spectral line broadening parameter vbroad;</li>
+          <li> Mean BP, RP, and RVS spectra for a large subset of sources;</li>
+          <li> A much expanded collection of variable sources, covering 24 variability types;</li>
+          <li> Photometric time series for all variable sources;</li>
+          <li> The Gaia Andromeda Photometric Survey which contains the photometric time series for all sources (variable and non-variable) in a 5.5 deg radius field around M31;</li>
+          <li> Object classification, including a self-organised map (SOM) of poorly classified sources;</li>
+          <li> Astrophysical parameters (APs) from mean BP/RP spectra, including Markov-Chain Monte Carlo (MCMC) samples;</li>
+          <li> Astrophysical parameters from mean RVS spectra;</li>
+          <li> Chemical abundances from mean RVS spectra;</li>
+          <li> Diffuse interstellar band parameters from mean RVS spectra;</li>
+          <li> Non-single star solutions;</li>
+          <li> QSO and galaxy candidates, including redshifts, QSO host detections, and QSO host and galaxy light profiles;</li>
+          <li> Solar system objects (SSO), including reflectance spectra derived from epoch BP/RP spectra;</li>
+          <li> Total galactic extinction maps at various HEALPix levels;</li>
+          <li> Archived photometric science alerts.</li>
+        </ul>
+
+        <h3>Reference</h3>
+
+        <p>Find details about Gaia and its third data release on:</p>
+
+        <ul>
+          <li> <a href="https://www.cosmos.esa.int/web/gaia/dr3">Gaia DR on ESAC's documentation page</a></li>
+          <li> <a href="http://gaia.aip.de/cms/data/gdr3/">Gaia DR3 release page</a></li>
+          <li> <a href="http://gea.esac.esa.int/archive/documentation/GDR3/">Gaia DR3 Documentation release</a></li>
+          <li> <a href="https://gea.esac.esa.int/archive/documentation/GDR1/datamodel/">Data model document (from DR1)</a></li>
+        </ul>
+      long_description: >
+        <p>(paragraph extracted from the <a href="https://gea.esac.esa.">DR3 Documentation release</a> int/archive/documentation/GDR3/)</p>
+        <p>EXECUTIVE SUMMARY</p>
+
+        <p>The third Gaia data release, Gaia DR3, contains the astrometry and broad-band photometry already published as part of Gaia EDR3 and introduces a large variety of new data products:</p>
+        <ul>
+          <li>A much expanded radial velocity survey, as well as magnitudes of sources in the GRVS band, and a spectral line broadening parameter vbroad;</li>
+          <li>Mean BP, RP, and RVS spectra for a large subset of sources;</li>
+          <li>A much expanded collection of variable sources, covering 24 variability types;</li>
+          <li>Photometric time series for all variable sources;</li>
+          <li>The Gaia Andromeda Photometric Survey which contains the photometric time series for all sources (variable and non-variable) in a 5.5 deg radius field around M31;</li>
+          <li>Object classification, including a self-organised map (SOM) of poorly classified sources;</li>
+          <li>Astrophysical parameters (APs) from mean BP/RP spectra, including Markov-Chain Monte Carlo (MCMC) samples;</li>
+          <li>Astrophysical parameters from mean RVS spectra;</li>
+          <li>Chemical abundances from mean RVS spectra;</li>
+          <li>Diffuse interstellar band parameters from mean RVS spectra;</li>
+          <li>Non-single star solutions;</li>
+          <li>QSO and galaxy candidates, including redshifts, QSO host detections, and QSO host and galaxy light profiles;</li>
+          <li>Solar system objects (SSO), including reflectance spectra derived from epoch BP/RP spectra;</li>
+          <li>Total galactic extinction maps at various HEALPix levels;</li>
+          <li>Archived photometric science alerts.</li>
+        </ul>
+
+        <h3>Reference</h3>
+
+        <p>Find details about Gaia and its third data release on:</p>
+
+        <ul>
+          <li><a href="https://www.cosmos.esa.int/web/gaia/dr3">Gaia DR on ESAC's documentation page</a></li>
+          <li><a href="http://gaia.aip.de/cms/data/gdr3/">Gaia DR3 release page</a></li>
+          <li><a href="http://gea.esac.esa.int/archive/documentation/GDR3/">Gaia DR3 Documentation release</a></li>
+          <li><a href="https://gea.esac.esa.int/archive/documentation/GDR1/datamodel/">Data model document (from DR1)</a></li>
+        </ul>
+      order: 1
+      license: PD
+      doi:
+      published: 2020-01-01
+      updated: 2018-01-01
+      access_level: PUBLIC
+      metadata_access_level: PUBLIC
+      # creators:
+      # - name: Anna Admin
+      #   first_name: Anna
+      #   last_name: Admin
+      #   orcid: https://orcid.org/0000-0001-2345-6789
+      #   affiliations: "Institute of applied Administration\nInstitute of theoretical Managament"
+      # - name: Manni Manager
+      #   orcid: https://orcid.org/0000-0001-2345-6790
+    #   affiliations: Institute of theoretical Managament
+  columns:
+    - name: solution_id
+      ucd: meta.id
+      unit: ""
+      description: Solution Identifier
+    - name: designation
+      ucd: meta.ref
+      unit: ""
+      description: Unique source designation (unique across all Data Releases)
+    - name: source_id
+      ucd: meta.ref
+      unit: ""
+      description: Unique source identifier (unique within a particular Data Release)
+    - name: random_index
+      ucd: ""
+      unit: ""
+      description: Random index for use when selecting subsets
+    - name: ref_epoch,time.epoch	,Time[Julian Years],Reference epoch
+      ucd: ""
+      unit: ""
+      description: ""
+    - name: ra,pos.eq.ra	,Angle[deg],Right ascension
+      ucd: ""
+      unit: ""
+      description: ""
+    - name: ra_error
+      ucd: stat.error	pos.eq.ra
+      unit: Angle[mas]
+      description: Standard error of right ascension
+    - name: dec
+      ucd: pos.eq.dec
+      unit: Angle[deg]
+      description: Declination
+    - name: dec_error
+      ucd: stat.error	pos.eq.dec
+      unit: Angle[mas]
+      description: Standard error of declination
+    - name: parallax
+      ucd: pos.parallax
+      unit: Angle[mas]
+      description: Parallax
+    - name: parallax_error
+      ucd: stat.error	pos.parallax
+      unit: Angle[mas]
+      description: Standard error of parallax
+    - name: parallax_over_error
+      ucd: stat.error	pos.parallax
+      unit: ""
+      description: Parallax divided by its standard error
+    - name: pm
+      ucd: pos.pm
+      unit: Angular Velocity[mas/year]
+      description: Total proper motion
+    - name: pmra
+      ucd: pos.eq.ra	pos.pm
+      unit: Angular Velocity[mas/year]
+      description: Proper motion in right ascension direction
+    - name: pmra_error
+      ucd: pos.eq.ra	pos.pm
+      unit: Angular Velocity[mas/year]
+      description: Standard error of proper motion in right ascension direction
+    - name: pmdec
+      ucd: pos.pm	pos.eq.dec
+      unit: Angular Velocity[mas/year]
+      description: Proper motion in declination direction
+    - name: pmdec_error
+      ucd: stat.error	pos.pm	pos.eq.dec
+      unit: Angular Velocity[mas/year]
+      description: Standard error of proper motion in declination direction
+    - name: ra_dec_corr
+      ucd: pos.eq.ra	pos.eq.dec
+      unit: Dimensionless
+      description: Correlation between right ascension and declination
+    - name: ra_parallax_corr
+      ucd: stat.correlation	pos.eq.ra	pos.parallax
+      unit: Dimensionless
+      description: Correlation between right ascension and parallax
+    - name: ra_pmra_corr
+      ucd: stat.correlation	pos.eq.ra	pos.pm
+      unit: Dimensionless
+      description: Correlation between right ascension and proper motion in right ascension
+    - name: ra_pmdec_corr
+      ucd: stat.correlation	pos.eq.ra	"pos.pm
+      unit: Dimensionless
+      description: Correlation between right ascension and proper motion in declination"
+    - name: dec_parallax_corr
+      ucd: stat.correlation	pos.eq.dec	pos.parallax
+      unit: Dimensionless
+      description: Correlation between declination and parallax
+    - name: dec_pmra_corr
+      ucd: stat.correlation	pos.pm	"pos.eq.dec
+      unit: Dimensionless
+      description: Correlation between declination and proper motion in right ascension"
+    - name: dec_pmdec_corr
+      ucd: stat.correlation	pos.eq.dec	"pos.pm
+      unit: Dimensionless
+      description: Correlation between declination and proper motion in declination"
+    - name: parallax_pmra_corr
+      ucd: pos.eq.ra	pos.pm	pos.parallax
+      unit: Dimensionless
+      description: Correlation between parallax and proper motion in right ascension
+    - name: parallax_pmdec_corr
+      ucd: pos.pm	pos.parallax	"pos.eq.dec
+      unit: Dimensionless
+      description: Correlation between parallax and proper motion in declination"
+    - name: pmra_pmdec_corr
+      ucd: pos.pm	pos.eq.ra	"pos.eq.dec
+      unit: Dimensionless
+      description: Correlation between proper motion in right ascension and proper motion in declination"
+    - name: astrometric_n_obs_al
+      ucd: meta.number	obs
+      unit: ""
+      description: Total number of observations in the along-scan (AL) direction
+    - name: astrometric_n_obs_ac
+      ucd: meta.number	obs
+      unit: ""
+      description: Total number of observations in the across-scan (AC) direction
+    - name: astrometric_n_good_obs_al
+      ucd: meta.id	obs
+      unit: ""
+      description: Number of good observations in the along-scan (AL) direction
+    - name: astrometric_n_bad_obs_al
+      ucd: meta.id	obs
+      unit: ""
+      description: Number of bad observations in the along-scan (AL) direction
+    - name: astrometric_gof_al
+      ucd: stat.fit.goodness	obs
+      unit: ""
+      description: Goodness of fit statistic of model wrt along-scan observations
+    - name: astrometric_chi2_al
+      ucd: stat.value
+      unit: ""
+      description: AL chi-square value
+    - name: astrometric_excess_noise
+      ucd: meta.ref	instr.det.noise
+      unit: Angle[mas]
+      description: Excess noise of the source
+    - name: astrometric_excess_noise_sig
+      ucd: stat.fit.goodness	instr.det.noise
+      unit: ""
+      description: Significance of excess noise
+    - name: astrometric_params_solved
+      ucd: instr.param	obs.param	stat.param
+      unit: ""
+      description: Which parameters have been solved for?
+    - name: astrometric_primary_flag
+      ucd: ""
+      unit: ""
+      description: Primary or seconday
+    - name: nu_eff_used_in_astrometry
+      ucd: meta.ref	src	em.wavenumber
+      unit: Misc[Î¼m<sup>-1</sup>]
+      description: Effective wavenumber of the source used in the astrometric solution
+    - name: pseudocolour
+      ucd: meta.ref	src
+      unit: Misc[Î¼m<sup>-1</sup>]
+      description: Astrometrically estimated pseudocolour of the source
+    - name: pseudocolour_error
+      ucd: stat.error	src
+      unit: Misc[Î¼m<sup>-1</sup>]
+      description: Standard error of the pseudocolour of the source
+    - name: ra_pseudocolour_corr
+      ucd: stat.correlation	pos.eq.ra	phys.polarization.coherency
+      unit: ""
+      description: Correlation between right ascension and pseudocolour
+    - name: dec_pseudocolour_corr
+      ucd: stat.correlation	phys.polarization.coherency	pos.eq.dec
+      unit: ""
+      description: Correlation between declination and pseudocolour
+    - name: parallax_pseudocolour_corr
+      ucd: stat.correlation	phys.polarization.coherency	pos.parallax
+      unit: ""
+      description: Correlation between parallax and pseudocolour
+    - name: pmra_pseudocolour_corr
+      ucd: stat.correlation	phys.polarization.coherency	pos.pm
+      unit: ""
+      description: Correlation between proper motion in right asension and pseudocolour
+    - name: pmdec_pseudocolour_corr
+      ucd: stat.correlation	phys.polarization.coherency	pos.pm
+      unit: ""
+      description: Correlation between proper motion in declination and pseudocolour
+    - name: astrometric_matched_transits
+      ucd: phys.angSize	instr.fov	obs.transit
+      unit: ""
+      description: Matched FOV transits used in the AGIS solution
+    - name: visibility_periods_used
+      ucd: meta.id	time.period
+      unit: ""
+      description: Number of visibility periods used in Astrometric solution
+    - name: astrometric_sigma5d_max
+      ucd: stat.error	phys.angSize.smajAxis
+      unit: Angle[mas]
+      description: The longest semi-major axis of the 5-d error ellipsoid
+    - name: matched_transits
+      ucd: meta.number	obs.transit	src
+      unit: ""
+      description: The number of transits matched to this source
+    - name: new_matched_transits
+      ucd: meta.number	obs.transit	phys.current
+      unit: ""
+      description: The number of transits newly incorporated into an existing source in the current cycle
+    - name: matched_transits_removed
+      ucd: meta.number	obs.transit	phys.current
+      unit: ""
+      description: The number of transits removed from an existing source in the current cycle
+    - name: ipd_gof_harmonic_amplitude
+      ucd: pos.posAng	src.var.amplitude
+      unit: ""
+      description: Amplitude of the IPD GoF versus position angle of scan
+    - name: ipd_gof_harmonic_phase
+      ucd: pos.phaseAng	phys.angSize
+      unit: Angle[deg]
+      description: Phase of the IPD GoF versus position angle of scan
+    - name: ipd_frac_multi_peak
+      ucd: stat.value	arith.ratio	stat.max
+      unit: ""
+      description: Percent of successful-IPD windows with more than one peak
+    - name: ipd_frac_odd_win
+      ucd: meta.code.multip	arith.ratio	obs.transit
+      unit: ""
+      description: Percent of transits with truncated windows or multiple gate
+    - name: ruwe
+      ucd: meta.unit	phys.atmol.weight
+      unit: ""
+      description: Renormalised unit weight error
+    - name: scan_direction_strength_k1
+      ucd: meta.ref	src
+      unit: ""
+      description: Degree of concentration of scan directions across the source
+    - name: scan_direction_strength_k2
+      ucd: meta.ref	src
+      unit: ""
+      description: Degree of concentration of scan directions across the source
+    - name: scan_direction_strength_k3
+      ucd: meta.ref	src
+      unit: ""
+      description: Degree of concentration of scan directions across the source
+    - name: scan_direction_strength_k4
+      ucd: meta.ref	src
+      unit: ""
+      description: Degree of concentration of scan directions across the source
+    - name: scan_direction_mean_k1
+      ucd: pos.posAng	stat.mean	phys.angSize
+      unit: Angle[deg]
+      description: Mean position angle of scan directions across the source
+    - name: scan_direction_mean_k2
+      ucd: pos.posAng	stat.mean	phys.angSize
+      unit: Angle[deg]
+      description: Mean position angle of scan directions across the source
+    - name: scan_direction_mean_k3
+      ucd: pos.posAng	stat.mean	phys.angSize
+      unit: Angle[deg]
+      description: Mean position angle of scan directions across the source
+    - name: scan_direction_mean_k4
+      ucd: pos.posAng	stat.mean	phys.angSize
+      unit: Angle[deg]
+      description: Mean position angle of scan directions across the source
+    - name: duplicated_source
+      ucd: meta.ref	src
+      unit: ""
+      description: Source with multiple source identifiers
+    - name: phot_g_n_obs
+      ucd: meta.id	obs	phot
+      unit: ""
+      description: Number of observations contributing to G photometry
+    - name: phot_g_mean_flux
+      ucd: phot.flux	stat.mean	phys.flux
+      unit: Flux[e<sup>-</sup> s<sup>-1</sup>]
+      description: G-band mean flux
+    - name: phot_g_mean_flux_error
+      ucd: phot.flux	phys.flux
+      unit: Flux[e<sup>-</sup> s<sup>-1</sup>]
+      description: Error on G-band mean flux
+    - name: phot_g_mean_flux_over_error
+      ucd: G-band mean flux divided by its error
+      unit: ""
+      description: G-band mean flux divided by its error
+    - name: phot_g_mean_mag
+      ucd: phot.mag	stat.mean
+      unit: Magnitude[mag]
+      description: G-band mean magnitude
+    - name: phot_bp_n_obs
+      ucd: meta.id	obs	phot
+      unit: ""
+      description: Number of observations contributing to BP photometry
+    - name: phot_bp_mean_flux
+      ucd: phot.flux	stat.mean	phys.flux
+      unit: Flux[e<sup>-</sup> s<sup>-1</sup>]
+      description: Integrated BP mean flux
+    - name: phot_bp_mean_flux_error
+      ucd: phot.flux	phys.flux
+      unit: Flux[e<sup>-</sup> s<sup>-1</sup>]
+      description: Error on the integrated BP mean flux
+    - name: phot_bp_mean_flux_over_error
+      ucd: phot.flux	phys.flux
+      unit: ""
+      description: Integrated BP mean flux divided by its error
+    - name: phot_bp_mean_mag
+      ucd: phot.mag	stat.mean
+      unit: Magnitude[mag]
+      description: Integrated BP mean magnitude
+    - name: phot_rp_n_obs
+      ucd: meta.id	obs	phot
+      unit: ""
+      description: Number of observations contributing to RP photometry
+    - name: phot_rp_mean_flux
+      ucd: phot.flux	stat.mean	phys.flux
+      unit: Flux[e<sup>-</sup> s<sup>-1</sup>]
+      description: Integrated RP mean flux
+    - name: phot_rp_mean_flux_error
+      ucd: phot.flux	phys.flux
+      unit: Flux[e<sup>-</sup> s<sup>-1</sup>]
+      description: Error on the integrated RP mean flux
+    - name: phot_rp_mean_flux_over_error
+      ucd: phot.flux	phys.flux
+      unit: ""
+      description: Integrated RP mean flux divided by its error
+    - name: phot_rp_mean_mag
+      ucd: phot.mag	stat.mean
+      unit: Magnitude[mag]
+      description: Integrated RP mean magnitude
+    - name: phot_bp_rp_excess_factor
+      ucd: arith.factor	phot.color.excess
+      unit: ""
+      description: BP/RP excess factor
+    - name: phot_bp_n_contaminated_transits
+      ucd: meta.id	obs.transit
+      unit: ""
+      description: Number of BP contaminated transits
+    - name: phot_bp_n_blended_transits
+      ucd: meta.id	obs.transit
+      unit: ""
+      description: Number of BP blended transits
+    - name: phot_rp_n_contaminated_transits
+      ucd: meta.id	obs.transit
+      unit: ""
+      description: Number of RP contaminated transits
+    - name: phot_rp_n_blended_transits
+      ucd: meta.id	obs.transit
+      unit: ""
+      description: Number of RP blended transits
+    - name: phot_proc_mode
+      ucd: meta.calibLevel	time.processing	instr.setup
+      unit: ""
+      description: Photometry processing mode
+    - name: bp_rp
+      ucd: phot.color	src.class.color
+      unit: Magnitude[mag]
+      description: BP - RP colour
+    - name: bp_g
+      ucd: phot.color	src.class.color
+      unit: Magnitude[mag]
+      description: BP - G colour
+    - name: g_rp
+      ucd: phot.color	src.class.color
+      unit: Magnitude[mag]
+      description: G - RP colour
+    - name: radial_velocity
+      ucd: spect.dopplerVeloc
+      unit: Velocity[km s<sup>-1</sup>]
+      description: Radial velocity
+    - name: radial_velocity_error
+      ucd: meta.note
+      unit: ""
+      description: Missing description
+    - name: rv_method_used
+      ucd: spect.dopplerVeloc
+      unit: ""
+      description: Method used to obtain the radial velocity
+    - name: rv_nb_transits
+      ucd: spect.dopplerVeloc	obs.transit
+      unit: ""
+      description: Number of transits used to compute the radial velocity
+    - name: rv_nb_deblended_transits
+      ucd: meta.id	obs.transit
+      unit: ""
+      description: Number of valid transits that have undergone deblending
+    - name: rv_visibility_periods_used
+      ucd: meta.id	obs.transit
+      unit: ""
+      description: Number of visibility periods used to estimate the radial velocity
+    - name: rv_expected_sig_to_noise
+      ucd: stat.snr	spect.dopplerVeloc	em
+      unit: ""
+      description: Expected signal to noise ratio in the combination of the spectra used to obtain the radial velocity
+    - name: rv_renormalised_gof
+      ucd: stat.fit.goodness	spect.dopplerVeloc
+      unit: ""
+      description: Radial velocity renormalised goodness of fit
+    - name: rv_chisq_pvalue
+      ucd: stat.fit.chi2	phys.current
+      unit: ""
+      description: P-value for constancy based on a chi-squared criterion
+    - name: rv_time_duration
+      ucd: time	spect.dopplerVeloc
+      unit: ""
+      description: Time coverage of the radial velocity time series
+    - name: rv_amplitude_robust
+      ucd: spect.dopplerVeloc	time	src.var.amplitude
+      unit: ""
+      description: Total amplitude in the radial velocity time series after outlier removal
+    - name: rv_template_teff
+      ucd: phys.temperature.effective	spect.dopplerVeloc
+      unit: ""
+      description: Teff of the template used to compute the radial velocity
+    - name: rv_template_logg
+      ucd: spect.dopplerVeloc
+      unit: Gravity Surface[log cgs]
+      description: Logg of the template used to compute the radial velocity
+    - name: rv_template_fe_h
+      ucd: phys.abund.Fe
+      unit: Abundances[dex]
+      description: "[Fe/H] of the template used to compute the radial velocityy"
+    - name: rv_atm_param_origin
+      ucd: meta.ref	obs.atmos	instr.param
+      unit: ""
+      description: Origin of the atmospheric parameters associated with the template
+    - name: vbroad
+      ucd: spect.line.broad	instr.param	obs.param
+      unit: Velocity[km s<sup>-1</sup>]
+      description: Spectral line broadening parameter
+    - name: vbroad_error
+      ucd: spect.line.broad	em.line
+      unit: Velocity[km s<sup>-1</sup>]
+      description: Uncertainty on the spectral line broadening
+    - name: vbroad_nb_transits
+      ucd: meta.id	obs.transit
+      unit: ""
+      description: Number of transits used to compute vbroad
+    - name: grvs_mag
+      ucd: phot.mag	spect.dopplerVeloc
+      unit: Magnitude[mag]
+      description: Integrated G<sub>RVS</sub> magnitude
+    - name: grvs_mag_error
+      ucd: meta.code.error	phot.mag
+      unit: Magnitude[mag]
+      description: G<sub>RVS</sub> magnitude uncertainty
+    - name: grvs_mag_nb_transits
+      ucd: meta.id	obs.transit	spect.dopplerVeloc
+      unit: ""
+      description: Number of transits used to compute G<sub>RVS</sub>
+    - name: rvs_spec_sig_to_noise
+      ucd: stat.snr	stat.mean	spect.dopplerVeloc
+      unit: ""
+      description: Signal to noise ratio in the mean RVS spectrum
+    - name: phot_variable_flag
+      ucd: meta.code	src.var	phot
+      unit: ""
+      description: Photometric variability flag
+    - name: l
+      ucd: pos.galactic.lon
+      unit: Angle[deg]
+      description: Galactic longitude
+    - name: b
+      ucd: pos.galactic.lat
+      unit: Angle[deg]
+      description: Galactic latitude
+    - name: ecl_lon
+      ucd: pos.ecliptic.lon
+      unit: Angle[deg]
+      description: Ecliptic longitude
+    - name: ecl_lat
+      ucd: pos.ecliptic.lat
+      unit: Angle[deg]
+      description: Ecliptic latitude
+    - name: in_qso_candidates
+      ucd: meta.note	meta.table
+      unit: ""
+      description: Flag indicating the availability of additional information in the QSO candidates table
+    - name: in_galaxy_candidates
+      ucd: meta.note	src.class.starGalaxy	meta.table
+      unit: ""
+      description: Flag indicating the availability of additional information in the galaxy candidates table
+    - name: non_single_star
+      ucd: meta.note	src.class.starGalaxy	meta.table
+      unit: ""
+      description: Flag indicating the availability of additional information in the various Non-Single Star tables
+    - name: has_xp_continuous
+      ucd: meta.code	stat.mean	em
+      unit: ""
+      description: Flag indicating the availability of mean BP/RP spectrum in continuous representation for this source
+    - name: has_xp_sampled
+      ucd: meta.code	stat.mean	em
+      unit: ""
+      description: Flag indicating the availability of mean BP/RP spectrum in sampled form for this source
+    - name: has_rvs
+      ucd: meta.code	stat.mean	spect.dopplerVeloc
+      unit: ""
+      description: Flag indicating the availability of mean RVS spectrum for this source
+    - name: has_epoch_photometry
+      ucd: meta.code	time.epoch	phot
+      unit: ""
+      description: Flag indicating the availability of epoch photometry for this source
+    - name: has_epoch_rv
+      ucd: spect.dopplerVeloc	time.epoch	src
+      unit: ""
+      description: Flag indicating the availability of epoch radial velocity for this source
+    - name: has_mcmc_gspphot
+      ucd: meta.code	src.sample	src
+      unit: ""
+      description: Flag indicating the availability of GSP-Phot MCMC samples for this source
+    - name: has_mcmc_msc
+      ucd: Flag indicating the availability of MSC MCMC samples for this source
+      unit: ""
+      description: Flag indicating the availability of MSC MCMC samples for this source
+    - name: in_andromeda_survey
+      ucd: meta.code	src	phot
+      unit: ""
+      description: Flag indicating that the source is present in the Gaia Andromeda Photometric Survey (GAPS)
+    - name: classprob_dsc_combmod_quasar
+      ucd: stat.probability	phys.current	meta.checksum
+      unit: ""
+      description: "Probability from DSC-Combmod of being a quasar (data used: BP/RP spectrum, photometry, astrometry)"
+    - name: classprob_dsc_combmod_galaxy
+      ucd: stat.probability	src.class.starGalaxy	phys.current
+      unit: ""
+      description: "Probability from DSC-Combmod of being a galaxy (data used: BP/RP spectrum, photometry, astrometry)"
+    - name: classprob_dsc_combmod_star
+      ucd: stat.probability	src.class.starGalaxy	phys.current
+      unit: ""
+      description: "Probability from DSC-Combmod of being a single star (but not a white dwarf) (data used: BP/RP spectrum, photometry, astrometry)"
+    - name: teff_gspphot
+      ucd: instr.skyTemp	phys.temperature.effective	em
+      unit: Temperature[K]
+      description: Effective temperature from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: teff_gspphot_lower
+      ucd: phys.temperature.effective	phys.atmol.level	em
+      unit: Temperature[K]
+      description: Lower confidence level (16%) of effective temperature from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: teff_gspphot_upper
+      ucd: phys.temperature.effective	phys.atmol.level	em
+      unit: Temperature[K]
+      description: Upper confidence level (84%) of effective temperature from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: logg_gspphot
+      ucd: phys.gravity	em
+      unit: Gravity Surface[log cgs]
+      description: Surface gravity from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: logg_gspphot_lower
+      ucd: phys.gravity	phys.atmol.level
+      unit: Gravity Surface[log cgs]
+      description: Lower confidence level (16%) of surface gravity from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: logg_gspphot_upper
+      ucd: phys.gravity	phys.atmol.level	em
+      unit: Gravity Surface[log cgs]
+      description: Upper confidence level (84%) of surface gravity from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: mh_gspphot
+      ucd: phys.abund	em
+      unit: Abundances[dex]
+      description: Iron abundance from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: mh_gspphot_lower
+      ucd: phys.abund	phys.atmol.level	em
+      unit: Abundances[dex]
+      description: Lower confidence level (16%) of iron abundance from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: mh_gspphot_upper
+      ucd: phys.abund	phys.atmol.level	em
+      unit: Abundances[dex]
+      description: Upper confidence level (84%) of iron abundance from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: distance_gspphot
+      ucd: pos.distance	em
+      unit: Length & Distance[pc]
+      description: Distance from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: distance_gspphot_lower
+      ucd: pos.distance	phys.atmol.level
+      unit: Length & Distance[pc]
+      description: Lower confidence level (16%) of distance from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: distance_gspphot_upper
+      ucd: pos.distance	phys.atmol.level
+      unit: Length & Distance[pc]
+      description: Upper confidence level (84%) of distance from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: azero_gspphot
+      ucd: obs.atmos.extinction	phys.absorption	em.opt.V
+      unit: Magnitude[mag]
+      description: Monochromatic extinction A_0, at 541.4 nm from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: azero_gspphot_lower
+      ucd: obs.atmos.extinction	phys.atmol.level	em.opt.V
+      unit: Magnitude[mag]
+      description: Lower confidence level (16%) of monochromatic extinction A_0 at 541.4 nm from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: azero_gspphot_upper
+      ucd: obs.atmos.extinction	phys.atmol.level	em.opt.V
+      unit: Magnitude[mag]
+      description: Upper confidence level (84%) of monochromatic extinction A_0 at 541.4 nm from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: ag_gspphot
+      ucd: obs.atmos.extinction	instr.bandpass	phys.absorption
+      unit: Magnitude[mag]
+      description: Extinction in G band from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: ag_gspphot_lower
+      ucd: obs.atmos.extinction	phys.atmol.level	phys.absorption
+      unit: Magnitude[mag]
+      description: Lower confidence level (16%) of extinction in G band from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: ag_gspphot_upper
+      ucd: obs.atmos.extinction	phys.atmol.level	phys.absorption
+      unit: Magnitude[mag]
+      description: Upper confidence level (84%) of extinction in G band from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: ebpminrp_gspphot
+      ucd: phot.color.reddFree
+      unit: Magnitude[mag]
+      description: Reddening E(G<sub>BP</sub>  - G<sub>RP</sub> ) from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: ebpminrp_gspphot_lower
+      ucd: phot.color.reddFree
+      unit: Magnitude[mag]
+      description: Lower confidence level (16%) of reddening E(G<sub>BP</sub>  - G<sub>RP</sub> ) from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: ebpminrp_gspphot_upper
+      ucd: phot.color.reddFree
+      unit: Magnitude[mag]
+      description: Upper confidence level (84%) of reddening E(G<sub>BP</sub>  - G<sub>RP</sub> ) from GSP-Phot Aeneas best library using BP/RP spectra
+    - name: libname_gspphot
+      ucd: ""
+      unit: ""
+      description: Name of library that achieves the highest mean log-posterior in MCMC samples and was used to derive GSP-Phot parameters in this table
