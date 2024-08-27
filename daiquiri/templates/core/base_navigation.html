@@ -34,9 +34,9 @@
             <li>
               <a href="{% slugurl 'direct-download' %}">{% trans 'Download' %}</a>
             </li>
-            <li>
+            {% comment %} <li>
               <a href="{% slugurl 'scripted-access' %}">{% trans 'Scripted access' %}</a>
-            </li>
+            </li> {% endcomment %}
             <li>
               <a href="{% slugurl 'adql-postgresql' %}">{% trans 'ADQL, Postgresql' %}</a>
             </li>
@@ -70,7 +70,7 @@
               <a href="/metadata/twomass">{% trans '2MASS' %}</a>
               <ul class="sub-menu">
                 <li>
-                  <a href="/metadata/twomass/twomass_psc">twomass_psc</a>
+                  <a href="/metadata/twomass/twomass.psc">psc</a>
                 </li>
               </ul>
             </li>
