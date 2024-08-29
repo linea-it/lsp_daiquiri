@@ -105,7 +105,7 @@ class Command(BaseCommand):
             table_obj.refresh_from_db()
 
             # Iterate over table columns and update metadata
-            print(f"QTD Columns: {len(table_data['columns'])}")
+            print(f"    QTD Columns: {len(table_data['columns'])}")
             for column_data in table_data["columns"]:
                 try:
                     column_obj = table_obj.columns.get(name=column_data["name"])
