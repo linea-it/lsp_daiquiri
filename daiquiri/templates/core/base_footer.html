@@ -1,37 +1,93 @@
 {% load static %}
 
-<footer>
-    {% comment %} <div class="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <p>
+<footer style="background-color: #fff; color: #000; font-family: Arial, sans-serif;">
+  <!-- divider horizontal -->
+  <div style="width: 100%; max-width: 1000px; height: 0.5px; background-color: #ccc; margin: 0 auto 30px auto;"></div>
 
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <p>
-
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <p>
-
-                    </p>
-                </div>
-            </div>
+  <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+    <!-- logo-linea, titulo e endereço -->
+    <div style="display: flex;">
+      <a href="https://www.linea.org.br" target="_blank"><img alt="LIneA Logo" loading="lazy" width="140" height="115" decoding="async" src="{% static 'daiquiri/imgs/linea-logo.png' %}" style="left: 70px; position: relative;" /></a>
+      <div>
+        <div style="font-size: 22px; left: 120px; position: relative; line-height: 1.2; top: 20px;">
+          Associação Laboratório<br />Interinstitucional de<br />e-Astronomia LIneA
         </div>
-    </div> {% endcomment %}
-
-    <div class="bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6">
-                </div>
-                <div class="col-xs-6 text-right">
-                    Proudly powered by <a href="https://github.com/django-daiquiri/daiquiri" target="_blank">Daiquiri</a>
-                </div>
-            </div>
+        <div style="margin-top: 50px; font-size: 12px; line-height: 1.2;">
+          Av. Pastor Martin Luther King Jr, 126 - Del Castilho<br />
+          Nova América Offices, Torre 3000 / sala 817.<br />
+          CEP: 20765-000 – Rio de Janeiro - RJ, Brasil
         </div>
+        <div style="margin-top: 10px; background: linear-gradient(120deg, #0989cb, #31297f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 14px; word-spacing: 15px; right: 60px; position: relative;">#PeloFuturoDaCiência &nbsp; #PeloFuturoDaAstronomia</div>
+      </div>
     </div>
+
+    <!-- divider vertical -->
+    <div style="width: 0.5px; height: 90px; background-color: #ccc; margin: 0 30px; position: relative; top: -60px;"></div>
+
+    <!-- logos dos apoiadores -->
+    <div style="text-align: left;">
+      <div style="margin-bottom: 6px; color: #a3a3a3; font-size: 12px;">Support:</div>
+      <div style="display: flex; justify-content: start; flex-wrap: wrap;">
+        <div style="margin: 8px;">
+          <a href="https://www.linea.org.br/inct#inct" target="_blank" rel="noreferrer"><img alt="INCT" loading="lazy" src="{% static 'daiquiri/imgs/inct-logo.png' %}" style="width: 60px; height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;" onmouseover="this.style.filter='grayscale(0%)';" onmouseout="this.style.filter='grayscale(100%)';" /></a>
+        </div>
+        <div style="margin: 8px;">
+          <a href="https://www.gov.br/capes/pt-br" target="_blank" rel="noreferrer"><img alt="CAPES" loading="lazy" src="{% static 'daiquiri/imgs/capes-logo.png' %}" style="width: 100px; height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;" onmouseover="this.style.filter='grayscale(0%)';" onmouseout="this.style.filter='grayscale(100%)';" /></a>
+        </div>
+        <div style="margin: 8px;">
+          <a href="https://www.gov.br/cnpq/pt-br" target="_blank" rel="noreferrer"><img alt="CNPq" loading="lazy" src="{% static 'daiquiri/imgs/cnpq-logo.png' %}" style="width: 100px; height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;" onmouseover="this.style.filter='grayscale(0%)';" onmouseout="this.style.filter='grayscale(100%)';" /></a>
+        </div>
+        <div style="margin: 8px;">
+          <a href="https://www.faperj.br" target="_blank" rel="noreferrer"><img alt="FAPERJ" loading="lazy" src="{% static 'daiquiri/imgs/faperj-logo.png' %}" style="width: 100px; height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;" onmouseover="this.style.filter='grayscale(0%)';" onmouseout="this.style.filter='grayscale(100%)';" /></a>
+        </div>
+        <div style="margin: 8px;">
+          <a href="http://www.finep.gov.br" target="_blank" rel="noreferrer"><img alt="FINEP" loading="lazy" src="{% static 'daiquiri/imgs/finep-logo.png' %}" style="width: 100px; height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;" onmouseover="this.style.filter='grayscale(0%)';" onmouseout="this.style.filter='grayscale(100%)';" /></a>
+        </div>
+      </div>
+
+      <!-- Contatos -->
+      <div style="display: flex; justify-content: center; align-items: center; margin-top: 32px;">
+        <div style="margin-right: 12px;">
+          e-mail: <a href="mailto:secretaria@linea.org.br" style="color: #000; text-decoration: none;">secretaria@linea.org.br</a>
+        </div>
+        <div>
+          tel: <a href="tel:+5521969379224" style="color: #000; font-weight: bold; text-decoration: none;">+55 21 96937 9224</a>
+        </div>
+      </div>
+
+      <!-- midias sociais -->
+      <div style="margin-top: 12px; display: flex; justify-content: center; gap: 12px;">
+        <a href="https://www.linkedin.com/company/linea-astronomia" target="_blank" style="width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; color: #283664; transition: color 0.3s ease;" onmouseover="this.style.color='#0077B5';" onmouseout="this.style.color='#283664';">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20" width="17.5" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
+          </svg>
+        </a>
+        <a href="https://x.com/linea_org" target="_blank" style="width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; color: #283664; transition: color 0.3s ease;" onmouseover="this.style.color='#000';" onmouseout="this.style.color='#283664';">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/linea_org" target="_blank" style="width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; color: #283664; transition: color 0.3s ease;" onmouseover="this.style.color='#E1306C';" onmouseout="this.style.color='#283664';">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20" width="17.5" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zm-48.6 224.7c-7.8 19.6-22.9 34.7-42.5 42.5-29.4 11.7-99.4 9-132.4 9s-103.1 2.6-132.4-9c-19.6-7.8-34.7-22.9-42.5-42.5-11.7-29.4-9-99.4-9-132.4s-2.6-103.1 9-132.4c7.8-19.6 22.9-34.7 42.5-42.5 29.4-11.7 99.4-9 132.4-9s103.1-2.6 132.4 9c19.6 7.8 34.7 22.9 42.5 42.5 11.7 29.4 9 99.4 9 132.4s2.7 103.1-9 132.4z" />
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@linea_org" target="_blank" style="width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; color: #283664; transition: color 0.3s ease;" onmouseover="this.style.color='#FF0000';" onmouseout="this.style.color='#283664';">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20" width="22.5" viewBox="0 0 576 512">
+            <path fill="currentColor" d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/linea.org" target="_blank" style="width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; color: #283664; transition: color 0.3s ease;" onmouseover="this.style.color='#1877F2';" onmouseout="this.style.color='#283664';">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20" width="12.5" viewBox="0 0 320 512">
+            <path fill="currentColor" d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <div style="margin-top: 10px; margin-bottom: 12px; text-align: center; color: #a3a3a3; font-size: 12px;">
+    LIneA - 2024 - All rights reserved | <a href="https://www.linea.org.br/politica-de-privacidade" target="_blank" style="color: #000; text-decoration: none;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">Privacy Policy</a>
+  </div>
 </footer>
