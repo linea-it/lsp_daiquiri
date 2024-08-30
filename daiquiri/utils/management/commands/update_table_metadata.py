@@ -2,9 +2,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
+from django.core.management.base import BaseCommand
+
 from daiquiri.core.constants import ACCESS_LEVEL_PRIVATE
 from daiquiri.metadata.models import Schema
-from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):

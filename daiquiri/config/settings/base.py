@@ -1,8 +1,9 @@
 import os
 
-import daiquiri.core.env as env
 import saml2
 import saml2.saml
+
+import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
