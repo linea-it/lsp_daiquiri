@@ -1,8 +1,9 @@
 import os
 
-import daiquiri.core.env as env
 import saml2
 import saml2.saml
+
+import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
@@ -452,4 +453,5 @@ SETTINGS_EXPORT += [
     "AUTH_SAML2_ENABLED",
     "LOGIN_URL",
     "LOGOUT_URL",
+    "TARGET_VIEWER_URL",
 ]
