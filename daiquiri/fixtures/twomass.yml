@@ -12,11 +12,11 @@
     <blockquote><p>This publication makes use of data products from the Two Micron All Sky Survey, which is a joint project of the University of Massachusetts and the Infrared Processing and Analysis Center/California Institute of Technology, funded by the National Aeronautics and Space Administration and the National Science Foundation.</p>
 
     <p>Database access and other data services are provided by the Associação Laboratório Interinstitucional de e-Astronomia (LIneA) with the financial support from INCT do e-Universo (Processo n.º 465376/2014-2).</p></blockquote>
-  order: 2
+  order: 1
   license: PD
-  doi: ""
-  published: ""
-  updated: ""
+  # doi:
+  # published:
+  # updated:
   access_level: PUBLIC
   metadata_access_level: PUBLIC
   # creators:
@@ -30,339 +30,397 @@
   #   affiliations: Institute of theoretical Managament
   # contributors:
   # - name: Some computer guy
+
   tables:
-  - name: psc
-    title: 2MASS
-    description: >
-      This table lists the point source catalog containing accurate positions and fluxes for ~300 million stars and other unresolved objects.
-    long_description: >
-      <p>(paragraph adapted from the <a href="https://irsa.ipac.caltech.edu/data/2MASS/docs/overview/about2mass.html" target="_blank" rel="noopener">The Two Micron All Sky Survey</a>)</p>
+    - name: psc
+      title: 2MASS
+      description: >
+        This table lists the point source catalog containing accurate positions and fluxes for ~300 million stars and other unresolved objects.
+      long_description: >
+        <p>(paragraph adapted from the <a href="https://irsa.ipac.caltech.edu/data/2MASS/docs/overview/about2mass.html" target="_blank" rel="noopener">The Two Micron All Sky Survey</a>)</p>
 
-      <p>The Two Micron All Sky Survey (2MASS) project is designed to close the gap between our current technical capability and our knowledge of the near-infrared sky. In addition to providing a context for the interpretation of results obtained at infrared and other wavelengths, 2MASS is providing direct answers to immediate questions on the large-scale structure of the Milky Way and the Local Universe. The optimal use of the next generation of infrared space missions, such as HST/NICMOS, the Space Infrared Telescope Facility (SIRTF), and the Next Generation Space Telescope (NGST), as well as powerful ground-based facilities, such as Keck I, Keck II, and Gemini, require a new census with vastly improved sensitivity and astrometric accuracy than that previously available.</p>
+        <p>The Two Micron All Sky Survey (2MASS) project is designed to close the gap between our current technical capability and our knowledge of the near-infrared sky. In addition to providing a context for the interpretation of results obtained at infrared and other wavelengths, 2MASS is providing direct answers to immediate questions on the large-scale structure of the Milky Way and the Local Universe. The optimal use of the next generation of infrared space missions, such as HST/NICMOS, the Space Infrared Telescope Facility (SIRTF), and the Next Generation Space Telescope (NGST), as well as powerful ground-based facilities, such as Keck I, Keck II, and Gemini, require a new census with vastly improved sensitivity and astrometric accuracy than that previously available.</p>
 
-      <p>To achieve these goals, 2MASS has uniformly scanned the entire sky in three near-infrared bands to detect and characterize point sources brighter than about 1 mJy in each band, with signal-to-noise ratio (SNR) greater than 10, using a pixel size of 2.0". This has achieved an 80,000-fold improvement in sensitivity relative to earlier surveys.</p>
+        <p>To achieve these goals, 2MASS has uniformly scanned the entire sky in three near-infrared bands to detect and characterize point sources brighter than about 1 mJy in each band, with signal-to-noise ratio (SNR) greater than 10, using a pixel size of 2.0". This has achieved an 80,000-fold improvement in sensitivity relative to earlier surveys.</p>
 
-      <p>2MASS used two highly-automated 1.3-m telescopes, one at Mt. Hopkins, AZ, and one at CTIO, Chile. Each telescope was equipped with a three-channel camera, each channel consisting of a 256×256 array of HgCdTe detectors, capable of observing the sky simultaneously at J (1.25 microns), H (1.65 microns), and Ks (2.17 microns).</p>
+        <p>2MASS used two highly-automated 1.3-m telescopes, one at Mt. Hopkins, AZ, and one at CTIO, Chile. Each telescope was equipped with a three-channel camera, each channel consisting of a 256×256 array of HgCdTe detectors, capable of observing the sky simultaneously at J (1.25 microns), H (1.65 microns), and Ks (2.17 microns).</p>
 
-      <p>The University of Massachusetts (UMass) was responsible for the overall management of the project, and for developing the infrared cameras and on-site computing systems at both facilities. The Infrared Processing and Analysis Center (IPAC) is responsible for all data processing through the Production Pipeline, and construction and distribution of the data products. The 2MASS project involves the participation of members of the Science Team from several different institutions. The 2MASS project is funding by the National Aeronautics and Space Administration (NASA) and the National Science Foundation (NSF).</p>
-    attribution: >
-      If you have used 2MASS data in your research from this site, please use the following acknowledgement:
+        <p>The University of Massachusetts (UMass) was responsible for the overall management of the project, and for developing the infrared cameras and on-site computing systems at both facilities. The Infrared Processing and Analysis Center (IPAC) is responsible for all data processing through the Production Pipeline, and construction and distribution of the data products. The 2MASS project involves the participation of members of the Science Team from several different institutions. The 2MASS project is funding by the National Aeronautics and Space Administration (NASA) and the National Science Foundation (NSF).</p>
+      attribution: >
+        If you have used 2MASS data in your research from this site, please use the following acknowledgement:
 
-      <blockquote><p>This publication makes use of data products from the Two Micron All Sky Survey, which is a joint project of the University of Massachusetts and the Infrared Processing and Analysis Center/California Institute of Technology, funded by the National Aeronautics and Space Administration and the National Science Foundation.</p>
+        <blockquote><p>This publication makes use of data products from the Two Micron All Sky Survey, which is a joint project of the University of Massachusetts and the Infrared Processing and Analysis Center/California Institute of Technology, funded by the National Aeronautics and Space Administration and the National Science Foundation.</p>
 
-      <p>Database access and other data services are provided by the Associação Laboratório Interinstitucional de e-Astronomia (LIneA) with the financial support from INCT do e-Universo (Processo n.º 465376/2014-2).</p></blockquote>
-    order: 1
-    license: Public Domain Mark
-    doi: ""
-    published:
-    updated:
-    access_level: PUBLIC
-    metadata_access_level: PUBLIC
-      # creators:
-      # - name: Anna Admin
-      #   first_name: Anna
-      #   last_name: Admin
-      #   orcid: https://orcid.org/0000-0001-2345-6789
-      #   affiliations: "Institute of applied Administration\nInstitute of theoretical Managament"
-      # - name: Manni Manager
-      #   orcid: https://orcid.org/0000-0001-2345-6790
-      #   affiliations: Institute of theoretical Managament
-    columns:
-    - name: ra
-      ucd: pos.eq.ra
-      unit: deg
-      description: J2000 right ascension with respect to the ICRS
+        <p>Database access and other data services are provided by the Associação Laboratório Interinstitucional de e-Astronomia (LIneA) with the financial support from INCT do e-Universo (Processo n.º 465376/2014-2).</p></blockquote>
+      order: 1
+      license: PD
+      # doi:
+      # published:
+      # updated:
+      access_level: PUBLIC
+      metadata_access_level: PUBLIC
+        # creators:
+        # - name: Anna Admin
+        #   first_name: Anna
+        #   last_name: Admin
+        #   orcid: https://orcid.org/0000-0001-2345-6789
+        #   affiliations: "Institute of applied Administration\nInstitute of theoretical Managament"
+        # - name: Manni Manager
+        #   orcid: https://orcid.org/0000-0001-2345-6790
+        #   affiliations: Institute of theoretical Managament
+      columns:
+        - name: ra
+          ucd: pos.eq.ra
+          unit: deg
+          description: J2000 right ascension with respect to the ICRS
+          order: 1
+        - name: decl
+          ucd: pos.eq.dec
+          unit: deg
+          description: J2000 declination with respect to the ICRS
+          order: 2
+        - name: err_maj
+          ucd: phys.angSize.smajAxis
+          unit: arsec
+          description: Semi-major axis length of the one sigma position uncertainty ellipse
+          order: 3
+        - name: err_min
+          ucd: phys.angSize.sminAxis
+          unit: arsec
+          description: Semi-minor axis length of the one sigma position uncertainty ellipse
+          order: 4
+        - name: err_ang
+          ucd: pos.posAng;instr.skyLevel
+          unit: deg
+          description: Position angle on the sky of the semi-major axis of the position uncertainty ellipse (East of North)
+          order: 5
 
-    - name: dec
-      ucd: pos.eq.dec
-      unit: deg
-      description: J2000 declination with respect to the ICRS
+        - name: designation
+          ucd: meta.ref
+          unit: ""
+          description: "Sexagesimal, equatorial position-based source name in the form: hhmmssss+ddmmsss[ABC...]."
+          order: 6
 
-    - name: err_maj,phys.angSize.smajAxis	,arsec,Semi-major axis length of the one sigma position uncertainty ellipse
-      ucd: ""
-      unit: ""
-      description: ""
+        - name: j_m
+          ucd: meta.ref;phys.size.radius;em.IR.J
+          unit: mag
+          description: Default J-band magnitude, or if the source is not detected in the J-band, the 95% confidence upper limit derived from a 4" radius aperture measurement taken at the position of the source on the Atlas Image.
+          order: 7
 
-    - name: err_min
-      ucd: phys.angSize.sminAxis
-      unit: arsec
-      description: Semi-minor axis length of the one sigma position uncertainty ellipse
+        - name: j_cmsig
+          ucd: stat.error;phot.mag;em.IR.J
+          unit: mag
+          description: Corrected photometric uncertainty for the default J-band magnitude. If rd_flg[1]="2", this is the measurement error from the profile-fitting procedure, corrected to be consistent with observed repeatability statistics.
+          order: 8
 
-    - name: err_ang
-      ucd: pos.posAng	instr.skyLevel
-      unit: deg
-      description: Position angle on the sky of the semi-major axis of the position uncertainty ellipse (East of North)
+        - name: j_msigcom
+          ucd: meta.code.error;phot.mag;em.IR.J
+          unit: mag
+          description: Combined, or total photometric uncertainty for the default J-band magnitude.
+          order: 9
 
-    - name: designation
-      ucd: ""
-      unit: ""
-      description: ""
+        - name: j_snr
+          ucd: phot.flux;phys.flux;em.IR.J
+          unit: ""
+          description: J-band "scan" signal-to-noise ratio. This value is given by the ratio of the J-band flux to the characteristic J-band scan noise.
+          order: 10
 
-    - name: meta.ref"
-      ucd: ""
-      unit: "Sexagesimal, equatorial position-based source name in the form: hhmmssss+ddmmsss[ABC...]."
-      description: ""
+        - name: h_m
+          ucd: meta.ref;phys.size.radius;em.IR.H
+          unit: mag
+          description: Default H-band magnitude, or if the source is not detected in the H-band, the 95% confidence upper limit derived from a 4" radius aperture measurement taken at the position of the source on the Atlas Image.
+          order: 11
 
-    - name: j_m
-      ucd: meta.ref	phys.size.radius	em.IR.J
-      unit: mag
-      description: 'Default J-band magnitude, or if the source is not detected in the J-band, the 95% confidence upper limit derived from a 4" radius aperture measurement taken at the position of the source on the Atlas Image.'
-    - name: j_cmsig
-      ucd: stat.error	phot.mag	em.IR.J
-      unit: mag
-      description: Corrected photometric uncertainty for the default J-band magnitude. If rd_flg[1]="2", this is the measurement error from the profile-fitting procedure, corrected to be consistent with observed repeatability statistics.
-    - name: j_msigcom
-      ucd: meta.code.error	phot.mag	em.IR.J
-      unit: mag
-      description: Combined, or total photometric uncertainty for the default J-band magnitude.
+        - name: h_cmsig
+          ucd: stat.error;phot.mag;em.IR.H
+          unit: mag
+          description: Corrected photometric uncertainty for the default H-band magnitude. If rd_flg[2]="2", this is the measurement error from the profile-fitting procedure, corrected to be consistent with observed repeatability statistics.
+          order: 12
 
-    - name: j_snr
-      ucd: phot.flux	phys.flux	em.IR.J
-      unit: ""
-      description: J-band ""scan"" signal-to-noise ratio. This value is given by the ratio of the J-band flux to the characteristic J-band scan noise.
+        - name: h_msigcom
+          ucd: meta.code.error;phot.mag;em.IR.H
+          unit: mag
+          description: Combined, or total photometric uncertainty for the default H-band magnitude.
+          order: 13
 
-    - name: h_m
-      ucd: meta.ref	phys.size.radius	em.IR.H
-      unit: mag
-      description: Default H-band magnitude, or if the source is not detected in the H-band, the 95% confidence upper limit derived from a 4" radius aperture measurement taken at the position of the source on the Atlas Image.
-    - name: h_cmsig
-      ucd: stat.error	phot.mag	em.IR.H
-      unit: mag
-      description: Corrected photometric uncertainty for the default H-band magnitude. If rd_flg[2]="2", this is the measurement error from the profile-fitting procedure, corrected to be consistent with observed repeatability statistics.
-    - name: h_msigcom
-      ucd: meta.code.error	phot.mag	em.IR.H
-      unit: mag
-      description: Combined, or total photometric uncertainty for the default H-band magnitude.
+        - name: h_snr
+          ucd: phot.flux;phys.flux;em.IR.H
+          unit: ""
+          description: H-band "scan" signal-to-noise ratio. This value is given by the ratio of the H-band flux to the characteristic H-band scan noise.
+          order: 14
 
-    - name: h_snr
-      ucd: phot.flux	phys.flux	em.IR.H
-      unit: ""
-      description: H-band ""scan"" signal-to-noise ratio. This value is given by the ratio of the H-band flux to the characteristic H-band scan noise.
+        - name: k_m
+          ucd: meta.ref;phys.size.radius;obs.image
+          unit: mag
+          description: Default K_s-band magnitude, or if the source is not detected in the Ks-band, the 95% confidence upper limit derived from a 4" radius aperture measurement taken at the position of the source on the Atlas Image.
+          order: 15
 
-    - name: k_m
-      ucd: meta.ref	phys.size.radius	obs.image
-      unit: mag
-      description: Default K_s-band magnitude, or if the source is not detected in the Ks-band, the 95% confidence upper limit derived from a 4" radius aperture measurement taken at the position of the source on the Atlas Image.
-    - name: k_cmsig
-      ucd: stat.error	phot.mag
-      unit: mag
-      description: Corrected photometric uncertainty for the default K_s-band magnitude. If rd_flg[3]="2", this is the measurement error from the profile-fitting procedure, corrected to be consistent with observed repeatability statistics.
-    - name: k_msigcom
-      ucd: meta.code.error	phot.mag
-      unit: mag
-      description: Combined, or total photometric uncertainty for the default K_s-band magnitude.
+        - name: k_cmsig
+          ucd: stat.error;phot.mag
+          unit: mag
+          description: Corrected photometric uncertainty for the default K_s-band magnitude. If rd_flg[3]="2", this is the measurement error from the profile-fitting procedure, corrected to be consistent with observed repeatability statistics.
+          order: 16
 
-    - name: k_snr
-      ucd: phot.flux	phys.flux	instr.det.noise
-      unit: ""
-      description: K_s-band ""scan"" signal-to-noise ratio. This value is given by the ratio of the K_s-band flux to the characteristic K_s-band scan noise.
+        - name: k_msigcom
+          ucd: meta.code.error;phot.mag
+          unit: mag
+          description: Combined, or total photometric uncertainty for the default K_s-band magnitude.
+          order: 17
 
-    - name: ph_qual
-      ucd: meta.code.qual	phot
-      unit: ""
-      description: Photometric quality flag.
+        - name: k_snr
+          ucd: phot.flux;phys.flux;instr.det.noise
+          unit: ""
+          description: K_s-band ""scan"" signal-to-noise ratio. This value is given by the ratio of the K_s-band flux to the characteristic K_s-band scan noise.
+          order: 18
 
-    - name: rd_flg
-      ucd: meta.code
-      unit: ""
-      description: Read flag.
+        - name: ph_qual
+          ucd: meta.code.qual;phot
+          unit: ""
+          description: Photometric quality flag.
+          order: 19
 
-    - name: bl_flg
-      ucd: meta.code
-      unit: ""
-      description: Blend flag.
+        - name: rd_flg
+          ucd: meta.code
+          unit: ""
+          description: Read flag.
+          order: 20
 
-    - name: cc_flg
-      ucd: meta.code	instr.obsty	phys.current
-      unit: ""
-      description: Minor Planet Flag. Indicates if this source is associated with the predicted position of a known minor planet, comet, planet or planetary satellite.
+        - name: bl_flg
+          ucd: meta.code
+          unit: ""
+          description: Blend flag.
+          order: 21
 
-    - name: ndet
-      ucd: pos.frame	obs.field	instr.sensitivity
-      unit: ""
-      description: Frame detection statistics.
+        - name: cc_flg
+          ucd: meta.code;instr.obsty;phys.current
+          unit: ""
+          description: Minor Planet Flag. Indicates if this source is associated with the predicted position of a known minor planet, comet, planet or planetary satellite.
+          order: 22
 
-    - name: prox
-      ucd: ""
-      unit: arsec
-      description: Proximity
+        - name: ndet
+          ucd: pos.frame;obs.field;instr.sensitivity
+          unit: ""
+          description: Frame detection statistics.
+          order: 23
 
-    - name: pxpa
-      ucd: pos.posAng
-      unit: deg
-      description: The position angle on the sky of the vector from the source to the nearest neighbor in the PSC, in degrees East of North.
+        - name: prox
+          ucd: ""
+          unit: arsec
+          description: Proximity
+          order: 24
 
-    - name: pxcntr
-      ucd: meta.ref	stat.value	src
-      unit: ""
-      description: The pts_key value of the nearest source in the PSC.
+        - name: pxpa
+          ucd: pos.posAng
+          unit: deg
+          description: The position angle on the sky of the vector from the source to the nearest neighbor in the PSC, in degrees East of North.
+          order: 25
 
-    - name: gal_contam
-      ucd: meta.ref	src
-      unit: ""
-      description: Extended source ""contamination"" flag.
+        - name: pxcntr
+          ucd: meta.ref;stat.value;src
+          unit: ""
+          description: The pts_key value of the nearest source in the PSC.
+          order: 26
 
-    - name: mp_flg
-      ucd: meta.code	instr.obsty
-      unit: ""
-      description: Minor Planet Flag. Indicates if this source is associated with the predicted position of a known minor planet, comet, planet or planetary satellite.
+        - name: gal_contam
+          ucd: meta.ref;src
+          unit: ""
+          description: Extended source ""contamination"" flag.
+          order: 27
 
-    - name: pts_key/cntr
-      ucd: meta.id	phys.current	src
-      unit: ""
-      description: A unique identification number for the PSC source.
+        - name: mp_flg
+          ucd: meta.code;instr.obsty
+          unit: ""
+          description: Minor Planet Flag. Indicates if this source is associated with the predicted position of a known minor planet, comet, planet or planetary satellite.
+          order: 28
 
-    - name: hemis
-      ucd: meta.code	instr.obsty	src
-      unit: ""
-      description: Hemisphere code for the 2MASS Observatory from which this source was observed.
+        - name: pts_key
+          ucd: meta.id;phys.current;src
+          unit: ""
+          description: A unique identification number for the PSC source.
+          order: 29
 
-    - name: date
-      ucd: meta.ref	time	obs
-      unit: yyyy-mm-dd
-      description: The observation reference date for this source expressed in ISO standard format.
+        - name: hemis
+          ucd: meta.code;instr.obsty;src
+          unit: ""
+          description: Hemisphere code for the 2MASS Observatory from which this source was observed.
+          order: 30
 
-    - name: scan
-      ucd: meta.id	src
-      unit: ""
-      description: The nightly scan number in which the source was detected.
+        - name: date
+          ucd: meta.ref;time;obs
+          unit: yyyy-mm-dd
+          description: The observation reference date for this source expressed in ISO standard format.
+          order: 31
 
-    - name: glon
-      ucd: pos.galactic.lon
-      unit: deg
-      description: Galactic longitude.
+        - name: scan
+          ucd: meta.id;src
+          unit: ""
+          description: The nightly scan number in which the source was detected.
+          order: 32
 
-    - name: glat
-      ucd: pos.galactic.lat
-      unit: deg
-      description: Galactic latitude.
+        - name: glon
+          ucd: pos.galactic.lon
+          unit: deg
+          description: Galactic longitude.
+          order: 33
 
-    - name: x_scan
-      ucd: instr.tel.focalLength	stat.mean
-      unit: arcsec
-      description: Mean cross-scan focal plane position of the source in the Universal scan (U-scan) coordinate system.
+        - name: glat
+          ucd: pos.galactic.lat
+          unit: deg
+          description: Galactic latitude.
+          order: 34
 
-    - name: jdate
-      ucd: time.epoch	time	time.duration
-      unit: day
-      description: The Julian Date of the source measurement accurate to +30 seconds.
+        - name: x_scan
+          ucd: instr.tel.focalLength;stat.mean
+          unit: arcsec
+          description: Mean cross-scan focal plane position of the source in the Universal scan (U-scan) coordinate system.
+          order: 35
 
-    - name: j_psfchi
-      ucd: stat.fit.chi2	obs.exposure	em.IR.J
-      unit: ""
-      description: Reduced chi-squared goodness-of-fit value for the J-band profile-fit photometry made on the 1.3 s ""Read_2"" exposures
+        - name: jdate
+          ucd: time.epoch;time;time.duration
+          unit: day
+          description: The Julian Date of the source measurement accurate to +30 seconds.
+          order: 36
 
-    - name: h_psfchi
-      ucd: stat.fit.chi2	obs.exposure	em.IR.H
-      unit: ""
-      description: Reduced chi-squared goodness-of-fit value for the H-band profile-fit photometry made on the 1.3 s ""Read_2"" exposures.
+        - name: j_psfchi
+          ucd: stat.fit.chi2;obs.exposure;em.IR.J
+          unit: ""
+          description: Reduced chi-squared goodness-of-fit value for the J-band profile-fit photometry made on the 1.3 s ""Read_2"" exposures
+          order: 37
 
-    - name: k_psfchi
-      ucd: stat.fit.chi2	obs.exposure	em.IR.H
-      unit: ""
-      description: Reduced chi-squared goodness-of-fit value for the K_s-band profile-fit photometry made on the 1.3 s ""Read_2"" exposures.
+        - name: h_psfchi
+          ucd: stat.fit.chi2;obs.exposure;em.IR.H
+          unit: ""
+          description: Reduced chi-squared goodness-of-fit value for the H-band profile-fit photometry made on the 1.3 s ""Read_2"" exposures.
+          order: 38
 
-    - name: j_m_stdap
-      ucd: phot.mag	instr.fov	em.IR.J
-      unit: mag
-      description: J-band ""standard"" aperture magnitude.
+        - name: k_psfchi
+          ucd: stat.fit.chi2;obs.exposure;em.IR.H
+          unit: ""
+          description: Reduced chi-squared goodness-of-fit value for the K_s-band profile-fit photometry made on the 1.3 s ""Read_2"" exposures.
+          order: 39
 
-    - name: j_msig_stdap
-      ucd: stat.error	instr.fov	em.IR.J
-      unit: mag
-      description: Uncertainty in the J-band standard aperture magnitude. If there was more than one 1.3 s ""Read_2"" frame available for aperture photometry
+        - name: j_m_stdap
+          ucd: phot.mag;instr.fov;em.IR.J
+          unit: mag
+          description: J-band ""standard"" aperture magnitude.
+          order: 40
 
-    - name: h_m_stdap
-      ucd: phot.mag	instr.fov	em.IR.H
-      unit: mag
-      description: H-band ""standard"" aperture magnitude.
+        - name: j_msig_stdap
+          ucd: stat.error;instr.fov;em.IR.J
+          unit: mag
+          description: Uncertainty in the J-band standard aperture magnitude. If there was more than one 1.3 s ""Read_2"" frame available for aperture photometry
+          order: 41
 
-    - name: h_msig_stdap
-      ucd: stat.error	instr.fov	em.IR.H
-      unit: mag
-      description: Uncertainty in the H-band standard aperture magnitude.
+        - name: h_m_stdap
+          ucd: phot.mag;instr.fov;em.IR.H
+          unit: mag
+          description: H-band ""standard"" aperture magnitude.
+          order: 42
 
-    - name: k_m_stdap
-      ucd: phot.mag	instr.fov
-      unit: mag
-      description: K_s-band ""standard"" aperture magnitude.
+        - name: h_msig_stdap
+          ucd: stat.error;instr.fov;em.IR.H
+          unit: mag
+          description: Uncertainty in the H-band standard aperture magnitude.
+          order: 43
 
-    - name: k_msig_stdap
-      ucd: stat.error	instr.fov	phot.mag
-      unit: mag
-      description: Uncertainty in the K_s-band standard aperture magnitude.
+        - name: k_m_stdap
+          ucd: phot.mag;instr.fov
+          unit: mag
+          description: K_s-band ""standard"" aperture magnitude.
+          order: 44
 
-    - name: dist_edge_ns
-      ucd: meta.ref	pos.distance
-      unit: arsec
-      description: The distance from the source to the nearest North or South scan edge.
+        - name: k_msig_stdap
+          ucd: stat.error;instr.fov;phot.mag
+          unit: mag
+          description: Uncertainty in the K_s-band standard aperture magnitude.
+          order: 45
 
-    - name: dist_edge_ew
-      ucd: meta.ref	pos.distance
-      unit: arsec
-      description: The distance from the source to the nearest East or West scan edge.
+        - name: dist_edge_ns
+          ucd: meta.ref;pos.distance
+          unit: arsec
+          description: The distance from the source to the nearest North or South scan edge.
+          order: 46
 
-    - name: dist_edge_flg
-      ucd: phys.atmol.transProb
-      unit: ""
-      description: Two character flag that specifies to which scan edges a source lies closest, and to which edges the dist_edge_ns and dist_edge_ew values refer.
+        - name: dist_edge_ew
+          ucd: meta.ref;pos.distance
+          unit: arsec
+          description: The distance from the source to the nearest East or West scan edge.
+          order: 47
 
-    - name: dup_src
-      ucd: meta.ref	src
-      unit: ""
-      description: Duplicate source flag.
+        - name: dist_edge_flg
+          ucd: phys.atmol.transProb
+          unit: ""
+          description: Two character flag that specifies to which scan edges a source lies closest, and to which edges the dist_edge_ns and dist_edge_ew values refer.
+          order: 48
 
-    - name: use_src
-      ucd: meta.ref	src
-      unit: ""
-      description: Use source flag.
+        - name: dup_src
+          ucd: meta.ref;src
+          unit: ""
+          description: Duplicate source flag.
+          order: 49
 
-    - name: a
-      ucd: meta.table	em.opt
-      unit: ""
-      description: Catalog identifier of an optical source from either the Tycho 2 or USNO-A2.0 catalog that falls within approximately 5Â´Â´ of the 2MASS source position.
+        - name: use_src
+          ucd: meta.ref;src
+          unit: ""
+          description: Use source flag.
+          order: 50
 
-    - name: dist_opt
-      ucd: pos.distance
-      unit: arcsec
-      description: Distance separating 2MASS source position and associated optical source within approximately 5Â´Â´.
+        - name: a
+          ucd: meta.table;em.opt
+          unit: ""
+          description: Catalog identifier of an optical source from either the Tycho 2 or USNO-A2.0 catalog that falls within approximately 5AA of the 2MASS source position.
+          order: 51
 
-    - name: phi_opt
-      ucd: pos.posAng
-      unit: deg
-      description: Position angle on the sky of the vector from the the associated optical source to the 2MASS source position, in degrees East of North.
+        - name: dist_opt
+          ucd: pos.distance
+          unit: arcsec
+          description: Distance separating 2MASS source position and associated optical source within approximately 5AA.
+          order: 52
 
-    - name: b_m_opt
-      ucd: meta.ref	phot.mag	em.IR.60-100um
-      unit: mag
-      description: Blue magnitude of associated optical source.
+        - name: phi_opt
+          ucd: pos.posAng
+          unit: deg
+          description: Position angle on the sky of the vector from the the associated optical source to the 2MASS source position, in degrees East of North.
+          order: 53
 
-    - name: vr_m_opt
-      ucd: meta.ref	phot.mag	em.opt.R
-      unit: mag
-      description: Visual or red magnitude of the associated optical source.
+        - name: b_m_opt
+          ucd: meta.ref;phot.mag;em.IR.60-100um
+          unit: mag
+          description: Blue magnitude of associated optical source.
+          order: 54
 
-    - name: nopt_mchs
-      ucd: meta.number
-      unit: ""
-      description: The number of USNO-A2.0 or Tycho 2 optical sources found within a radius of approximately 5Â´Â´ of the 2MASS position.
+        - name: vr_m_opt
+          ucd: meta.ref;phot.mag;em.opt.R
+          unit: mag
+          description: Visual or red magnitude of the associated optical source.
+          order: 55
 
-    - name: ext_key
-      ucd: meta.number	phys.size.radius	em.opt
-      unit: ""
-      description: Unique identification number of the record in the XSC that corresponds to this point source.
+        - name: nopt_mchs
+          ucd: meta.number
+          unit: ""
+          description: The number of USNO-A2.0 or Tycho 2 optical sources found within a radius of approximately 5AA of the 2MASS position.
+          order: 56
 
-    - name: scan_key
-      ucd: meta.ref	phys.size.radius	meta.table
-      unit: ""
-      description: Unique identification number of the record in the Scan Information Table that corresponds to the survey scan in which this source was detected.
+        - name: ext_key
+          ucd: meta.number;phys.size.radius;em.opt
+          unit: ""
+          description: Unique identification number of the record in the XSC that corresponds to this point source.
+          order: 57
 
-    - name: coadd_key
-      ucd: meta.record	obs.image	meta.table
-      unit: ""
-      description: Unique identification number of the record in the Atlas Image Information Table that corresponds to Image in which the position of this source falls.
+        - name: scan_key
+          ucd: meta.ref;phys.size.radius;meta.table
+          unit: ""
+          description: Unique identification number of the record in the Scan Information Table that corresponds to the survey scan in which this source was detected.
+          order: 58
 
-    - name: coadd
-      ucd: meta.number	obs.sequence	obs.image
-      unit: ""
-      description: Sequence number of the Atlas Image in which the position of this source falls.
+        - name: coadd_key
+          ucd: meta.record;obs.image;meta.table
+          unit: ""
+          description: Unique identification number of the record in the Atlas Image Information Table that corresponds to Image in which the position of this source falls.
+          order: 59
+
+        - name: coadd
+          ucd: meta.number;obs.sequence;obs.image
+          unit: ""
+          description: Sequence number of the Atlas Image in which the position of this source falls.
+          order: 60
