@@ -1,0 +1,1160 @@
+- name: des_dr2
+  title: Dark Energy Survey - Data Release 2
+  description: >
+    The DES is a 5000 square degree grizY photometric survey of the Southern sky aimed at understanding the accelerating expansion rate of the universe using four complementary methods: weak gravitational lensing, galaxy cluster counts, baryon acoustic oscillations, and Type Ia supernovae.
+  long_description: >
+    <p>(paragraph extracted from the DES <a href="https://des.ncsa.illinois.edu/home">DES Data Management website</a>)</p>
+    <i>"The DES is a 5000 square degree grizY photometric survey of the Southern sky aimed at understanding the accelerating expansion rate of the universe using four complementary methods: weak gravitational lensing, galaxy cluster counts, baryon acoustic oscillations, and Type Ia supernovae. DES uses the new 3 square degree Dark Energy Camera (DECam) imager, a 570 Megapixel CCD camera installed at the prime focus of on the Blanco 4m telescope at the Cerro Tololo Interamerican Observatory in northern Chile. For about 100 nights per year, from 2013 until 2019, the DECam scanned the sky to perform a 5000 sq-degree wide field survey and 30 sq-degree supernova survey. Learn more on the main DES website."</i>
+  attribution: >
+    <blockquote><p>This project used public archival data from the Dark Energy Survey (DES). Funding for the DES Projects has been provided by the U.S. Department of Energy, the U.S. National Science Foundation, the Ministry of Science and Education of Spain, the Science and Technology Facilities Council of the United Kingdom, the Higher Education Funding Council for England, the National Center for Supercomputing Applications at the University of Illinois at Urbana–Champaign, the Kavli Institute of Cosmological Physics at the University of Chicago, the Center for Cosmology and Astro-Particle Physics at the Ohio State University, the Mitchell Institute for Fundamental Physics and Astronomy at Texas A&M University, Financiadora de Estudos e Projetos, Fundação Carlos Chagas Filho de Amparo à Pesquisa do Estado do Rio de Janeiro, Conselho Nacional de Desenvolvimento Científico e Tecnológico and the Ministério da Ciência, Tecnologia e Inovação, the Deutsche Forschungsgemeinschaft and the Collaborating Institutions in the Dark Energy Survey.</p>
+
+    <p>The Collaborating Institutions are Argonne National Laboratory, the University of California at Santa Cruz, the University of Cambridge, Centro de Investigaciones Enérgeticas, Medioambientales y Tecnológicas–Madrid, the University of Chicago, University College London, the DES-Brazil Consortium, the University of Edinburgh, the Eidgenössische Technische Hochschule (ETH) Zürich, Fermi National Accelerator Laboratory, the University of Illinois at Urbana-Champaign, the Institut de Ciències de l'Espai (IEEC/CSIC), the Institut de Física d'Altes Energies, Lawrence Berkeley National Laboratory, the Ludwig-Maximilians Universität München and the associated Excellence Cluster Universe, the University of Michigan, the National Optical Astronomy Observatory, the University of Nottingham, the Ohio State University, the OzDES Membership Consortium, the University of Pennsylvania, the University of Portsmouth, SLAC National Accelerator Laboratory, Stanford University, the University of Sussex, and Texas A&M University.</p>
+
+    <p>Based in part on observations at Cerro Tololo Inter-American Observatory, National Optical Astronomy Observatory, which is operated by the Association of Universities for Research in Astronomy (AURA) under a cooperative agreement with the National Science Foundation.</p>
+
+    <p>Database access and other data services are provided by the Associação Laboratório Interinstitucional de e-Astronomia (LIneA) with the financial support from INCT do e-Universo (Processo n.º 465376/2014-2).</p></blockquote>
+
+  order: 0
+  license: PD
+  doi: ""
+  published: 2021-01-14
+  updated: 2021-09-06
+  access_level: PUBLIC
+  metadata_access_level: PUBLIC
+  # creators:
+  # - name: Anna Admin
+  #   first_name: Anna
+  #   last_name: Admin
+  #   orcid: https://orcid.org/0000-0001-2345-6789
+  #   affiliations: "Institute of applied Administration\nInstitute of theoretical Managament"
+  # - name: Manni Manager
+  #   orcid: https://orcid.org/0000-0001-2345-6790
+  #   affiliations: Institute of theoretical Managament
+  # contributors:
+  # - name: Some computer guy
+
+  tables:
+    - name: main
+      title: DES DR2 Main
+      description: >
+        <p>(paragraph adapted from the <a href="https://arxiv.org/abs/2101.05765" target="_blank" rel="noopener">DES DR2 paper</a>)</p>
+
+        <i>"DR2_MAIN includes all the main quantities extracted from the coadd pipeline and important information about the objects. That table also includes MAG_AUTO and WAVG_MAG_PSF, associated uncertainties, as well as the corresponding dereddened magnitudes along with star/galaxy separation columns."</i>
+
+        For more information, click on the table name.
+      long_description: >
+        <p>(paragraph adapted from the <a href="https://arxiv.org/abs/2101.05765" target="_blank" rel="noopener">DES DR2 paper</a>)</p>
+
+        <i>"DR2_MAIN includes all the main quantities extracted from the coadd pipeline and important information about the objects. That table also includes MAG_AUTO and WAVG_MAG_PSF, associated uncertainties, as well as the corresponding dereddened magnitudes along with star/galaxy separation columns."</i>
+
+        <h3>Reference</h3>
+
+        <p>Find details about DES and its second data release on:</p>
+        <ul>
+          <li> <a href="https://arxiv.org/abs/2101.05765" target="_blank" rel="noopener">DES DR2 paper</a></li>
+          <li> <a href="https://www.darkenergysurvey.org/" target="_blank" rel="noopener">DES website</a></li>
+          <li> <a href="https://des.ncsa.illinois.edu/home" target="_blank" rel="noopener">DES Data Management website</a></li>
+          <li> <a href="https://datalab.noirlab.edu/des/" target="_blank" rel="noopener">DES DR2 page on Astro Data Lab</a></li>
+        </ul>
+
+      attribution: >
+        <blockquote><p>This project used public archival data from the Dark Energy Survey (DES). Funding for the DES Projects has been provided by the U.S. Department of Energy, the U.S. National Science Foundation, the Ministry of Science and Education of Spain, the Science and Technology Facilities Council of the United Kingdom, the Higher Education Funding Council for England, the National Center for Supercomputing Applications at the University of Illinois at Urbana–Champaign, the Kavli Institute of Cosmological Physics at the University of Chicago, the Center for Cosmology and Astro-Particle Physics at the Ohio State University, the Mitchell Institute for Fundamental Physics and Astronomy at Texas A&M University, Financiadora de Estudos e Projetos, Fundação Carlos Chagas Filho de Amparo à Pesquisa do Estado do Rio de Janeiro, Conselho Nacional de Desenvolvimento Científico e Tecnológico and the Ministério da Ciência, Tecnologia e Inovação, the Deutsche Forschungsgemeinschaft and the Collaborating Institutions in the Dark Energy Survey.</p>
+
+        <p>The Collaborating Institutions are Argonne National Laboratory, the University of California at Santa Cruz, the University of Cambridge, Centro de Investigaciones Enérgeticas, Medioambientales y Tecnológicas–Madrid, the University of Chicago, University College London, the DES-Brazil Consortium, the University of Edinburgh, the Eidgenössische Technische Hochschule (ETH) Zürich, Fermi National Accelerator Laboratory, the University of Illinois at Urbana-Champaign, the Institut de Ciències de l'Espai (IEEC/CSIC), the Institut de Física d'Altes Energies, Lawrence Berkeley National Laboratory, the Ludwig-Maximilians Universität München and the associated Excellence Cluster Universe, the University of Michigan, the National Optical Astronomy Observatory, the University of Nottingham, the Ohio State University, the OzDES Membership Consortium, the University of Pennsylvania, the University of Portsmouth, SLAC National Accelerator Laboratory, Stanford University, the University of Sussex, and Texas A&M University.</p>
+
+        <p>Based in part on observations at Cerro Tololo Inter-American Observatory, National Optical Astronomy Observatory, which is operated by the Association of Universities for Research in Astronomy (AURA) under a cooperative agreement with the National Science Foundation.</p>
+
+        <p>Database access and other data services are provided by the Associação Laboratório Interinstitucional de e-Astronomia (LIneA) with the financial support from INCT do e-Universo (Processo n.º 465376/2014-2).</p></blockquote>
+
+      order: 0
+      license: PD
+      doi: https://iopscience.iop.org/article/10.3847/1538-4365/ac00b3
+      published: 2020-01-01
+      updated: 2018-01-01
+      access_level: PUBLIC
+      metadata_access_level: PUBLIC
+      # creators:
+      # - name: Anna Admin
+      #   first_name: Anna
+      #   last_name: Admin
+      #   orcid: https://orcid.org/0000-0001-2345-6789
+      #   affiliations: "Institute of applied Administration\nInstitute of theoretical Managament"
+      # - name: Manni Manager
+      #   orcid: https://orcid.org/0000-0001-2345-6790
+      #   affiliations: Institute of theoretical Managament
+      columns:
+        - name: coadd_object_id
+          ucd: meta.id;meta.main
+          unit: ""
+          description: Unique identifier for the coadded objects
+          order: 0
+        - name: tilename
+          ucd: obs.field
+          unit: ""
+          description: Identiﬁer of each one of the tiles on which the survey is gridded
+          order: 1
+        - name: hpix_32
+          ucd: pos.healpix;phys.size
+          unit: ""
+          description: Healpix identiﬁer for its 32 grid size, in a NESTED schema
+          order: 2
+        - name: hpix_64
+          ucd: pos.healpix;phys.size
+          unit: ""
+          description: Healpix identiﬁer for its 64 grid size, in a NESTED schema
+          order: 3
+        - name: hpix_1024
+          ucd: pos.healpix;phys.size
+          unit: ""
+          description: Healpix identiﬁer for its 1024 grid size, in a NESTED schema
+          order: 4
+        - name: hpix_4096
+          ucd: pos.healpix;phys.size
+          unit: ""
+          description: Healpix identiﬁer for its 4096 grid size, in a NESTED schema
+          order: 5
+        - name: hpix_16384
+          ucd: pos.healpix;phys.size
+          unit: ""
+          description: Healpix identiﬁer for its 16384 grid size, in a NESTED schema
+          order: 6
+        - name: ra
+          ucd: pos.eq.ra
+          unit: deg
+          description: Right ascension, with quantized precision for indexing (DELTAWIN_J2000 has full precision but not indexed)
+          order: 7
+        - name: dec
+          ucd: pos.eq.dec
+          unit: deg
+          description: decl., with quantized precision for indexing (DELTAWIN_J2000 has full precision but not indexed)
+          order: 8
+        - name: alphawin_j2000
+          ucd: pos.eq.ra
+          unit: deg
+          description: Right ascension for the object, J2000 in ICRS system (full precision but not indexed)
+          order: 9
+        - name: deltawin_j2000
+          ucd: pos.eq.dec
+          unit: deg
+          description: decl. for the object, J2000 in ICRS system (full precision but not indexed)
+          order: 10
+        - name: galactic_l
+          ucd: pos.galactic.lon
+          unit: deg
+          description: Galactic Longitud
+          order: 11
+        - name: galactic_b
+          ucd: pos.galactic.lat
+          unit: deg
+          description: Galactic Latitude
+          order: 12
+        - name: xwin_image
+          ucd: obs.image
+          unit: pixel
+          description: X-centroid from windowed measurements on coadded image
+          order: 13
+        - name: ywin_image
+          ucd: obs.image
+          unit: pixel
+          description: Y-centroid from windowed measurements on coadded image
+          order: 14
+        - name: a_image
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Major axis size based on an isophotal model
+          order: 15
+        - name: erra_image
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Uncertainty in major axis size, from isophotal model
+          order: 16
+        - name: b_image
+          ucd: phys.angSize;phys.size;meta.modelled
+          unit: pixel
+          description: Minor axis size based on an isophotal model
+          order: 17
+        - name: errb_image
+          ucd: phys.angSize;phys.size;meta.modelled
+          unit: pixel
+          description: Uncertainty in minor axis size, from isophotal model
+          order: 18
+        - name: theta_j2000
+          ucd: pos.posAng;pos;phys.angSize
+          unit: deg
+          description: Position angle of source in J2000 coordinates, from nonwindowed measurement
+          order: 19
+        - name: errtheta_image
+          ucd: meta.code.error;meta.modelled;src
+          unit: deg
+          description: Uncertainty in source position, from isophotal model
+          order: 20
+        - name: kron_radius
+          ucd: phys.size.radius;instr.sensitivity
+          unit: pixel
+          description: Kron radius measured from detection image
+          order: 21
+        - name: ebv_sfd98
+          ucd: phot.color;em.opt.V;em.opt.B
+          unit: mag
+          description: E(B-V) reddening coefﬁcient from Schlegel, Finkbeiner & Davis, 1998
+          order: 22
+        - name: mag_auto_g_dered
+          ucd: phot.mag.reddFree;meta.modelled;phys.size.radius
+          unit: mag
+          description: Dereddened magnitude estimation (using SFD98), for an elliptical model based on the Kron radius
+          order: 23
+        - name: mag_auto_r_dered
+          ucd: phot.mag.reddFree;meta.modelled;phys.size.radius
+          unit: mag
+          description: Dereddened magnitude estimation (using SFD98), for an elliptical model based on the Kron radius
+          order: 24
+        - name: mag_auto_i_dered
+          ucd: phot.mag.reddFree;meta.modelled;phys.size.radius
+          unit: mag
+          description: Dereddened magnitude estimation (using SFD98), for an elliptical model based on the Kron radius
+          order: 25
+        - name: mag_auto_z_dered
+          ucd: phot.mag.reddFree;meta.modelled;phys.size.radius
+          unit: mag
+          description: Dereddened magnitude estimation (using SFD98), for an elliptical model based on the Kron radius
+          order: 26
+        - name: mag_auto_y_dered
+          ucd: phot.mag.reddFree;meta.modelled;phys.size.radius
+          unit: mag
+          description: Dereddened magnitude estimation (using SFD98), for an elliptical model based on the Kron radius
+          order: 27
+        - name: wavg_mag_psf_g_dered
+          ucd: phot.mag.reddFree;instr.det.psf;phot.mag
+          unit: mag
+          description: Dereddened weighted-average magnitude (using SFD98) from PSF ﬁt single-epoch detections
+          order: 28
+        - name: wavg_mag_psf_r_dered
+          ucd: phot.mag.reddFree;instr.det.psf;phot.mag
+          unit: mag
+          description: Dereddened weighted-average magnitude (using SFD98) from PSF ﬁt single-epoch detections
+          order: 29
+        - name: wavg_mag_psf_i_dered
+          ucd: phot.mag.reddFree;instr.det.psf;phot.mag
+          unit: mag
+          description: Dereddened weighted-average magnitude (using SFD98) from PSF ﬁt single-epoch detections
+          order: 30
+        - name: wavg_mag_psf_z_dered
+          ucd: phot.mag.reddFree;instr.det.psf;phot.mag
+          unit: mag
+          description: Dereddened weighted-average magnitude (using SFD98) from PSF ﬁt single-epoch detections
+          order: 31
+        - name: wavg_mag_psf_y_dered
+          ucd: phot.mag.reddFree;instr.det.psf;phot.mag
+          unit: mag
+          description: Dereddened weighted-average magnitude (using SFD98) from PSF ﬁt single-epoch detections
+          order: 32
+        - name: extended_class_coadd
+          ucd: src.class.starGalaxy;meta.checksum;phot
+          unit: ""
+          description: "0: high-conﬁdence stars; 1: candidate stars; 2: mostly gxs; 3: high-conﬁdence gxs; -9: No data; Sextractor photometry"
+          order: 33
+        - name: extended_class_wavg
+          ucd: src.class.starGalaxy;meta.checksum;phot
+          unit: ""
+          description: "0: high-conﬁdence stars; 1: candidate stars; 2: mostly gxs; 3: high-conﬁdence gxs; -9: No data; WAVG photometry"
+          order: 34
+        - name: flags_g
+          ucd: meta.code;src
+          unit: ""
+          description: Flag describing cautionary advice about source extraction process (FLAGS < 4 for well-behaved objects)
+          order: 35
+        - name: imaflags_iso_g
+          ucd: meta.code;instr.pixel;obs.image
+          unit: ""
+          description: Flag identifying sources with missing/ﬂagged pixels, considering all single-epoch images
+          order: 36
+        - name: nepochs_g
+          ucd: time.epoch
+          unit: ""
+          description: Number of epochs the source is detected in single-epoch images
+          order: 37
+        - name: flags_r
+          ucd: meta.code;src
+          unit: ""
+          description: Flag describing cautionary advice about source extraction process (FLAGS < 4 for well-behaved objects)
+          order: 38
+        - name: imaflags_iso_r
+          ucd: meta.code;instr.pixel;obs.image
+          unit: ""
+          description: Flag identifying sources with missing/ﬂagged pixels, considering all single-epoch images
+          order: 39
+        - name: nepochs_r
+          ucd: time.epoch
+          unit: ""
+          description: Number of epochs the source is detected in single-epoch images
+          order: 40
+        - name: flags_i
+          ucd: meta.code;src
+          unit: ""
+          description: Flag describing cautionary advice about source extraction process (FLAGS < 4 for well-behaved objects)
+          order: 41
+        - name: imaflags_iso_i
+          ucd: meta.code;instr.pixel;obs.image
+          unit: ""
+          description: Flag identifying sources with missing/ﬂagged pixels, considering all single-epoch images
+          order: 42
+        - name: nepochs_i
+          ucd: time.epoch
+          unit: ""
+          description: Number of epochs the source is detected in single-epoch images
+          order: 43
+        - name: flags_z
+          ucd: meta.code;src
+          unit: ""
+          description: Flag describing cautionary advice about source extraction process (FLAGS < 4 for well-behaved objects)
+          order: 44
+        - name: imaflags_iso_z
+          ucd: meta.code;instr.pixel;obs.image
+          unit: ""
+          description: Flag identifying sources with missing/ﬂagged pixels, considering all single-epoch images
+          order: 45
+        - name: nepochs_z
+          ucd: time.epoch
+          unit: ""
+          description: Number of epochs the source is detected in single-epoch images
+          order: 46
+        - name: flags_y
+          ucd: meta.code;src
+          unit: ""
+          description: Flag describing cautionary advice about source extraction process (FLAGS < 4 for well-behaved objects)
+          order: 47
+        - name: imaflags_iso_y
+          ucd: meta.code;instr.pixel;obs.image
+          unit: ""
+          description: Flag identifying sources with missing/ﬂagged pixels, considering all single-epoch images
+          order: 48
+        - name: nepochs_y
+          ucd: time.epoch
+          unit: ""
+          description: Number of epochs the source is detected in single-epoch images
+          order: 49
+        - name: xwin_image_g
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: X-centroid from windowed measurements on coadded band image
+          order: 50
+        - name: xwin_image_r
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: X-centroid from windowed measurements on coadded band image
+          order: 51
+        - name: xwin_image_i
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: X-centroid from windowed measurements on coadded band image
+          order: 52
+        - name: xwin_image_z
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: X-centroid from windowed measurements on coadded band image
+          order: 53
+        - name: xwin_image_y
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: X-centroid from windowed measurements on coadded band image
+          order: 54
+        - name: ywin_image_g
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: Y-centroid from windowed measurements on coadded band images
+          order: 55
+        - name: ywin_image_r
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: Y-centroid from windowed measurements on coadded band images
+          order: 56
+        - name: ywin_image_i
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: Y-centroid from windowed measurements on coadded band images
+          order: 57
+        - name: ywin_image_z
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: Y-centroid from windowed measurements on coadded band images
+          order: 58
+        - name: ywin_image_y
+          ucd: instr.bandpass;obs.image
+          unit: pixel
+          description: Y-centroid from windowed measurements on coadded band images
+          order: 59
+        - name: x2win_image_g
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in x-direction, from converged windowed measurements
+          order: 60
+        - name: x2win_image_r
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in x-direction, from converged windowed measurements
+          order: 61
+        - name: x2win_image_i
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in x-direction, from converged windowed measurements
+          order: 62
+        - name: x2win_image_z
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in x-direction, from converged windowed measurements
+          order: 63
+        - name: x2win_image_y
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in x-direction, from converged windowed measurements
+          order: 64
+        - name: y2win_image_g
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in y-direction, from converged windowed measurements
+          order: 65
+        - name: y2win_image_r
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in y-direction, from converged windowed measurements
+          order: 66
+        - name: y2win_image_i
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in y-direction, from converged windowed measurements
+          order: 67
+        - name: y2win_image_z
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in y-direction, from converged windowed measurements
+          order: 68
+        - name: y2win_image_y
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in y-direction, from converged windowed measurements
+          order: 69
+        - name: xywin_image_g
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in xy-direction, from converged windowed measurements
+          order: 70
+        - name: xywin_image_r
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in xy-direction, from converged windowed measurements
+          order: 71
+        - name: xywin_image_i
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in xy-direction, from converged windowed measurements
+          order: 72
+        - name: xywin_image_z
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in xy-direction, from converged windowed measurements
+          order: 73
+        - name: xywin_image_y
+          ucd: time.duration
+          unit: pixel²
+          description: Second moment in xy-direction, from converged windowed measurements
+          order: 74
+        - name: errx2win_image_g
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of x-distribution centroid, from converged windowed measurements
+          order: 75
+        - name: errx2win_image_r
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of x-distribution centroid, from converged windowed measurements
+          order: 76
+        - name: errx2win_image_i
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of x-distribution centroid, from converged windowed measurements
+          order: 77
+        - name: errx2win_image_z
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of x-distribution centroid, from converged windowed measurements
+          order: 78
+        - name: errx2win_image_y
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of x-distribution centroid, from converged windowed measurements
+          order: 79
+        - name: erry2win_image_g
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of y-distribution centroid, from converged windowed measurements
+          order: 80
+        - name: erry2win_image_r
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of y-distribution centroid, from converged windowed measurements
+          order: 81
+        - name: erry2win_image_i
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of y-distribution centroid, from converged windowed measurements
+          order: 82
+        - name: erry2win_image_z
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of y-distribution centroid, from converged windowed measurements
+          order: 83
+        - name: erry2win_image_y
+          ucd: meta.code.error;pos.centroid
+          unit: pixel²
+          description: Uncertainty in second moment of y-distribution centroid, from converged windowed measurements
+          order: 84
+        - name: errxywin_image_g
+          ucd: meta.code.error
+          unit: pixel²
+          description: Uncertainty in second moment of xy-distribution, from converged windowed measurements
+          order: 85
+        - name: errxywin_image_r
+          ucd: meta.code.error
+          unit: pixel²
+          description: Uncertainty in second moment of xy-distribution, from converged windowed measurements
+          order: 86
+        - name: errxywin_image_i
+          ucd: meta.code.error
+          unit: pixel²
+          description: Uncertainty in second moment of xy-distribution, from converged windowed measurements
+          order: 87
+        - name: errxywin_image_z
+          ucd: meta.code.error
+          unit: pixel²
+          description: Uncertainty in second moment of xy-distribution, from converged windowed measurements
+          order: 88
+        - name: errxywin_image_y
+          ucd: meta.code.error
+          unit: pixel²
+          description: Uncertainty in second moment of xy-distribution, from converged windowed measurements
+          order: 89
+        - name: awin_image_g
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Major axis size, from 2nd order windowed moment measurements
+          order: 90
+        - name: awin_image_r
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Major axis size, from 2nd order windowed moment measurements
+          order: 91
+        - name: awin_image_i
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Major axis size, from 2nd order windowed moment measurements
+          order: 92
+        - name: awin_image_z
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Major axis size, from 2nd order windowed moment measurements
+          order: 93
+        - name: awin_image_y
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Major axis size, from 2nd order windowed moment measurements
+          order: 94
+        - name: bwin_image_g
+          ucd: phys.angSize;phys.size
+          unit: pixel
+          description: Minor axis size, from 2nd order windowed moment measurements
+          order: 95
+        - name: bwin_image_r
+          ucd: phys.angSize;phys.size
+          unit: pixel
+          description: Minor axis size, from 2nd order windowed moment measurements
+          order: 96
+        - name: bwin_image_i
+          ucd: phys.angSize;phys.size
+          unit: pixel
+          description: Minor axis size, from 2nd order windowed moment measurements
+          order: 97
+        - name: bwin_image_z
+          ucd: phys.angSize;phys.size
+          unit: pixel
+          description: Minor axis size, from 2nd order windowed moment measurements
+          order: 98
+        - name: bwin_image_y
+          ucd: phys.angSize;phys.size
+          unit: pixel
+          description: Minor axis size, from 2nd order windowed moment measurements
+          order: 99
+        - name: thetawin_image_g
+          ucd: pos.cartesian.x;pos.cartesian.y;pos.posAng
+          unit: deg
+          description: Position angle of source, for converged windowed measurement grow from x to y
+          order: 100
+        - name: thetawin_image_r
+          ucd: pos.cartesian.x;pos.cartesian.y;pos.posAng
+          unit: deg
+          description: Position angle of source, for converged windowed measurement grow from x to y
+          order: 101
+        - name: thetawin_image_i
+          ucd: pos.cartesian.x;pos.cartesian.y;pos.posAng
+          unit: deg
+          description: Position angle of source, for converged windowed measurement grow from x to y
+          order: 102
+        - name: thetawin_image_z
+          ucd: pos.cartesian.x;pos.cartesian.y;pos.posAng
+          unit: deg
+          description: Position angle of source, for converged windowed measurement grow from x to y
+          order: 103
+        - name: thetawin_image_y
+          ucd: pos.cartesian.x;pos.cartesian.y;pos.posAng
+          unit: deg
+          description: Position angle of source, for converged windowed measurement grow from x to y
+          order: 104
+        - name: errawin_image_g
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Uncertainty in major axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 105
+        - name: errawin_image_r
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Uncertainty in major axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 106
+        - name: errawin_image_i
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Uncertainty in major axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 107
+        - name: errawin_image_z
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Uncertainty in major axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 108
+        - name: errawin_image_y
+          ucd: phys.angSize;phys.size.diameter;phys.size
+          unit: pixel
+          description: Uncertainty in major axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 109
+        - name: errbwin_image_g
+          ucd: phys.angSize;phys.size;instr.det.noise
+          unit: pixel
+          description: Uncertainty in minor axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 110
+        - name: errbwin_image_r
+          ucd: phys.angSize;phys.size;instr.det.noise
+          unit: pixel
+          description: Uncertainty in minor axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 111
+        - name: errbwin_image_i
+          ucd: phys.angSize;phys.size;instr.det.noise
+          unit: pixel
+          description: Uncertainty in minor axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 112
+        - name: errbwin_image_z
+          ucd: phys.angSize;phys.size;instr.det.noise
+          unit: pixel
+          description: Uncertainty in minor axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 113
+        - name: errbwin_image_y
+          ucd: phys.angSize;phys.size;instr.det.noise
+          unit: pixel
+          description: Uncertainty in minor axis size, from converged windowed measurement, assuming uncorrelated noise
+          order: 114
+        - name: errthetawin_image_g
+          ucd: pos.posAng;phys.angSize
+          unit: deg
+          description: Uncertainty in source position angle, from converged windowed measurement
+          order: 115
+        - name: errthetawin_image_r
+          ucd: pos.posAng;phys.angSize
+          unit: deg
+          description: Uncertainty in source position angle, from converged windowed measurement
+          order: 116
+        - name: errthetawin_image_i
+          ucd: pos.posAng;phys.angSize
+          unit: deg
+          description: Uncertainty in source position angle, from converged windowed measurement
+          order: 117
+        - name: errthetawin_image_z
+          ucd: pos.posAng;phys.angSize
+          unit: deg
+          description: Uncertainty in source position angle, from converged windowed measurement
+          order: 118
+        - name: errthetawin_image_y
+          ucd: pos.posAng;phys.angSize
+          unit: deg
+          description: Uncertainty in source position angle, from converged windowed measurement
+          order: 119
+        - name: flux_radius_g
+          ucd: phys.size.radius;meta.modelled
+          unit: pixel
+          description: Half-light radius for the object, from elliptical growth-curve, modeled in two-dimensions
+          order: 120
+        - name: flux_radius_r
+          ucd: phys.size.radius;meta.modelled
+          unit: pixel
+          description: Half-light radius for the object, from elliptical growth-curve, modeled in two-dimensions
+          order: 121
+        - name: flux_radius_i
+          ucd: phys.size.radius;meta.modelled
+          unit: pixel
+          description: Half-light radius for the object, from elliptical growth-curve, modeled in two-dimensions
+          order: 122
+        - name: flux_radius_z
+          ucd: phys.size.radius;meta.modelled
+          unit: pixel
+          description: Half-light radius for the object, from elliptical growth-curve, modeled in two-dimensions
+          order: 123
+        - name: flux_radius_y
+          ucd: phys.size.radius;meta.modelled
+          unit: pixel
+          description: Half-light radius for the object, from elliptical growth-curve, modeled in two-dimensions
+          order: 124
+        - name: fwhm_image_g
+          ucd: spect.line.width;stat.fwhm
+          unit: pixel
+          description: FWHM measured from the isophotal area, from elliptical growth-curve, modeled in two-dimensions
+          order: 125
+        - name: fwhm_image_r
+          ucd: spect.line.width;stat.fwhm
+          unit: pixel
+          description: FWHM measured from the isophotal area, from elliptical growth-curve, modeled in two-dimensions
+          order: 126
+        - name: fwhm_image_i
+          ucd: spect.line.width;stat.fwhm
+          unit: pixel
+          description: FWHM measured from the isophotal area, from elliptical growth-curve, modeled in two-dimensions
+          order: 127
+        - name: fwhm_image_z
+          ucd: spect.line.width;stat.fwhm
+          unit: pixel
+          description: FWHM measured from the isophotal area, from elliptical growth-curve, modeled in two-dimensions
+          order: 128
+        - name: fwhm_image_y
+          ucd: spect.line.width;stat.fwhm
+          unit: pixel
+          description: FWHM measured from the isophotal area, from elliptical growth-curve, modeled in two-dimensions
+          order: 129
+        - name: isoarea_image_g
+          ucd: meta.ref;phys.angArea;phys.area
+          unit: pixel²
+          description: Isophotal area of the coadded source
+          order: 130
+        - name: isoarea_image_r
+          ucd: meta.ref;phys.angArea;phys.area
+          unit: pixel²
+          description: Isophotal area of the coadded source
+          order: 131
+        - name: isoarea_image_i
+          ucd: meta.ref;phys.angArea;phys.area
+          unit: pixel²
+          description: Isophotal area of the coadded source
+          order: 132
+        - name: isoarea_image_z
+          ucd: meta.ref;phys.angArea;phys.area
+          unit: pixel²
+          description: Isophotal area of the coadded source
+          order: 133
+        - name: isoarea_image_y
+          ucd: meta.ref;phys.angArea;phys.area
+          unit: pixel²
+          description: Isophotal area of the coadded source
+          order: 134
+        - name: background_g
+          ucd: instr.background;phys.atmol.level;src.net
+          unit: mag
+          description: Background level, by CCD-ampliﬁer
+          order: 135
+        - name: background_r
+          ucd: instr.background;phys.atmol.level;src.net
+          unit: mag
+          description: Background level, by CCD-ampliﬁer
+          order: 136
+        - name: background_i
+          ucd: instr.background;phys.atmol.level;src.net
+          unit: mag
+          description: Background level, by CCD-ampliﬁer
+          order: 137
+        - name: background_z
+          ucd: instr.background;phys.atmol.level;src.net
+          unit: mag
+          description: Background level, by CCD-ampliﬁer
+          order: 138
+        - name: background_y
+          ucd: instr.background;phys.atmol.level;src.net
+          unit: mag
+          description: Background level, by CCD-ampliﬁer
+          order: 139
+        - name: niter_model_g
+          ucd: meta.id;meta.modelled;phot
+          unit: ""
+          description: Number of iterations in model ﬁtting photometric measurements
+          order: 140
+        - name: niter_model_r
+          ucd: meta.id;meta.modelled;phot
+          unit: ""
+          description: Number of iterations in model ﬁtting photometric measurements
+          order: 141
+        - name: niter_model_i
+          ucd: meta.id;meta.modelled;phot
+          unit: ""
+          description: Number of iterations in model ﬁtting photometric measurements
+          order: 142
+        - name: niter_model_z
+          ucd: meta.id;meta.modelled;phot
+          unit: ""
+          description: Number of iterations in model ﬁtting photometric measurements
+          order: 143
+        - name: niter_model_y
+          ucd: meta.id;meta.modelled;phot
+          unit: ""
+          description: Number of iterations in model ﬁtting photometric measurements
+          order: 144
+        - name: kron_radius_g
+          ucd: phys.size.radius;obs.image
+          unit: pixel
+          description: Kron radius measured from coadded image
+          order: 145
+        - name: kron_radius_r
+          ucd: phys.size.radius;obs.image
+          unit: pixel
+          description: Kron radius measured from coadded image
+          order: 146
+        - name: kron_radius_i
+          ucd: phys.size.radius;obs.image
+          unit: pixel
+          description: Kron radius measured from coadded image
+          order: 147
+        - name: kron_radius_z
+          ucd: phys.size.radius;obs.image
+          unit: pixel
+          description: Kron radius measured from coadded image
+          order: 148
+        - name: kron_radius_y
+          ucd: phys.size.radius;obs.image
+          unit: pixel
+          description: Kron radius measured from coadded image
+          order: 149
+        - name: mag_auto_g
+          ucd: phys.size.radius;meta.modelled
+          unit: mag
+          description: Magnitude estimation, for an elliptical model based on the Kron radius
+          order: 150
+        - name: mag_auto_r
+          ucd: phys.size.radius;meta.modelled
+          unit: mag
+          description: Magnitude estimation, for an elliptical model based on the Kron radius
+          order: 151
+        - name: mag_auto_i
+          ucd: phys.size.radius;meta.modelled
+          unit: mag
+          description: Magnitude estimation, for an elliptical model based on the Kron radius
+          order: 152
+        - name: mag_auto_z
+          ucd: phys.size.radius;meta.modelled
+          unit: mag
+          description: Magnitude estimation, for an elliptical model based on the Kron radius
+          order: 153
+        - name: mag_auto_y
+          ucd: phys.size.radius;meta.modelled
+          unit: mag
+          description: Magnitude estimation, for an elliptical model based on the Kron radius
+          order: 154
+        - name: magerr_auto_g
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: mag
+          description: Uncertainty in magnitude estimation, for an elliptical model based on the Kron radius
+          order: 155
+        - name: magerr_auto_r
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: mag
+          description: Uncertainty in magnitude estimation, for an elliptical model based on the Kron radius
+          order: 156
+        - name: magerr_auto_i
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: mag
+          description: Uncertainty in magnitude estimation, for an elliptical model based on the Kron radius
+          order: 157
+        - name: magerr_auto_z
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: mag
+          description: Uncertainty in magnitude estimation, for an elliptical model based on the Kron radius
+          order: 158
+        - name: magerr_auto_y
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: mag
+          description: Uncertainty in magnitude estimation, for an elliptical model based on the Kron radius
+          order: 159
+        - name: wavg_mag_psf_g
+          ucd: phot.mag;instr.det.psf;instr.sensitivity
+          unit: mag
+          description: Weighted-average magnitude, of PSF ﬁt single-epoch detections
+          order: 160
+        - name: wavg_mag_psf_r
+          ucd: phot.mag;instr.det.psf;instr.sensitivity
+          unit: mag
+          description: Weighted-average magnitude, of PSF ﬁt single-epoch detections
+          order: 161
+        - name: wavg_mag_psf_i
+          ucd: phot.mag;instr.det.psf;instr.sensitivity
+          unit: mag
+          description: Weighted-average magnitude, of PSF ﬁt single-epoch detections
+          order: 162
+        - name: wavg_mag_psf_z
+          ucd: phot.mag;instr.det.psf;instr.sensitivity
+          unit: mag
+          description: Weighted-average magnitude, of PSF ﬁt single-epoch detections
+          order: 163
+        - name: wavg_mag_psf_y
+          ucd: phot.mag;instr.det.psf;instr.sensitivity
+          unit: mag
+          description: Weighted-average magnitude, of PSF ﬁt single-epoch detections
+          order: 164
+        - name: wavg_magerr_psf_g
+          ucd: meta.code.error;instr.det.psf;phot.mag
+          unit: mag
+          description: Uncertainty of weighted averaged magnitude, of PSF ﬁt single-epoch detections
+          order: 165
+        - name: wavg_magerr_psf_r
+          ucd: meta.code.error;instr.det.psf;phot.mag
+          unit: mag
+          description: Uncertainty of weighted averaged magnitude, of PSF ﬁt single-epoch detections
+          order: 166
+        - name: wavg_magerr_psf_i
+          ucd: meta.code.error;instr.det.psf;phot.mag
+          unit: mag
+          description: Uncertainty of weighted averaged magnitude, of PSF ﬁt single-epoch detections
+          order: 167
+        - name: wavg_magerr_psf_z
+          ucd: meta.code.error;instr.det.psf;phot.mag
+          unit: mag
+          description: Uncertainty of weighted averaged magnitude, of PSF ﬁt single-epoch detections
+          order: 168
+        - name: wavg_magerr_psf_y
+          ucd: meta.code.error;instr.det.psf;phot.mag
+          unit: mag
+          description: Uncertainty of weighted averaged magnitude, of PSF ﬁt single-epoch detections
+          order: 169
+        - name: flux_auto_g
+          ucd: phys.size.radius;meta.modelled
+          unit: ADU
+          description: Aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 170
+        - name: flux_auto_r
+          ucd: phys.size.radius;meta.modelled
+          unit: ADU
+          description: Aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 171
+        - name: flux_auto_i
+          ucd: phys.size.radius;meta.modelled
+          unit: ADU
+          description: Aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 172
+        - name: flux_auto_z
+          ucd: phys.size.radius;meta.modelled
+          unit: ADU
+          description: Aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 173
+        - name: flux_auto_y
+          ucd: phys.size.radius;meta.modelled
+          unit: ADU
+          description: Aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 174
+        - name: fluxerr_auto_g
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: ADU
+          description: Uncertainty in aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 175
+        - name: fluxerr_auto_r
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: ADU
+          description: Uncertainty in aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 176
+        - name: fluxerr_auto_i
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: ADU
+          description: Uncertainty in aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 177
+        - name: fluxerr_auto_z
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: ADU
+          description: Uncertainty in aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 178
+        - name: fluxerr_auto_y
+          ucd: meta.code.error;meta.modelled;phys.size.radius
+          unit: ADU
+          description: Uncertainty in aperture-ﬂux measurement, elliptical model based on the Kron radius
+          order: 179
+        - name: wavg_flux_psf_g
+          ucd: instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Weighted-average ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 180
+        - name: wavg_flux_psf_r
+          ucd: instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Weighted-average ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 181
+        - name: wavg_flux_psf_i
+          ucd: instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Weighted-average ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 182
+        - name: wavg_flux_psf_z
+          ucd: instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Weighted-average ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 183
+        - name: wavg_flux_psf_y
+          ucd: instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Weighted-average ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 184
+        - name: wavg_fluxerr_psf_g
+          ucd: meta.code.error;instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Uncertainty of weighted averaged ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 185
+        - name: wavg_fluxerr_psf_r
+          ucd: meta.code.error;instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Uncertainty of weighted averaged ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 186
+        - name: wavg_fluxerr_psf_i
+          ucd: meta.code.error;instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Uncertainty of weighted averaged ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 187
+        - name: wavg_fluxerr_psf_z
+          ucd: meta.code.error;instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Uncertainty of weighted averaged ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 188
+        - name: wavg_fluxerr_psf_y
+          ucd: meta.code.error;instr.det.psf;instr.sensitivity
+          unit: ADU
+          description: Uncertainty of weighted averaged ﬂux measurement of PSF ﬁt single-epoch detections
+          order: 189
+        - name: class_star_g
+          ucd: scr.class
+          unit: ""
+          description: Simple morphological extended source classiﬁer. Values between 0 (galaxies) and 1 (stars). SPREAD_MODEL exhibits better performance for morphological classiﬁcation.
+          order: 190
+        - name: class_star_r
+          ucd: scr.class
+          unit: ""
+          description: Simple morphological extended source classiﬁer. Values between 0 (galaxies) and 1 (stars). SPREAD_MODEL exhibits better performance for morphological classiﬁcation.
+          order: 191
+        - name: class_star_i
+          ucd: scr.class
+          unit: ""
+          description: Simple morphological extended source classiﬁer. Values between 0 (galaxies) and 1 (stars). SPREAD_MODEL exhibits better performance for morphological classiﬁcation.
+          order: 192
+        - name: class_star_z
+          ucd: scr.class
+          unit: ""
+          description: Simple morphological extended source classiﬁer. Values between 0 (galaxies) and 1 (stars). SPREAD_MODEL exhibits better performance for morphological classiﬁcation.
+          order: 193
+        - name: class_star_y
+          ucd: scr.class
+          unit: ""
+          description: Simple morphological extended source classiﬁer. Values between 0 (galaxies) and 1 (stars). SPREAD_MODEL exhibits better performance for morphological classiﬁcation.
+          order: 194
+        - name: spread_model_g
+          ucd: scr.class
+          unit: ""
+          description: Morphology based classiﬁer based on comparison between a PSF versus exponential-PSF model. Values closer to 0 correspond to stars, larger values correspond to galaxies
+          order: 195
+        - name: spread_model_r
+          ucd: scr.class
+          unit: ""
+          description: Morphology based classiﬁer based on comparison between a PSF versus exponential-PSF model. Values closer to 0 correspond to stars, larger values correspond to galaxies
+          order: 196
+        - name: spread_model_i
+          ucd: scr.class
+          unit: ""
+          description: Morphology based classiﬁer based on comparison between a PSF versus exponential-PSF model. Values closer to 0 correspond to stars, larger values correspond to galaxies
+          order: 197
+        - name: spread_model_z
+          ucd: scr.class
+          unit: ""
+          description: Morphology based classiﬁer based on comparison between a PSF versus exponential-PSF model. Values closer to 0 correspond to stars, larger values correspond to galaxies
+          order: 198
+        - name: spread_model_y
+          ucd: scr.class
+          unit: ""
+          description: Morphology based classiﬁer based on comparison between a PSF versus exponential-PSF model. Values closer to 0 correspond to stars, larger values correspond to galaxies
+          order: 199
+        - name: wavg_spread_model_g
+          ucd: instr.sensitivity;meta.modelled;stat.value
+          unit: ""
+          description: SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 200
+        - name: wavg_spread_model_r
+          ucd: instr.sensitivity;meta.modelled;stat.value
+          unit: ""
+          description: SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 201
+        - name: wavg_spread_model_i
+          ucd: instr.sensitivity;meta.modelled;stat.value
+          unit: ""
+          description: SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 202
+        - name: wavg_spread_model_z
+          ucd: instr.sensitivity;meta.modelled;stat.value
+          unit: ""
+          description: SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 203
+        - name: wavg_spread_model_y
+          ucd: instr.sensitivity;meta.modelled;stat.value
+          unit: ""
+          description: SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 204
+        - name: spreaderr_model_g
+          ucd: meta.code.error;instr.det.psf;meta.modelled
+          unit: ""
+          description: Uncertainty in morphology based classiﬁer based on comparison between PSF versus exponential-PSF model.
+          order: 205
+        - name: spreaderr_model_r
+          ucd: meta.code.error;instr.det.psf;meta.modelled
+          unit: ""
+          description: Uncertainty in morphology based classiﬁer based on comparison between PSF versus exponential-PSF model.
+          order: 206
+        - name: spreaderr_model_i
+          ucd: meta.code.error;instr.det.psf;meta.modelled
+          unit: ""
+          description: Uncertainty in morphology based classiﬁer based on comparison between PSF versus exponential-PSF model.
+          order: 207
+        - name: spreaderr_model_z
+          ucd: meta.code.error;instr.det.psf;meta.modelled
+          unit: ""
+          description: Uncertainty in morphology based classiﬁer based on comparison between PSF versus exponential-PSF model.
+          order: 208
+        - name: spreaderr_model_y
+          ucd: meta.code.error;instr.det.psf;meta.modelled
+          unit: ""
+          description: Uncertainty in morphology based classiﬁer based on comparison between PSF versus exponential-PSF model.
+          order: 209
+        - name: wavg_spreaderr_model_g
+          ucd: meta.modelled;instr.sensitivity
+          unit: ""
+          description: Uncertainty in SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 210
+        - name: wavg_spreaderr_model_r
+          ucd: meta.modelled;instr.sensitivity
+          unit: ""
+          description: Uncertainty in SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 211
+        - name: wavg_spreaderr_model_i
+          ucd: meta.modelled;instr.sensitivity
+          unit: ""
+          description: Uncertainty in SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 212
+        - name: wavg_spreaderr_model_z
+          ucd: meta.modelled;instr.sensitivity
+          unit: ""
+          description: Uncertainty in SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 213
+        - name: wavg_spreaderr_model_y
+          ucd: meta.modelled;instr.sensitivity
+          unit: ""
+          description: Uncertainty in SPREAD MODEL using the weighted averaged values from single-epoch detections
+          order: 214

@@ -66,7 +66,7 @@ SITE_CREATED = "2023-04-19"
 # Default: None
 SITE_UPDATED = "2024-06-13"
 
-LINEA_APPS = ["djangosaml2", "services", "data"]
+LINEA_APPS = ["djangosaml2", "services", "data", "utils"]
 
 WAGTAIL_APPS = [
     "wagtail.contrib.forms",
