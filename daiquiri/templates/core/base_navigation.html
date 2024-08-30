@@ -70,7 +70,7 @@
               <a href="/metadata/twomass">{% trans '2MASS' %}</a>
               <ul class="sub-menu">
                 <li>
-                  <a href="/metadata/twomass/twomass.psc">psc</a>
+                  <a href="/metadata/twomass/psc">psc</a>
                 </li>
               </ul>
             </li>
@@ -81,9 +81,9 @@
         <li>
           <a href="{% url 'query:query' %}">{% trans 'Query' %}</a>
         </li>
-        {% comment %} <li>
-          <a href="{% url 'contact:contact' %}">{% trans 'Contact' %}</a>
-        </li> {% endcomment %}
+        <li>
+          <a href="https://scienceserver-dev.linea.org.br/target/">{% trans 'Target Viewer' %}</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
