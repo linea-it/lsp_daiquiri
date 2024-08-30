@@ -57,7 +57,7 @@
   "model": "services.servicesindexpage",
   "pk": 10,
   "fields": {
-    "body": "# ADQL and PostgreSQL\r\n\r\nThe LIneA services utilize a PostgreSQL database, accessible via a [Query interface](/query/). Data retrieval from the tables is accomplished using SQL statements. Users can select between different SQL languages for their queries. The [Django Daiquiri](https://github.com/django-daiquiri/daiquiri) framework supports both ADQL and PostgreSQL.\r\n\r\nADQL, or [Astronomical Data Query Language](https://wiki.ivoa.net/twiki/bin/view/IVOA/ADQL), is specifically tailored for astronomy, featuring statements for cone-search queries and other positional selections. Developed by the Virtual Observatory (VO), it enables astronomical queries to be sent to IVOA services.\r\n\r\nAll ADQL queries are translated into the PostgreSQL dialect before execution on the database server. Alternatively, users can write queries directly in PostgreSQL, which can offer more functionality, such as working with array structures.\r\n\r\n## Example Queries\r\n\r\nA wealth of query examples is at your disposal. To peruse a selection, click the \"Examples\" button located at the upper right corner of the page <a href=\"https://userquery-dev.linea.org.br/cms/services/adql-postgresql/\">https://userquery-dev.linea.org.br/cms/services/adql-postgresql/</a>, as depicted in the illustration below:\r\n\r\n  <p><a href=\"/media/images/Screenshot1.original.png\">\r\n      <img style=\"width: 80%;\" src=\"/daiquiri_static/daiquiri/imgs/Screenshot1.original.png\" alt=\"example 1\">\r\n    </a></p>\r\n<br/>\r\n\r\nBy double-clicking or hovering the mouse over an example, you can unveil the details of the query, which you may then customize to suit your specific needs.\r\n\r\n  <p><a href=\"/media/images/Screenshot2.original.png\">\r\n      <img style=\"width: 80%;\" src=\"/daiquiri_static/daiquiri/imgs/Screenshot2.original.png\" alt=\"example 2\">\r\n    </a></p>\r\n<br/>\r\n\r\n## SQL Query Selection\r\n\r\nChoose SQL dialect based on your task: ADQL offers specific geometry functions not found in other SQL languages, while PostgreSQL supports more common SQL syntax.\r\n\r\n## Resources\r\n\r\n### ADQL:\r\n\r\n- [GAVO's ADQL tutorial with Gaia](https://docs.g-vo.org/adql-gaia/html/index.html)\r\n- [ADQL cookbook on Gaia in the UK](https://www.gaia.ac.uk/data/gaia-data-release-1/adql-cookbook)\r\n- [ADQL help on VizieR](https://tapvizier.u-strasbg.fr/adql/help.html)\r\n- [ADQL Cheat Sheet by Simbad](https://simbad.u-strasbg.fr/simbad/tap/help/adqlHelp.html)\r\n\r\nFor the complete documentation and specification of ADQL please look up [IVOA ADQL documentation](https://www.ivoa.net/documents/latest/ADQL.html)\r\n\r\n### PostgreSQL:\r\n\r\n- [PostgreSQL SELECT statement tutorial](https://www.postgresql.org/docs/current/tutorial-select.html)\r\n- [PostgreSQL full documentation](https://www.postgresql.org/)\r\n\r\n## Interoperability and Performance\r\n\r\nADQL is a common language across IVOA services, ideal for interoperability and reproducibility. Publishing SQL queries in ADQL is recommended.\r\n\r\nLIneA Services use PgSphere columns for efficient coordinate searches, combining `ra` and `dec` into a single indexed column. While PostgreSQL constructs are recommended for execution, use ADQL for scientific publication."
+    "body": "# ADQL and PostgreSQL\r\n\r\nThe LIneA services utilize a PostgreSQL database, accessible via a [Query interface](/query/). Data retrieval from the tables is accomplished using SQL statements. Users can select between different SQL languages for their queries. The [Django Daiquiri](https://github.com/django-daiquiri/daiquiri) framework supports both ADQL and PostgreSQL.\r\n\r\nADQL, or [Astronomical Data Query Language](https://wiki.ivoa.net/twiki/bin/view/IVOA/ADQL), is specifically tailored for astronomy, featuring statements for cone-search queries and other positional selections. Developed by the Virtual Observatory (VO), it enables astronomical queries to be sent to IVOA services.\r\n\r\nAll ADQL queries are translated into the PostgreSQL dialect before execution on the database server. Alternatively, users can write queries directly in PostgreSQL, which can offer more functionality, such as working with array structures.\r\n\r\n## Example Queries\r\n\r\nA wealth of query examples is at your disposal. To peruse a selection, click the \"Examples\" button located at the upper right corner of the page <a href=\"https://userquery-dev.linea.org.br/cms/services/adql-postgresql/\">https://userquery-dev.linea.org.br/cms/services/adql-postgresql/</a>, as depicted in the illustration below:\r\n\r\n  <p><a href=\"/daiquiri_static/daiquiri/imgs/Screenshot1.original.png\">\r\n      <img style=\"width: 80%;\" src=\"/daiquiri_static/daiquiri/imgs/Screenshot1.original.png\" alt=\"example 1\">\r\n    </a></p>\r\n<br/>\r\n\r\nBy double-clicking or hovering the mouse over an example, you can unveil the details of the query, which you may then customize to suit your specific needs.\r\n\r\n  <p><a href=\"/daiquiri_static/daiquiri/imgs/Screenshot2.original.png\">\r\n      <img style=\"width: 80%;\" src=\"/daiquiri_static/daiquiri/imgs/Screenshot2.original.png\" alt=\"example 2\">\r\n    </a></p>\r\n<br/>\r\n\r\n## SQL Query Selection\r\n\r\nChoose SQL dialect based on your task: ADQL offers specific geometry functions not found in other SQL languages, while PostgreSQL supports more common SQL syntax.\r\n\r\n## Resources\r\n\r\n### ADQL:\r\n\r\n- [GAVO's ADQL tutorial with Gaia](https://docs.g-vo.org/adql-gaia/html/index.html)\r\n- [ADQL cookbook on Gaia in the UK](https://www.gaia.ac.uk/data/gaia-data-release-1/adql-cookbook)\r\n- [ADQL help on VizieR](https://tapvizier.u-strasbg.fr/adql/help.html)\r\n- [ADQL Cheat Sheet by Simbad](https://simbad.u-strasbg.fr/simbad/tap/help/adqlHelp.html)\r\n\r\nFor the complete documentation and specification of ADQL please look up [IVOA ADQL documentation](https://www.ivoa.net/documents/latest/ADQL.html)\r\n\r\n### PostgreSQL:\r\n\r\n- [PostgreSQL SELECT statement tutorial](https://www.postgresql.org/docs/current/tutorial-select.html)\r\n- [PostgreSQL full documentation](https://www.postgresql.org/)\r\n\r\n## Interoperability and Performance\r\n\r\nADQL is a common language across IVOA services, ideal for interoperability and reproducibility. Publishing SQL queries in ADQL is recommended.\r\n\r\nLIneA Services use PgSphere columns for efficient coordinate searches, combining `ra` and `dec` into a single indexed column. While PostgreSQL constructs are recommended for execution, use ADQL for scientific publication."
   }
 },
 {
@@ -740,12 +740,12 @@
     "numchild": 0,
     "translation_key": "e80acde1-4456-43a4-aad4-81ecb1b014c9",
     "locale": 1,
-    "latest_revision": 91,
+    "latest_revision": 93,
     "live": true,
     "has_unpublished_changes": false,
     "first_published_at": "2024-08-30T11:07:53.720Z",
-    "last_published_at": "2024-08-30T11:19:32.892Z",
-    "live_revision": 91,
+    "last_published_at": "2024-08-30T12:51:30.974Z",
+    "live_revision": 93,
     "go_live_at": null,
     "expire_at": null,
     "expired": false,
@@ -766,7 +766,7 @@
     "seo_title": "",
     "show_in_menus": false,
     "search_description": "",
-    "latest_revision_created_at": "2024-08-30T11:19:32.861Z",
+    "latest_revision_created_at": "2024-08-30T12:51:30.947Z",
     "alias_of": null
   }
 },
@@ -5724,6 +5724,114 @@
   }
 },
 {
+  "model": "wagtailcore.revision",
+  "pk": 92,
+  "fields": {
+    "content_type": [
+      "services",
+      "servicesindexpage"
+    ],
+    "base_content_type": [
+      "wagtailcore",
+      "page"
+    ],
+    "object_id": "10",
+    "created_at": "2024-08-30T12:51:27.881Z",
+    "user": [
+      "gverde"
+    ],
+    "object_str": "ADQL, Postgresql",
+    "content": {
+      "pk": 10,
+      "body": "# ADQL and PostgreSQL\r\n\r\nThe LIneA services utilize a PostgreSQL database, accessible via a [Query interface](/query/). Data retrieval from the tables is accomplished using SQL statements. Users can select between different SQL languages for their queries. The [Django Daiquiri](https://github.com/django-daiquiri/daiquiri) framework supports both ADQL and PostgreSQL.\r\n\r\nADQL, or [Astronomical Data Query Language](https://wiki.ivoa.net/twiki/bin/view/IVOA/ADQL), is specifically tailored for astronomy, featuring statements for cone-search queries and other positional selections. Developed by the Virtual Observatory (VO), it enables astronomical queries to be sent to IVOA services.\r\n\r\nAll ADQL queries are translated into the PostgreSQL dialect before execution on the database server. Alternatively, users can write queries directly in PostgreSQL, which can offer more functionality, such as working with array structures.\r\n\r\n## Example Queries\r\n\r\nA wealth of query examples is at your disposal. To peruse a selection, click the \"Examples\" button located at the upper right corner of the page <a href=\"https://userquery-dev.linea.org.br/cms/services/adql-postgresql/\">https://userquery-dev.linea.org.br/cms/services/adql-postgresql/</a>, as depicted in the illustration below:\r\n\r\n  <p><a href=\"/daiquiri_static/daiquiri/imgs/Screenshot1.original.png\">\r\n      <img style=\"width: 80%;\" src=\"/daiquiri_static/daiquiri/imgs/Screenshot1.original.png\" alt=\"example 1\">\r\n    </a></p>\r\n<br/>\r\n\r\nBy double-clicking or hovering the mouse over an example, you can unveil the details of the query, which you may then customize to suit your specific needs.\r\n\r\n  <p><a href=\"/daiquiri_static/daiquiri/imgs/Screenshot2.original.png\">\r\n      <img style=\"width: 80%;\" src=\"/daiquiri_static/daiquiri/imgs/Screenshot2.original.png\" alt=\"example 2\">\r\n    </a></p>\r\n<br/>\r\n\r\n## SQL Query Selection\r\n\r\nChoose SQL dialect based on your task: ADQL offers specific geometry functions not found in other SQL languages, while PostgreSQL supports more common SQL syntax.\r\n\r\n## Resources\r\n\r\n### ADQL:\r\n\r\n- [GAVO's ADQL tutorial with Gaia](https://docs.g-vo.org/adql-gaia/html/index.html)\r\n- [ADQL cookbook on Gaia in the UK](https://www.gaia.ac.uk/data/gaia-data-release-1/adql-cookbook)\r\n- [ADQL help on VizieR](https://tapvizier.u-strasbg.fr/adql/help.html)\r\n- [ADQL Cheat Sheet by Simbad](https://simbad.u-strasbg.fr/simbad/tap/help/adqlHelp.html)\r\n\r\nFor the complete documentation and specification of ADQL please look up [IVOA ADQL documentation](https://www.ivoa.net/documents/latest/ADQL.html)\r\n\r\n### PostgreSQL:\r\n\r\n- [PostgreSQL SELECT statement tutorial](https://www.postgresql.org/docs/current/tutorial-select.html)\r\n- [PostgreSQL full documentation](https://www.postgresql.org/)\r\n\r\n## Interoperability and Performance\r\n\r\nADQL is a common language across IVOA services, ideal for interoperability and reproducibility. Publishing SQL queries in ADQL is recommended.\r\n\r\nLIneA Services use PgSphere columns for efficient coordinate searches, combining `ra` and `dec` into a single indexed column. While PostgreSQL constructs are recommended for execution, use ADQL for scientific publication.",
+      "live": true,
+      "path": "0001000100010004",
+      "slug": "adql-postgresql",
+      "depth": 4,
+      "owner": 1,
+      "title": "ADQL, Postgresql",
+      "locale": 1,
+      "locked": false,
+      "expired": false,
+      "alias_of": null,
+      "numchild": 0,
+      "url_path": "/home/services/adql-postgresql/",
+      "expire_at": null,
+      "locked_at": null,
+      "locked_by": null,
+      "seo_title": "",
+      "go_live_at": null,
+      "draft_title": "ADQL, Postgresql",
+      "content_type": 60,
+      "live_revision": 91,
+      "show_in_menus": false,
+      "latest_revision": 91,
+      "translation_key": "e80acde1-4456-43a4-aad4-81ecb1b014c9",
+      "last_published_at": "2024-08-30T11:19:32.892Z",
+      "first_published_at": "2024-08-30T11:07:53.720Z",
+      "search_description": "",
+      "wagtail_admin_comments": [],
+      "has_unpublished_changes": false,
+      "latest_revision_created_at": "2024-08-30T11:19:32.861Z"
+    },
+    "approved_go_live_at": null
+  }
+},
+{
+  "model": "wagtailcore.revision",
+  "pk": 93,
+  "fields": {
+    "content_type": [
+      "services",
+      "servicesindexpage"
+    ],
+    "base_content_type": [
+      "wagtailcore",
+      "page"
+    ],
+    "object_id": "10",
+    "created_at": "2024-08-30T12:51:30.947Z",
+    "user": [
+      "gverde"
+    ],
+    "object_str": "ADQL, Postgresql",
+    "content": {
+      "pk": 10,
+      "body": "# ADQL and PostgreSQL\r\n\r\nThe LIneA services utilize a PostgreSQL database, accessible via a [Query interface](/query/). Data retrieval from the tables is accomplished using SQL statements. Users can select between different SQL languages for their queries. The [Django Daiquiri](https://github.com/django-daiquiri/daiquiri) framework supports both ADQL and PostgreSQL.\r\n\r\nADQL, or [Astronomical Data Query Language](https://wiki.ivoa.net/twiki/bin/view/IVOA/ADQL), is specifically tailored for astronomy, featuring statements for cone-search queries and other positional selections. Developed by the Virtual Observatory (VO), it enables astronomical queries to be sent to IVOA services.\r\n\r\nAll ADQL queries are translated into the PostgreSQL dialect before execution on the database server. Alternatively, users can write queries directly in PostgreSQL, which can offer more functionality, such as working with array structures.\r\n\r\n## Example Queries\r\n\r\nA wealth of query examples is at your disposal. To peruse a selection, click the \"Examples\" button located at the upper right corner of the page <a href=\"https://userquery-dev.linea.org.br/cms/services/adql-postgresql/\">https://userquery-dev.linea.org.br/cms/services/adql-postgresql/</a>, as depicted in the illustration below:\r\n\r\n  <p><a href=\"/daiquiri_static/daiquiri/imgs/Screenshot1.original.png\">\r\n      <img style=\"width: 80%;\" src=\"/daiquiri_static/daiquiri/imgs/Screenshot1.original.png\" alt=\"example 1\">\r\n    </a></p>\r\n<br/>\r\n\r\nBy double-clicking or hovering the mouse over an example, you can unveil the details of the query, which you may then customize to suit your specific needs.\r\n\r\n  <p><a href=\"/daiquiri_static/daiquiri/imgs/Screenshot2.original.png\">\r\n      <img style=\"width: 80%;\" src=\"/daiquiri_static/daiquiri/imgs/Screenshot2.original.png\" alt=\"example 2\">\r\n    </a></p>\r\n<br/>\r\n\r\n## SQL Query Selection\r\n\r\nChoose SQL dialect based on your task: ADQL offers specific geometry functions not found in other SQL languages, while PostgreSQL supports more common SQL syntax.\r\n\r\n## Resources\r\n\r\n### ADQL:\r\n\r\n- [GAVO's ADQL tutorial with Gaia](https://docs.g-vo.org/adql-gaia/html/index.html)\r\n- [ADQL cookbook on Gaia in the UK](https://www.gaia.ac.uk/data/gaia-data-release-1/adql-cookbook)\r\n- [ADQL help on VizieR](https://tapvizier.u-strasbg.fr/adql/help.html)\r\n- [ADQL Cheat Sheet by Simbad](https://simbad.u-strasbg.fr/simbad/tap/help/adqlHelp.html)\r\n\r\nFor the complete documentation and specification of ADQL please look up [IVOA ADQL documentation](https://www.ivoa.net/documents/latest/ADQL.html)\r\n\r\n### PostgreSQL:\r\n\r\n- [PostgreSQL SELECT statement tutorial](https://www.postgresql.org/docs/current/tutorial-select.html)\r\n- [PostgreSQL full documentation](https://www.postgresql.org/)\r\n\r\n## Interoperability and Performance\r\n\r\nADQL is a common language across IVOA services, ideal for interoperability and reproducibility. Publishing SQL queries in ADQL is recommended.\r\n\r\nLIneA Services use PgSphere columns for efficient coordinate searches, combining `ra` and `dec` into a single indexed column. While PostgreSQL constructs are recommended for execution, use ADQL for scientific publication.",
+      "live": true,
+      "path": "0001000100010004",
+      "slug": "adql-postgresql",
+      "depth": 4,
+      "owner": 1,
+      "title": "ADQL, Postgresql",
+      "locale": 1,
+      "locked": false,
+      "expired": false,
+      "alias_of": null,
+      "numchild": 0,
+      "url_path": "/home/services/adql-postgresql/",
+      "expire_at": null,
+      "locked_at": null,
+      "locked_by": null,
+      "seo_title": "",
+      "go_live_at": null,
+      "draft_title": "ADQL, Postgresql",
+      "content_type": 60,
+      "live_revision": 91,
+      "show_in_menus": false,
+      "latest_revision": 92,
+      "translation_key": "e80acde1-4456-43a4-aad4-81ecb1b014c9",
+      "last_published_at": "2024-08-30T11:19:32.892Z",
+      "first_published_at": "2024-08-30T11:07:53.720Z",
+      "search_description": "",
+      "wagtail_admin_comments": [],
+      "has_unpublished_changes": true,
+      "latest_revision_created_at": "2024-08-30T12:51:27.881Z"
+    },
+    "approved_go_live_at": null
+  }
+},
+{
   "model": "wagtailcore.workflowpage",
   "pk": 1,
   "fields": {
@@ -8887,6 +8995,72 @@
       "gverde"
     ],
     "revision": 91,
+    "content_changed": false,
+    "deleted": false,
+    "page": 10
+  }
+},
+{
+  "model": "wagtailcore.pagelogentry",
+  "pk": 142,
+  "fields": {
+    "content_type": [
+      "services",
+      "servicesindexpage"
+    ],
+    "label": "ADQL, Postgresql",
+    "action": "wagtail.edit",
+    "data": {},
+    "timestamp": "2024-08-30T12:51:27.904Z",
+    "uuid": "f399bddd-6469-48a8-a0ee-138baad9e39d",
+    "user": [
+      "gverde"
+    ],
+    "revision": 92,
+    "content_changed": true,
+    "deleted": false,
+    "page": 10
+  }
+},
+{
+  "model": "wagtailcore.pagelogentry",
+  "pk": 143,
+  "fields": {
+    "content_type": [
+      "services",
+      "servicesindexpage"
+    ],
+    "label": "ADQL, Postgresql",
+    "action": "wagtail.edit",
+    "data": {},
+    "timestamp": "2024-08-30T12:51:30.962Z",
+    "uuid": "beef3552-902e-4031-b48e-10eda0a9db05",
+    "user": [
+      "gverde"
+    ],
+    "revision": 93,
+    "content_changed": true,
+    "deleted": false,
+    "page": 10
+  }
+},
+{
+  "model": "wagtailcore.pagelogentry",
+  "pk": 144,
+  "fields": {
+    "content_type": [
+      "services",
+      "servicesindexpage"
+    ],
+    "label": "ADQL, Postgresql",
+    "action": "wagtail.publish",
+    "data": {},
+    "timestamp": "2024-08-30T12:51:30.998Z",
+    "uuid": "beef3552-902e-4031-b48e-10eda0a9db05",
+    "user": [
+      "gverde"
+    ],
+    "revision": 93,
     "content_changed": false,
     "deleted": false,
     "page": 10
