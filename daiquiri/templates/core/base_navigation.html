@@ -82,7 +82,7 @@
           <a href="{% url 'query:query' %}">{% trans 'Query' %}</a>
         </li>
         <li>
-          <a href="https://scienceserver-dev.linea.org.br/target/">{% trans 'Target Viewer' %}</a>
+          <a href="{{ settings.TARGET_VIEWER_URL }}">{% trans 'Target Viewer' %}</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

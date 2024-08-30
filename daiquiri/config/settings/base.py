@@ -1,9 +1,8 @@
 import os
 
+import daiquiri.core.env as env
 import saml2
 import saml2.saml
-
-import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
@@ -293,6 +292,7 @@ QUERY_LANGUAGES = [
 # -----------------------------------------------
 # LInea Specific
 # -----------------------------------------------
+TARGET_VIEWER_URL = "https://scienceserver-dev.linea.org.br/target/"
 
 # COmanage Autorization
 COMANAGE_SERVER_URL = env.get("COMANAGE_SERVER_URL", "https://register.linea.org.br")
