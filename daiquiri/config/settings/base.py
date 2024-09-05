@@ -1,9 +1,9 @@
 import os
 
+import daiquiri.core.env as env
 import saml2
 import saml2.saml
-
-import daiquiri.core.env as env
+from django.utils.translation import gettext_lazy as _
 
 from . import (
     ADDITIONAL_APPS,
@@ -11,6 +11,9 @@ from . import (
     BASE_DIR,
     BASE_URL,
     DJANGO_APPS,
+    LICENSE_CHOICES,
+    LICENSE_IDENTIFIERS,
+    LICENSE_URLS,
     LOGIN_URL,
     LOGOUT_URL,
     MIDDLEWARE,
@@ -288,6 +291,18 @@ QUERY_LANGUAGES = [
         "quote_char": '"',
     },
 ]
+
+# -----------------------------------------------
+# GAIA AIP LICENSE
+# https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/metadata/settings.py
+# -----------------------------------------------
+
+LICENSE_CHOICES = list(LICENSE_CHOICES)
+LICENSE_BY_GAIA = "BY_GAIA"
+LICENSE_CHOICES.append((LICENSE_BY_GAIA, _("Gaia Data License")))
+LICENSE_URLS[LICENSE_BY_GAIA] = "https://gaia.aip.de/cms/credit/"
+LICENSE_IDENTIFIERS[LICENSE_BY_GAIA] = "BY_GAIA"
+LICENSE_CHOICES = tuple(LICENSE_CHOICES)
 
 
 # -----------------------------------------------
