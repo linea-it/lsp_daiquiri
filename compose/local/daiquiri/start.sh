@@ -13,6 +13,11 @@ fi
 
 python manage.py collectstatic --clear --noinput --verbosity 0
 
+if [ ! -e /app/static_root/metadata/img/by_gaia.png ]; then
+    echo "${NO_COLOR}Copy Gaia License Icon.${NO_COLOR}"
+    cp /app/static/daiquiri/imgs/by_gaia.png /app/static_root/metadata/img/by_gaia.png
+fi
+
 echo "${YELLOW}Running Migrate.${NO_COLOR}"
 python manage.py migrate                  # initializes the web database
 python manage.py migrate --database tap   # initializes the tap schema in the scientific db

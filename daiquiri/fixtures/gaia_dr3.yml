@@ -13,8 +13,8 @@
 
     <p>Database access and other data services are provided by the Associação Laboratório Interinstitucional de e-Astronomia (LIneA) with the financial support from INCT do e-Universo (Processo n.º 465376/2014-2).</p></blockquote>
   order: 1
-  license: PD
-  doi: ""
+  license: BY_GAIA
+  doi: 10.17876/gaia/dr.3/1
   published: 2020-01-01
   updated: 2018-01-01
   access_level: PUBLIC
@@ -112,8 +112,8 @@
 
         <p>Database access and other data services are provided by the Associação Laboratório Interinstitucional de e-Astronomia (LIneA) with the financial support from INCT do e-Universo (Processo n.º 465376/2014-2).</p></blockquote>
       order: 1
-      license: PD
-      doi: ""
+      license: BY_GAIA
+      doi: 10.17876/gaia/dr.3/1
       published: 2020-01-01
       updated: 2018-01-01
       access_level: PUBLIC
