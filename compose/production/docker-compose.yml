@@ -2,23 +2,21 @@ services:
   backend: &daiquiri
     image: linea/lsp_daiquiri:${IMAGE_TAG:-latest}
     command: /start.sh
-    # Usuario interno do container + Grupo deployer
     user: "1000:10006"
     env_file:
       - .env
     volumes:
-      # Local Settings
+      # Local Vars
       - ./local_settings.py:/app/config/settings/local.py:ro
       # Diretório de logs
-      - ./log:/var/log/daiquiri
-      - ./log:/var/log/celery
-      # Diretórios onde o backend pode manipular arquivos.
+      - ./logs:/var/log/daiquiri
+      - ./logs:/var/log/celery
+      # Diretórios onde o backend pode manipular arquivos. 
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
-      # Django SAML
+      # Django SAML 
       - ./certificates:/app/certificates
-      - ./metadatas:/app/metadatas
     depends_on:
       rabbit:
         condition: service_healthy
@@ -43,15 +41,15 @@ services:
   nginx:
     image: nginx:1.21.6-alpine
     ports:
-      - 8096:80
+      - 8002:80
     volumes:
       # Arquivo de configuração do Ngnix para este ambiente.
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       # Diretório onde o backend manipula arquivos, e que deve ficar acessivel ao servidor web.
       - ./data/download:/data/download
       # Diretório de logs do servidor web.
-      - ./log/nginx:/var/log/nginx
+      - ./logs/nginx:/var/log/nginx
     depends_on:
       - backend
-      - celery_flower
+      - celery_flower      
       - rabbit
