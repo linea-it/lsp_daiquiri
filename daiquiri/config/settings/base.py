@@ -1,9 +1,10 @@
 import os
 
-import daiquiri.core.env as env
 import saml2
 import saml2.saml
 from django.utils.translation import gettext_lazy as _
+
+import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
