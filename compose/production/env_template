@@ -12,7 +12,7 @@ ASYNC=True
 
 # Django SAML2
 AUTH_SAML2_ENABLED=True
-AUTH_SAML2_LOGIN_URL_CAFE=https://userquery.linea.org.br/saml2/login/?idp=https://satosa.linea.org.br/linea_saml/proxy&next=/query 
+AUTH_SAML2_LOGIN_URL_CAFE=https://userquery.linea.org.br/saml2/login/?idp=https://satosa.linea.org.br/linea_saml/proxy&next=/query
 AUTH_SAML2_LOGIN_URL_CILOGON=https://userquery.linea.org.br/saml2/login/?idp=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==&next=/query
 
 # COmanage Autorization
@@ -43,7 +43,7 @@ DATABASE_ADMIN_HOST=desdb4.linea.org.br
 DATABASE_ADMIN_PORT=5432
 
 # DATABASE Catalog PROD_GAVO onde são criados os mydb_ dos usuarios.
-# O usuario deve ser o mesmo utilizado nos ambientes -dev e production 
+# O usuario deve ser o mesmo utilizado nos ambientes -dev e production
 # e principalmente deve ser o usuario que tem privilegios para manipular os mydbs.
 DATABASE_CATALOG_DB=prod_gavo
 DATABASE_CATALOG_USER=user_dridev

@@ -7,6 +7,7 @@ ALLOWED_HOSTS = [
 ]
 
 TARGET_VIEWER_URL = "https://scienceserver.linea.org.br/target/"
+SCIENCE_SERVER_URL = "https://scienceserver.linea.org.br/"
 
 QUERY_QUEUES = [
     {

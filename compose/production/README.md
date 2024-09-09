@@ -63,7 +63,7 @@ docker compose exec backend python manage.py setup_tap_metadata
 docker compose exec backend python manage.py createsuperuser
 ```
 
-É necessário reinicar os serviços. 
+É necessário reinicar os serviços.
 
 ```bash
 docker compose stop && docker compose up -d
@@ -71,20 +71,20 @@ docker compose stop && docker compose up -d
 
 ## Registro de Catalogos/Tabelas
 
-É necessário acesar a interface administrativa para registrar os metadados das tabelas de catalogos. 
+É necessário acesar a interface administrativa para registrar os metadados das tabelas de catalogos.
 Este processo deve ser feito para cada um schema de catalogo [des_dr2, gaia_dr3, twomass]
 
-1. fazer login no adm do django https://userquery.linea.org.br/admin/ 
+1. fazer login no adm do django https://userquery.linea.org.br/admin/
 2. voltar para a home https://userquery.linea.org.br
 3. acessar o menu "Management" -> "Metadata Management"
 4. Clicar em "Create new schema entry"
 5. no formulário preencher
     - campo Name ex: des_dr2
     - Access Level: Public
-    - Metadata Access Level: Public 
-    - Verificar se a opção "Automatically discover tables and columns" está marcada. 
-6. Clicar em Save. 
-7. atualizar a janela. 
+    - Metadata Access Level: Public
+    - Verificar se a opção "Automatically discover tables and columns" está marcada.
+6. Clicar em Save.
+7. atualizar a janela.
 8. ir no terminal e importar os metadados utilizando o comando do django `update_table_metadata`. passando o nome do schema como parametro
 ```bash
     docker compose exec backend python manage.py update_table_metadata des_dr2
@@ -92,7 +92,7 @@ Este processo deve ser feito para cada um schema de catalogo [des_dr2, gaia_dr3,
 
 Este processo deve ser repetido para cada um dos schemas de catalogos. [des_dr2, gaia_dr3, twomass]
 
-Abaixo algumas imagens do processo de registro. 
+Abaixo algumas imagens do processo de registro.
 
 ![Step 1](https://github.com/linea-it/lsp_daiquiri/blob/master/docs/metadata_1.jpg)
 

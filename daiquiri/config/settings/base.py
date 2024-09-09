@@ -310,6 +310,7 @@ LICENSE_CHOICES = tuple(LICENSE_CHOICES)
 # LInea Specific
 # -----------------------------------------------
 TARGET_VIEWER_URL = "https://scienceserver-dev.linea.org.br/target/"
+SCIENCE_SERVER_URL = "https://scienceserver-dev.linea.org.br/"
 
 # COmanage Autorization
 COMANAGE_SERVER_URL = env.get("COMANAGE_SERVER_URL", "https://register.linea.org.br")
@@ -470,4 +471,5 @@ SETTINGS_EXPORT += [
     "LOGIN_URL",
     "LOGOUT_URL",
     "TARGET_VIEWER_URL",
+    "SCIENCE_SERVER_URL",
 ]

@@ -11,11 +11,11 @@ services:
       # Diretório de logs
       - ./logs:/var/log/daiquiri
       - ./logs:/var/log/celery
-      # Diretórios onde o backend pode manipular arquivos. 
+      # Diretórios onde o backend pode manipular arquivos.
       - ./data/files:/data/files
       - ./data/download:/data/download
       - ./data/upload:/data/upload
-      # Django SAML 
+      # Django SAML
       - ./certificates:/app/certificates
     depends_on:
       rabbit:
@@ -51,5 +51,5 @@ services:
       - ./logs/nginx:/var/log/nginx
     depends_on:
       - backend
-      - celery_flower      
+      - celery_flower
       - rabbit
