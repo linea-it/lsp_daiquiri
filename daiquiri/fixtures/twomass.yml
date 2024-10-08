@@ -1,13 +1,13 @@
 - name: twomass
   title: 2MASS
   description: >
-    <p>"2MASS is a J, H, K-band sky survey covering 99.8% of the sky, with a K-band depth of close to 17, using 1.3m telescopes at Mt. Hopkins and CTIO, Chile."</p>
+    2MASS is a J, H, K-band sky survey covering 99.8% of the sky, with a K-band depth of close to 17, using 1.3m telescopes at Mt. Hopkins and CTIO, Chile.
   long_description: >
     <p>(paragraph extracted from the <a href="https://ui.adsabs.harvard.edu/abs/2006AJ....131.1163S/abstract" target="_blank" rel="noopener">The Two Micron All Sky Survey (2MASS)</a>)</p>
 
     <i>"Between 1997 June and 2001 February the Two Micron All Sky Survey (2MASS) collected 25.4 Tbytes of raw imaging data covering 99.998% of the celestial sphere in the near-infrared J (1.25 μm), H (1.65 μm), and Ks (2.16 μm) bandpasses. Observations were conducted from two dedicated 1.3 m diameter telescopes located at Mount Hopkins, Arizona, and Cerro Tololo, Chile. The 7.8 s of integration time accumulated for each point on the sky and strict quality control yielded a 10 σ point-source detection level of better than 15.8, 15.1, and 14.3 mag at the J, H, and Ks bands, respectively, for virtually the entire sky. Bright source extractions have 1 σ photometric uncertainty of <0.03 mag and astrometric accuracy of order 100 mas. Calibration offsets between any two points in the sky are <0.02 mag. The 2MASS All-Sky Data Release includes 4.1 million compressed FITS images covering the entire sky, 471 million source extractions in a Point Source Catalog, and 1.6 million objects identified as extended in an Extended Source Catalog."</i>
   attribution: >
-    If you have used 2MASS data in your research from this site, please use the following acknowledgement:
+    <p>If you have used 2MASS data in your research from this site, please use the following acknowledgement:</p>
 
     <blockquote><p>This publication makes use of data products from the Two Micron All Sky Survey, which is a joint project of the University of Massachusetts and the Infrared Processing and Analysis Center/California Institute of Technology, funded by the National Aeronautics and Space Administration and the National Science Foundation.</p>
 
@@ -15,8 +15,8 @@
   order: 1
   license: PD
   # doi:
-  # published:
-  # updated:
+  published: 2001-02-01
+  updated: 2001-02-01
   access_level: PUBLIC
   metadata_access_level: PUBLIC
   # creators:
@@ -55,8 +55,8 @@
       order: 1
       license: PD
       # doi:
-      # published:
-      # updated:
+      published: 2001-02-01
+      updated: 2001-02-01
       access_level: PUBLIC
       metadata_access_level: PUBLIC
         # creators:
@@ -70,12 +70,12 @@
         #   affiliations: Institute of theoretical Managament
       columns:
         - name: ra
-          ucd: pos.eq.ra
+          ucd: pos.eq.ra;meta.main
           unit: deg
           description: J2000 right ascension with respect to the ICRS
           order: 1
         - name: decl
-          ucd: pos.eq.dec
+          ucd: pos.eq.dec;meta.main
           unit: deg
           description: J2000 declination with respect to the ICRS
           order: 2
@@ -96,7 +96,7 @@
           order: 5
 
         - name: designation
-          ucd: meta.ref
+          ucd: meta.id;meta.main
           unit: ""
           description: "Sexagesimal, equatorial position-based source name in the form: hhmmssss+ddmmsss[ABC...]."
           order: 6
@@ -234,7 +234,7 @@
           order: 28
 
         - name: pts_key
-          ucd: meta.id;phys.current;src
+          ucd: meta.id;meta.main;meta.ref
           unit: ""
           description: A unique identification number for the PSC source.
           order: 29
