@@ -369,7 +369,8 @@ if AUTH_SAML2_ENABLED == True:
     LOGIN_REDIRECT_URL = "/query"
 
     SAML_ATTRIBUTE_MAPPING = {
-        "eduPersonPrincipalName": ("username",),
+        # "eduPersonPrincipalName": ("username",),
+        "eduPersonUniqueId": ("username",),
         "givenName": ("first_name",),
         "sn": ("last_name",),
         "email": ("email",),
