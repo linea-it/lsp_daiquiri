@@ -8,6 +8,8 @@ ALLOWED_HOSTS = [
 
 TARGET_VIEWER_URL = "https://scienceserver.linea.org.br/target/"
 SCIENCE_SERVER_URL = "https://scienceserver.linea.org.br/"
+LSP_URL = "https://scienceplatform.linea.org.br/lsp"
+IDAC_URL = "https://scienceplatform.linea.org.br/idac"
 
 QUERY_QUEUES = [
     {
