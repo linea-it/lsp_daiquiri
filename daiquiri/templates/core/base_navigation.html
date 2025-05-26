@@ -13,12 +13,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'home' %}">
+      <!-- <a class="navbar-brand" href="{% url 'home' %}"> -->
+      <div class="navbar-brand">
         <img src="{% static 'daiquiri/imgs/linea-symbol.svg' %}" width="52" alt="Logo LIneA" />
         {% comment %}
         {{ request.site.name }}
         {% endcomment %}
-      </a>
+      </div>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
@@ -84,7 +85,13 @@
           <a href="{% url 'query:query' %}">{% trans 'Query' %}</a>
         </li>
         <li>
-          <a href="{{ settings.TARGET_VIEWER_URL }}">{% trans 'Target Viewer' %}</a>
+          <a href="{{ settings.TARGET_VIEWER_URL }}" target="_blank">{% trans 'Target Viewer' %}</a>
+        </li>
+        <li>
+          <a href="{{ settings.LSP_URL }}" target="_blank">{% trans 'LSP' %}</a>
+        </li>
+        <li>
+          <a href="{{ settings.IDAC_URL }}" target="_blank">{% trans 'IDAC' %}</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

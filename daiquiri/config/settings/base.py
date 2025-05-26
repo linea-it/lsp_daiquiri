@@ -1,10 +1,9 @@
 import os
 
+import daiquiri.core.env as env
 import saml2
 import saml2.saml
 from django.utils.translation import gettext_lazy as _
-
-import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
@@ -311,6 +310,8 @@ LICENSE_CHOICES = tuple(LICENSE_CHOICES)
 # -----------------------------------------------
 TARGET_VIEWER_URL = "https://scienceserver-dev.linea.org.br/target/"
 SCIENCE_SERVER_URL = "https://scienceserver-dev.linea.org.br/"
+LSP_URL = "https://scienceplatform-dev.linea.org.br/lsp"
+IDAC_URL = "https://scienceplatform-dev.linea.org.br/idac"
 
 # COmanage Autorization
 COMANAGE_SERVER_URL = env.get("COMANAGE_SERVER_URL", "https://register.linea.org.br")
@@ -473,4 +474,6 @@ SETTINGS_EXPORT += [
     "LOGOUT_URL",
     "TARGET_VIEWER_URL",
     "SCIENCE_SERVER_URL",
+    "LSP_URL",
+    "IDAC_URL",
 ]
