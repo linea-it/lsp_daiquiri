@@ -2,6 +2,7 @@ IMAGE_TAG=58a9c5c
 SECRET_KEY=qt6BI6OLfhfT0XRYifd_gKZY41XimIvxd1ZyEVJdOtI
 
 DOMAIN=userquery.linea.org.br
+BASE_HOST=https://userquery.linea.org.br
 SITE_URL=https://userquery.linea.org.br
 BASE_URL=/
 
@@ -10,16 +11,20 @@ AUTORELOAD=0
 LOG_LEVEL=INFO
 ASYNC=True
 
-# Django SAML2
+# Auth SAML2
 AUTH_SAML2_ENABLED=True
-AUTH_SAML2_LOGIN_URL_CAFE=https://userquery.linea.org.br/saml2/login/?idp=https://satosa.linea.org.br/linea_saml/proxy&next=/query
-AUTH_SAML2_LOGIN_URL_CILOGON=https://userquery.linea.org.br/saml2/login/?idp=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==&next=/query
+# SATOSA PRODUCTION
+LINEA_LOGIN_URL=$BASE_HOST/saml2/login/?idp=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==
+LINEA_REGISTER_URL=https://register.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register.linea.org.br/registry/co_petitions/start/coef:155&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==
 
-# COmanage Autorization
-COMANAGE_SERVER_URL=https://register.linea.org.br
-COMANAGE_USER=co_2.linea.apps
-COMANAGE_PASSWORD=password
-COMANAGE_COID=2
+RUBIN_LOGIN_URL=$BASE_HOST/saml2/login/?idp=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9kYXRhLmxzc3QuY2xvdWQv&next=/
+RUBIN_REGISTER_URL=https://register.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register.linea.org.br/registry/co_petitions/start/coef:189&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9kYXRhLmxzc3QuY2xvdWQv
+
+# # COmanage Autorization
+# COMANAGE_SERVER_URL=https://register.linea.org.br
+# COMANAGE_USER=co_2.linea.apps
+# COMANAGE_PASSWORD=password
+# COMANAGE_COID=2
 
 # UWSGI
 DJANGO_UWSGI_PROCESSES=4

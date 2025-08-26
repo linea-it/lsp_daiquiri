@@ -21,7 +21,7 @@ from . import (
 )
 
 # the hostname and port number of the current Server
-BASE_HOST = env.get("SITE_URL")
+BASE_HOST = env.get("BASE_HOST", default="http://localhost")
 
 # Public URL of the Daiquiri site. Used for VO and OAI metadata.
 # Default: http://localhost:8000
@@ -313,16 +313,24 @@ SCIENCE_SERVER_URL = "https://scienceserver-dev.linea.org.br/"
 LSP_URL = "https://scienceplatform-dev.linea.org.br/lsp"
 IDAC_URL = "https://scienceplatform-dev.linea.org.br/idac"
 
-# COmanage Autorization
-COMANAGE_SERVER_URL = env.get("COMANAGE_SERVER_URL", "https://register.linea.org.br")
-COMANAGE_USER = env.get("COMANAGE_USER")
-COMANAGE_PASSWORD = env.get("COMANAGE_PASSWORD")
-COMANAGE_COID = env.get("COMANAGE_COID", 2)
+# # COmanage Autorization
+# COMANAGE_SERVER_URL = env.get("COMANAGE_SERVER_URL", "https://register.linea.org.br")
+# COMANAGE_USER = env.get("COMANAGE_USER")
+# COMANAGE_PASSWORD = env.get("COMANAGE_PASSWORD")
+# COMANAGE_COID = env.get("COMANAGE_COID", 2)
 
 # DJANGO SAML2 Authentication
 AUTH_SAML2_ENABLED = env.get_bool("AUTH_SAML2_ENABLED", False)
-AUTH_SAML2_LOGIN_URL_CAFE = None
-AUTH_SAML2_LOGIN_URL_CILOGON = None
+
+# Urls for login with SAML2/CILogon
+# URL_CILOGON example: https://skyviewer.linea.org.br/saml2/login/?idp=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==
+LINEA_LOGIN_URL = env.get("LINEA_LOGIN_URL", default="/admin/login/?next=/")
+RUBIN_LOGIN_URL = env.get("RUBIN_LOGIN_URL", default="/admin/login/?next=/")
+
+# Url de registro para os diferentes idps.
+LINEA_REGISTER_URL = env.get("LINEA_REGISTER_URL", default="https://register-dev.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register-dev.linea.org.br/registry/co_petitions/start/coef:155&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==")
+RUBIN_REGISTER_URL = env.get("RUBIN_REGISTER_URL", default="https://register-dev.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register-dev.linea.org.br/registry/co_petitions/start/coef:231&entityID=https://satosa-dev.linea.org.br/linea_saml_mirror/proxy/aHR0cHM6Ly9kYXRhLmxzc3QuY2xvdWQ=")
+
 
 if AUTH_SAML2_ENABLED == True:
 
@@ -340,18 +348,18 @@ if AUTH_SAML2_ENABLED == True:
     AUTHENTICATION_BACKENDS += ("linea.saml2.LineaSaml2Backend",)
     # Including SAML2 Middleware
     MIDDLEWARE += ("djangosaml2.middleware.SamlSessionMiddleware",)
-
+    # SAML2 Custom error handler
+    # https://djangosaml2.readthedocs.io/contents/developer.html#custom-error-handler
+    SAML_ACS_FAILURE_RESPONSE_FUNCTION = 'linea.views.saml2_template_failure'
     # configurações relativas ao session cookie
     SAML_SESSION_COOKIE_NAME = "saml_session"
     SESSION_COOKIE_SECURE = True
 
     # Qualquer view que requer um usuário autenticado deve redirecionar o navegador para esta url
     LOGIN_URL = "/login/"
-    AUTH_SAML2_LOGIN_URL_CAFE = env.get("AUTH_SAML2_LOGIN_URL_CAFE")
-    AUTH_SAML2_LOGIN_URL_CILOGON = env.get("AUTH_SAML2_LOGIN_URL_CILOGON")
 
     # Encerra a sessão quando o usuário fecha o navegador
-    SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+    SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
     # Tipo de binding utilizado
     SAML_DEFAULT_BINDING = saml2.BINDING_HTTP_POST
@@ -370,11 +378,11 @@ if AUTH_SAML2_ENABLED == True:
     LOGIN_REDIRECT_URL = "/query"
 
     SAML_ATTRIBUTE_MAPPING = {
-        # "eduPersonPrincipalName": ("username",),
         "eduPersonUniqueId": ("username",),
         "givenName": ("first_name",),
         "sn": ("last_name",),
         "email": ("email",),
+        "isMemberOf": ("name",),
     }
 
     SAML_CONFIG = {
@@ -430,10 +438,18 @@ if AUTH_SAML2_ENABLED == True:
                     "cert": None,
                 },
                 {
-                    "url": "https://www.linea.org.br/static/metadata/satosa-prod-frontend-cafe.xml",
+                    "url": "https://www.linea.org.br/static/metadata/satosa-prod-frontend-rubin.xml",
                     "cert": None,
                 },
-            ]
+                {
+                    "url": "https://www.linea.org.br/static/metadata/satosa-dev-frontend-cilogon.xml",
+                    "cert": None,
+                },
+                {
+                    "url": "https://www.linea.org.br/static/metadata/satosa-dev-frontend-rubin.xml",
+                    "cert": None,
+                },
+            ],
         },
         # Configurado como 1 para fornecer informações de debug
         "debug": 1,
@@ -469,6 +485,7 @@ if AUTH_SAML2_ENABLED == True:
     }
 
 SETTINGS_EXPORT += [
+    "BASE_HOST",
     "AUTH_SAML2_ENABLED",
     "LOGIN_URL",
     "LOGOUT_URL",
@@ -476,4 +493,8 @@ SETTINGS_EXPORT += [
     "SCIENCE_SERVER_URL",
     "LSP_URL",
     "IDAC_URL",
+    "LINEA_LOGIN_URL",
+    "LINEA_REGISTER_URL",
+    "RUBIN_LOGIN_URL",
+    "RUBIN_REGISTER_URL"
 ]
