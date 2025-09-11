@@ -5,6 +5,7 @@ from typing import Tuple
 
 from django.contrib.auth.models import Group
 from djangosaml2.backends import Saml2Backend
+from django.conf import settings
 
 logger = logging.getLogger("djangosaml2")
 
@@ -217,6 +218,9 @@ class LineaSaml2Backend(Saml2Backend):
         # Add a custom group saml for mark this user make login using djangosaml2.
         groups = ["saml2"]
 
+        # Grupos internos do sistema que não serão removidos do usuario
+        internal_groups = getattr(settings, "INTERNAL_GROUPS", [])
+
         # Recupera os grupos do usuario
         try:
             logger.info("Retriving User Groups.")
@@ -229,8 +233,9 @@ class LineaSaml2Backend(Saml2Backend):
 
         # Remove the user from all groups that are not specified
         for group in user.groups.all():
-            if group.name not in groups:
-                group.user_set.remove(user)
+            if group.name not in groups and group.name not in internal_groups:
+                user.groups.remove(group)
+                # group.user_set.remove(user)
                 logger.info(f"User has been removed from the group {group.name}")
 
         # Add the user to all groups in the shibboleth metadata

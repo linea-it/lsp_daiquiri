@@ -331,6 +331,10 @@ RUBIN_LOGIN_URL = env.get("RUBIN_LOGIN_URL", default="/admin/login/?next=/")
 LINEA_REGISTER_URL = env.get("LINEA_REGISTER_URL", default="https://register-dev.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register-dev.linea.org.br/registry/co_petitions/start/coef:155&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==")
 RUBIN_REGISTER_URL = env.get("RUBIN_REGISTER_URL", default="https://register-dev.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register-dev.linea.org.br/registry/co_petitions/start/coef:231&entityID=https://satosa-dev.linea.org.br/linea_saml_mirror/proxy/aHR0cHM6Ly9kYXRhLmxzc3QuY2xvdWQ=")
 
+# Lista de grupos internos do sistema.
+# Esses grupos são gerenciados no django admin.
+# Quando o usuario faz login pelo saml2 esses grupos não serão removidos. 
+INTERNAL_GROUPS = ["Editors", "Moderators", "contact_manager", "metadata_manager", "query_manager", "stats_manager", "user_manager"]
 
 if AUTH_SAML2_ENABLED == True:
 
