@@ -230,7 +230,8 @@ class LineaSaml2Backend(Saml2Backend):
         # Remove the user from all groups that are not specified
         for group in user.groups.all():
             if group.name not in groups:
-                group.user_set.remove(user)
+                user.groups.remove(group)
+                # group.user_set.remove(user)
                 logger.info(f"User has been removed from the group {group.name}")
 
         # Add the user to all groups in the shibboleth metadata
