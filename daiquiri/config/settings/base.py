@@ -334,7 +334,7 @@ RUBIN_REGISTER_URL = env.get("RUBIN_REGISTER_URL", default="https://register-dev
 # Lista de grupos internos do sistema.
 # Esses grupos são gerenciados no django admin. 
 # Quando o usuario faz login pelo saml2 esses grupos não serão removidos. 
-INTERNAL_GROUPS = ["Editors", "Moderators", "contact_manager", "metadata_manager", "Moderators", "query_manager", "stats_manager", "user_manager"]
+INTERNAL_GROUPS = ["Editors", "Moderators", "contact_manager", "metadata_manager", "query_manager", "stats_manager", "user_manager"]
 
 if AUTH_SAML2_ENABLED == True:
 
