@@ -221,7 +221,6 @@ class LineaSaml2Backend(Saml2Backend):
         # Grupos internos do sistema que não serão removidos do usuario
         internal_groups = getattr(settings, "INTERNAL_GROUPS", [])
 
-
         # Recupera os grupos do usuario
         try:
             logger.info("Retriving User Groups.")
