@@ -26,3 +26,22 @@ https://github.com/linea-it/lsp_daiquiri/blob/master/compose/local/README.md
 
 ## Setup Production Environment
 https://github.com/linea-it/lsp_daiquiri/blob/master/compose/production/README.md
+
+
+### Build Manual da Imagem docker
+
+Estando logado no dockerhub pelo terminal execute o build e o push da imagem do daiquiri.
+
+Docker Hub: <https://hub.docker.com/repository/docker/linea/lsp_daiquiri/>
+
+A identificação unica de cada imagem pode ser o numero de versão exemplo: `linea/lsp_daiquiri:v0.1` ou o hash do commit para versões de desenvolvimento: `linea/lsp_daiquiri:8816330`.
+
+>Para obter o hash do commit usar o comando `$(git describe --always)`
+
+```bash
+docker build -f compose/local/daiquiri/Dockerfile -t linea/lsp_daiquiri:$(git describe --always) .
+```
+
+```bash
+docker push linea/lsp_daiquiri:$(git describe --always)
+```
