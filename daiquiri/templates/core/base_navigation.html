@@ -95,6 +95,12 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://data.linea.org.br/" target="_blank">{% trans 'DATA' %}</a>
+        </li>
+        <li>
+          <a href="https://docs.linea.org.br/" target="_blank">{% trans 'DOCS' %}</a>
+        </li>
         {% if user.is_authenticated %}
         {% has_perm 'daiquiri_auth.view_profile' request.user as can_view_view_profile %}
         {% has_perm 'daiquiri_contact.view_contactmessages' request.user as can_view_contactmessages %}
