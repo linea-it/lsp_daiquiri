@@ -583,8 +583,8 @@
       order: 102
     - name: g_fwhm
       ucd: ''
-      unit: ''
-      description: 'Full Width Half Maximum (g-band)'
+      unit: pixel**2
+      description: HSM moments. Measured on g-band.
       order: 103
     - name: g_gaap0p7_flux
       ucd: ''
@@ -1717,8 +1717,8 @@
       order: 305
     - name: i_fwhm
       ucd: ''
-      unit: ''
-      description: 'Full Width Half Maximum (i-band)'
+      unit: pixel**2
+      description: HSM moments. Measured on i-band.
       order: 306
     - name: i_gaap0p7_flux
       ucd: ''
@@ -2866,8 +2866,8 @@
       order: 511
     - name: r_fwhm
       ucd: ''
-      unit: ''
-      description: ''
+      unit: pixel**2
+      description: HSM moments. Measured on r-band.
       order: 512
     - name: r_gaap0p7_flux
       ucd: ''
@@ -3589,7 +3589,7 @@
     - name: ref_fwhm
       ucd: ''
       unit: ''
-      description: 'Reference band Full Width Half Maximum'
+      description: Estimated FWHM on the reference band at source center assuming a Gaussian profile
       order: 638
     - name: ref_size_extendedness
       ucd: ''
