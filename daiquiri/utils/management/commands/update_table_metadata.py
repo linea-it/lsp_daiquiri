@@ -2,23 +2,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
-from django.core.management.base import BaseCommand
-
 from daiquiri.core.constants import ACCESS_LEVEL_PRIVATE
 from daiquiri.metadata.models import Schema
+from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
     help = "Updates table metadata from yml file."
-
-    # def add_arguments(self, parser):
-    #     parser.add_argument(
-    #         "--local",
-    #         action="store_true",
-    #         dest="local",
-    #         default=False,
-    #         help="Does not download the files, uses the local files in /data/asteroid_table",
-    #     )
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -27,7 +17,7 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        self.stdout.write("Teste Update Metadata")
+        self.stdout.write("Update Metadata")
         print(f"Schema: {options['schema']}")
         fixtures_path = Path.cwd().joinpath("fixtures")
         print(f"Fixtures Path: {fixtures_path}")
