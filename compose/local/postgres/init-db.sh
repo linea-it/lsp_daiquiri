@@ -29,3 +29,8 @@ EOSQL
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "daiquiri_data" <<-EOSQL
     \i /data/twomass_sample.sql;
 EOSQL
+
+# Create Table MPC SAMPLE SCHEMA
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "daiquiri_data" <<-EOSQL
+    \i /data/mpc_sample.sql;
+EOSQL
