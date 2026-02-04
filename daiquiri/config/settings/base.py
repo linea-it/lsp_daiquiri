@@ -212,6 +212,10 @@ SERVE_DOWNLOAD_DIR = "/data/download"
 ANNOUNCEMENT_MESSAGE_FILTER = "linea.filters.LineaMessageFilter"
 
 CONESEARCH_ADAPTER = "daiquiri.conesearch.adapter.SimpleConeSearchAdapter"
+
+# Adaptador PostgreSQL customizado: colunas numeric/decimal são descobertas
+# como tipo TAP 'double' em vez de 'char' (ver linea.adapter).
+ADAPTER_DATABASE = "linea.adapter.PostgreSQLAdapter"
 CONESEARCH_ANONYMOUS = True
 CONESEARCH_SCHEMA = "des_dr2"
 CONESEARCH_TABLE = "main"
