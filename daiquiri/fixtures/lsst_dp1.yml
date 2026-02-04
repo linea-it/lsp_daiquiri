@@ -53,7 +53,7 @@
         <p>LSST Data Preview 1 (DP1) data products are provided by the Vera C. Rubin Observatory and supported by the U.S. National Science Foundation and the U.S. Department of Energy Office of Science. Construction and operations of the Rubin Observatory are carried out by the NSF-funded Association of Universities for Research in Astronomy (AURA) and the DOE-funded SLAC National Accelerator Laboratory.</p>
         <p>The Rubin Observatory LSST Project is a partnership among numerous institutions worldwide, including LIneA, the host institution for the Brazilian IDAC. Additional support for scientific analysis and data access tools has been provided by the LSST Corporation and international Rubin Science Collaborations.</p>
         <p>Software, pipelines, and infrastructure used to generate DP1 data products were developed by the Rubin Observatory Data Management team and collaborating institutions with in-kind contribution agreements.</p>
-      </blockquote>    
+      </blockquote>
     order: null
     license: ''
     doi: ''
