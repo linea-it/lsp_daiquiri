@@ -1,9 +1,10 @@
 import os
 
-import daiquiri.core.env as env
 import saml2
 import saml2.saml
 from django.utils.translation import gettext_lazy as _
+
+import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
@@ -211,6 +212,10 @@ SERVE_DOWNLOAD_DIR = "/data/download"
 ANNOUNCEMENT_MESSAGE_FILTER = "linea.filters.LineaMessageFilter"
 
 CONESEARCH_ADAPTER = "daiquiri.conesearch.adapter.SimpleConeSearchAdapter"
+
+# Adaptador PostgreSQL customizado: colunas numeric/decimal são descobertas
+# como tipo TAP 'double' em vez de 'char' (ver linea.adapter).
+ADAPTER_DATABASE = "linea.adapter.PostgreSQLAdapter"
 CONESEARCH_ANONYMOUS = True
 CONESEARCH_SCHEMA = "des_dr2"
 CONESEARCH_TABLE = "main"
@@ -328,13 +333,27 @@ LINEA_LOGIN_URL = env.get("LINEA_LOGIN_URL", default="/admin/login/?next=/")
 RUBIN_LOGIN_URL = env.get("RUBIN_LOGIN_URL", default="/admin/login/?next=/")
 
 # Url de registro para os diferentes idps.
-LINEA_REGISTER_URL = env.get("LINEA_REGISTER_URL", default="https://register-dev.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register-dev.linea.org.br/registry/co_petitions/start/coef:155&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==")
-RUBIN_REGISTER_URL = env.get("RUBIN_REGISTER_URL", default="https://register-dev.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register-dev.linea.org.br/registry/co_petitions/start/coef:231&entityID=https://satosa-dev.linea.org.br/linea_saml_mirror/proxy/aHR0cHM6Ly9kYXRhLmxzc3QuY2xvdWQ=")
+LINEA_REGISTER_URL = env.get(
+    "LINEA_REGISTER_URL",
+    default="https://register-dev.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register-dev.linea.org.br/registry/co_petitions/start/coef:155&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==",
+)
+RUBIN_REGISTER_URL = env.get(
+    "RUBIN_REGISTER_URL",
+    default="https://register-dev.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register-dev.linea.org.br/registry/co_petitions/start/coef:231&entityID=https://satosa-dev.linea.org.br/linea_saml_mirror/proxy/aHR0cHM6Ly9kYXRhLmxzc3QuY2xvdWQ=",
+)
 
 # Lista de grupos internos do sistema.
 # Esses grupos são gerenciados no django admin.
-# Quando o usuario faz login pelo saml2 esses grupos não serão removidos. 
-INTERNAL_GROUPS = ["Editors", "Moderators", "contact_manager", "metadata_manager", "query_manager", "stats_manager", "user_manager"]
+# Quando o usuario faz login pelo saml2 esses grupos não serão removidos.
+INTERNAL_GROUPS = [
+    "Editors",
+    "Moderators",
+    "contact_manager",
+    "metadata_manager",
+    "query_manager",
+    "stats_manager",
+    "user_manager",
+]
 
 if AUTH_SAML2_ENABLED == True:
 
@@ -354,7 +373,7 @@ if AUTH_SAML2_ENABLED == True:
     MIDDLEWARE += ("djangosaml2.middleware.SamlSessionMiddleware",)
     # SAML2 Custom error handler
     # https://djangosaml2.readthedocs.io/contents/developer.html#custom-error-handler
-    SAML_ACS_FAILURE_RESPONSE_FUNCTION = 'linea.views.saml2_template_failure'
+    SAML_ACS_FAILURE_RESPONSE_FUNCTION = "linea.views.saml2_template_failure"
     # configurações relativas ao session cookie
     SAML_SESSION_COOKIE_NAME = "saml_session"
     SESSION_COOKIE_SECURE = True
@@ -500,5 +519,5 @@ SETTINGS_EXPORT += [
     "LINEA_LOGIN_URL",
     "LINEA_REGISTER_URL",
     "RUBIN_LOGIN_URL",
-    "RUBIN_REGISTER_URL"
+    "RUBIN_REGISTER_URL",
 ]

@@ -76,5 +76,135 @@
       "access_level": "PUBLIC",
       "groups": []
     }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 7,
+    "fields": {
+      "order": null,
+      "name": "MPC SBN Secondary designations for a primary designation",
+      "description": "Retrieve all the secondary designations for a generic designation.\nThe current_identifications table contains all the current identifications for the objects in the database.\nIf an object A has been linked to an object B, the current_identifications table contains two entries: one for A=A and another one for A=B.\nThis query returns all the secondary designations for object A, when A is the primary designation.\nNote: the current_identifications table contains both the packed and unpacked designations.",
+      "query_language": "postgresql-13.9",
+      "query_string": "-- SECONDARY DESIGNATIONS FOR A PRIMARY DESIGNATION\n-- The current_identifications table contains all the current identifications for the objects in the database.\n-- If an object A has been linked to an object B, the current_identifications table contains two entries: one for A=A and another one for A=B.\n-- This query returns all the secondary designations for object A, when A is the primary designation.\n-- Note: the current_identifications table contains both the packed and unpacked designations.\n\nSELECT unpacked_primary_provisional_designation, unpacked_secondary_provisional_designation\nFROM mpc_sbn.current_identifications\nWHERE unpacked_primary_provisional_designation = '2015 AC2'",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 8,
+    "fields": {
+      "order": null,
+      "name": "MPC SBN Secondary designations for a generic designation",
+      "description": "Retrieve all the secondary designations for a generic designation (not necessarily a primary designation).\nIf the user doesn't know the primary designation, this query retrieves all the designations associated to the same object using a subquery.\nNote: to obtain the result in JSON format, wrap the query with SELECT to_json(t) FROM(...) AS t;",
+      "query_language": "postgresql-13.9",
+      "query_string": "-- SECONDARY DESIGNATIONS FOR A GENERIC DESIGNATION\n-- If the user doesn't know the primary designation, this query retrieves all the designations associated to the same object.\n\nSELECT unpacked_primary_provisional_designation, unpacked_secondary_provisional_designation\nFROM mpc_sbn.current_identifications\nWHERE unpacked_primary_provisional_designation = (\n    SELECT unpacked_primary_provisional_designation\n    FROM mpc_sbn.current_identifications\n    WHERE unpacked_secondary_provisional_designation = '2010 HL23'\n)",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 9,
+    "fields": {
+      "order": null,
+      "name": "MPC SBN Check if an object is numbered",
+      "description": "Check whether an object is numbered.\nThis query checks whether the object 2010 HL23 is numbered and returns a boolean.",
+      "query_language": "postgresql-13.9",
+      "query_string": "-- CHECK IF AN OBJECT IS NUMBERED\n-- This query checks whether the object 2010 HL23 is numbered and returns a boolean.\n\nSELECT numbered\nFROM mpc_sbn.current_identifications\nWHERE unpacked_secondary_provisional_designation = '2010 HL23'",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 10,
+    "fields": {
+      "order": null,
+      "name": "MPC SBN Retrieve permid for a given object",
+      "description": "Retrieve the permid (permanent identifier/number) for a given object.\nIf an object is numbered, and you want to look-up its number (permid) based on the unpacked_secondary_provisional_designation, the number (permid) can be extracted from the numbered_identifications table.\nNote: numbered_identifications table can only be queried using the primary provisional designation (packed or unpacked) and the primary provisional designation can be obtained with a join query with the current_identifications table.",
+      "query_language": "postgresql-13.9",
+      "query_string": "-- RETRIEVE PERMID FOR A GIVEN OBJECT\n-- If an object is numbered, look-up its number (permid) based on the unpacked_secondary_provisional_designation.\n-- The numbered_identifications table can only be queried using the primary provisional designation.\n\nSELECT permid\nFROM mpc_sbn.numbered_identifications ni \nJOIN mpc_sbn.current_identifications ci\nON ni.unpacked_primary_provisional_designation = ci.unpacked_secondary_provisional_designation\nWHERE ci.unpacked_primary_provisional_designation = (\n    SELECT unpacked_primary_provisional_designation\n    FROM mpc_sbn.current_identifications\n    WHERE unpacked_secondary_provisional_designation = '2010 HL23'\n)",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 11,
+    "fields": {
+      "order": null,
+      "name": "MPC SBN Observations for a numbered object",
+      "description": "Retrieve all the observations for a numbered object.\nThis query returns all the MPC-1992 80-column format observations for the numbered object 123456.\nNote: if an object is numbered, the permid field is populated with the unpacked number.",
+      "query_language": "postgresql-13.9",
+      "query_string": "-- ALL OBSERVATIONS FOR A NUMBERED OBJECT\n-- Returns all the MPC-1992 80-column format observations for the numbered object 123456.\n-- Note: if an object is numbered, the permid field is populated with the unpacked number.\n\nSELECT obs80 \nFROM mpc_sbn.obs_sbn \nWHERE permid = '123456'",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 12,
+    "fields": {
+      "order": null,
+      "name": "MPC SBN Observations for an unnumbered object",
+      "description": "Retrieve all the observations for an unnumbered object.\nIf the object is unnumbered, it might be the result of a linkage, so this query joins the current_identifications table with the obs_sbn table to retrieve all the observations.",
+      "query_language": "postgresql-13.9",
+      "query_string": "-- ALL OBSERVATIONS FOR AN UNNUMBERED OBJECT\n-- If the object is unnumbered, it might be the result of a linkage.\n-- This query joins current_identifications with obs_sbn to retrieve all observations.\n\nSELECT obs80 \nFROM mpc_sbn.obs_sbn AS o \nJOIN mpc_sbn.current_identifications AS ci\nON o.provid = ci.unpacked_secondary_provisional_designation \nWHERE ci.unpacked_secondary_provisional_designation IN (\n    SELECT unpacked_secondary_provisional_designation\n    FROM mpc_sbn.current_identifications\n    WHERE unpacked_primary_provisional_designation = (\n        SELECT unpacked_primary_provisional_designation\n        FROM mpc_sbn.current_identifications\n        WHERE unpacked_secondary_provisional_designation = '2010 HL23'\n    )\n)",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 13,
+    "fields": {
+      "order": null,
+      "name": "2MASS Identify highly reddish objects",
+      "description": "This ADQL query retrieves 100 highly reddish objects from the 2MASS Point Source Catalog (PSC), using the J-Ks color index to identify:\n\n-Objects with (J-Ks) > 2.0, which may be due to high extinction (dust) or very cool temperatures (e.g., brown dwarfs).\n\n-Ks-band magnitude < 15, ensuring the selection of relatively bright sources.\n\nResults are sorted by descending J-Ks color, so the reddest objects appear first.",
+      "query_language": "adql-2.0",
+      "query_string": "-- Queue 5 minutes\n-- ADQL\n-- Selects 100 highly reddish objects based on J-Ks color index  \nSELECT TOP 100  \n    ra,               -- Right Ascension  \n    decl,             -- Declination  \n    j_m,              -- J-band magnitude (1.2 μm)  \n    h_m,              -- H-band magnitude (1.6 μm)  \n    k_m,              -- Ks-band magnitude (2.2 μm)  \n    (j_m - k_m) AS color_jk  -- J-Ks color index, indicating extinction or low temperature  \nFROM twomass.psc  \nWHERE (j_m - k_m) > 2.0  -- Selects very red objects, possibly due to high extinction or cool temperatures  \nAND k_m < 15             -- Limits to relatively bright objects in the Ks band  \nORDER BY color_jk DESC;   -- Sorts by J-Ks color in descending order (reddest objects first)",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 14,
+    "fields": {
+      "order": null,
+      "name": "GAIA DR3 Stars with the highest parallax (closest to Earth)",
+      "description": "This ADQL query retrieves the 20 stars with the highest parallax values from the Gaia DR3 catalog, meaning they are the closest to Earth. It selects the right ascension (ra), declination (dec), G-band mean magnitude (phot_g_mean_mag), and parallax, filtering for stars with a parallax greater than 10 milliarcseconds (mas) (which roughly corresponds to distances within 100 parsecs). The results are sorted in descending order of parallax, ensuring that the closest stars appear first.",
+      "query_language": "adql-2.0",
+      "query_string": "-- Selects the 20 stars with the highest parallax (closest to Earth)\n-- queue 30 seconds\nSELECT TOP 20 \n    ra,                -- Right Ascension\n    dec,               -- Declination\n    phot_g_mean_mag,   -- Mean G-band magnitude\n    parallax           -- Parallax in milliarcseconds\nFROM gaia_dr3.source\nWHERE parallax > 10    -- Filters stars with parallax greater than 10 mas (~closer than 100 pc)\nORDER BY parallax DESC; -- Sorts by parallax in descending order (closest stars first)",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 15,
+    "fields": {
+      "order": null,
+      "name": "GAIA DR3 Distribution of blue stars in the direction of the galactic halo",
+      "description": "This ADQL query extracts 1,000 hot blue stars in the Milky Way's galactic halo from the Gaia DR3 catalog. The selection is based on:\n\n-BP-RP color index < 0.5, identifying blue, high-temperature stars.\n\n-Parallax between 0.1 and 1.0 mas, filtering stars at distances between ~1 and 10 kpc, typical of the halo.\n\nDeclination (Dec) > 30°, restricting results to the northern sky.\n\nResults are sorted by increasing G-band magnitude, meaning the brightest stars appear first.",
+      "query_language": "adql-2.0",
+      "query_string": "-- Selects 1000 hot blue stars in the Milky Way halo\n-- Queue 5 minutes\n-- ADQL\nSELECT TOP 1000  \n    ra,                -- Right Ascension (J2000)  \n    dec,               -- Declination (J2000)  \n    phot_g_mean_mag,   -- Mean G-band magnitude  \n    bp_rp,             -- Color index (BP-RP), used to identify blue stars  \n    parallax           -- Parallax in milliarcseconds (mas), used for distance filtering  \nFROM gaia_dr3.source  \nWHERE bp_rp < 0.5      -- Selects blue stars (hotter temperatures)  \nAND parallax BETWEEN 0.1 AND 1.0  -- Restricts to distant stars (~1-10 kpc), likely in the halo  \nAND dec > 30           -- Focuses on stars in the northern sky  \nORDER BY phot_g_mean_mag ASC;  -- Sorts by brightness, with the brightest stars first",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
+  },
+  {
+    "model": "daiquiri_query.example",
+    "pk": 16,
+    "fields": {
+      "order": null,
+      "name": "GAIA DR3 Determination of velocity dispersion in a star cluster",
+      "description": "This ADQL query retrieves 1,000 stars from the Hyades cluster using Gaia DR3 data. The selection criteria focus on:\n\n-Parallax (18–22 mas) → Filtering stars at distances ~45–55 parsecs, the expected range for Hyades.\n\n-Proper motion in RA (80–100 mas/yr) and Dec (-50 to -30 mas/yr) for Ensuring the stars share a common motion, characteristic of Hyades members.\n\nResults are sorted by increasing G-band magnitude, listing the brightest stars first.",
+      "query_language": "adql-2.0",
+      "query_string": "-- Queue 30 seconds\n-- ADQL\n-- Selects 1000 stars from the Hyades cluster using parallax and proper motion  \nSELECT TOP 1000  \n    ra,                -- Right Ascension   \n    dec,               -- Declination\n    parallax,          -- Parallax in milliarcseconds, used for distance selection  \n    pmra,              -- Proper motion in RA direction  \n    pmdec,             -- Proper motion in Dec direction\n    phot_g_mean_mag    -- Mean G-band magnitude  \nFROM gaia_dr3.source  \nWHERE parallax BETWEEN 18 AND 22  -- Selects stars at ~45-55 parsecs (Hyades cluster distance)  \nAND pmra BETWEEN 80 AND 100       -- Proper motion range in RA, characteristic of Hyades stars  \nAND pmdec BETWEEN -50 AND -30     -- Proper motion range in Dec, ensuring common motion  \nORDER BY phot_g_mean_mag ASC;      -- Sorts by brightness (brightest stars first)",
+      "access_level": "PUBLIC",
+      "groups": []
+    }
   }
 ]

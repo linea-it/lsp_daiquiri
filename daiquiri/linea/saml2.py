@@ -1,18 +1,24 @@
 import logging
-from typing import Any
-from typing import Optional
-from typing import Tuple
+from typing import Any, Optional, Tuple
 
+from django.conf import settings
 from django.contrib.auth.models import Group
 from djangosaml2.backends import Saml2Backend
-from django.conf import settings
 
 logger = logging.getLogger("djangosaml2")
 
 
 class LineaSaml2Backend(Saml2Backend):
 
-    def authenticate(self, request, session_info=None, attribute_mapping=None, create_unknown_user=True, assertion_info=None, **kwargs):
+    def authenticate(
+        self,
+        request,
+        session_info=None,
+        attribute_mapping=None,
+        create_unknown_user=True,
+        assertion_info=None,
+        **kwargs,
+    ):
         logger.info("=====================================================")
         logger.info("authenticate()")
         logger.info(f"request: {request}")
@@ -33,39 +39,49 @@ class LineaSaml2Backend(Saml2Backend):
         idp_entityid = session_info["issuer"]
         attributes = self.clean_attributes(session_info["ava"], idp_entityid)
 
-        list_idp_name = attributes.get('schacProjectMembership', None)
+        list_idp_name = attributes.get("schacProjectMembership", None)
         logger.info(f"IDP NAME TYPE: {type(list_idp_name)}")
         idp_name = None
         if list_idp_name:
             idp_name = list_idp_name[0]
 
         logger.info(f"idp_name: {idp_name}")
-        request.session['idp_name'] = idp_name
+        request.session["idp_name"] = idp_name
 
         if self.get_user_identifier(attributes) is None:
-            logger.error("No user identifier found in attributes. Redirect to registration page.")
+            logger.error(
+                "No user identifier found in attributes. Redirect to registration page."
+            )
             # Define flag para redirecionamento para página de registro
-            request.session['needs_registration'] = True
+            request.session["needs_registration"] = True
 
             return None
 
-
-        user = super().authenticate(request, session_info, attribute_mapping, create_unknown_user, assertion_info, **kwargs)
+        user = super().authenticate(
+            request,
+            session_info,
+            attribute_mapping,
+            create_unknown_user,
+            assertion_info,
+            **kwargs,
+        )
 
         if user is not None:
             # Tratamento dos grupos que o usuario pertence
             self.setup_groups(user, attributes)
 
             # Get User Status
-            user_status = attributes.get('schacUserStatus', None)
-            request.session['user_status'] = user_status
+            user_status = attributes.get("schacUserStatus", None)
+            request.session["user_status"] = user_status
             logger.info(f"User Status: {user_status}")
             if user_status is None:
                 logger.error("User status not found in attributes.")
                 return None
-            
-            if user_status in ['PendingApproval', 'Pending']:
-                logger.info(f"User status is {user_status}. Redirecting to login error page.")
+
+            if user_status in ["PendingApproval", "Pending"]:
+                logger.info(
+                    f"User status is {user_status}. Redirecting to login error page."
+                )
                 return None
 
             return user
@@ -103,7 +119,7 @@ class LineaSaml2Backend(Saml2Backend):
         logger.info(
             f"User Lookup Value: {user_lookup_value} Type: {type(user_lookup_value)}"
         )
-        if (user_lookup_value in [None, "None", ""]):
+        if user_lookup_value in [None, "None", ""]:
             logger.error("No user uid identifier.")
 
             # Verificar se o usuario é do linea ou do Rubin
@@ -114,7 +130,6 @@ class LineaSaml2Backend(Saml2Backend):
 
         # Usuario com uid pode prosseguir com a autenticação
         return True
-
 
     def _extract_user_identifier_params(
         self, session_info: dict, attributes: dict, attribute_mapping: dict
@@ -130,7 +145,7 @@ class LineaSaml2Backend(Saml2Backend):
         logger.info(f"attribute_mapping: {attribute_mapping}")
         logger.info("-----------------------------------------")
         # Lookup key
-        user_lookup_key = 'username'
+        user_lookup_key = "username"
         logger.info(f"User Lookup Key: {user_lookup_key}")
 
         # Lookup value
@@ -140,7 +155,7 @@ class LineaSaml2Backend(Saml2Backend):
             logger.info(
                 f"User Lookup Value: {user_lookup_value} Type: {type(user_lookup_value)}"
             )
-            if (user_lookup_value in [None, "None", ""]):
+            if user_lookup_value in [None, "None", ""]:
                 logger.error("No identifier to search in COmanager.")
                 return user_lookup_key, None
 
@@ -150,7 +165,6 @@ class LineaSaml2Backend(Saml2Backend):
             logger.error("Failed to extract user identifier.")
             logger.error(e)
             return user_lookup_key, None
-
 
     def get_user_identifier(self, attributes: dict) -> Any:
         """Returns the user identifier to use for authentication."""
@@ -169,8 +183,10 @@ class LineaSaml2Backend(Saml2Backend):
             if user_lookup_value and isinstance(user_lookup_value, list):
                 user_lookup_value = user_lookup_value[0]
 
-                logger.info(f"User Lookup Value: {user_lookup_value} Type: {type(user_lookup_value)}")
-            
+                logger.info(
+                    f"User Lookup Value: {user_lookup_value} Type: {type(user_lookup_value)}"
+                )
+
             else:
                 user_lookup_value = None
 
@@ -179,7 +195,7 @@ class LineaSaml2Backend(Saml2Backend):
             logger.error(e)
             return None
 
-        if (user_lookup_value in [None, "None", ""]):
+        if user_lookup_value in [None, "None", ""]:
             logger.error("No identifier uid to search user.")
             return None
 
@@ -190,7 +206,6 @@ class LineaSaml2Backend(Saml2Backend):
         """Hook to clean the extracted user-identifying value. No-op by default."""
         main_attribute = main_attribute.replace(".", "_")
         return main_attribute
-
 
     def user_can_authenticate(self, user) -> bool:
         """
@@ -247,4 +262,3 @@ class LineaSaml2Backend(Saml2Backend):
         logger.info(f"Groups: {groups}")
 
         return user
-

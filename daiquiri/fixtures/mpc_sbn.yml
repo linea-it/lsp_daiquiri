@@ -1,0 +1,1665 @@
+- name: mpc_sbn
+  title: Minor Planet Center (MPC) - SBN mirror
+  description: 'Observations table replicated from the IAU Minor Planet Center PostgreSQL
+    database via the SBN (Small Bodies Node). Contains published observations and
+    those in the ITF (Initial Treatment File).
+
+    '
+  long_description: "<h3>Schema of the MPC orbits table</h3>\n\n<p>The MPC orbits\
+    \ table contains orbits and orbital related information of minor planets, comets\
+    \ and natural satellites. The table is continously updated everytime a new orbit\
+    \ is updated.</p>\n\n<h3>Known issues</h3>\n\n<p>This table should be considered\
+    \ as a work in progress, and as such at the moment does not contain all the information.\
+    \ The MPC goal was to replicate the table so that the community could familiarize\
+    \ with the mpc_orb.json format and provide feedback.</p>\n\n<ul>\n  <li>The table\
+    \ is not fully populated. Comet and natural satellite orbits are not saved (for\
+    \ now).</li>\n  <li>The fields are not fully populated.</li>\n\
+    \  <li>Some orbit consistency work is needed. The table may contain orbits with\
+    \ secondary designations or old orbits that have not been updated.</li>\n</ul>\n\
+    \n\n<h3>Useful information</h3>\n\n<ul>\n  <li>Both packed and unpacked forms are\
+    \ included in the table for the primary provisional designations.</li>\n  <li>Only\
+    \ the unpacked numbered without parenthesis are included in the table for the primary\
+    \ permanent designations.</li>\n  <li>The table can be linked to the current identification\
+    \ table using one of the primary provisional designation fields.</li>\n</ul>\n"
+  attribution: '<p>This research has made use of data and/or services provided by
+    the International Astronomical Union''s <a href="https://minorplanetcenter.net/">Minor
+    Planet Center</a>.</p>
+
+    '
+  order: 4
+  license: ''
+  published: 2026-02-04
+  updated: null
+  access_level: PUBLIC
+  metadata_access_level: PUBLIC
+  tables:
+  - name: obs_sbn
+    title: Observations SBN
+    description: 'Replica of the MPC internal PostgreSQL observations table. Contains
+      published observations and those in the ITF (Initial Treatment File).
+
+      '
+    long_description: '<p>The obs_sbn table is a replica of the MPC internal PostgreSQL
+      table. It contains exactly the same information that the MPC stores internally.
+      Fields are either ADES (Astrometric Data Exchange Standard) or MPC_ops (MPC
+      internal operations).</p> <p>When <b>ADES</b> appears in a column description,
+      the field is part of the <a href="https://github.com/IAU-ADES/ADES-Master">ADES
+      standard</a>. When <b>MPC_ops</b> appears, the field is used by MPC internal
+      operations.</p> <p>See the <a href="https://minorplanetcenter.net/mpcops/documentation/obs-sbn/">official
+      schema</a> for known issues (duplicates, near-duplicates, invalid values) and
+      usage guidance.</p>
+
+      '
+    attribution: '<p>This research has made use of data and/or services provided by
+      the International Astronomical Union''s <a href="https://minorplanetcenter.net/">Minor
+      Planet Center</a>.</p>
+
+      '
+    order: 1
+    license: ''
+    published: 2026-02-04
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    columns:
+    - name: id
+      ucd: meta.id;meta.main
+      unit: ''
+      description: 'MPC_ops: PostgreSQL automatically generated identifier.'
+      order: 1
+      datatype: integer
+    - name: trksub
+      ucd: meta.id
+      unit: ''
+      description: 'ADES: Observer-assigned object identifier, unique within a submission
+        batch.'
+      order: 2
+      datatype: clob
+    - name: trkid
+      ucd: meta.id
+      unit: ''
+      description: 'ADES: Globally unique tracklet identifier assigned by the MPC.'
+      order: 3
+      datatype: clob
+    - name: obsid
+      ucd: meta.id
+      unit: ''
+      description: 'ADES: Globally unique observation identifier assigned by the MPC.'
+      order: 4
+      datatype: clob
+    - name: submission_id
+      ucd: meta.id
+      unit: ''
+      description: 'MPC_ops: Unique MPC-assigned submission ID.'
+      order: 5
+      datatype: clob
+    - name: submission_block_id
+      ucd: meta.id
+      unit: ''
+      description: 'MPC_ops: Unique MPC-assigned submission block ID.'
+      order: 6
+      datatype: clob
+    - name: obs80
+      ucd: meta.record
+      unit: ''
+      description: 'MPC_ops: 80 or 160-character observation string.'
+      order: 7
+      datatype: clob
+    - name: status
+      ucd: meta.code
+      unit: ''
+      description: 'MPC_ops: Processing status. Allowed values: P = officially published
+        in a circular (DOU, mid-month, monthly), p = accepted and waiting for publication
+        in the next circular, I = ITF observations.'
+      order: 8
+      datatype: char
+      arraysize: 1
+    - name: ref
+      ucd: meta.bib
+      unit: ''
+      description: 'ADES: Standard reference field used for citations.'
+      order: 9
+      datatype: clob
+    - name: healpix
+      ucd: pos.healpix
+      unit: ''
+      description: 'MPC_ops: Convenience value mapping (Ra,Dec) to a HEALPix patch
+        (nside=32768, nested). See https://astropy-healpix.readthedocs.io/en/latest/coordinates.html
+        (pixel scale ~6.4 arcsec).'
+      order: 10
+      datatype: bigint
+    - name: permid
+      ucd: meta.id
+      unit: ''
+      description: 'ADES: IAU permanent designation (e.g. IAU number for a numbered
+        minor planet).'
+      order: 11
+      datatype: clob
+    - name: provid
+      ucd: meta.id
+      unit: ''
+      description: 'ADES: Unpacked MPC-assigned provisional designation (see MPC provisional
+        designation definition).'
+      order: 12
+      datatype: clob
+    - name: artsat
+      ucd: meta.id
+      unit: ''
+      description: 'ADES: Artificial satellite identifier.'
+      order: 13
+      datatype: clob
+    - name: mode
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: Mode of instrumentation (see MPC valid-ades-values for mode).'
+      order: 14
+      datatype: clob
+    - name: stn
+      ucd: pos.earth.obs
+      unit: ''
+      description: 'ADES: Observatory code assigned by the MPC for ground-based or
+        space-based stations (see MPC valid-ades-values for stn).'
+      order: 15
+      datatype: clob
+    - name: trx
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: Station codes of transmitting antenna for radar observations.'
+      order: 16
+      datatype: clob
+    - name: rcv
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: Station codes of receiving antenna for radar observations.'
+      order: 17
+      datatype: clob
+    - name: sys
+      ucd: pos.frame
+      unit: ''
+      description: 'ADES: Coordinate frame for roving or space-based station coordinates
+        (see MPC valid-ades-values for sys).'
+      order: 18
+      datatype: clob
+    - name: ctr
+      ucd: pos.frame
+      unit: ''
+      description: 'ADES: Origin of the reference system given by the coordinate frame
+        (sys). Use public SPICE codes (e.g. 399=geocenter); see NAIF IDs.'
+      order: 19
+      datatype: integer
+    - name: pos1
+      ucd: pos.cartesian.x
+      unit: ''
+      description: 'ADES: Position of the observer (component 1). See ADES_Description.pdf.'
+      order: 20
+      datatype: double
+    - name: pos2
+      ucd: pos.cartesian.y
+      unit: ''
+      description: 'ADES: Position of the observer (component 2). See ADES_Description.pdf.'
+      order: 21
+      datatype: double
+    - name: pos3
+      ucd: pos.cartesian.z
+      unit: ''
+      description: 'ADES: Position of the observer (component 3). See ADES_Description.pdf.'
+      order: 22
+      datatype: double
+    - name: poscov11
+      ucd: stat.covariance
+      unit: ''
+      description: 'ADES: Element (1,1) of the upper triangular part of the covariance
+        matrix for the observer position (same units as position coordinates). Missing
+        fields are presumed zero.'
+      order: 23
+      datatype: double
+    - name: poscov12
+      ucd: stat.covariance
+      unit: ''
+      description: 'ADES: Element (1,2) of the upper triangular part of the covariance
+        matrix for the observer position (same units as position coordinates). Missing
+        fields are presumed zero.'
+      order: 24
+      datatype: double
+    - name: poscov13
+      ucd: stat.covariance
+      unit: ''
+      description: 'ADES: Element (1,3) of the upper triangular part of the covariance
+        matrix for the observer position (same units as position coordinates). Missing
+        fields are presumed zero.'
+      order: 25
+      datatype: double
+    - name: poscov22
+      ucd: stat.covariance
+      unit: ''
+      description: 'ADES: Element (2,2) of the upper triangular part of the covariance
+        matrix for the observer position (same units as position coordinates). Missing
+        fields are presumed zero.'
+      order: 26
+      datatype: double
+    - name: poscov23
+      ucd: stat.covariance
+      unit: ''
+      description: 'ADES: Element (2,3) of the upper triangular part of the covariance
+        matrix for the observer position (same units as position coordinates). Missing
+        fields are presumed zero.'
+      order: 27
+      datatype: double
+    - name: poscov33
+      ucd: stat.covariance
+      unit: ''
+      description: 'ADES: Element (3,3) of the upper triangular part of the covariance
+        matrix for the observer position (same units as position coordinates). Missing
+        fields are presumed zero.'
+      order: 28
+      datatype: double
+    - name: prog
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: Program code assigned by the MPC.'
+      order: 29
+      datatype: clob
+    - name: obstime
+      ucd: time.epoch
+      unit: ''
+      description: 'ADES: UTC date and time of the observation.'
+      order: 30
+      datatype: timestamp
+    - name: ra
+      ucd: pos.eq.ra;meta.main
+      unit: deg
+      description: 'ADES: Right Ascension in decimal degrees in J2000.0 reference
+        frame.'
+      order: 31
+      datatype: double
+    - name: dec
+      ucd: pos.eq.dec;meta.main
+      unit: deg
+      description: 'ADES: Declination in decimal degrees in J2000.0 reference frame.'
+      order: 32
+      datatype: double
+    - name: rastar
+      ucd: pos.eq.ra
+      unit: deg
+      description: 'ADES: For occultation, only when stn=244, Right Ascension in J2000.0
+        in decimal degrees of the occulted star.'
+      order: 33
+      datatype: double
+    - name: decstar
+      ucd: pos.eq.dec
+      unit: deg
+      description: 'ADES: For occultation, only when stn=244, Declination in J2000.0
+        in decimal degrees of the occulted star.'
+      order: 34
+      datatype: double
+    - name: obscenter
+      ucd: meta.id
+      unit: ''
+      description: 'ADES: Origin of offset observations (full name of a planet or
+        permID or provID for a small body).'
+      order: 35
+      datatype: clob
+    - name: deltara
+      ucd: pos.eq.ra;arith.diff
+      unit: arcsec
+      description: 'ADES: Measured DeltaRA*cos(Dec) in arcsec in J2000.0 for offset
+        measurements of a satellite wrt obsCenter, or for occultation observations
+        wrt the star (stn=244).'
+      order: 36
+      datatype: double
+    - name: deltadec
+      ucd: pos.eq.dec;arith.diff
+      unit: arcsec
+      description: 'ADES: Measured DeltaDec in arcsec in J2000.0 for offset measurements
+        of a satellite wrt obsCenter, or for occultation wrt the star (only if stn=244).'
+      order: 37
+      datatype: double
+    - name: dist
+      ucd: pos.angDistance
+      unit: arcsec
+      description: 'ADES: Measured distance in arcsec in J2000.0 for offset measurements
+        of a satellite wrt obsCenter, or for occultation wrt the star (only if stn=244).'
+      order: 38
+      datatype: double
+    - name: pa
+      ucd: pos.posAng
+      unit: deg
+      description: 'ADES: Measured Position Angle in degrees in J2000.0 for offset
+        measurements of a satellite wrt obsCenter, or for occultation wrt the star
+        (only if stn=244).'
+      order: 39
+      datatype: double
+    - name: rmsra
+      ucd: stat.error;pos.eq.ra
+      unit: arcsec
+      description: 'ADES: Random component of the RA*cos(Dec) uncertainty in arcsec
+        as estimated by the observer.'
+      order: 40
+      datatype: double
+    - name: rmsdec
+      ucd: stat.error;pos.eq.dec
+      unit: arcsec
+      description: 'ADES: Random component of the Dec uncertainty in arcsec as estimated
+        by the observer.'
+      order: 41
+      datatype: double
+    - name: rmsdist
+      ucd: stat.error;pos.angDistance
+      unit: arcsec
+      description: 'ADES: Random component of the distance uncertainty in arcsec as
+        estimated by the observer.'
+      order: 42
+      datatype: double
+    - name: rmspa
+      ucd: stat.error;pos.posAng
+      unit: arcsec
+      description: 'ADES: Random component of the position angle uncertainty in arcsec
+        as estimated by the observer.'
+      order: 43
+      datatype: double
+    - name: rmscorr
+      ucd: stat.correlation;pos.eq
+      unit: ''
+      description: 'ADES: Correlation between RA and Dec or between distance and position
+        angle. Derived from covariance: off-diagonal = rmsCorr x rmsRA x rmsDec (for
+        RA/Dec), or rmsCorr x rmsdist x rmspa (for dist/pa).'
+      order: 44
+      datatype: double
+    - name: delay
+      ucd: time.duration
+      unit: s
+      description: 'ADES: Observed radar time delay in seconds.'
+      order: 45
+      datatype: double
+    - name: rmsdelay
+      ucd: stat.error;time.duration
+      unit: µs
+      description: 'ADES: Delay uncertainty in microseconds.'
+      order: 46
+      datatype: double
+    - name: doppler
+      ucd: em.freq
+      unit: Hz
+      description: 'ADES: Observed radar Doppler shift in Hz.'
+      order: 47
+      datatype: double
+    - name: rmsdoppler
+      ucd: stat.error;em.freq
+      unit: Hz
+      description: 'ADES: Doppler shift uncertainty in Hz.'
+      order: 48
+      datatype: double
+    - name: astcat
+      ucd: meta.catalog
+      unit: ''
+      description: 'ADES: Star catalog used for astrometric reduction or, for occultation,
+        for the occulted star (see MPC valid-ades-values for astCat).'
+      order: 49
+      datatype: clob
+    - name: mag
+      ucd: phot.mag;meta.main
+      unit: mag
+      description: 'ADES: Apparent magnitude in specified band.'
+      order: 50
+      datatype: double
+    - name: rmsmag
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: 'ADES: Apparent magnitude uncertainty in magnitudes.'
+      order: 51
+      datatype: double
+    - name: band
+      ucd: phot.band
+      unit: ''
+      description: 'ADES: Passband designation for photometry (see MPC valid-ades-values
+        for band).'
+      order: 52
+      datatype: clob
+    - name: photcat
+      ucd: meta.catalog
+      unit: ''
+      description: 'ADES: Star catalog used for the photometric reduction (see MPC
+        valid-ades-values for astCat).'
+      order: 53
+      datatype: clob
+    - name: photap
+      ucd: phys.angSize
+      unit: arcsec
+      description: 'ADES: Photometric aperture radius in arcsec.'
+      order: 54
+      datatype: double
+    - name: nucmag
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: Nuclear magnitude flag for comets (primarily archival).
+        1=True for archival cometary nuclear magnitude, 0=False. photap used in new
+        standard.'
+      order: 55
+      datatype: smallint
+    - name: logsnr
+      ucd: stat.snr;phot
+      unit: ''
+      description: 'ADES: The log10 of the signal-to-noise ratio of the source in
+        the image integrated on the entire aperture used for astrometric centroid.'
+      order: 56
+      datatype: double
+    - name: seeing
+      ucd: instr.obsty.seeing
+      unit: arcsec
+      description: 'ADES: Size of seeing disc in arcsec, measured at Full-Width Half-Max
+        of the target point spread function.'
+      order: 57
+      datatype: double
+    - name: exp
+      ucd: time.duration
+      unit: s
+      description: 'ADES: Exposure time in seconds.'
+      order: 58
+      datatype: double
+    - name: rmsfit
+      ucd: stat.rms;pos.eq
+      unit: arcsec
+      description: 'ADES: RMS of fit of astrometric comparison stars in arcsec.'
+      order: 59
+      datatype: double
+    - name: com
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: Flag that observation is reduced to center of mass. 1=True,
+        0=False (measurement to peak power position).'
+      order: 60
+      datatype: smallint
+    - name: frq
+      ucd: em.freq
+      unit: MHz
+      description: 'ADES: Carrier reference frequency in MHz.'
+      order: 61
+      datatype: double
+    - name: disc
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: Discovery flag (see MPC documentation).'
+      order: 62
+      datatype: char
+      arraysize: 1
+    - name: subfrm
+      ucd: pos.frame
+      unit: ''
+      description: 'ADES: Originally reported reference frame for angular measurements.
+        subfrm does not reflect the ADES frame (always J2000.0). E.g. B1950.0 = letter
+        A in column 14 of 80-column format.'
+      order: 63
+      datatype: clob
+    - name: subfmt
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: Format in which the observation was originally submitted
+        to the MPC, filled by MPC (see MPC valid-ades-values for subfmt).'
+      order: 64
+      datatype: clob
+    - name: prectime
+      ucd: time.resolution
+      unit: 1e-6 day
+      description: 'ADES: Precision in millionths of a day of the reported observation
+        time for archival MPC1992 observations and earlier data.'
+      order: 65
+      datatype: integer
+    - name: precra
+      ucd: stat.error;pos.eq.ra
+      unit: s
+      description: 'ADES: Precision for archival MPC1992 or earlier data in seconds
+        for RA.'
+      order: 66
+      datatype: double
+    - name: precdec
+      ucd: stat.error;pos.eq.dec
+      unit: arcsec
+      description: 'ADES: Precision for archival MPC1992 or earlier data in arcsec
+        for Dec.'
+      order: 67
+      datatype: double
+    - name: unctime
+      ucd: stat.error.sys;time.epoch
+      unit: s
+      description: 'ADES: Estimated systematic time error in seconds (presumed level
+        of systematic clock error).'
+      order: 68
+      datatype: double
+    - name: notes
+      ucd: meta.note
+      unit: ''
+      description: 'ADES: One-character note flags for observing circumstances (see
+        MPC valid-ades-values for notes).'
+      order: 69
+      datatype: clob
+    - name: remarks
+      ucd: meta.note
+      unit: ''
+      description: 'ADES: A comment provided by the observer.'
+      order: 70
+      datatype: clob
+    - name: deprecated
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: Deprecated observation preserved for history. Do not use
+        in orbit fitting. Only allowed value is X.'
+      order: 71
+      datatype: char
+      arraysize: 1
+    - name: localuse
+      ucd: meta.note
+      unit: ''
+      description: 'ADES: Container for subelements carrying ancillary information
+        not in the standard.'
+      order: 72
+      datatype: clob
+    - name: nstars
+      ucd: meta.number
+      unit: ''
+      description: 'ADES: Number of stars in the astrometric fit.'
+      order: 73
+      datatype: integer
+    - name: prev_desig
+      ucd: meta.id
+      unit: ''
+      description: 'MPC_ops: Previous designation for a redesignated observation (see
+        obs_alteration_redesignations table).'
+      order: 74
+      datatype: clob
+    - name: prev_ref
+      ucd: meta.bib
+      unit: ''
+      description: 'MPC_ops: Previous publication references.'
+      order: 75
+      datatype: clob
+    - name: rmstime
+      ucd: stat.error;time.epoch
+      unit: ''
+      description: 'ADES: Random uncertainty in time as estimated by the observer.'
+      order: 76
+      datatype: double
+    - name: created_at
+      ucd: time.creation
+      unit: ''
+      description: 'MPC_ops: Date and time of initial row insert.'
+      order: 77
+      datatype: timestamp
+    - name: updated_at
+      ucd: time.modification
+      unit: ''
+      description: 'MPC_ops: Date and time of latest row update.'
+      order: 78
+      datatype: timestamp
+    - name: trkmpc
+      ucd: meta.id
+      unit: ''
+      description: 'ADES: MPC-internal object identifier.'
+      order: 79
+      datatype: clob
+    - name: orbit_id
+      ucd: meta.id
+      unit: ''
+      description: 'MPC_ops: Unique identifier for the orbit calculation. This field
+        is not currently used.'
+      order: 80
+      datatype: clob
+    - name: designation_asterisk
+      ucd: meta.code
+      unit: ''
+      description: 'MPC_ops: Equivalent of asterisks marking initial tracklets for
+        component provisional designations. One object can have multiple discovery_asterisks.'
+      order: 81
+      datatype: boolean
+    - name: all_pub_ref
+      ucd: meta.bib
+      unit: ''
+      description: 'MPC_ops: Array of publication references that contained any information
+        about the observation.'
+      order: 82
+      datatype: clob
+    - name: shapeocc
+      ucd: meta.code
+      unit: ''
+      description: 'ADES: For occultation, flag that reduction assumes shape-based
+        plane-of-sky cross-section. 1=True, 0=False (circular cross section assumed).'
+      order: 83
+      datatype: boolean
+    - name: obssubid
+      ucd: meta.id
+      unit: ''
+      description: 'ADES: Observation identifier, optionally included by the observer
+        in the submission, unique to a given observing program.'
+      order: 84
+      datatype: clob
+    - name: replacesobsid
+      ucd: meta.id
+      unit: ''
+      description: 'MPC_ops: Observation identifier of the old published observation
+        replaced by this one. This field is not currently used.'
+      order: 85
+      datatype: clob
+    - name: group_id
+      ucd: meta.id
+      unit: ''
+      description: 'MPC_ops: Observation group identifier for grouping duplicate/near-duplicate
+        observations. This field is not currently used.'
+      order: 86
+      datatype: clob
+    - name: vel1
+      ucd: phys.veloc;pos.cartesian.x
+      unit: ''
+      description: Observer velocity component (MPC schema; no formal description
+        in current documentation).
+      order: 87
+      datatype: double
+    - name: vel2
+      ucd: phys.veloc;pos.cartesian.y
+      unit: ''
+      description: Observer velocity component (MPC schema; no formal description
+        in current documentation).
+      order: 88
+      datatype: double
+    - name: vel3
+      ucd: phys.veloc;pos.cartesian.z
+      unit: ''
+      description: Observer velocity component (MPC schema; no formal description
+        in current documentation).
+      order: 89
+      datatype: double
+    - name: fltr
+      ucd: meta.code
+      unit: ''
+      description: Filter or related code (MPC schema; no formal description in current
+        documentation).
+      order: 90
+      datatype: char
+      arraysize: 3
+    - name: obstime_text
+      ucd: time.epoch
+      unit: ''
+      description: Observation time as text (MPC schema; no formal description in
+        current documentation).
+      order: 91
+      datatype: clob
+  - name: mpc_orbits
+    title: MPC Orbits
+    description: 'Table containing orbits and related information for any minor planet
+      that has been designated and for which it is possible to fit an orbit with the
+      available observations. Partially populated.'
+    long_description: '<p>The <strong>mpc_orbits</strong> table contains orbits and
+      orbital related information of minor planets, comets and natural satellites.
+      The table is continuously updated every time a new orbit is updated.</p> <h3>Known
+      issues</h3> <p>This table should be considered as a work in progress, and as
+      such at the moment does not contain all the information. The MPC goal was to
+      replicate the table so that the community could familiarize with the <a href="https://github.com/Smithsonian/mpc-public/">mpc_orb.json
+      format</a> and provide feedback.</p> <ul> <li>The table is not fully populated.
+      Comet and natural satellite orbits are not saved (for now).</li> <li>The fields
+      are not fully populated.</li> <li>Some orbit consistency
+      work is needed. The table may contain orbits with secondary designations or old
+      orbits that have not been updated.</li> </ul> <h3>Useful information</h3> <ul>
+      <li>Both packed and unpacked forms are included in the table for the primary
+      provisional designations.</li> <li>Only the unpacked numbered without parenthesis
+      are included in the table for the primary permanent designations.</li> <li>The
+      table can be linked to the current identification table using one of the primary
+      provisional designation fields.</li> </ul> <p>Schema and field descriptions follow
+      the <a href="https://minorplanetcenter.net/mpcops/documentation/mpc-orbits/">MPC
+      mpc_orbits documentation</a>.</p>
+
+      '
+    attribution: '<p>This research has made use of data and/or services provided by
+      the International Astronomical Union''s <a href="https://minorplanetcenter.net/">Minor
+      Planet Center</a>.</p>
+
+      '
+    order: 2
+    license: ''
+    published: 2026-02-04
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    columns:
+    - name: id
+      ucd: meta.id;meta.main
+      unit: ''
+      description: 'PostgreSQL automatically generated identifier.'
+      order: 1
+      datatype: integer
+    - name: packed_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: 'Packed form of the primary provisional designation (e.g. K17P08M).'
+      order: 2
+      datatype: clob
+    - name: unpacked_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: 'Unpacked form of the primary provisional designation (e.g. 2017PM8).'
+      order: 3
+      datatype: clob
+    - name: mpc_orb_jsonb
+      ucd: meta.note
+      unit: ''
+      description: 'MPC JSON format used to describe MPC orbits. The public python
+        package is available as part of the MPC public Github https://github.com/Smithsonian/mpc-public/
+        with additional information.'
+      order: 4
+      datatype: clob
+    - name: created_at
+      ucd: time.creation
+      unit: ''
+      description: 'Date and time of initial row insert.'
+      order: 5
+      datatype: timestamp
+    - name: updated_at
+      ucd: time.modification
+      unit: ''
+      description: 'Date and time of latest row update.'
+      order: 6
+      datatype: timestamp
+    - name: orbit_type_int
+      ucd: meta.code
+      unit: ''
+      description: 'Orbit classification based on the object orbital element. For
+        more information please see https://minorplanetcenter.net/mpcops/documentation/orbit-types/.'
+      order: 7
+      datatype: integer
+    - name: u_param
+      ucd: meta.code
+      unit: ''
+      description: 'MPC defined U parameter. For more information please see https://www.minorplanetcenter.net/iau/info/UValue.html.'
+      order: 8
+      datatype: double
+    - name: nopp
+      ucd: meta.number
+      unit: ''
+      description: 'MPC computed number of oppositions.'
+      order: 9
+      datatype: integer
+    - name: arc_length_total
+      ucd: time.interval
+      unit: d
+      description: 'Arc length of all the observations associated to the object,
+        computed as the difference between the time of the last observations and the
+        time of the first observation.'
+      order: 10
+      datatype: double
+    - name: arc_length_sel
+      ucd: time.interval
+      unit: d
+      description: 'Arc length of all the observations selected by the fit, computed
+        as the difference between the time of the last selected observations and the
+        time of the first selected observation.'
+      order: 11
+      datatype: double
+    - name: nobs_total
+      ucd: meta.number
+      unit: ''
+      description: 'Total number of observations associated to the object.'
+      order: 12
+      datatype: integer
+    - name: nobs_total_sel
+      ucd: meta.number
+      unit: ''
+      description: 'Total number of observations used by the fit.'
+      order: 13
+      datatype: integer
+    - name: a
+      ucd: src.orbital;phys.size.smajAxis
+      unit: au
+      description: 'Semi-major axis [au].'
+      order: 14
+      datatype: double
+    - name: q
+      ucd: src.orbital;pos.distance
+      unit: au
+      description: 'Perihelion distance [au].'
+      order: 15
+      datatype: double
+    - name: e
+      ucd: src.orbital.eccentricity
+      unit: ''
+      description: 'Eccentricity.'
+      order: 16
+      datatype: double
+    - name: i
+      ucd: src.orbital.inclination
+      unit: deg
+      description: 'Inclination [degrees].'
+      order: 17
+      datatype: double
+    - name: node
+      ucd: src.orbital.node
+      unit: deg
+      description: 'Longitude of the ascending node [degrees].'
+      order: 18
+      datatype: double
+    - name: argperi
+      ucd: src.orbital.periastron
+      unit: deg
+      description: 'Argument of the pericenter [degrees].'
+      order: 19
+      datatype: double
+    - name: peri_time
+      ucd: time.epoch;src.orbital
+      unit: d
+      description: 'Time of the passage at the pericenter [days].'
+      order: 20
+      datatype: double
+    - name: yarkovsky
+      ucd: phys.acceleration;src.orbital
+      unit: '10^-10 au/d^2'
+      description: 'A2 component of the Yarkovsky acceleration [10^(-10) au/d^2].'
+      order: 21
+      datatype: double
+    - name: srp
+      ucd: phys.acceleration;src.orbital
+      unit: 'm^2/ton'
+      description: 'Solar radiation pressure [m^2/ton].'
+      order: 22
+      datatype: double
+    - name: a1
+      ucd: phys.acceleration;src.orbital
+      unit: '10^-10 au/d^2'
+      description: 'A1 component of the non-gravitational acceleration for comets
+        [10^(-10) au/d^2].'
+      order: 23
+      datatype: double
+    - name: a2
+      ucd: phys.acceleration;src.orbital
+      unit: '10^-10 au/d^2'
+      description: 'A2 component of the non-gravitational acceleration for comets
+        [10^(-10) au/d^2].'
+      order: 24
+      datatype: double
+    - name: a3
+      ucd: phys.acceleration;src.orbital
+      unit: '10^-10 au/d^2'
+      description: 'A3 component of the non-gravitational acceleration for comets
+        [10^(-10) au/d^2].'
+      order: 25
+      datatype: double
+    - name: dt
+      ucd: time.interval;src.orbital
+      unit: d
+      description: 'DeltaT component of the non-gravitational acceleration [days].'
+      order: 26
+      datatype: double
+    - name: mean_anomaly
+      ucd: src.orbital.meanAnomaly
+      unit: deg
+      description: 'Mean anomaly [degrees].'
+      order: 27
+      datatype: double
+    - name: period
+      ucd: time.period.revolution
+      unit: d
+      description: 'Orbital period [days].'
+      order: 28
+      datatype: double
+    - name: mean_motion
+      ucd: src.orbital.meanMotion
+      unit: deg/d
+      description: 'Orbital mean motion [degrees per day].'
+      order: 29
+      datatype: double
+    - name: a_unc
+      ucd: stat.error;src.orbital
+      unit: au
+      description: 'Post-fit 1-sigma uncertainty in the semi-major axis [au].'
+      order: 30
+      datatype: double
+    - name: q_unc
+      ucd: stat.error;pos.distance
+      unit: au
+      description: 'Post-fit 1-sigma uncertainty in the perihelion distance [au].'
+      order: 31
+      datatype: double
+    - name: e_unc
+      ucd: stat.error;src.orbital.eccentricity
+      unit: ''
+      description: 'Post-fit 1-sigma uncertainty in the eccentricity.'
+      order: 32
+      datatype: double
+    - name: i_unc
+      ucd: stat.error;src.orbital.inclination
+      unit: deg
+      description: 'Post-fit 1-sigma uncertainty in the inclination [degrees].'
+      order: 33
+      datatype: double
+    - name: node_unc
+      ucd: stat.error;src.orbital.node
+      unit: deg
+      description: 'Post-fit 1-sigma uncertainty in the longitude of the node [degrees].'
+      order: 34
+      datatype: double
+    - name: argperi_unc
+      ucd: stat.error;src.orbital.periastron
+      unit: deg
+      description: 'Post-fit 1-sigma uncertainty in the argument of the pericenter
+        [degrees].'
+      order: 35
+      datatype: double
+    - name: peri_time_unc
+      ucd: stat.error;time.epoch
+      unit: d
+      description: 'Post-fit 1-sigma uncertainty in the time of the pericenter passage
+        [days].'
+      order: 36
+      datatype: double
+    - name: yarkovsky_unc
+      ucd: stat.error;phys.acceleration
+      unit: '10^-10 au/d^2'
+      description: 'Post-fit 1-sigma uncertainty in the A2 component of the Yarkovsky
+        acceleration [10^(-10) au/d^2].'
+      order: 37
+      datatype: double
+    - name: srp_unc
+      ucd: stat.error;phys.acceleration
+      unit: 'm^2/ton'
+      description: 'Post-fit 1-sigma uncertainty in the solar radiation pressure
+        [m^2/ton].'
+      order: 38
+      datatype: double
+    - name: a1_unc
+      ucd: stat.error;phys.acceleration
+      unit: '10^-10 au/d^2'
+      description: 'Post-fit 1-sigma uncertainty in the A1 component of the non-gravitational
+        acceleration [10^(-10) au/d^2].'
+      order: 39
+      datatype: double
+    - name: a2_unc
+      ucd: stat.error;phys.acceleration
+      unit: '10^-10 au/d^2'
+      description: 'Post-fit 1-sigma uncertainty in the A2 component of the non-gravitational
+        acceleration [10^(-10) au/d^2].'
+      order: 40
+      datatype: double
+    - name: a3_unc
+      ucd: stat.error;phys.acceleration
+      unit: '10^-10 au/d^2'
+      description: 'Post-fit 1-sigma uncertainty in the A3 component of the non-gravitational
+        acceleration [10^(-10) au/d^2].'
+      order: 41
+      datatype: double
+    - name: dt_unc
+      ucd: stat.error;time.interval
+      unit: d
+      description: 'Post-fit 1-sigma uncertainty in the DeltaT component of the non-gravitational
+        acceleration [days].'
+      order: 42
+      datatype: double
+    - name: mean_anomaly_unc
+      ucd: stat.error;src.orbital.meanAnomaly
+      unit: deg
+      description: 'Post-fit 1-sigma uncertainty in the mean anomaly [degrees].'
+      order: 43
+      datatype: double
+    - name: period_unc
+      ucd: stat.error;time.period
+      unit: d
+      description: 'Post-fit 1-sigma uncertainty in the orbital period [days].'
+      order: 44
+      datatype: double
+    - name: mean_motion_unc
+      ucd: stat.error;src.orbital.meanMotion
+      unit: deg/d
+      description: 'Post-fit 1-sigma uncertainty in the mean motion [degrees].'
+      order: 45
+      datatype: double
+    - name: epoch_mjd
+      ucd: time.epoch
+      unit: d
+      description: 'Orbit epoch [TT, MJD].'
+      order: 46
+      datatype: double
+    - name: h
+      ucd: phys.magAbs
+      unit: mag
+      description: 'Absolute magnitude as computed by OrbFit.'
+      order: 47
+      datatype: double
+    - name: g
+      ucd: phot.mag;arith.grad
+      unit: ''
+      description: 'Slope parameter.'
+      order: 48
+      datatype: double
+    - name: not_normalized_rms
+      ucd: stat.rms
+      unit: arcsec
+      description: 'Not normalized post-fit RMS [arcseconds].'
+      order: 49
+      datatype: double
+    - name: normalized_rms
+      ucd: stat.rms;stat.fit
+      unit: ''
+      description: 'Normalized post-fit RMS.'
+      order: 50
+      datatype: double
+    - name: earth_moid
+      ucd: pos.distance;src.impactParam
+      unit: au
+      description: 'Minimum Orbit Intersection Distance [au] with respect to the orbit
+        of the Earth.'
+      order: 51
+      datatype: double
+    - name: fitting_datetime
+      ucd: time.processing
+      unit: ''
+      description: 'Date and time recorded when the orbital fit was performed.'
+      order: 52
+      datatype: timestamp
+  - name: comet_names
+    title: Comet Names
+    description: 'Maps comet designations (packed and unpacked) to official names
+      and naming references.
+
+      '
+    long_description: '<p>Lookup table for comet names. Use to resolve comet provisional
+      or permanent designations to their official IAU names and naming publication
+      references.</p> <p>Schema and field descriptions follow the <a href="https://minorplanetcenter.net/mpcops/documentation/comet-names/">MPC
+      comet_names documentation</a>.</p>
+
+      '
+    attribution: '<p>This research has made use of data and/or services provided by
+      the International Astronomical Union''s <a href="https://minorplanetcenter.net/">Minor
+      Planet Center</a>.</p>
+
+      '
+    order: 3
+    license: ''
+    published: 2026-02-04
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    columns:
+    - name: id
+      ucd: meta.id;meta.main
+      unit: ''
+      description: PostgreSQL automatically generated identifier.
+      order: 1
+      datatype: integer
+    - name: packed_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Packed primary provisional designation of the comet.
+      order: 2
+      datatype: clob
+    - name: unpacked_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Unpacked primary provisional designation (e.g. P/1985 L1).
+      order: 3
+      datatype: clob
+    - name: name
+      ucd: meta.id
+      unit: ''
+      description: Official name of the comet (e.g. Hartley).
+      order: 4
+      datatype: clob
+    - name: naming_publication_references
+      ucd: meta.bib
+      unit: ''
+      description: Publication references for the naming.
+      order: 5
+      datatype: clob
+    - name: created_at
+      ucd: time.creation
+      unit: ''
+      description: Date and time of initial row insert.
+      order: 6
+      datatype: timestamp
+    - name: updated_at
+      ucd: time.modification
+      unit: ''
+      description: Date and time of latest row update.
+      order: 7
+      datatype: timestamp
+  - name: current_identifications
+    title: Current Identifications
+    description: 'Links primary and secondary provisional designations for the same
+      object (current identifications).
+
+      '
+    long_description: '<p>Table of current identifications: which designations refer
+      to the same object. Used for cross-identification and joining observations to
+      canonical designations.</p> <p>Schema and field descriptions follow the <a href="https://minorplanetcenter.net/mpcops/documentation/current-identifications/">MPC
+      current_identifications documentation</a>.</p>
+
+      '
+    attribution: '<p>This research has made use of data and/or services provided by
+      the International Astronomical Union''s <a href="https://minorplanetcenter.net/">Minor
+      Planet Center</a>.</p>
+
+      '
+    order: 4
+    license: ''
+    published: 2026-02-04
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    columns:
+    - name: id
+      ucd: meta.id;meta.main
+      unit: ''
+      description: PostgreSQL automatically generated identifier.
+      order: 1
+      datatype: integer
+    - name: packed_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Packed primary provisional designation.
+      order: 2
+      datatype: clob
+    - name: packed_secondary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Packed secondary provisional designation.
+      order: 3
+      datatype: clob
+    - name: unpacked_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Unpacked primary provisional designation.
+      order: 4
+      datatype: clob
+    - name: unpacked_secondary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Unpacked secondary provisional designation.
+      order: 5
+      datatype: clob
+    - name: published
+      ucd: meta.code
+      unit: ''
+      description: Publication status code.
+      order: 6
+      datatype: boolean
+    - name: identifier_ids
+      ucd: meta.id
+      unit: ''
+      description: Array of identifier UUIDs.
+      order: 7
+      datatype: clob
+    - name: object_type
+      ucd: meta.code
+      unit: ''
+      description: Object type code.
+      order: 8
+      datatype: integer
+    - name: numbered
+      ucd: meta.code
+      unit: ''
+      description: Whether the object has been numbered.
+      order: 9
+      datatype: boolean
+    - name: created_at
+      ucd: time.creation
+      unit: ''
+      description: Date and time of initial row insert.
+      order: 10
+      datatype: timestamp
+    - name: updated_at
+      ucd: time.modification
+      unit: ''
+      description: Date and time of latest row update.
+      order: 11
+      datatype: timestamp
+  - name: minor_planet_names
+    title: Minor Planet Names
+    description: 'Numbered minor planets with their official names, discovery/citation
+      info, and naming references.
+
+      '
+    long_description: '<p>Lookup table for numbered minor planet names. Resolve MPC
+      number to official name, discoverers, and naming citation.</p> <p>Schema and
+      field descriptions follow the <a href="https://minorplanetcenter.net/mpcops/documentation/minor-planet-names/">MPC
+      minor_planet_names documentation</a>.</p>
+
+      '
+    attribution: '<p>This research has made use of data and/or services provided by
+      the International Astronomical Union''s <a href="https://minorplanetcenter.net/">Minor
+      Planet Center</a>.</p>
+
+      '
+    order: 5
+    license: ''
+    published: 2026-02-04
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    columns:
+    - name: id
+      ucd: meta.id;meta.main
+      unit: ''
+      description: PostgreSQL automatically generated identifier.
+      order: 1
+      datatype: integer
+    - name: mp_number
+      ucd: meta.id
+      unit: ''
+      description: Minor planet number (e.g. 5400).
+      order: 2
+      datatype: integer
+    - name: name
+      ucd: meta.id
+      unit: ''
+      description: Official name of the minor planet.
+      order: 3
+      datatype: clob
+    - name: reference
+      ucd: meta.bib
+      unit: ''
+      description: Naming publication reference.
+      order: 4
+      datatype: clob
+    - name: citation
+      ucd: meta.note
+      unit: ''
+      description: Naming citation text.
+      order: 5
+      datatype: clob
+    - name: discoverers
+      ucd: meta.note
+      unit: ''
+      description: Discoverers (JSON).
+      order: 6
+      datatype: clob
+    - name: created_at
+      ucd: time.creation
+      unit: ''
+      description: Date and time of initial row insert.
+      order: 7
+      datatype: timestamp
+    - name: updated_at
+      ucd: time.modification
+      unit: ''
+      description: Date and time of latest row update.
+      order: 8
+      datatype: timestamp
+  - name: numbered_identifications
+    title: Numbered Identifications
+    description: 'Links provisional designations to numbered designations and IAU
+      names (when numbered/named).
+
+      '
+    long_description: '<p>Table linking packed/unpacked provisional designations to
+      permanent numbers (permid), IAU designation, IAU name, and naming references.</p>
+      <p>Schema and field descriptions follow the <a href="https://minorplanetcenter.net/mpcops/documentation/numbered-identifications/">MPC
+      numbered_identifications documentation</a>.</p>
+
+      '
+    attribution: '<p>This research has made use of data and/or services provided by
+      the International Astronomical Union''s <a href="https://minorplanetcenter.net/">Minor
+      Planet Center</a>.</p>
+
+      '
+    order: 6
+    license: ''
+    published: 2026-02-04
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    columns:
+    - name: id
+      ucd: meta.id;meta.main
+      unit: ''
+      description: PostgreSQL automatically generated identifier.
+      order: 1
+      datatype: integer
+    - name: packed_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Packed primary provisional designation.
+      order: 2
+      datatype: clob
+    - name: unpacked_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Unpacked primary provisional designation.
+      order: 3
+    - name: permid
+      ucd: meta.id
+      unit: ''
+      description: IAU permanent designation (number).
+      order: 4
+      datatype: clob
+    - name: iau_designation
+      ucd: meta.id
+      unit: ''
+      description: IAU designation (e.g. (12345)).
+      order: 5
+      datatype: clob
+    - name: iau_name
+      ucd: meta.id
+      unit: ''
+      description: IAU name (when named).
+      order: 6
+      datatype: clob
+    - name: numbered_publication_references
+      ucd: meta.bib
+      unit: ''
+      description: Publication references for numbering.
+      order: 7
+      datatype: clob
+    - name: named_publication_references
+      ucd: meta.bib
+      unit: ''
+      description: Publication references for naming.
+      order: 8
+      datatype: clob
+    - name: naming_credit
+      ucd: meta.note
+      unit: ''
+      description: Naming credit text.
+      order: 9
+      datatype: clob
+    - name: created_at
+      ucd: time.creation
+      unit: ''
+      description: Date and time of initial row insert.
+      order: 10
+      datatype: timestamp
+    - name: updated_at
+      ucd: time.modification
+      unit: ''
+      description: Date and time of latest row update.
+      order: 11
+      datatype: timestamp
+  - name: obscodes
+    title: Observatory Codes
+    description: 'Table used to keep a record of all the observatory codes assigned
+      by the MPC.
+
+      '
+    long_description: '<p>Resolve observatory codes (e.g. used in obs_sbn.stn) to
+      observatory name, longitude, and other metadata. Essential for interpreting
+      who observed what and where.</p> <p>Schema and field descriptions follow the
+      <a href="https://minorplanetcenter.net/mpcops/documentation/obscodes/">MPC obscodes
+      documentation</a>.</p>
+
+      '
+    attribution: '<p>This research has made use of data and/or services provided by
+      the International Astronomical Union''s <a href="https://minorplanetcenter.net/">Minor
+      Planet Center</a>.</p>
+
+      '
+    order: 7
+    license: ''
+    published: 2026-02-04
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    columns:
+    - name: id
+      ucd: meta.id;meta.main
+      unit: ''
+      description: PostgreSQL automatically generated identifier.
+      order: 1
+      datatype: integer
+    - name: obscode
+      ucd: pos.earth.obs
+      unit: ''
+      description: MPC observatory code (e.g. 500, F52).
+      order: 2
+      datatype: clob
+    - name: longitude
+      ucd: pos.earth.lon
+      unit: ''
+      description: Observatory longitude.
+      order: 3
+      datatype: double
+    - name: rhocosphi
+      ucd: pos.cartesian.x
+      unit: ''
+      description: rho cos(phi) for geodetic position.
+      order: 4
+      datatype: double
+    - name: rhosinphi
+      ucd: pos.cartesian.y
+      unit: ''
+      description: rho sin(phi) for geodetic position.
+      order: 5
+      datatype: double
+    - name: name
+      ucd: meta.id
+      unit: ''
+      description: Observatory name.
+      order: 6
+      datatype: clob
+    - name: firstdate
+      ucd: time.epoch
+      unit: ''
+      description: First date of use.
+      order: 7
+      datatype: clob
+    - name: lastdate
+      ucd: time.epoch
+      unit: ''
+      description: Last date of use.
+      order: 8
+      datatype: clob
+    - name: web_link
+      ucd: meta.ref.url
+      unit: ''
+      description: URL for observatory.
+      order: 9
+      datatype: clob
+    - name: created_at
+      ucd: time.creation
+      unit: ''
+      description: Date and time of initial row insert.
+      order: 10
+      datatype: timestamp
+    - name: updated_at
+      ucd: time.modification
+      unit: ''
+      description: Date and time of latest row update.
+      order: 11
+      datatype: timestamp
+    - name: short_name
+      ucd: meta.id
+      unit: ''
+      description: Short name for the observatory.
+      order: 12
+      datatype: clob
+    - name: uses_two_line_observations
+      ucd: meta.code
+      unit: ''
+      description: Whether the observatory uses two-line elements.
+      order: 13
+      datatype: boolean
+    - name: old_names
+      ucd: meta.id
+      unit: ''
+      description: Previous names for the observatory.
+      order: 14
+      datatype: clob
+    - name: name_utf8
+      ucd: meta.id
+      unit: ''
+      description: Observatory name (UTF-8).
+      order: 15
+      datatype: clob
+    - name: name_latex
+      ucd: meta.id
+      unit: ''
+      description: Observatory name (LaTeX).
+      order: 16
+      datatype: clob
+    - name: observations_type
+      ucd: meta.code
+      unit: ''
+      description: Type of observations from this observatory.
+      order: 17
+      datatype: integer
+  - name: primary_objects
+    title: Primary Objects
+    description: 'Table containing a record of all the primary designations for minor
+      planets, comets and natural satellites that have been designated by the MPC.
+
+      '
+    long_description: '<p>The Primary objects table contains all the objects that
+      have been designated by the Minor Planet Center. This includes minor planets,
+      comets and natural satellites.</p> <p>Both packed and unpacked forms are included
+      in the table for the primary provisional designations. Some fields are not being
+      currently populated.</p> <p>Schema and field descriptions follow the <a href="https://minorplanetcenter.net/mpcops/documentation/primary-objects/">MPC
+      primary_objects documentation</a>.</p>
+
+      '
+    attribution: '<p>This research has made use of data and/or services provided by
+      the International Astronomical Union''s <a href="https://minorplanetcenter.net/">Minor
+      Planet Center</a>.</p>
+
+      '
+    order: 8
+    license: ''
+    published: 2026-02-04
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    columns:
+    - name: id
+      ucd: meta.id;meta.main
+      unit: ''
+      description: PostgreSQL automatically generated identifier.
+      order: 1
+      datatype: integer
+    - name: packed_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Packed form of the primary provisional designation (e.g. K17P08M).
+      order: 2
+      datatype: clob
+    - name: unpacked_primary_provisional_designation
+      ucd: meta.id
+      unit: ''
+      description: Unpacked form of the primary provisional designation (e.g. 2017
+        PM8).
+      order: 3
+      datatype: clob
+    - name: status
+      ucd: meta.code
+      unit: ''
+      description: Result of the orbit fitting. This is still not used.
+      order: 4
+      datatype: clob
+    - name: standard_minor_planet
+      ucd: meta.code
+      unit: ''
+      description: Boolean to indicate whether the orbit of the object is specified
+        in the standard_minor_planet table. This is not used right now, but we might
+        use it in the future.
+      order: 5
+      datatype: boolean
+    - name: standard_epoch
+      ucd: meta.code
+      unit: ''
+      description: If the object is in the standard_minor_planet table, this boolean
+        indicates whether an orbit at the standard-epoch is populated.
+      order: 6
+      datatype: double
+    - name: orbfit_epoch
+      ucd: meta.code
+      unit: ''
+      description: If the object is in the standard_minor_planet table, this boolean
+        indicates whether the orbit at the mid-observation epoch is populated.
+      order: 7
+      datatype: double
+    - name: nongravs
+      ucd: meta.code
+      unit: ''
+      description: 'Boolean to indicate whether the orbit of the object is specified
+        in the table containing orbits with nongravitational perturbations. At the
+        moment this is not used because we do not have a table for the orbits computed
+        including nongravitational perturbations, even though we compute them. We might
+        use this flag in the future to indicate whether we computed the orbit of the
+        object using non-gravitational perturbations.'
+      order: 8
+      datatype: clob
+    - name: satellite
+      ucd: meta.code
+      unit: ''
+      description: Boolean to indicate whether the object-orbit is specified in the
+        satellite table.
+      order: 9
+      datatype: boolean
+    - name: comet
+      ucd: meta.code
+      unit: ''
+      description: Boolean to indicate whether the object-orbit is specified in the
+        comet table. The values are currently false because we are not saving comet
+        orbits in a comet table.
+      order: 10
+      datatype: boolean
+    - name: barycentric
+      ucd: meta.code
+      unit: ''
+      description: Boolean to indicate whether the orbit for the object is in a barycentric
+        table. The values for this field are always false because we are not computing
+        barycentric orbits.
+      order: 11
+      datatype: boolean
+    - name: no_orbit
+      ucd: meta.code
+      unit: ''
+      description: Flag to indicate those cases for which it was not possible to compute
+        an orbit.
+      order: 12
+      datatype: boolean
+    - name: orbit_publication_references
+      ucd: meta.bib
+      unit: ''
+      description: Array of references to MPC publication(s) containing this particular
+        orbit calculation (e.g. DOU MPEC, mid-month, Monthly-MPC, etc).
+      order: 13
+      datatype: clob
+    - name: flag_all_object_obs_consistent
+      ucd: meta.code
+      unit: ''
+      description: Flag to indicate if all observations for an object have been checked
+        to be consistent with obs files. We are not currently using this field.
+      order: 14
+      datatype: boolean
+    - name: flag_orbit_calculated_from_consistent_obs
+      ucd: meta.code
+      unit: ''
+      description: Flag to indicate if the orbit was calculated using the observations
+        flagged as consistent. This flag is not used.
+      order: 15
+      datatype: boolean
+    - name: flag_allowed_external
+      ucd: meta.code
+      unit: ''
+      description: Flag to indicate if the orbit has been computed using all the
+        observations available and if the observations were consistent with the flat
+        files. This flag is not used.
+      order: 16
+      datatype: boolean
+    - name: created_at
+      ucd: time.creation
+      unit: ''
+      description: Date and time of initial row insert.
+      order: 17
+      datatype: timestamp
+    - name: updated_at
+      ucd: time.modification
+      unit: ''
+      description: Date and time of latest row update.
+      order: 18
+      datatype: timestamp
+    - name: orbit_published
+      ucd: meta.code
+      unit: ''
+      description: 'Flag indicating if the orbit has been published in a Circular.
+        Field values are: 0=unpublished ; 1=published as MPEC; 2=published in DOU
+        ; 3=published in mid-month ; 4=published in monthly. Please note that we
+        are talking about orbit publication and not object designations.'
+      order: 19
+      datatype: boolean
+    - name: object_type
+      ucd: meta.code
+      unit: ''
+      description: 'Integer to indicate the object type as defined in: https://minorplanetcenter.net/mpcops/documentation/object-types/'
+      order: 20
+      datatype: integer
