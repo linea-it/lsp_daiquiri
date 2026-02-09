@@ -43,7 +43,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # Install python packages
 # Create Python Dependency and Sub-Dependency.
 COPY ./requirements /tmp/pip-tmp/
-RUN pip install --upgrade pip setuptools wheel  && \
+RUN pip install --upgrade pip "setuptools<71" wheel  && \
     pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/$BUILD_ENVIRONMENT.txt \
     && rm -rf /tmp/pip-tmp
 
