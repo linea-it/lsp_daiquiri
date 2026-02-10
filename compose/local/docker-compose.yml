@@ -4,7 +4,7 @@ volumes:
 
 
 services:
-  daiquiri: &daiquiri
+  backend: &daiquiri
     image: linea/lsp_daiquiri
     build:
       context: .
@@ -59,7 +59,7 @@ services:
     <<: *daiquiri
     command: celery -A config flower --url-prefix=flower
     depends_on:
-      - daiquiri
+      - backend
 
   # Servidor Web NGINX
   nginx:
@@ -75,3 +75,4 @@ services:
       - ./logs:/var/log/nginx
     depends_on:
       - daiquiri
+  

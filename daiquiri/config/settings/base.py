@@ -216,6 +216,7 @@ CONESEARCH_ADAPTER = "daiquiri.conesearch.adapter.SimpleConeSearchAdapter"
 # Adaptador PostgreSQL customizado: colunas numeric/decimal são descobertas
 # como tipo TAP 'double' em vez de 'char' (ver linea.adapter).
 ADAPTER_DATABASE = "linea.adapter.PostgreSQLAdapter"
+
 CONESEARCH_ANONYMOUS = True
 CONESEARCH_SCHEMA = "des_dr2"
 CONESEARCH_TABLE = "main"
@@ -290,7 +291,7 @@ QUERY_LANGUAGES = [
     },
     {
         "key": "postgresql",
-        "version": 13.9,
+        "version": 18.1,
         "label": "PostgreSQL",
         "description": "",
         "quote_char": '"',

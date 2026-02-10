@@ -28,17 +28,22 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     libpq-dev \
     gnupg \
     python3-dev \
-    postgresql-client-15 \
     libsasl2-dev \
     libldap2-dev \
     libssl-dev \
     ldap-utils \
     xmlsec1 \
-    gnupg \
     git \
     zsh \
     wget \
-    vim
+    vim \
+    lsb-release \
+    && echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" \
+    > /etc/apt/sources.list.d/pgdg.list \
+    && wget -qO - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+    && apt-get update \
+    && apt-get -y install --no-install-recommends postgresql-client-18 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install python packages
 # Create Python Dependency and Sub-Dependency.
