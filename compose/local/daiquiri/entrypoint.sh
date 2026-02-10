@@ -15,24 +15,24 @@ set -o nounset
 #     port="${DB_PORT}",
 # )
 
-postgres_ready() {
-python << END
-import sys
+# postgres_ready() {
+# python << END
+# import sys
 
-import psycopg2
+# import psycopg2
 
-try:
-    psycopg2.connect("${DATABASE_APP}")
-except psycopg2.OperationalError:
-    sys.exit(-1)
-sys.exit(0)
+# try:
+#     psycopg2.connect("${DATABASE_APP}")
+# except psycopg2.OperationalError:
+#     sys.exit(-1)
+# sys.exit(0)
 
-END
-}
-until postgres_ready; do
-    >&2 echo 'Waiting for PostgreSQL to become available...'
-    sleep 1
-done
->&2 echo 'PostgreSQL is available'
+# END
+# }
+# until postgres_ready; do
+#     >&2 echo 'Waiting for PostgreSQL to become available...'
+#     sleep 1
+# done
+# >&2 echo 'PostgreSQL is available'
 
 exec "$@"

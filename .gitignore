@@ -31,3 +31,4 @@ nginx-proxy.conf
 .secrets
 rabbitmq-data
 postgres-data
+postgres-catalog-data
