@@ -45,3 +45,26 @@ docker build -f compose/local/daiquiri/Dockerfile -t linea/lsp_daiquiri:$(git de
 ```bash
 docker push linea/lsp_daiquiri:$(git describe --always)
 ```
+
+
+### Load Query Examples
+
+Edit `daiquiri/fixtures/query_samples.json`, then run this command to import the queries:
+
+```bash
+docker compose exec backend python manage.py loaddata query_samples.json
+```
+
+
+### Register Tables 
+
+First, go to the `management` menu → `metadata management` → `create a new schema entry`, and register the schema and table via the interface.
+
+After registering, use this command to import table and column descriptions.
+The schema fixture is located at: `daiquiri/fixtures/des_dr2.yml`
+
+```bash
+docker compose exec backend python manage.py update_table_metadata des_dr2
+```
+
+
