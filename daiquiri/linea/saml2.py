@@ -70,7 +70,7 @@ class LineaSaml2Backend(Saml2Backend):
             # Tratamento dos grupos que o usuario pertence
             self.setup_groups(user, attributes)
 
-            # Get User Status
+            # Status do usuário (atributo SAML)
             user_status = attributes.get("schacUserStatus", None)
             request.session["user_status"] = user_status
             logger.info(f"User Status: {user_status}")
@@ -97,7 +97,7 @@ class LineaSaml2Backend(Saml2Backend):
         assertion_info: dict,
         **kwargs,
     ) -> bool:
-        """Hook to allow custom authorization policies based on SAML attributes."""
+        """Permite política de autorização customizada com base nos atributos SAML."""
         logger.info("-----------------------------------------")
         logger.info("Checks if the user is authorized")
         logger.info("is_authorized()")
@@ -134,8 +134,8 @@ class LineaSaml2Backend(Saml2Backend):
     def _extract_user_identifier_params(
         self, session_info: dict, attributes: dict, attribute_mapping: dict
     ) -> Tuple[str, Optional[Any]]:
-        """Returns the attribute to perform a user lookup on, and the value to use for it.
-        The value could be the name_id, or any other saml attribute from the request.
+        """Retorna o atributo usado na busca do usuário e o valor correspondente.
+        O valor pode ser o name_id ou outro atributo SAML da requisição.
         """
         logger.info("-----------------------------------------")
         logger.info("Extract user identifier.")
@@ -144,11 +144,11 @@ class LineaSaml2Backend(Saml2Backend):
         logger.info(f"attributes: {attributes}")
         logger.info(f"attribute_mapping: {attribute_mapping}")
         logger.info("-----------------------------------------")
-        # Lookup key
+        # Chave de busca
         user_lookup_key = "username"
         logger.info(f"User Lookup Key: {user_lookup_key}")
 
-        # Lookup value
+        # Valor de busca
         try:
             user_lookup_value = self.get_user_identifier(attributes)
 
@@ -167,17 +167,17 @@ class LineaSaml2Backend(Saml2Backend):
             return user_lookup_key, None
 
     def get_user_identifier(self, attributes: dict) -> Any:
-        """Returns the user identifier to use for authentication."""
+        """Retorna o identificador de usuário usado na autenticação."""
         logger.info("-----------------------------------------")
         logger.info("Get user identifier.")
         logger.info("get_user_identifier()")
 
-        # Lookup key
+        # Chave de busca
         user_lookup_key = "uid"
         logger.info(f"User Lookup Key: {user_lookup_key}")
 
         try:
-            # Lookup value
+            # Valor de busca
             user_lookup_value = attributes.get(user_lookup_key, None)
 
             if user_lookup_value and isinstance(user_lookup_value, list):
@@ -203,14 +203,14 @@ class LineaSaml2Backend(Saml2Backend):
         return self.clean_user_main_attribute(user_lookup_value)
 
     def clean_user_main_attribute(self, main_attribute: Any) -> Any:
-        """Hook to clean the extracted user-identifying value. No-op by default."""
+        """Normaliza o valor que identifica o usuário. Por padrão só substitui '.' por '_'."""
         main_attribute = main_attribute.replace(".", "_")
         return main_attribute
 
     def user_can_authenticate(self, user) -> bool:
         """
-        Reject users with is_active=False. Custom user models that don't have
-        that attribute are allowed.
+        Rejeita usuários com is_active=False. Modelos de usuário sem esse atributo
+        são aceitos.
         """
         is_active = getattr(user, "is_active", None)
         return is_active or is_active is None
@@ -230,13 +230,13 @@ class LineaSaml2Backend(Saml2Backend):
     def setup_groups(self, user, attributes: dict):
         logger.info("Setup User Groups")
 
-        # Add a custom group saml for mark this user make login using djangosaml2.
+        # Grupo saml2 para marcar login via djangosaml2
         groups = ["saml2"]
 
-        # Grupos internos do sistema que não serão removidos do usuario
+        # Grupos internos que não serão removidos do usuário
         internal_groups = getattr(settings, "INTERNAL_GROUPS", [])
 
-        # Recupera os grupos do usuario
+        # Recupera os grupos do usuário (atributo member)
         try:
             logger.info("Retriving User Groups.")
             for group in attributes.get("member", []):
@@ -246,14 +246,14 @@ class LineaSaml2Backend(Saml2Backend):
             msg = f"Failed on retrive groups. Error: {e}"
             logger.error(msg)
 
-        # Remove the user from all groups that are not specified
+        # Remove o usuário dos grupos que não estão na lista SAML (exceto internos)
         for group in user.groups.all():
             if group.name not in groups and group.name not in internal_groups:
                 user.groups.remove(group)
                 # group.user_set.remove(user)
                 logger.info(f"User has been removed from the group {group.name}")
 
-        # Add the user to all groups in the shibboleth metadata
+        # Adiciona o usuário a todos os grupos indicados no SAML
         for g in groups:
             group, created = Group.objects.get_or_create(name=g)
             user.groups.add(group)
