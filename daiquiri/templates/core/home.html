@@ -36,7 +36,7 @@
         <p style="font-size: 18px; color: #283663;">Data Access</p>
         <p>Interface to perform queries on the database.</p>
         <p>
-          <a class="btn btn-default" href="/query/" role="button">Query »</a>
+          <a class="btn btn-outline-secondary" href="/query/" role="button">Query »</a>
         </p>
       </div>
       <div class="col-md-3">
@@ -47,7 +47,7 @@
         <p style="font-size: 18px; color: #283663;">Documentation</p>
         <p>Details and instructions on how to use the query interface.</p>
         <p>
-          <a class="btn btn-default" href="/cms/services" role="button">View details »</a>
+          <a class="btn btn-outline-secondary" href="/cms/services" role="button">View details »</a>
         </p>
       </div>
       <div class="col-md-3">
@@ -58,7 +58,7 @@
         <p style="font-size: 18px; color: #283663;">Science Server</p>
         <p>Visualization tools to explore astronomical images and catalogs.</p>
         <p>
-          <a class="btn btn-default" href="{{ settings.SCIENCE_SERVER_URL }}" target="_blank" role="button">Open »</a>
+          <a class="btn btn-outline-secondary" href="{{ settings.SCIENCE_SERVER_URL }}" target="_blank" rel="noopener" role="button">Open »</a>
         </p>
       </div>
       {% if not user.is_authenticated %}
@@ -71,7 +71,7 @@
           <p>Login to access the data and tools.</p>
 
             <p>
-              <a class="btn btn-default" href="/login" role="button">Login »</a>
+              <a class="btn btn-outline-secondary" href="{% url 'login' %}" role="button">Login »</a>
             </p>
         </div>
       {% endif %}
