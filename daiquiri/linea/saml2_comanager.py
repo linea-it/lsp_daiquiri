@@ -28,18 +28,18 @@ class LineaSaml2Backend(Saml2Backend):
     def _extract_user_identifier_params(
         self, session_info: dict, attributes: dict, attribute_mapping: dict
     ) -> Tuple[str, Optional[Any]]:
-        """Returns the attribute to perform a user lookup on, and the value to use for it.
-        The value could be the name_id, or any other saml attribute from the request.
+        """Retorna o atributo usado na busca do usuário e o valor correspondente.
+        O valor pode ser o name_id ou outro atributo SAML da requisição.
         """
         logger.info("-----------------------------------------")
         logger.info("Extract user identifier.")
         logger.info("_extract_user_identifier_params()")
         logger.info("-----------------------------------------")
-        # Lookup key
+        # Chave de busca
         user_lookup_key = self._user_lookup_attribute
         logger.info(f"User Lookup Key: {user_lookup_key}")
 
-        # Lookup value
+        # Valor de busca
         user_lookup_value = None
         try:
             if getattr(settings, "SAML_USE_NAME_ID_AS_USERNAME", False):
@@ -51,7 +51,7 @@ class LineaSaml2Backend(Saml2Backend):
                         "The nameid is not available. Cannot find user without a nameid."
                     )
             else:
-                # Obtain the value of the custom attribute to use
+                # Valor do atributo customizado configurado
                 user_lookup_value = self._get_attribute_value(
                     user_lookup_key, attributes, attribute_mapping
                 )
@@ -71,9 +71,8 @@ class LineaSaml2Backend(Saml2Backend):
             logger.error("No identifier to search in COmanager.")
             return user_lookup_key, None
 
-        # Utiliza o identificador de usuario do SAML (eppn)
-        # para fazer uma consulta ao COmanage do LIneA
-        # e descobrir UID do LDAP para este usuario.
+        # Usa o identificador SAML (eppn) para consultar o COmanage LIneA
+        # e obter o UID LDAP do usuário.
         try:
             eppn = user_lookup_value
             self.eppn = eppn
@@ -92,7 +91,7 @@ class LineaSaml2Backend(Saml2Backend):
             return user_lookup_key, None
 
     def clean_user_main_attribute(self, main_attribute: Any) -> Any:
-        """Hook to clean the extracted user-identifying value. No-op by default."""
+        """Normaliza o valor que identifica o usuário (substitui '.' por '_')."""
         main_attribute = main_attribute.replace(".", "_")
         return main_attribute
 
@@ -104,20 +103,20 @@ class LineaSaml2Backend(Saml2Backend):
         assertion_info: dict,
         **kwargs,
     ) -> bool:
-        """Hook to allow custom authorization policies based on SAML attributes. True by default."""
+        """Autorização customizada com base nos atributos SAML. Padrão: permitir."""
         logger.info("-----------------------------------------")
         logger.info("Checks if the user is authorized")
         logger.info("is_authorized()")
         logger.info("-----------------------------------------")
 
-        # Lookup key
+        # Chave de busca
         user_lookup_key = self._user_lookup_attribute
         logger.info(f"User Lookup Key: {user_lookup_key}")
 
-        # Lookup value
+        # Valor de busca
         user_lookup_value = None
         try:
-            # Obtain the value of the custom attribute to use
+            # Valor do atributo customizado configurado
             user_lookup_value = self._get_attribute_value(
                 user_lookup_key, attributes, attribute_mapping
             )
@@ -137,12 +136,9 @@ class LineaSaml2Backend(Saml2Backend):
             logger.error("No identifier to search in COmanager.")
             return False
 
-        # Faz uma consulta no COmanage com as credenciais do usuario
-        # Retornadas pelo idp_entityid
-        # Caso exista registro no comange retorna True e o usuario está autorizado a prosseguir com o login
-        # Caso NÃO Exista registro no comanage retorna False e o login é interrompido.
-        # No caso do LIneA estamos considerando que todos os usuarios terão registro no COmanage
-        # Mesmo os de outras instituições.
+        # Consulta o COmanage; se houver registro, o usuário pode prosseguir com o login.
+        # Sem registro, o login é interrompido. Na LIneA assume-se registro no COmanage
+        # inclusive para usuários de outras instituições.
         try:
             # Utiliza o identificador de usuario do SAML (eppn)
             # para fazer uma consulta ao COmanage do LIneA
@@ -162,25 +158,24 @@ class LineaSaml2Backend(Saml2Backend):
 
     def user_can_authenticate(self, user) -> bool:
         """
-        Reject users with is_active=False. Custom user models that don't have
-        that attribute are allowed.
+        Rejeita usuários com is_active=False. Modelos sem esse atributo são aceitos.
         """
         is_active = getattr(user, "is_active", None)
         return is_active or is_active is None
 
     def save_user(self, user, *args, **kwargs):
         user = super().save_user(user, *args, **kwargs)
-        # Tratamento dos grupos que o usuario pertence
+        # Sincroniza grupos do usuário
         self.setup_groups(user)
         return user
 
     def setup_groups(self, user):
         logger.info("Setup User Groups")
 
-        # Add a custom group saml for mark this user make login using djangosaml2.
+        # Grupo saml2 para marcar login via djangosaml2
         groups = ["saml2"]
 
-        # Recupera os grupos do usuario
+        # Recupera os grupos do usuário no COmanage
         try:
             logger.info("Retriving User Groups from COmanage.")
             personid = self.comanage.get_co_person_id(identifier=self.eppn)
@@ -193,13 +188,13 @@ class LineaSaml2Backend(Saml2Backend):
             msg = f"Failed on retrive groups from COmanage. Error: {e}"
             logger.error(msg)
 
-        # Remove the user from all groups that are not specified
+        # Remove o usuário dos grupos que não vieram do COmanage
         for group in user.groups.all():
             if group.name not in groups:
                 group.user_set.remove(user)
                 logger.info(f"User has been removed from the group {group.name}")
 
-        # Add the user to all groups in the shibboleth metadata
+        # Adiciona o usuário aos grupos retornados pelo COmanage / SAML
         for g in groups:
             group, created = Group.objects.get_or_create(name=g)
             user.groups.add(group)
