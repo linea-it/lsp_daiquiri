@@ -21,36 +21,36 @@ from . import (
     SETTINGS_EXPORT,
 )
 
-# the hostname and port number of the current Server
+# Hostname e porta do servidor atual
 BASE_HOST = env.get("BASE_HOST", default="http://localhost")
 
-# Public URL of the Daiquiri site. Used for VO and OAI metadata.
-# Default: http://localhost:8000
+# URL pública do site Daiquiri. Usada em metadados VO e OAI.
+# Padrão: http://localhost:8000
 SITE_URL = env.get("SITE_URL")
 
-# Identifier for the Daiquiri site. Usually the URL without the protocol. Used for VO and OAI metadata.
-# Default: None
+# Identificador do site Daiquiri. Em geral a URL sem o protocolo. Usado em metadados VO e OAI.
+# Padrão: None
 SITE_IDENTIFIER = env.get("DOMAIN")
-# The title for the Daiquiri site. Used for VO and OAI metadata.
-# Default: None
+# Título do site Daiquiri. Usado em metadados VO e OAI.
+# Padrão: None
 SITE_TITLE = "LIneA TAP Service"
 
-# The description for the Daiquiri site. Used for VO and OAI metadata.
-# Default: None
+# Descrição do site Daiquiri. Usada em metadados VO e OAI.
+# Padrão: None
 SITE_DESCRIPTION = "The TAP Service registry for linea.org.br"
 
-# A license for the Daiquiri site.
-# See https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/core/constants.py for the available choices. Used in various metadata fields.
-# Default: None
+# Licença do site Daiquiri.
+# Ver https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/core/constants.py para as opções. Usada em vários campos de metadados.
+# Padrão: None
 SITE_LICENSE = None
 
-# Creator of the Daiquiri site. Used in the VO registry entry. Has to be of the following form:
-# Default: None
+# Criador do site Daiquiri. Usado na entrada do registro VO. Deve seguir o formato indicado na documentação.
+# Padrão: None
 SITE_CREATOR = "LIneA"
 SITE_LOGO_URL = "https://linea.org.br/favicon.ico"
 
-# List of contacts for the Daiquiri site. Used in the VO registry entry. Has to be of the following form:
-# Default: None
+# Lista de contatos do site Daiquiri. Usada na entrada do registro VO. Deve seguir o formato indicado na documentação.
+# Padrão: None
 SITE_CONTACT = {
     "name": "LIneA Helpdesk",
     "address": "Rio de Janeiro, Brasil",
@@ -58,16 +58,16 @@ SITE_CONTACT = {
     "telephone": "55 21 96937 9224",
 }
 
-# Publisher of the Daiquiri site. Used for VO and OAI metadata.
-# Default: None
+# Editora do site Daiquiri. Usada em metadados VO e OAI.
+# Padrão: None
 SITE_PUBLISHER = "LIneA - Laboratório Interinstitucional de e-Astronomia"
 
-# Date of the creation of the Daiquiri site. Used for VO and OAI metadata. Has to be of the form
-# Default: None
+# Data de criação do site Daiquiri. Usada em metadados VO e OAI. Formato conforme documentação.
+# Padrão: None
 SITE_CREATED = "2023-04-19"
 
-# Date of the last update of the Daiquiri site. Used for VO and OAI metadata. Has to be of the form
-# Default: None
+# Data da última atualização do site Daiquiri. Usada em metadados VO e OAI. Formato conforme documentação.
+# Padrão: None
 SITE_UPDATED = "2024-06-13"
 
 LINEA_APPS = ["djangosaml2", "services", "data", "utils"]
@@ -114,7 +114,7 @@ INSTALLED_APPS = (
 )
 
 # -----------------------------------------------
-# Wagtail - CMS for custom pages
+# Wagtail — CMS para páginas customizadas
 # https://docs.wagtail.org/en/stable/getting_started/integrating_into_django.html
 # -----------------------------------------------
 MIDDLEWARE += ("wagtail.contrib.redirects.middleware.RedirectMiddleware",)
@@ -123,25 +123,27 @@ MIDDLEWARE += ("wagtail.contrib.redirects.middleware.RedirectMiddleware",)
 # https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/core/settings/django.py
 # STATIC_ROOT = BASE_DIR / 'static_root/'
 
-# STATIC_URL: NÃO ALTERAR: Esta variavel estão relacionada a rota /daiquiri_static/ no ngnix e no uWSGI.
-# Static files (CSS, JavaScript, Images)
+# STATIC_URL: NÃO ALTERAR — relacionada à rota /daiquiri_static/ no Nginx e no uWSGI.
+# Arquivos estáticos (CSS, JavaScript, imagens)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_URL = "/daiquiri_static/"
+
+# Logos/banners LINEA em <BASE_DIR>/static/daiquiri/ (fora de uma app com static/)
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # MEDIA_ROOT está definido no core do daiquiri
 # https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/core/settings/django.py#L158
 # MEDIA_URL = BASE_URL + 'media/'
 # MEDIA_ROOT = BASE_DIR / 'media_root/'
 
-# this will be displayed on the main dashboard of the Wagtail admin backend:
+# Nome exibido no painel principal do admin Wagtail
 WAGTAIL_SITE_NAME = "LIneA Userquery"
 
-# WAGTAILADMIN_BASE_URL - this is the base URL used by the Wagtail admin site.
-# It is typically used for generating URLs to include in notification emails
+# WAGTAILADMIN_BASE_URL — URL base usada pelo site de administração Wagtail.
+# Em geral usada para gerar URLs em e-mails de notificação
 WAGTAILADMIN_BASE_URL = SITE_URL
 
-# WAGTAILDOCS_EXTENSIONS setting to specify the file types that Wagtail
-# will allow to be uploaded as documents.
+# WAGTAILDOCS_EXTENSIONS — tipos de arquivo que o Wagtail permite enviar como documentos.
 # https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
 WAGTAILDOCS_EXTENSIONS = [
     "csv",
@@ -160,10 +162,10 @@ WAGTAILDOCS_EXTENSIONS = [
 # https://github.com/torchbox/wagtail-markdown
 WAGTAILMARKDOWN = {
     "autodownload_fontawesome": True,
-    "allowed_tags": [],  # optional. a list of HTML tags. e.g. ['div', 'p', 'a']
-    "allowed_styles": [],  # optional. a list of styles
-    "allowed_attributes": {},  # optional. a dict with HTML tag as key and a list of attributes as value
-    "allowed_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
+    "allowed_tags": [],  # opcional: lista de tags HTML, ex.: ['div', 'p', 'a']
+    "allowed_styles": [],  # opcional: lista de estilos
+    "allowed_attributes": {},  # opcional: dict com tag HTML como chave e lista de atributos como valor
+    "allowed_settings_mode": "extend",  # opcional: "extend" ou "override". Padrão: "extend".
     "extensions": [
         "extra",
         "abbr",
@@ -183,10 +185,10 @@ WAGTAILMARKDOWN = {
         "smarty",
         "toc",
         "wikilinks",
-    ],  # optional. a list of python-markdown supported extensions
-    "extension_configs": {},  # optional. a dictionary with the extension name as key, and its configuration as value
-    "extensions_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
-    "tab_length": 4,  # optional. Sets the length of tabs used by python-markdown to render the output. This is the number of spaces used to replace with a tab character. Defaults to 4.
+    ],  # opcional: extensões suportadas pelo python-markdown
+    "extension_configs": {},  # opcional: dict nome da extensão → configuração
+    "extensions_settings_mode": "extend",  # opcional: "extend" ou "override". Padrão: "extend".
+    "tab_length": 4,  # opcional: largura da tabulação usada pelo python-markdown (espaços). Padrão: 4.
 }
 
 # -----------------------------------------------
@@ -194,7 +196,7 @@ WAGTAILMARKDOWN = {
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
-# NÃO ALTERAR: Estas variaveis estão relacionadas a rota /protected/ no ngnix.
+# NÃO ALTERAR: estas variáveis estão relacionadas à rota /protected/ no Nginx.
 # São necessárias para o funcionamento do Download.
 # https://django-sendfile2.readthedocs.io/en/latest/backends.html#nginx-backend
 SENDFILE_BACKEND = "django_sendfile.backends.nginx"
@@ -202,8 +204,8 @@ SENDFILE_ROOT = "/data/download/"
 SENDFILE_URL = "/download"
 
 
-# Diretorio onde ficam os arquivos de PID do celery
-# Não alterar este path por que ele está sendo utilizado no script start.sh
+# Diretório dos arquivos PID do Celery
+# Não alterar: o caminho é usado pelo script start.sh
 CELERY_PIDFILE_PATH = "/tmp"
 
 
@@ -244,19 +246,25 @@ QUERY_FORMS = [
 ]
 
 # daiquiri.query.settings
-# Sets the timeout for syncronous (TAP) queries in seconds.
-# Default: 'daiquiri_user_'
+# Define o prefixo do schema de usuário para jobs de query (não é timeout; ver documentação do pacote).
+# Padrão típico: 'mydb_' ou 'daiquiri_user_'
 QUERY_USER_SCHEMA_PREFIX = "mydb_"
 
+# Barra do FormSql (1.3+): cada key precisa estar definida aqui (incl. examples, schemas, …).
 QUERY_DROPDOWNS = [
+    {"key": "schemas", "label": "Database"},
+    {"key": "columns", "label": "Columns"},
+    {"key": "functions", "label": "Functions"},
     {
         "key": "simbad",
+        "label": "Simbad",
         "service": "query/js/dropdowns/simbad.js",
         "template": "query/query_dropdown_simbad.html",
         "options": {"url": "https://simbad.u-strasbg.fr/simbad/sim-id"},
     },
     {
         "key": "vizier",
+        "label": "VizieR",
         "service": "query/js/dropdowns/vizier.js",
         "template": "query/query_dropdown_vizier.html",
         "options": {
@@ -279,6 +287,7 @@ QUERY_DROPDOWNS = [
             ],
         },
     },
+    {"key": "examples", "label": "Examples", "classes": "ms-auto"},
 ]
 
 QUERY_LANGUAGES = [
@@ -299,7 +308,7 @@ QUERY_LANGUAGES = [
 ]
 
 # -----------------------------------------------
-# GAIA AIP LICENSE
+# Licença Gaia AIP
 # https://github.com/django-daiquiri/daiquiri/blob/master/daiquiri/metadata/settings.py
 # -----------------------------------------------
 
@@ -312,28 +321,28 @@ LICENSE_CHOICES = tuple(LICENSE_CHOICES)
 
 
 # -----------------------------------------------
-# LInea Specific
+# Específico da LIneA
 # -----------------------------------------------
 TARGET_VIEWER_URL = "https://scienceserver-dev.linea.org.br/target/"
 SCIENCE_SERVER_URL = "https://scienceserver-dev.linea.org.br/"
 LSP_URL = "https://scienceplatform-dev.linea.org.br/lsp"
 IDAC_URL = "https://scienceplatform-dev.linea.org.br/idac"
 
-# # COmanage Autorization
+# # Autorização COmanage
 # COMANAGE_SERVER_URL = env.get("COMANAGE_SERVER_URL", "https://register.linea.org.br")
 # COMANAGE_USER = env.get("COMANAGE_USER")
 # COMANAGE_PASSWORD = env.get("COMANAGE_PASSWORD")
 # COMANAGE_COID = env.get("COMANAGE_COID", 2)
 
-# DJANGO SAML2 Authentication
+# Autenticação Django SAML2
 AUTH_SAML2_ENABLED = env.get_bool("AUTH_SAML2_ENABLED", False)
 
-# Urls for login with SAML2/CILogon
-# URL_CILOGON example: https://skyviewer.linea.org.br/saml2/login/?idp=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==
+# URLs de login com SAML2/CILogon
+# Exemplo URL_CILOGON: https://skyviewer.linea.org.br/saml2/login/?idp=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==
 LINEA_LOGIN_URL = env.get("LINEA_LOGIN_URL", default="/admin/login/?next=/")
 RUBIN_LOGIN_URL = env.get("RUBIN_LOGIN_URL", default="/admin/login/?next=/")
 
-# Url de registro para os diferentes idps.
+# URL de registro para os diferentes IdPs.
 LINEA_REGISTER_URL = env.get(
     "LINEA_REGISTER_URL",
     default="https://register-dev.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register-dev.linea.org.br/registry/co_petitions/start/coef:155&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==",
@@ -344,8 +353,8 @@ RUBIN_REGISTER_URL = env.get(
 )
 
 # Lista de grupos internos do sistema.
-# Esses grupos são gerenciados no django admin.
-# Quando o usuario faz login pelo saml2 esses grupos não serão removidos.
+# Esses grupos são gerenciados no Django admin.
+# Quando o usuário faz login pelo SAML2, esses grupos não serão removidos.
 INTERNAL_GROUPS = [
     "Editors",
     "Moderators",
@@ -358,28 +367,28 @@ INTERNAL_GROUPS = [
 
 if AUTH_SAML2_ENABLED == True:
 
-    # DOMAIN Exemplo: userquery-dev.linea.org.br
+    # DOMAIN — exemplo: userquery-dev.linea.org.br
     DOMAIN = env.get("DOMAIN")
 
-    # FQDN Exemplo:https://userquery-dev.linea.org.br
+    # FQDN — exemplo: https://userquery-dev.linea.org.br
     FQDN = env.get("SITE_URL")
     # FQDN = "https://" + DOMAIN
     CERT_DIR = "certificates"
 
-    # Including SAML2 Backend Authentication
+    # Backend de autenticação SAML2 (inclusão)
     # AUTHENTICATION_BACKENDS += ("djangosaml2.backends.Saml2Backend", )
-    # Custom Saml2 Backend for LIneA
+    # Backend SAML2 customizado da LIneA
     AUTHENTICATION_BACKENDS += ("linea.saml2.LineaSaml2Backend",)
-    # Including SAML2 Middleware
+    # Middleware SAML2
     MIDDLEWARE += ("djangosaml2.middleware.SamlSessionMiddleware",)
-    # SAML2 Custom error handler
+    # Tratamento customizado de falha no ACS SAML2
     # https://djangosaml2.readthedocs.io/contents/developer.html#custom-error-handler
     SAML_ACS_FAILURE_RESPONSE_FUNCTION = "linea.views.saml2_template_failure"
-    # configurações relativas ao session cookie
+    # Configurações do cookie de sessão
     SAML_SESSION_COOKIE_NAME = "saml_session"
     SESSION_COOKIE_SECURE = True
 
-    # Qualquer view que requer um usuário autenticado deve redirecionar o navegador para esta url
+    # Qualquer view que exige usuário autenticado redireciona o navegador para esta URL
     LOGIN_URL = "/login/"
 
     # Encerra a sessão quando o usuário fecha o navegador
@@ -389,10 +398,10 @@ if AUTH_SAML2_ENABLED == True:
     SAML_DEFAULT_BINDING = saml2.BINDING_HTTP_POST
     SAML_IGNORE_LOGOUT_ERRORS = True
 
-    # Serviço de descoberta da cafeexpresso
+    # Serviço de descoberta da cafeexpresso (RNP)
     # SAML2_DISCO_URL = 'https://ds.cafeexpresso.rnp.br/WAYF.php'
 
-    # Cria usuário Django a partir da asserção SAML caso o mesmo não exista
+    # Cria usuário Django a partir da asserção SAML se ainda não existir
     SAML_CREATE_UNKNOWN_USER = True
 
     # https://djangosaml2.readthedocs.io/contents/security.html#content-security-policy
@@ -475,20 +484,22 @@ if AUTH_SAML2_ENABLED == True:
                 },
             ],
         },
-        # Configurado como 1 para fornecer informações de debug
+        # 1 = mais informações de depuração
         "debug": 1,
-        # Signature
-        "key_file": os.path.join(BASE_DIR, CERT_DIR, "mykey.pem"),  # private part
-        "cert_file": os.path.join(BASE_DIR, CERT_DIR, "mycert.pem"),  # public part
-        # Encriptation
+        # Assinatura
+        "key_file": os.path.join(BASE_DIR, CERT_DIR, "mykey.pem"),  # chave privada
+        "cert_file": os.path.join(
+            BASE_DIR, CERT_DIR, "mycert.pem"
+        ),  # certificado público
+        # Criptografia
         "encryption_keypairs": [
             {
                 "key_file": os.path.join(
                     BASE_DIR, CERT_DIR, "mykey.pem"
-                ),  # private part
+                ),  # chave privada
                 "cert_file": os.path.join(
                     BASE_DIR, CERT_DIR, "mycert.pem"
-                ),  # public part
+                ),  # certificado público
             }
         ],
         "contact_person": [
