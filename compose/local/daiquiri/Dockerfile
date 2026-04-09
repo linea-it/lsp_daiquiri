@@ -2,7 +2,7 @@
 ARG BUILD_ENVIRONMENT=local
 
 # FROM python:3.9.19-slim-bookworm AS base
-FROM python:3.11-slim-bookworm AS base
+FROM python:3.13-slim-bookworm AS base
 
 ARG BUILD_ENVIRONMENT
 ARG USERNAME=daiquiri
