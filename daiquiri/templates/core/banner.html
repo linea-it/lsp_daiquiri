@@ -2,19 +2,18 @@
 {% load i18n %}
 {% load core_tags %}
 
-<!-- {% comment %}Baseado neste exemplo do Bootstrap https://getbootstrap.com/docs/3.3/examples/carousel/ {% endcomment %} -->
-<section class="wide">
-  <div class="banner">
-    <div class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img class="first-slide" style="width: 100%; height: 400px; background-repeat: no-repeat; background-size: cover; padding-top: 20px;" src="{% static 'daiquiri/imgs/home1.jpg' %}" alt="First slide" />
-          <div class="container">
-            <div class="carousel-caption" style="text-align: center; top: 50%; transform: translateY(-50%);">
-              <h1 style="color: #fff; font-size: 50px; font-family: 'Arial Rounded MT Bold', Arial, sans-serif; font-weight: 100; text-shadow: black 0.1em 0.1em 0.2em;">LIneA User Query</h1>
-              <p style="display: block; font-size: 16px; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; unicode-bidi: isolate;">An interface to query LIneA's database and create user-generated tables.</p>
-            </div>
-          </div>
+<section class="wide linea-banner">
+  <div id="linea-home-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          class="d-block w-100"
+          style="height: 400px; object-fit: cover;"
+          src="{% static 'daiquiri/imgs/home1.jpg' %}"
+          alt="{% trans 'LIneA User Query' %}" />
+        <div class="carousel-caption text-center" style="top: 50%; transform: translateY(-50%); bottom: auto;">
+          <h1 style="color: #fff; font-size: 50px; font-family: 'Arial Rounded MT Bold', Arial, sans-serif; font-weight: 100; text-shadow: black 0.1em 0.1em 0.2em;">LIneA User Query</h1>
+          <p class="d-none d-md-block" style="font-size: 16px;">{% trans "An interface to query LIneA's database and create user-generated tables." %}</p>
         </div>
       </div>
     </div>
