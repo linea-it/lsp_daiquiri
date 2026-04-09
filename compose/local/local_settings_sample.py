@@ -2,14 +2,19 @@
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1", "*"]
 
 QUERY_DROPDOWNS = [
+    {"key": "schemas", "label": "Database"},
+    {"key": "columns", "label": "Columns"},
+    {"key": "functions", "label": "Functions"},
     {
         "key": "simbad",
+        "label": "Simbad",
         "service": "query/js/dropdowns/simbad.js",
         "template": "query/query_dropdown_simbad.html",
         "options": {"url": "https://simbad.u-strasbg.fr/simbad/sim-id"},
     },
     {
         "key": "vizier",
+        "label": "VizieR",
         "service": "query/js/dropdowns/vizier.js",
         "template": "query/query_dropdown_vizier.html",
         "options": {
@@ -32,6 +37,7 @@ QUERY_DROPDOWNS = [
             ],
         },
     },
+    {"key": "examples", "label": "Examples", "classes": "ms-auto"},
 ]
 
 QUERY_LANGUAGES = [
