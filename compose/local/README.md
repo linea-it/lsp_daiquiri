@@ -26,7 +26,7 @@ git clone https://github.com/linea-it/lsp_daiquiri.git daiquiri \
 
 ### Setup Database
 
-Inicie o serviço de banco de dados. Na primeira vez será executado o script `init_db.sh`, que vai criar os dois bancos (daiquiri_admin e daiquiri_data), os schemas e algumas tabelas de exemplo.
+Inicie o serviço de banco de dados. Na primeira vez será executado o script `init-db.sh`, que cria os bancos `daiquiri_app` e `daiquiri_data` e os schemas `tap_schema` e `oai_schema` no banco científico (conforme o `.env` de exemplo).
 
 ```bash
 docker compose up database
@@ -51,10 +51,10 @@ No momento deste documento as variaveis a serem editadas são:
 - POSTGRES_PASSWORD
 - RABBITMQ_DEFAULT_PASS
 
-> Para preencher a variavel de ambiente `.env/SECRET_KEY` é necessário executar um comando dentro do container daiquiri para gerar uma chave aleatória.
+> Para preencher a variavel de ambiente `.env/SECRET_KEY` é necessário executar um comando dentro do container `backend` para gerar uma chave aleatória.
 
 ```bash
-docker compose run -it --rm daiquiri python -c "import secrets; print(secrets.token_urlsafe())"
+docker compose run -it --rm backend python -c "import secrets; print(secrets.token_urlsafe())"
 ```
 
 Alterar o arquivo de configuração do Django de acordo com a necessidade.
@@ -69,13 +69,13 @@ Build Docker images
 docker compose build
 ```
 
-Agora inicie o serviço daiquiri.
+Agora inicie o serviço backend (app Django).
 
 ```bash
-docker compose up daiquiri
+docker compose up backend
 ```
 
-Espere pela mensagem `*** uWSGI is running in multiple interpreter mode ***` apos a mensagem, desligue o container pressionando `ctrl + c` e inicie o serviço novamente com parametro `-d`
+Espere a mensagem de inicialização do Gunicorn, depois desligue o container pressionando `ctrl + c` e inicie os serviços novamente com o parâmetro `-d`.
 
 ### Start all services in background
 
@@ -91,7 +91,7 @@ A saida do comando informa se todos os serviços foram iniciados corretamente.
 [+] Running 5/5
  ✔ Container daiquiri-database-1       Started            0.0s
  ✔ Container daiquiri-rabbit-1         Started            0.0s
- ✔ Container daiquiri-daiquiri-1       Started            0.0s
+ ✔ Container daiquiri-backend-1        Started            0.0s
  ✔ Container daiquiri-celery_flower-1  Started            0.0s
  ✔ Container daiquiri-nginx-1          Started            0.0s
 ```
@@ -103,30 +103,32 @@ Os Comandos a seguir são executados **com todos os serviços ligados**.
 Load Initial Data
 
 ```bash
-docker compose exec daiquiri python manage.py loaddata /app/fixtures/initial_data.json
+docker compose exec backend python manage.py loaddata /app/fixtures/initial_data.json
 ```
 
+> Pode aparecer no log tarefas do Wagtail search (`modelsearch`) com erro durante o `loaddata`; o comando costuma concluir com sucesso mesmo assim. Se precisar de índice limpo, rode depois `update_index` do Wagtail.
+
 ```bash
-docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
+docker compose exec backend python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
 Estes comandos são expecificos do Daiquiri:
 [Setup groups](https://django-daiquiri.github.io/docs/administration/)
 
 ```bash
-docker compose exec daiquiri python manage.py setup_groups
+docker compose exec backend python manage.py setup_groups
 ```
 
 [Setup TAP_SCHEMA](https://django-daiquiri.github.io/docs/administration/)
 
 ```bash
-docker compose exec daiquiri python manage.py setup_tap_metadata
+docker compose exec backend python manage.py setup_tap_metadata
 ```
 
 Crie um usuario administrativo no Django.
 
 ```bash
-docker compose exec daiquiri python manage.py createsuperuser
+docker compose exec backend python manage.py createsuperuser
 ```
 
 ## Registro de Catalogos/Tabelas
@@ -199,12 +201,12 @@ docker compose stop
 docker compose stats
 ```
 
-### Open bash in daiquiri container
+### Open bash in backend container
 
-with daiquiri service running
+with backend service running
 
 ```bash
-docker compose exec daiquiri bash
+docker compose exec backend bash
 ```
 
 ### Run Django Manage.py
@@ -212,7 +214,13 @@ docker compose exec daiquiri bash
 with all services running
 
 ```bash
-docker compose exec daiquiri python manage.py --help
+docker compose exec backend python manage.py --help
+```
+
+### Rodar testes de regressão do upgrade
+
+```bash
+docker compose exec backend python manage.py test tests.test_upgrade_regression -v 2
 ```
 
 ### Dump / Load Query Sample Data
@@ -220,13 +228,13 @@ docker compose exec daiquiri python manage.py --help
 Dump Queries sample
 
 ```bash
-docker-compose exec daiquiri python manage.py dumpdata daiquiri_query.example > database_subset/query_samples.json
+docker-compose exec backend python manage.py dumpdata daiquiri_query.example > database_subset/query_samples.json
 ```
 
 Load Query Sample Data
 
 ```bash
-docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_samples.json
+docker compose exec backend python manage.py loaddata /app/fixtures/query_samples.json
 ```
 
 ### Dump initial data with CMS Wagtail pages
@@ -234,7 +242,7 @@ docker compose exec daiquiri python manage.py loaddata /app/fixtures/query_sampl
 https://www.accordbox.com/blog/how-export-restore-wagtail-site/
 
 ```bash
-docker compose exec daiquiri python manage.py  dumpdata --natural-foreign --indent 2 \
+docker compose exec backend python manage.py  dumpdata --natural-foreign --indent 2 \
         -e contenttypes \
         -e auth.permission \
         -e auth.group \
@@ -259,7 +267,7 @@ docker compose exec daiquiri python manage.py  dumpdata --natural-foreign --inde
 ```
 
 ```bash
-docker compose exec daiquiri python manage.py  dumpdata --natural-foreign --indent 2 \
+docker compose exec backend python manage.py  dumpdata --natural-foreign --indent 2 \
     -e contenttypes -e auth.permission \
     -e wagtailcore.groupcollectionpermission \
     -e wagtailcore.grouppagepermission -e wagtailimages.rendition \
