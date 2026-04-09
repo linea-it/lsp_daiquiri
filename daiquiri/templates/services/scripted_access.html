@@ -1,0 +1,84 @@
+{% extends 'services/page_base.html' %}
+{% load static %}
+
+{% block services_content %}
+<h1>Accessing tables using TAP services</h1>
+<h2>Topcat</h2>
+<p>First of all, you should have installed TopCat. Access TopCat’s project page <a
+        href="https://www.star.bris.ac.uk/~mbt/topcat/" target="_blank"
+        rel="noopener">https://www.star.bris.ac.uk/~mbt/topcat/</a> and follow instructions there for further
+    information about how to install in your OS. Figure below shows the initial page of TopCat</p>
+<p><a href="{% static 'daiquiri/imgs/topcat-1.png' %}">
+        <img style="width: 80%;" src="{% static 'daiquiri/imgs/topcat-1.png' %}" alt="topcat example 1">
+    </a></p>
+<p><br>
+    In order to access TAP, click on "VO" and "Table Access Protocol (TAP) Query" as seen in the figure:</p>
+<p><a href="{% static 'daiquiri/imgs/topcat-2.png' %}">
+        <img style="width: 80%;" src="{% static 'daiquiri/imgs/topcat-2.png' %}" alt="topcat example 2">
+    </a></p>
+<p><br></p>
+<p>After this step, a new screen pops up, where you write LInea’s TAP address <a
+        href="https://userquery.linea.org.br/tap">https://userquery.linea.org.br/tap:</a></p>
+<p><a href="{% static 'daiquiri/imgs/tap-service.png' %}">
+        <img style="width: 80%;" src="{% static 'daiquiri/imgs/tap-service.png' %}" alt="tap service example 1">
+    </a></p>
+<p><br>
+    Click on ‘Use service’, and the last screen is shown as below:</p>
+<p><a href="{% static 'daiquiri/imgs/tap-query.png' %}">
+        <img style="width: 80%;" src="{% static 'daiquiri/imgs/tap-query.png' %}" alt="tap service example 2">
+    </a></p>
+<p><br>
+    On the left tables are listed. More information about the tables (schema, tables, columns, fkeys and hints) are seen
+    on the right when clicking on them. Click on ‘Examples’ to access a bunch of queries, and finally start your query
+    clicking on ‘Run Query’.</p>
+<h3>Access from local machine using Python language and pyvo package</h3>
+<p>You can access data from LIneA using your local machine. With requests and pyvo package installed, run the following
+    lines saved in a python file:</p>
+<pre><code>from pkg_resources import parse_version
+import pyvo
+import requests
+
+# Setting up tap_service connection
+service_name = "LIneA Tap Service"
+url = "https://userquery.linea.org.br/tap"
+
+print('TAP service %s \n' % (service_name,))
+
+tap_session = requests.Session()
+tap_service = pyvo.dal.TAPService(url, session=tap_session)
+
+print(tap_service.available)  # Returns True or False
+
+query = "SELECT ra, dec from des_dr2.main limit 10"
+tap_result = tap_service.run_sync(query, language="ADQL")
+tap_result.to_table().pprint(max_lines=10)</code></pre>
+
+<p><br>
+    If you want to access data with authorization, follow the code below:</p>
+<pre><code>import requests
+import pyvo
+
+service_name = "LIneA Tap Service"
+url = "https://userquery.linea.org.br/tap"
+token = "Token &lt;your-token&gt;"
+
+print('TAP service %s \n' % (service_name,))
+
+tap_session = requests.Session()
+tap_session.headers["Authorization"] = token
+
+tap_service = pyvo.dal.TAPService(url, session=tap_session)
+
+print(f"Is Available: [{tap_service.available}]")
+
+query = "SELECT ra, dec from des_dr2.main limit 10"
+tap_result = tap_service.run_sync(query, language="postgresql")
+tap_result.to_table().pprint(max_lines=10)</code></pre>
+
+<p><br>
+    These two examples run on synchronic mode.
+    <br>
+    <br>
+    <br>
+</p>
+{% endblock %}

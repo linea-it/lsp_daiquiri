@@ -5,6 +5,7 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from django.views.i18n import JavaScriptCatalog
 from linea.views import linea_login
+from services import urls as services_urls
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
@@ -45,6 +46,7 @@ urlpatterns = [
     # Autenticação SAML2
     path("saml2/", include("djangosaml2.urls")),
     path("login/", linea_login, name="login"),
+    path("cms/services/", include((services_urls, "services"), namespace="services")),
     # CMS Wagtail
     path("wagtail/", include(wagtailadmin_urls)),
     # path('documents/', include(wagtaildocs_urls)),

@@ -1,7 +1,6 @@
 {% load static %}
 {% load i18n %}
 {% load rules %}
-{% load wagtailcore_tags %}
 <link rel="stylesheet" type="text/css" href="{% static 'daiquiri/css/style.css' %}" />
 
 <nav class="navbar navbar-expand-lg navbar-dark linea-navbar fixed-top shadow-sm" role="navigation">
@@ -9,64 +8,62 @@
     <a class="navbar-brand d-flex align-items-center py-0" href="{% url 'home' %}">
       <img src="{% static 'daiquiri/imgs/linea-symbol.svg' %}" width="52" height="52" alt="{% trans 'Logo LIneA' %}" />
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#linea-navbar-collapse"
-      aria-controls="linea-navbar-collapse"
-      aria-expanded="false"
-      aria-label="{% trans 'Toggle navigation' %}">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#linea-navbar-collapse"
+      aria-controls="linea-navbar-collapse" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="linea-navbar-collapse">
       <ul class="navbar-nav me-lg-2">
         <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="linea-dd-services"
-            role="button"
-            data-bs-toggle="dropdown"
+          <a class="nav-link dropdown-toggle" href="#" id="linea-dd-services" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">{% trans "Services" %}</a>
           <ul class="dropdown-menu" aria-labelledby="linea-dd-services">
-            <li><a class="dropdown-item" href="{% slugurl 'services' %}">{% trans "Overview" %}</a></li>
-            <li><a class="dropdown-item" href="{% slugurl 'query-interface' %}">{% trans "Query interface" %}</a></li>
-            <li><a class="dropdown-item" href="{% slugurl 'direct-download' %}">{% trans "Download" %}</a></li>
-            <li><a class="dropdown-item" href="{% slugurl 'scripted-access' %}">{% trans "Scripted access" %}</a></li>
-            <li><a class="dropdown-item" href="{% slugurl 'adql-postgresql' %}">{% trans "ADQL, Postgresql" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'services:overview' %}">{% trans "Overview" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'services:query_interface' %}">{% trans "Query interface" %}</a>
+            </li>
+            <li><a class="dropdown-item" href="{% url 'services:direct_download' %}">{% trans "Download" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'services:scripted_access' %}">{% trans "Scripted access" %}</a>
+            </li>
+            <li><a class="dropdown-item" href="{% url 'services:adql_postgresql' %}">{% trans "ADQL, Postgresql" %}</a>
+            </li>
           </ul>
         </li>
       </ul>
       <ul class="navbar-nav me-lg-2">
         <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="linea-dd-metadata"
-            role="button"
-            data-bs-toggle="dropdown"
+          <a class="nav-link dropdown-toggle" href="#" id="linea-dd-metadata" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">{% trans "Database Tables" %}</a>
           <ul class="dropdown-menu" style="max-height: 80vh; overflow-y: auto" aria-labelledby="linea-dd-metadata">
             <li><a class="dropdown-item fw-semibold" href="/metadata/lsst_dp1">{% trans "LSST DP1" %}</a></li>
             <li><a class="dropdown-item ps-4" href="/metadata/lsst_dp1/object/">lsst_dp1.object</a></li>
-            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
             <li><a class="dropdown-item fw-semibold" href="/metadata/des_dr2">{% trans "DES DR2" %}</a></li>
             <li><a class="dropdown-item ps-4" href="/metadata/des_dr2/main/">des_dr2.main</a></li>
-            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
             <li><a class="dropdown-item fw-semibold" href="/metadata/gaia_dr3">{% trans "Gaia DR3" %}</a></li>
             <li><a class="dropdown-item ps-4" href="/metadata/gaia_dr3/source">gaia_dr3.source</a></li>
-            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
             <li><a class="dropdown-item fw-semibold" href="/metadata/twomass">{% trans "2MASS" %}</a></li>
             <li><a class="dropdown-item ps-4" href="/metadata/twomass/psc">psc</a></li>
-            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
             <li><a class="dropdown-item fw-semibold" href="/metadata/mpc_sbn">{% trans "MPC SBN" %}</a></li>
             <li><a class="dropdown-item ps-4" href="/metadata/mpc_sbn/obs_sbn/">mpc_sbn.obs_sbn</a></li>
             <li><a class="dropdown-item ps-4" href="/metadata/mpc_sbn/mpc_orbits/">mpc_sbn.mpc_orbits</a></li>
             <li><a class="dropdown-item ps-4" href="/metadata/mpc_sbn/comet_names/">mpc_sbn.comet_names</a></li>
-            <li><a class="dropdown-item ps-4" href="/metadata/mpc_sbn/current_identifications/">mpc_sbn.current_identifications</a></li>
-            <li><a class="dropdown-item ps-4" href="/metadata/mpc_sbn/minor_planet_names/">mpc_sbn.minor_planet_names</a></li>
-            <li><a class="dropdown-item ps-4" href="/metadata/mpc_sbn/numbered_identifications/">mpc_sbn.numbered_identifications</a></li>
+            <li><a class="dropdown-item ps-4"
+                href="/metadata/mpc_sbn/current_identifications/">mpc_sbn.current_identifications</a></li>
+            <li><a class="dropdown-item ps-4"
+                href="/metadata/mpc_sbn/minor_planet_names/">mpc_sbn.minor_planet_names</a></li>
+            <li><a class="dropdown-item ps-4"
+                href="/metadata/mpc_sbn/numbered_identifications/">mpc_sbn.numbered_identifications</a></li>
             <li><a class="dropdown-item ps-4" href="/metadata/mpc_sbn/obscodes/">mpc_sbn.obscodes</a></li>
             <li><a class="dropdown-item ps-4" href="/metadata/mpc_sbn/primary_objects/">mpc_sbn.primary_objects</a></li>
           </ul>
@@ -74,13 +71,22 @@
       </ul>
       <ul class="navbar-nav me-lg-2">
         <li class="nav-item"><a class="nav-link" href="{% url 'query:default' %}">{% trans "Query" %}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ settings.TARGET_VIEWER_URL }}" target="_blank" rel="noopener">{% trans "Target Viewer" %}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ settings.LSP_URL }}" target="_blank" rel="noopener">{% trans "LSP" %}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ settings.IDAC_URL }}" target="_blank" rel="noopener">{% trans "IDAC" %}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ settings.TARGET_VIEWER_URL }}" target="_blank"
+            rel="noopener">{% trans "Target Viewer" %}</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ settings.LSP_URL }}" target="_blank" rel="noopener">{% trans "LSP" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ settings.IDAC_URL }}" target="_blank" rel="noopener">{% trans "IDAC" %}</a>
+        </li>
       </ul>
       <ul class="navbar-nav ms-lg-auto align-items-lg-center">
-        <li class="nav-item"><a class="nav-link" href="https://data.linea.org.br/" target="_blank" rel="noopener">{% trans "DATA" %}</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://docs.linea.org.br/" target="_blank" rel="noopener">{% trans "DOCS" %}</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://data.linea.org.br/" target="_blank" rel="noopener">{% trans "DATA" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://docs.linea.org.br/" target="_blank" rel="noopener">{% trans "DOCS" %}</a>
+        </li>
         {% if user.is_authenticated %}
         {% has_perm "daiquiri_auth.view_profile" request.user as can_view_view_profile %}
         {% has_perm "daiquiri_contact.view_contactmessages" request.user as can_view_contactmessages %}
@@ -88,12 +94,7 @@
         {% has_perm "daiquiri_query.view_examples" request.user as can_view_examples %}
         {% if can_view_view_profile or can_view_contactmessages or can_view_databases or can_view_examples %}
         <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="linea-dd-mgmt"
-            role="button"
-            data-bs-toggle="dropdown"
+          <a class="nav-link dropdown-toggle" href="#" id="linea-dd-mgmt" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">{% trans "Management" %}</a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="linea-dd-mgmt">
             {% if can_view_view_profile %}
@@ -103,7 +104,8 @@
             <li><a class="dropdown-item" href="{% url 'contact:messages' %}">{% trans "Contact messages" %}</a></li>
             {% endif %}
             {% if can_view_databases %}
-            <li><a class="dropdown-item" href="{% url 'metadata:management' %}">{% trans "Metadata management" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'metadata:management' %}">{% trans "Metadata management" %}</a>
+            </li>
             {% endif %}
             {% if can_view_examples %}
             <li><a class="dropdown-item" href="{% url 'query:default' %}examples/">{% trans "Query examples" %}</a></li>
@@ -115,16 +117,13 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
         {% endif %}
         <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="linea-dd-user"
-            role="button"
-            data-bs-toggle="dropdown"
+          <a class="nav-link dropdown-toggle" href="#" id="linea-dd-user" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">{{ user.username }}</a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="linea-dd-user">
             <li><a class="dropdown-item" href="{% url 'account_token' %}">{% trans "API token" %}</a></li>
-            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
             <li>{% include "account/logout_form.html" %}</li>
           </ul>
         </li>

@@ -1,0 +1,48 @@
+{% extends 'services/page_base.html' %}
+
+{% block services_content %}
+<h2 class="mb-3">Query interface – explained</h2>
+<p class="lead">Here you will find a detailed explanation to the query interface.</p>
+
+<h3 class="mt-5">Submit SQL Query</h3>
+<p>LIneA Services host the data from astronomical surveys data releases in a PostgreSQL database. The data can be
+    queried directly using the Astronomical Data Query Language (ADQL) or the Postgres flavour of SQL (Structured Query
+    Language).</p>
+
+<h3 class="mt-4">Submit a new job</h3>
+<ol>
+    <li>Open the <a href="{% url 'query:default' %}">Query interface</a> in a browser window.</li>
+    <li>Insert your SQL query in the text area SQL query or choose an example query from the Examples tab in the
+        top-right of the interface (just double click on one of them) above the text area.</li>
+    <li>Choose either ADQL or PostgreSQL. Choose one of the Queues</li>
+    <li>Click Submit new SQL Query button to submit your job. The job is submitted into one of the job Queue: 30 seconds
+        for a short test query, 5 minute for longer ones, and for long running queries, 2h.</li>
+</ol>
+
+<h3 class="mt-4">Database browser</h3>
+<p>Above the text area, you find the Schema and the Columns browser. It is useful to find out which columns exist for
+    which table in which data release. You will find your user database and your uploaded tables in the browser. You can
+    join tables from your private database with each other or the datasets.</p>
+
+<h3 class="mt-4">Results of a query job</h3>
+<p>You can view your results by clicking on the table name for your job in the Job list and then choosing the Results
+    table tab.</p>
+<p>Back in the Job overview tab, you can review again which query was executed, its Job parameters such as time and size
+    of the resulting tables etc.</p>
+<p>It is also possible to Rename the job’s result table or run id or to Archive the job completely using the links just
+    below the Job parameters.</p>
+<p>The Plot tab provides a very simple plot-interface for numeric columns.</p>
+<p>The results can be downloaded via the Download tab. Download provides various formats. Currently, CSV or IVOA VOTable
+    XML files are available.</p>
+
+<h3 class="mt-4">Job list</h3>
+<p>After a successful job submission, your job will appear in the Job list bar on the left. Its name corresponds to the
+    result-table name, which is either the current time stamp or a name that you have provided in the Table name field.
+</p>
+
+<h3 class="mt-4">Private cross-matching and your query archive</h3>
+<p>The Query interface allows to upload your own VOTables into your private user database at LIneA Services.</p>
+<p>The uploaded tables can be queried like any other database using SELECT statements. You can also browse the available
+    tables and their columns using the “Database Browser” below the Query Form or referring to UPLOAD_TABLES. where is
+    the name of the table to provided during upload.</p>
+{% endblock %}

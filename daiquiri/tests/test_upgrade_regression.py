@@ -71,6 +71,11 @@ class UrlRegressionTest(SimpleTestCase):
             "/admin/",
             "/wagtail/",
             "/cms/",
+            "/cms/services/",
+            "/cms/services/query-interface/",
+            "/cms/services/direct-download/",
+            "/cms/services/scripted-access/",
+            "/cms/services/adql-postgresql/",
         ]:
             resolve(path)
 
@@ -93,6 +98,23 @@ class LineaAccountPagesTest(TestCase):
                 self.assertIn(
                     response.status_code,
                     (200, 302),
+                    msg=f"{path} retornou {response.status_code}",
+                )
+
+    def test_paginas_services_sem_wagtail_respondem(self):
+        client = Client()
+        for path in (
+            "/cms/services/",
+            "/cms/services/query-interface/",
+            "/cms/services/direct-download/",
+            "/cms/services/scripted-access/",
+            "/cms/services/adql-postgresql/",
+        ):
+            with self.subTest(path=path):
+                response = client.get(path)
+                self.assertEqual(
+                    response.status_code,
+                    200,
                     msg=f"{path} retornou {response.status_code}",
                 )
 

@@ -1,0 +1,27 @@
+{% extends 'services/page_base.html' %}
+
+{% block services_content %}
+<h3>Download the results of a request</h3>
+<p>Please use the <a href="{% url 'query:default' %}">Query interface</a> to submit your search. All result tables can
+    be downloaded in different formats, including CSV as listed on the Download tab of the Query interface.</p>
+<p><strong>Download formats</strong></p>
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td width="180px;">Comma-separated Values</td>
+            <td>A text file with a line for each row of the table. The fields are delimited by a comma and enclosed by
+                double quotes. Use this option for a later import into a spreadsheet application or a custom script. Use
+                this option if you are unsure what to use.</td>
+        </tr>
+        <tr>
+            <td>IVOA VOTable XML file</td>
+            <td>A XML file using the IVOA VOTable format. Use this option if you intend to use VO compatible software to
+                further process the data.</td>
+        </tr>
+        <tr>
+            <td>FITS File</td>
+            <td>Standard format for astronomical tables.</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
