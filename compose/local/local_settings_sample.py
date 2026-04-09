@@ -1,6 +1,15 @@
 # A list of strings representing the host/domain names that this Django site can serve.
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1", "*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.linea.org.br",
+]
+
+TARGET_VIEWER_URL = "https://targetviewer-dev.linea.org.br/"
+SCIENCE_SERVER_URL = "https://scienceserver-dev.linea.org.br/"
+LSP_URL = "https://scienceplatform-dev.linea.org.br/lsp"
+IDAC_URL = "https://scienceplatform-dev.linea.org.br/idac"
+
 QUERY_DROPDOWNS = [
     {"key": "schemas", "label": "Database"},
     {"key": "columns", "label": "Columns"},
@@ -82,7 +91,7 @@ QUERY_QUOTA = {
 # daiquiri.query.settings
 # Sets the timeout for syncronous (TAP) queries in seconds.
 # Default: 5
-QUERY_SYNC_TIMEOUT = 120
+QUERY_SYNC_TIMEOUT = 300
 
 # daiquiri.query.settings
 # Set the different queue, which can be selected by the users.
