@@ -1,0 +1,28 @@
+:root {
+    --daiquiri-blue: #0f7db0;
+    --daiquiri-blue-rgb: 15, 125, 176;
+    --daiquiri-dark-blue: #154c79;
+    --daiquiri-dark-blue-rgb: 21, 76, 121;
+
+    --bs-link-color: var(--daiquiri-blue);
+    --bs-link-color-rgb: var(--daiquiri-blue-rgb);
+
+    --bs-primary-bg: var(--daiquiri-blue);
+    --bs-primary-bg-rgb: var(--daiquiri-blue-rgb);
+    --bs-primary: var(--daiquiri-blue);
+    --bs-primary-rgb: var(--daiquiri-blue-rgb);
+
+    --bs-navbar-color: var(--bs-link-color-rgb);
+
+    --bs-dark-rgb: 0, 0, 0;
+
+    .btn-primary {
+        --bs-btn-bg: var(--bs-primary-bg);
+        --bs-btn-border-color: var(--bs-primary-bg);
+        --bs-btn-hover-bg: var(--daiquiri-dark-blue);
+        --bs-btn-hover-border-color: var(--daiquiri-dark-blue);
+        --bs-btn-active-bg: var(--daiquiri-dark-blue);
+        --bs-btn-active-border-color: var(--daiquiri-dark-blue);
+    }
+
+}

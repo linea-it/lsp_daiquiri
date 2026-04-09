@@ -2,7 +2,7 @@
 ARG BUILD_ENVIRONMENT=local
 
 # FROM python:3.9.19-slim-bookworm AS base
-FROM python:3.11-slim-bookworm AS base
+FROM python:3.13-slim-bookworm AS base
 
 ARG BUILD_ENVIRONMENT
 ARG USERNAME=daiquiri
@@ -45,11 +45,34 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends postgresql-client-18 \
     && rm -rf /var/lib/apt/lists/*
 
+# Basic Settings necessary for run download_vendor_files during build process
+# NÃO ALTERAR os paths utilizar os volumes no docker-compose para indicar os diretórios.
+ENV LOG_DIR=/var/log/daiquiri/
+ENV ARCHIVE_BASE_PATH=/data/files
+ENV ARCHIVE_DOWNLOAD_DIR=/data/download
+ENV FILES_BASE_PATH=/data/download
+ENV FILES_BASE_URL=/download
+ENV QUERY_DOWNLOAD_DIR=/data/download
+ENV QUERY_UPLOAD_DIR=/data/upload
+ENV ARCHIVE_BASE_PATH=/data/download
+ENV ARCHIVE_DOWNLOAD_DIR=/data/download
+
+
+RUN groupadd --gid ${USER_GID} ${USERNAME} \
+    && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
+    && mkdir -p /app /data /celery /var/run/celery /var/log/daiquiri /workspaces \
+    && chown -R ${USER_UID}:${USER_GID} /app /data /celery /var/run/celery /var/log/daiquiri /workspaces \
+    && chmod -R g+w /app /data /celery /var/run/celery /var/log/daiquiri /workspaces
+
 # Install python packages
 # Create Python Dependency and Sub-Dependency.
-COPY ./requirements /tmp/pip-tmp/
-RUN pip install --upgrade pip "setuptools<71" wheel  && \
-    pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/$BUILD_ENVIRONMENT.txt \
+RUN pip install --upgrade pip setuptools wheel  && \
+    pip --disable-pip-version-check --no-cache-dir install \
+    django-daiquiri==1.3.6 \
+    djangosaml2==1.9.3 \
+    flower \
+    uWSGI==2.0.31 \
+    psycopg \
     && rm -rf /tmp/pip-tmp
 
 FROM base AS daiquiri-local
@@ -68,51 +91,62 @@ RUN wget -qO act.tar.gz https://github.com/nektos/act/releases/latest/download/a
     && act --version \
     && rm -rf act.tar.gz
 
-FROM base AS daiquiri-production
+# Install Oh My Zsh
+RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" --unattended
 
-
-FROM daiquiri-$BUILD_ENVIRONMENT
-
-ENV PATH="/home/daiquiri/.local/bin:$PATH"
-
-# Create the non-root user up front
-RUN groupadd --gid ${USER_GID} $USERNAME \
-    && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
-    && mkdir -p /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces \
-    && chown -R ${USER_UID}:${USER_GID} /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces \
-    && chmod -R g+w /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces
-
-# Copy app files into container
 WORKDIR /app
-# Daiquiri APP
-COPY ./daiquiri /app
-# Django SAML Settings and Dependencies
-COPY ./attribute-maps /app/attribute-maps
-COPY ./certificates /app/certificates
-COPY ./metadatas /app/metadatas
-
-# # # Database Fixtures Initial Data
-# COPY --chmod=0765 ./database_sample/initial_data.json /app/fixtures/initial_data.json
-# COPY --chmod=0765 ./database_sample/query_samples.json /app/fixtures/query_samples.json
-
-# Basic Settings necessary for run download_vendor_files during build process
-# NÃO ALTERAR os paths utilizar os volumes no docker-compose para indicar os diretórios.
-ENV LOG_DIR=/var/log/daiquiri/
-ENV FILES_BASE_PATH=/data/download
-ENV FILES_BASE_URL=/download
-ENV QUERY_DOWNLOAD_DIR=/data/download
-ENV QUERY_UPLOAD_DIR=/data/upload
-ENV ARCHIVE_BASE_PATH=/data/download
-ENV ARCHIVE_DOWNLOAD_DIR=/data/download
 
 COPY --chmod=0755 ./compose/local/daiquiri/entrypoint.sh /entrypoint.sh
 COPY --chmod=0755 ./compose/local/daiquiri/start.sh /start.sh
 
-
-USER $USERNAME
-
-
-# Install Oh My Zsh
-RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" --unattended
-
 ENTRYPOINT [ "/entrypoint.sh" ]
+
+
+# FROM base AS daiquiri-production
+
+
+# FROM daiquiri-$BUILD_ENVIRONMENT
+
+# ENV PATH="/home/daiquiri/.local/bin:$PATH"
+
+# # Create the non-root user up front
+# RUN groupadd --gid ${USER_GID} $USERNAME \
+#     && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
+#     && mkdir -p /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces \
+#     && chown -R ${USER_UID}:${USER_GID} /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces \
+#     && chmod -R g+w /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces
+
+# # Copy app files into container
+# WORKDIR /app
+# # Daiquiri APP
+# COPY ./daiquiri /app
+# # Django SAML Settings and Dependencies
+# COPY ./attribute-maps /app/attribute-maps
+# COPY ./certificates /app/certificates
+# COPY ./metadatas /app/metadatas
+
+# # # # Database Fixtures Initial Data
+# # COPY --chmod=0765 ./database_sample/initial_data.json /app/fixtures/initial_data.json
+# # COPY --chmod=0765 ./database_sample/query_samples.json /app/fixtures/query_samples.json
+
+# # Basic Settings necessary for run download_vendor_files during build process
+# # NÃO ALTERAR os paths utilizar os volumes no docker-compose para indicar os diretórios.
+# ENV LOG_DIR=/var/log/daiquiri/
+# ENV FILES_BASE_PATH=/data/download
+# ENV FILES_BASE_URL=/download
+# ENV QUERY_DOWNLOAD_DIR=/data/download
+# ENV QUERY_UPLOAD_DIR=/data/upload
+# ENV ARCHIVE_BASE_PATH=/data/download
+# ENV ARCHIVE_DOWNLOAD_DIR=/data/download
+
+# COPY --chmod=0755 ./compose/local/daiquiri/entrypoint.sh /entrypoint.sh
+# COPY --chmod=0755 ./compose/local/daiquiri/start.sh /start.sh
+
+
+# USER $USERNAME
+
+
+# # Install Oh My Zsh
+# RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" --unattended
+
+# ENTRYPOINT [ "/entrypoint.sh" ]

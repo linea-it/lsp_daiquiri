@@ -1,0 +1,56 @@
+{% extends 'core/page.html' %}
+{% load static %}
+{% load i18n %}
+{% load core_tags %}
+
+{% block page %}
+<div class="home">
+    <h1>Daiquiri</h1>
+
+    <h2>A framework for the publication of scientific databases</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <img style="margin-top: 5px;" src="{% static 'core/img/daiquiri.jpg' %}" />
+        </div>
+        <div class="col-md-8">
+            <p>
+            The Leibniz Institute for Astrophysics Potsdam (AIP) has developed significant expertise in long-term operation and the curation of astronomical data archives.
+            </p>
+            <p>
+            AIP is one of the partner data centers for the ESA Gaia mission - <a href="https://gaia.aip.de/">GAIA@AIP</a>.
+            </p>
+            <p>
+            The range of data archives is huge: from digitized photographic plates (<a href="https://www.plate-archive.org/">APPLAUSE</a> ) to spectroscopic and photometric data (<a href="https://stella.aip.de/">STELLA</a>, <a href="https://www.rave-survey.aip.de/rave/">RAVE</a>, the future <a href="http://www.4most.eu/">4MOST</a> archive, <a href="https://musewide.aip.de/">MUSE-Wide</a>, <a href="https://cars.aip.de/">CARS</a>), solar data (GREGOR, <a href="https://coseecat.aip.de/">CoSee-Cat</a>), X-ray satellite data (<a href="https://xmmssc.aip.de">XMMSSC</a>) to pure simulation data (<a href="https://www.cosmosim.org">CosmoSim</a>). 
+            </p>
+            <p>
+            This diversity is made possible by Daiquiri, a web-based platform developed at the institute. It supports standardized protocols from the International Virtual Observatory Alliance (IVOA) for data access and is available as open-source under the Apache2 license on <a href="https://github.com/django-daiquiri/">Github Django-Daiquiri</a>.
+        </p>
+        </div>
+         <div class="col-md-12">
+            <p>
+                This page itself is already made using Daiquiri. You can explore the different features
+                and perform queries on a simple dataset. In addition you find all the information
+                needed to host your own Daiquiri application for <i>your</i> data.
+            </p>
+            <p><b>
+                
+                Download <a href="https://github.com/django-daiquiri/">Django-Daiquiri</a> at Github!
+             </b></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+
+{% if not user.is_authenticated %}
+<div class="home">
+    <h2>Login</h2>
+
+    {% include 'account/login_form.html' %}
+</div>
+{% endif %}
+
+{% endblock %}

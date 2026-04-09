@@ -1,9 +1,9 @@
-django-daiquiri==0.5.1 # https://pypi.org/project/django-daiquiri/
+django-daiquiri==1.3.6 # https://pypi.org/project/django-daiquiri/
 djangosaml2==1.9.3 # https://pypi.org/project/djangosaml2/
 django-shibboleth-remoteuser==0.12 # https://pypi.org/project/django-shibboleth-remoteuser/
 # celery>=5.3,<6 # https://pypi.org/project/celery/
 flower # https://pypi.org/project/flower/
-uWSGI==2.0.21 # https://pypi.org/project/uWSGI/
+uWSGI==2.0.31 # https://pypi.org/project/uWSGI/
 # psycopg2-binary==2.9.9 # https://pypi.org/project/psycopg2-binary/
 psycopg[binary]>=3.1
 wagtail==6.0.5 # https://pypi.org/project/wagtail/

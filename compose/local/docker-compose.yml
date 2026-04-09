@@ -1,14 +1,11 @@
-volumes:
-  postgres-data:
-  rabbitmq-data:
-
-
 services:
   backend: &daiquiri
     image: linea/lsp_daiquiri
     build:
       context: .
       dockerfile: ./compose/local/daiquiri/Dockerfile
+      args:
+        - BUILD_ENVIRONMENT=local
     user: "1000:1000"
     env_file:
       - .env
@@ -32,7 +29,14 @@ services:
     command: /start.sh
     depends_on:
       - database
+      - catalog-database
       - rabbit
+
+  # worker:
+  #   <<: *daiquiri
+  #   command: python manage.py workers start && sleep infinity
+  #   depends_on:
+  #     - backend
 
   database:
     build:
@@ -41,11 +45,25 @@ services:
     volumes:
       - ./compose/local/postgres/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
       - ./database_sample:/data
-      - postgres-data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
     env_file:
       - .env
     ports:
       - 5432:5432
+
+  catalog-database:
+    build:
+      context: .
+      dockerfile: ./compose/local/postgres_18/Dockerfile
+    volumes:
+      - ./compose/local/postgres_18/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
+      - ./database_sample:/data
+      - ./postgres-catalog-data:/var/lib/postgresql/18/docker
+    env_file:
+      - .env
+    ports:
+      - 5433:5432
+
 
   # Message-Broker Software RabbitMQ
   rabbit:
@@ -53,7 +71,7 @@ services:
     env_file:
       - .env
     volumes:
-      - rabbitmq-data:/var/lib/rabbitmq/
+      - ./rabbitmq-data:/var/lib/rabbitmq/
 
   celery_flower: &celery_flower
     <<: *daiquiri
@@ -72,7 +90,6 @@ services:
       # Diretório onde o backend manipula arquivos, e que deve ficar acessivel ao servidor web.
       - ./data/download:/data/download
       # Diretório de logs do servidor web.
-      - ./logs:/var/log/nginx
+      - ./logs/nginx:/var/log/nginx
     depends_on:
-      - daiquiri
-  
+      - backend

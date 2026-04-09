@@ -1,13 +1,20 @@
-# include settimgs from daiquiri
-from daiquiri.auth.settings import *
-from daiquiri.conesearch.settings import *
+# include settings from daiquiri
+# fmt: off
 from daiquiri.core.settings.daiquiri import *
 from daiquiri.core.settings.django import *
 from daiquiri.core.settings.logging import *
-from daiquiri.core.settings.vendor import *
+# fmt: on
+
+from daiquiri.auth.settings import *
+from daiquiri.conesearch.settings import *
+from daiquiri.contact.settings import *
 from daiquiri.cutout.settings import *
 from daiquiri.datalink.settings import *
 from daiquiri.files.settings import *
+try:
+    from daiquiri.jobs.settings import *
+except ImportError:
+    pass
 from daiquiri.metadata.settings import *
 from daiquiri.oai.settings import *
 from daiquiri.query.settings import *
@@ -25,10 +32,5 @@ except ImportError:
 # override settings from local.py (which is not checked in to git)
 try:
     from .local import *
-except ImportError:
-    pass
-
-try:
-    from .logging import *
 except ImportError:
     pass

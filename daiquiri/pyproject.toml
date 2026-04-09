@@ -1,4 +1,22 @@
-[tool.isort]
-profile = "black"
-src_paths = ["isort", "test"]
-skip = ["migrations"]
+[project]
+name = "daiquiri-app"
+version = "1.2.0"
+description = "Daiquiri Application"
+authors = [
+    {name = "Anna Admin", email = "admin@example.de"},
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+daiquiri = [
+  "django-daiquiri[postgres]~=1.2.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["theme"]
+exclude = []
+
+
