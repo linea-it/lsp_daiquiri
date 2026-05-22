@@ -1,0 +1,14 @@
+{% load static i18n %}
+<div class="linea-account-header well well-sm" style="margin-bottom: 1.5rem; background: #f8f9fb; border-color: #e0e4ec;">
+  <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+    <a href="{% url 'home' %}" style="display: inline-block;">
+      <img src="{% static 'daiquiri/imgs/linea-symbol.svg' %}" width="48" height="48" alt="LIneA" />
+    </a>
+    <div>
+      <strong style="color: #283663; font-size: 1.1em;">LIneA User Query</strong>
+      <p class="text-muted small" style="margin: 0;">
+        {% trans "Science Platform — data access and query services" %}
+      </p>
+    </div>
+  </div>
+</div>

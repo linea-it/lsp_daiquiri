@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load core_tags %}
+
+{% block content %}
+<main class="container" style="padding-top: 96px; padding-bottom: 48px;">
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-11">
+            <div class="mb-4">
+                <p class="text-uppercase text-muted mb-2" style="letter-spacing: 0.08em; font-size: 0.8rem;">Services
+                </p>
+                <h1 class="h3 mb-0">{{ page_title }}</h1>
+            </div>
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4 p-lg-5">
+                    {% block services_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

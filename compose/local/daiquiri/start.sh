@@ -32,18 +32,10 @@ rm -rf /tmp/*.pid
 # e executa o comando celery worker para cada uma delas.
 python manage.py workers start
 
-# Para produção é necessário usar o uWSGI!
-# uWSGI para servir o app e ter compatibilidade com Shibboleth
-# https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html
-# TODO: Em produção não é recomendado o auto reload. utilizar uma variavel de ambiente para ligar ou desligar esta opção.
-echo "${YELLOW}Running Django with uWSGI.${NO_COLOR}"
-uwsgi \
-    --socket 0.0.0.0:8000 \
-    --wsgi-file /app/config/wsgi.py \
-    --module config.wsgi:application \
-    --buffer-size=32768 \
-    --processes=${DJANGO_UWSGI_PROCESSES:-1} \
-    --threads=${DJANGO_UWSGI_THREADS:-1} \
-    --http-timeout=180 \
-    --py-autoreload=${DJANGO_UWSGI_AUTORELEAD:-1} \
-    --static-map /daiquiri_static=/app/static_root
+echo "${YELLOW}Running Django with Gunicorn.${NO_COLOR}"
+gunicorn config.wsgi:application \
+    --bind 0.0.0.0:8000 \
+    --workers ${DJANGO_GUNICORN_WORKERS:-2} \
+    --threads ${DJANGO_GUNICORN_THREADS:-2} \
+    --timeout 180 \
+    --reload

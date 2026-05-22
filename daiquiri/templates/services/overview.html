@@ -1,0 +1,14 @@
+{% extends 'services/page_base.html' %}
+
+{% block services_content %}
+<h2 class="mb-3">Services at LIneA</h2>
+<p class="lead">Overview of what is available in LIneA User Query and links to the service documentation pages.</p>
+
+<h3 class="mt-5 mb-3">Web Data Access</h3>
+<ul>
+    <li><a href="{% url 'services:query_interface' %}">Query interface</a></li>
+    <li><a href="{% url 'services:direct_download' %}">Download</a></li>
+    <li><a href="{% url 'services:scripted_access' %}">Scripted access</a></li>
+    <li><a href="{% url 'services:adql_postgresql' %}">ADQL, PostgreSQL</a></li>
+</ul>
+{% endblock %}

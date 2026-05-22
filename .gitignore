@@ -29,6 +29,7 @@ docker-compose.yml
 local_settings.py
 nginx-proxy.conf
 .secrets
+.claude/
 rabbitmq-data
 postgres-data
 postgres-catalog-data

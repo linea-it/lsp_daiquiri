@@ -31,6 +31,8 @@ docker compose up backend
 ```
 CRTL+C
 
+Observação: o backend roda com Gunicorn na imagem atualizada.
+
 Executar os container em background para proceguir com a instalação
 ```bash
 docker compose up -d

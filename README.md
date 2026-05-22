@@ -1,6 +1,6 @@
 # LIneA User Query (Development)
 
-This application is meant to be used with the Django version of the [Daiquiri Framework](https://github.com/aipescience/django-daiquiri).
+This application is meant to be used with the Django version of the [Daiquiri Framework](https://github.com/django-daiquiri/daiquiri).
 
 >This project is currently in an early stage of development and by no means production ready.
 
@@ -10,6 +10,7 @@ This application is meant to be used with the Django version of the [Daiquiri Fr
 - git version 2.39.3
 - Vscode + devcontainer extension
 - Acesso ao banco de dados desdb4 - **prod_gavo**
+- Python 3.13 (dentro da imagem Docker do backend)
 
 ## Docs
 
@@ -56,7 +57,7 @@ docker compose exec backend python manage.py loaddata query_samples.json
 ```
 
 
-### Register Tables 
+### Register Tables
 
 First, go to the `management` menu → `metadata management` → `create a new schema entry`, and register the schema and table via the interface.
 
@@ -67,4 +68,10 @@ The schema fixture is located at: `daiquiri/fixtures/des_dr2.yml`
 docker compose exec backend python manage.py update_table_metadata des_dr2
 ```
 
+### Testes de regressão do upgrade
 
+Após subir os serviços, rode:
+
+```bash
+docker compose exec backend python manage.py test tests.test_upgrade_regression -v 2
+```

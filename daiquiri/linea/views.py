@@ -5,19 +5,19 @@ from django.shortcuts import render
 
 
 def linea_login(request):
-    """View function for home page of site."""
+    """Página de login LIneA / Rubin (escolha do IdP)."""
 
     context = {
         "LINEA_LOGIN_URL": settings.LINEA_LOGIN_URL,
         "RUBIN_LOGIN_URL": settings.RUBIN_LOGIN_URL,
     }
 
-    # Render the HTML template index.html with the data in the context variable
+    # Renderiza o template com o contexto (URLs de login por IdP)
     return render(request, "core/linea_login.html", context=context)
 
 
 def saml2_template_failure(request, exception=None, status=403, **kwargs):
-    """Renders a simple template with an error message."""
+    """Renderiza template simples com mensagem de erro SAML2."""
     logger = logging.getLogger("djangosaml2")
     logger.info("------------------------------------------")
     logger.info("saml2_template_failure()")
@@ -34,7 +34,7 @@ def saml2_template_failure(request, exception=None, status=403, **kwargs):
     logger.info(f"needs_registration: {needs_registration}")
     logger.info(f"user_status: {user_status}")
 
-    # Se o usuario não possui o uid do linea, redireciona para a pagina de registro
+    # Se o usuário não tem uid LIneA, encaminha para a página de registro
     if needs_registration:
 
         if idp_name == "rubin_oidc":
@@ -54,7 +54,7 @@ def saml2_template_failure(request, exception=None, status=403, **kwargs):
             status=status,
         )
 
-    # Se o usuario ainda não tiver com o status de aprovado, redireciona para a pagina de aguardando aprovação
+    # Se o cadastro ainda não foi aprovado, encaminha para a página de aguardando aprovação
     if user_status in ["PendingApproval", "Pending"]:
         logger.info(
             f"User status is {user_status}. Redirecting to waiting aproval error page."
