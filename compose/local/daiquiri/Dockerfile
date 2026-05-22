@@ -78,18 +78,18 @@ ENV PATH="/home/daiquiri/.local/bin:$PATH"
 # Create the non-root user up front
 RUN groupadd --gid ${USER_GID} $USERNAME \
     && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
-    && mkdir -p /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces \
+    && mkdir -p /app /app/static_root/daiquiri /data /celery /var/run/celery /var/log/daiquiri/ /workspaces \
     && chown -R ${USER_UID}:${USER_GID} /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces \
     && chmod -R g+w /app /data /celery /var/run/celery /var/log/daiquiri/ /workspaces
 
-# Copy app files into container
+# # Copy app files into container
 WORKDIR /app
 # Daiquiri APP
-COPY ./daiquiri /app
+COPY --chown=${USER_UID}:${USER_GID} ./daiquiri /app
 # Django SAML Settings and Dependencies
-COPY ./attribute-maps /app/attribute-maps
-COPY ./certificates /app/certificates
-COPY ./metadatas /app/metadatas
+COPY  ./attribute-maps /app/attribute-maps
+COPY  ./certificates /app/certificates
+COPY  ./metadatas /app/metadatas
 
 # # # Database Fixtures Initial Data
 # COPY --chmod=0765 ./database_sample/initial_data.json /app/fixtures/initial_data.json

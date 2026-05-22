@@ -207,7 +207,9 @@ SENDFILE_URL = "/download"
 # Diretório dos arquivos PID do Celery
 # Não alterar: o caminho é usado pelo script start.sh
 CELERY_PIDFILE_PATH = "/tmp"
-
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_BROKER_HEARTBEAT = 30
+BROKER_POOL_LIMIT = None
 
 SERVE_DOWNLOAD_DIR = "/data/download"
 

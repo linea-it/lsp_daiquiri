@@ -1,4 +1,4 @@
-django-daiquiri==1.3.6 # https://pypi.org/project/django-daiquiri/
+django-daiquiri==1.3.7 # https://pypi.org/project/django-daiquiri/
 djangosaml2>=1.12.0 # https://pypi.org/project/djangosaml2/
 # django-shibboleth-remoteuser==0.12 # https://pypi.org/project/django-shibboleth-remoteuser/
 flower # https://pypi.org/project/flower/
