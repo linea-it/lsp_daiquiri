@@ -61,12 +61,12 @@ RUN mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packag
     && apt update \
     && apt install gh -y
 
-# Install ACT
-# https://lindevs.com/install-act-on-ubuntu
-RUN wget -qO act.tar.gz https://github.com/nektos/act/releases/latest/download/act_Linux_x86_64.tar.gz \
-    && tar xf act.tar.gz -C /usr/local/bin act \
-    && act --version \
-    && rm -rf act.tar.gz
+# # Install ACT
+# # https://lindevs.com/install-act-on-ubuntu
+# RUN wget -qO act.tar.gz https://github.com/nektos/act/releases/latest/download/act_Linux_x86_64.tar.gz \
+#     && tar xf act.tar.gz -C /usr/local/bin act \
+#     && act --version \
+#     && rm -rf act.tar.gz
 
 FROM base AS daiquiri-production
 
