@@ -6,10 +6,20 @@ ALLOWED_HOSTS = [
     "scienceserver.linea.org.br",
 ]
 
-TARGET_VIEWER_URL = "https://scienceserver.linea.org.br/target/"
+# Necessário para que Django construa URLs absolutas com https://
+# quando está atrás de um proxy reverso (nginx) que termina o SSL.
+# O nginx deve passar: proxy_set_header X-Forwarded-Proto $scheme;
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.linea.org.br",
+]
+
+TARGET_VIEWER_URL = "https://targetviewer.linea.org.br/"
 SCIENCE_SERVER_URL = "https://scienceserver.linea.org.br/"
-LSP_URL = "https://scienceplatform.linea.org.br/lsp"
-IDAC_URL = "https://scienceplatform.linea.org.br/idac"
+LSP_URL = "https://scienceplatform.linea.org.br/lsp/"
+IDAC_URL = "https://scienceplatform.linea.org.br/idac/"
 
 QUERY_QUEUES = [
     {
@@ -49,9 +59,9 @@ QUERY_ANONYMOUS = True
 # The quota need to be set for the anonymous user as well as regular loggen in users (user).
 # Additionally, users or groups can be asigned individual quotas, e.g.:
 QUERY_QUOTA = {
-    "anonymous": "1Gb",
-    "user": "10000Mb",
-    "users": {"admin": "1000Gb"},
+    "anonymous": "10Gb",
+    "user": "2Gb",
+    "users": {"admin": "2Gb"},
     "groups": {"collab": "100Gb"},
 }
 

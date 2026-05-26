@@ -5,11 +5,16 @@ import pyvo
 import requests
 from astropy.table import Table
 
-# Endpoint TAP do LIneA
+# Production Environment
 url = "https://userquery.linea.org.br/tap"
-# Seu token de API (obtenha em User Query → API Token)
-token = "Token ................................"
+token = "Token ed6bb9a4ae928a6032a51e79dc6eb2a37d3318c6"
+
+# # Staging environment
+# url = "https://userquery-dev.linea.org.br/tap"
+# token = "Token 6b858d629028a1ba90c1f84c55579254f5278540"
+
 queue = "five_minutes"
+
 
 # Criar sessão autenticada
 session = requests.Session()

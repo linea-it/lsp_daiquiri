@@ -2,12 +2,14 @@ import pyvo
 import requests
 
 # Endpoint TAP do LIneA
+
+# Production Environment
 # url = "https://userquery.linea.org.br/tap"
-url = "http://localhost:8000/tap"
+# token = "Token ed6bb9a4ae928a6032a51e79dc6eb2a37d3318c6"
 
-
-# Seu token de API (obtenha em User Query → API Token)
-token = "Token ................................"
+# # Staging environment
+url = "https://userquery-dev.linea.org.br/tap"
+token = "Token 6b858d629028a1ba90c1f84c55579254f5278540"
 
 # Criar sessão autenticada
 session = requests.Session()

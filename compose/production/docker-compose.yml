@@ -1,38 +1,67 @@
+x-app-base: &app-base
+  image: linea/lsp_daiquiri:${IMAGE_TAG:-latest}
+  user: "1000:10006"
+  env_file:
+    - .env
+  volumes:
+    # Local Vars
+    - ./local_settings.py:/app/config/settings/local.py:ro
+    # Estáticos do collectstatic (Nginx serve /daiquiri_static/ a partir daqui)
+    - ./data/static_root:/app/static_root:rw
+    # Diretório de logs
+    - ./logs:/var/log/daiquiri
+    - ./logs:/var/log/celery
+    # Diretórios onde o backend pode manipular arquivos.
+    - ./data/files:/data/files
+    - ./data/download:/data/download
+    - ./data/upload:/data/upload
+    # Django SAML
+    - ./certificates:/app/certificates
+
+x-celery-worker: &celery-worker
+  <<: *app-base
+  #restart: unless-stopped
+  depends_on:
+    - backend
+
 services:
   backend: &daiquiri
-    image: linea/lsp_daiquiri:${IMAGE_TAG:-latest}
+    <<: *app-base
     command: /start.sh
-    user: "1000:10006"
-    env_file:
-      - .env
-    volumes:
-      # Local Vars
-      - ./local_settings.py:/app/config/settings/local.py:ro
-      # Diretório de logs
-      - ./logs:/var/log/daiquiri
-      - ./logs:/var/log/celery
-      # Estáticos do collectstatic (Nginx em produção serve /daiquiri_static/)
-      - ./data/static_root:/app/static_root
-      # Diretórios onde o backend pode manipular arquivos.
-      - ./data/files:/data/files
-      - ./data/download:/data/download
-      - ./data/upload:/data/upload
-      # Django SAML
-      - ./certificates:/app/certificates
     depends_on:
       rabbit:
         condition: service_healthy
 
+  celery_default:
+    <<: *celery-worker
+    command: celery -A config worker -Q default -c "4" -l INFO --logfile=/var/log/celery/app_default.log
+
+  celery_download: &daiquiri_celery_download
+    <<: *celery-worker
+    command: celery -A config worker -Q download -c "2" -l INFO --logfile=/var/log/celery/app_download.log
+
+  celery_query_default: &daiquiri_celery_default
+    <<: *celery-worker
+    command: celery -A config worker -Q query_default -c "4" -l INFO --logfile=/var/log/celery/app_query_default.log
+
+  celery_query_five_minutes: &daiquiri_celery_five_minutes
+    <<: *celery-worker
+    command: celery -A config worker -Q query_five_minutes -c "2" -l INFO --logfile=/var/log/celery/app_query_five_minutes.log
+
+  celery_query_two_hours: &daiquiri_celery_two_hours
+    <<: *celery-worker
+    command: celery -A config worker -Q query_two_hours -c "4" -l INFO --logfile=/var/log/celery/app_query_two_hours.log
+
   celery_flower: &daiquiri_celery_flower
-    <<: *daiquiri
+    <<: *celery-worker
     command: celery -A config flower --url-prefix=flower
-    depends_on:
-      - backend
 
   rabbit:
     image: rabbitmq:3-management
     env_file:
       - .env
+    volumes:
+      - ./data/rabbitmq:/var/lib/rabbitmq
     healthcheck:
       test: rabbitmq-diagnostics -q ping
       interval: 30s
