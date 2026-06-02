@@ -57,7 +57,7 @@ services:
     command: celery -A config flower --url-prefix=flower
 
   rabbit:
-    image: rabbitmq:3-management
+    image: rabbitmq:3.13-management
     env_file:
       - .env
     volumes:

@@ -1,0 +1,1934 @@
+- name: des_y6_gold
+  title: DES Y6 GOLD
+  description: ''
+  long_description: ''
+  attribution: ''
+  order: 1001
+  license: ''
+  doi: ''
+  related_identifiers: []
+  utype: ''
+  published: '2026-06-01'
+  updated: null
+  access_level: PUBLIC
+  metadata_access_level: PUBLIC
+  groups: []
+  tables:
+  - name: des_y6_gold
+    title: DES Y6 GOLD
+    description: ''
+    long_description: ''
+    attribution: ''
+    order: 5
+    license: ''
+    doi: ''
+    related_identifiers: []
+    utype: ''
+    published: '2026-06-01'
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    groups: []
+    columns:
+    - name: bdf_deblend_flags
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 0
+    - name: mask_flags
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 1
+    - name: fof_size
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 2
+    - name: psf_flux_flags_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 3
+    - name: imaflags_iso_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 4
+    - name: imaflags_iso_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 5
+    - name: imaflags_iso_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 6
+    - name: imaflags_iso_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 7
+    - name: psf_flux_flags_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 8
+    - name: imaflags_iso_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 9
+    - name: psf_flux_flags_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 10
+    - name: psf_flux_flags_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 11
+    - name: flags_footprint
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 12
+    - name: conc_flags
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 13
+    - name: bdf_ntry
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 14
+    - name: psf_flux_flags_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 15
+    - name: bdf_flags
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 16
+    - name: fitvd_flags
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 17
+    - name: flagstr
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 18
+    - name: ext_coadd
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 19
+    - name: ext_wavg
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 20
+    - name: ext_mash
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 21
+    - name: ext_fitvd
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 22
+    - name: ext_xgb
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 23
+    - name: nepochs_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 24
+    - name: nepochs_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 25
+    - name: nepochs_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 26
+    - name: nepochs_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 27
+    - name: nepochs_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 28
+    - name: s_extractor_flags_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 29
+    - name: s_extractor_flags_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 30
+    - name: s_extractor_flags_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 31
+    - name: s_extractor_flags_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 32
+    - name: s_extractor_flags_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 33
+    - name: coverfrac_grizy
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 34
+    - name: coverfrac_griz
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 35
+    - name: coverfrac_rizy
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 36
+    - name: coverfrac_riz
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 37
+    - name: dnf_nneighbors
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 38
+    - name: flags_gold
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 39
+    - name: flags_foreground
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 40
+    - name: niter_model_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 41
+    - name: niter_model_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 42
+    - name: niter_model_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 43
+    - name: niter_model_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 44
+    - name: niter_model_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 45
+    - name: hpix_32
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 46
+    - name: bdf_nfev
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 47
+    - name: hpix_64
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 48
+    - name: n_images_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 49
+    - name: n_images_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 50
+    - name: n_images_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 51
+    - name: pfw_attempt_id
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 52
+    - name: n_images_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 53
+    - name: n_images_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 54
+    - name: tilename
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 55
+    - name: a_fiducial_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 56
+    - name: a_fiducial_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 57
+    - name: a_fiducial_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 58
+    - name: a_fiducial_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 59
+    - name: ebv_sfd98
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 60
+    - name: a_fiducial_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 61
+    - name: parent_number
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 62
+    - name: object_number
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 63
+    - name: fof_id
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 64
+    - name: dnf_zn
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 65
+    - name: dnf_id1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 66
+    - name: mu_threshold_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 67
+    - name: mu_threshold_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 68
+    - name: mu_threshold_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 69
+    - name: mu_threshold_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 70
+    - name: mu_threshold_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 71
+    - name: hpix_1024
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 72
+    - name: wavg_mag_psf_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 73
+    - name: wavg_mag_psf_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 74
+    - name: wavg_mag_psf_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 75
+    - name: mu_max_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 76
+    - name: wavg_mag_psf_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 77
+    - name: wavg_mag_psf_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 78
+    - name: mu_max_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 79
+    - name: mu_max_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 80
+    - name: mag_detmodel_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 81
+    - name: mag_aper_4_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 82
+    - name: mu_max_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 83
+    - name: mag_detmodel_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 84
+    - name: mag_aper_4_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 85
+    - name: mu_max_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 86
+    - name: mag_aper_4_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 87
+    - name: mag_auto_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 88
+    - name: mag_detmodel_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 89
+    - name: mag_auto_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 90
+    - name: mag_auto_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 91
+    - name: mag_aper_8_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 92
+    - name: mag_aper_8_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 93
+    - name: mag_aper_8_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 94
+    - name: mag_aper_4_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 95
+    - name: mag_detmodel_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 96
+    - name: mag_aper_8_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 97
+    - name: mag_auto_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 98
+    - name: mag_aper_4_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 99
+    - name: mag_aper_8_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 100
+    - name: mag_detmodel_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 101
+    - name: mag_auto_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 102
+    - name: badpix_frac
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 103
+    - name: kron_radius
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 104
+    - name: mu_eff_model_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 105
+    - name: mu_eff_model_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 106
+    - name: mu_eff_model_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 107
+    - name: mu_max_model_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 108
+    - name: mu_mean_model_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 109
+    - name: mu_mean_model_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 110
+    - name: mu_max_model_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 111
+    - name: mu_mean_model_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 112
+    - name: mu_max_model_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 113
+    - name: glat
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 114
+    - name: mu_eff_model_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 115
+    - name: mu_mean_model_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 116
+    - name: mu_max_model_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 117
+    - name: mu_eff_model_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 118
+    - name: mu_mean_model_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 119
+    - name: mu_max_model_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 120
+    - name: hpix_4096
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 121
+    - name: xgb_pred
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 122
+    - name: a_image
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 123
+    - name: moly_number_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 124
+    - name: glon
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 125
+    - name: flux_radius_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 126
+    - name: b_image
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 127
+    - name: flux_radius_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 128
+    - name: flux_radius_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 129
+    - name: errb_image
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 130
+    - name: wavg_spreaderr_model_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 131
+    - name: flux_radius_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 132
+    - name: moly_number_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 133
+    - name: moly_number_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 134
+    - name: wavg_magerr_psf_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 135
+    - name: moly_number_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 136
+    - name: moly_number_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 137
+    - name: erra_image
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 138
+    - name: theta_j2000
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 139
+    - name: wavg_spreaderr_model_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 140
+    - name: wavg_magerr_psf_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 141
+    - name: wavg_spreaderr_model_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 142
+    - name: wavg_spreaderr_model_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 143
+    - name: wavg_spreaderr_model_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 144
+    - name: wavg_magerr_psf_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 145
+    - name: wavg_magerr_psf_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 146
+    - name: wavg_magerr_psf_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 147
+    - name: wavg_spread_model_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 148
+    - name: dec
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 149
+    - name: spreaderr_model_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 150
+    - name: spreaderr_model_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 151
+    - name: spreaderr_model_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 152
+    - name: magerr_detmodel_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 153
+    - name: magerr_detmodel_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 154
+    - name: magerr_auto_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 155
+    - name: magerr_aper_4_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 156
+    - name: spreaderr_model_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 157
+    - name: magerr_detmodel_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 158
+    - name: magerr_aper_4_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 159
+    - name: magerr_auto_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 160
+    - name: magerr_auto_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 161
+    - name: magerr_aper_4_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 162
+    - name: magerr_auto_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 163
+    - name: magerr_aper_4_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 164
+    - name: magerr_detmodel_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 165
+    - name: flux_radius_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 166
+    - name: wavg_spread_model_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 167
+    - name: spreaderr_model_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 168
+    - name: magerr_auto_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 169
+    - name: magerr_aper_8_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 170
+    - name: magerr_aper_8_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 171
+    - name: magerr_aper_4_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 172
+    - name: magerr_aper_8_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 173
+    - name: magerr_detmodel_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 174
+    - name: wavg_spread_model_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 175
+    - name: magerr_aper_8_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 176
+    - name: wavg_spread_model_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 177
+    - name: errtheta_image
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 178
+    - name: magerr_aper_8_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 179
+    - name: wavg_spread_model_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 180
+    - name: spread_model_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 181
+    - name: spread_model_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 182
+    - name: spread_model_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 183
+    - name: spread_model_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 184
+    - name: spread_model_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 185
+    - name: ra
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 186
+    - name: hpix_16384
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 187
+    - name: dnf_zerr_fit
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 188
+    - name: bdf_mag_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 189
+    - name: psf_mag_aper_8_y_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 190
+    - name: bdf_mag_y_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 191
+    - name: gap_mag_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 192
+    - name: psf_mag_aper_8_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 193
+    - name: bdf_mag_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 194
+    - name: bdf_mag_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 195
+    - name: dnf_de1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 196
+    - name: dnf_d1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 197
+    - name: psf_mag_aper_8_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 198
+    - name: bdf_flux_cov_4_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 199
+    - name: dnf_zerr_param
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 200
+    - name: bdf_pars_err_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 201
+    - name: bdf_mag_g_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 202
+    - name: dnf_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 203
+    - name: psf_flux_err_aper_8_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 204
+    - name: psf_mag_aper_8_g_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 205
+    - name: bdf_mag_i_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 206
+    - name: bdf_flux_cov_2_4
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 207
+    - name: bdf_mag_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 208
+    - name: gap_mag_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 209
+    - name: dnf_zsigma
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 210
+    - name: gap_flux_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 211
+    - name: bdf_t
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 212
+    - name: gap_mag_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 213
+    - name: psf_flux_ratio_aper_8_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 214
+    - name: ywin_image
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 215
+    - name: gap_flux_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 216
+    - name: bdf_flux_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 217
+    - name: bdf_flux_cov_3_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 218
+    - name: bdf_g_cov_2_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 219
+    - name: gap_flux_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 220
+    - name: gap_mag_err_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 221
+    - name: psf_flux_err_aper_8_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 222
+    - name: bdf_mag_err_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 223
+    - name: bdf_flux_err_z_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 224
+    - name: bdf_flux_cov_3_5
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 225
+    - name: psf_flux_ratio_aper_8_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 226
+    - name: bdf_flux_cov_2_5
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 227
+    - name: bdf_flux_err_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 228
+    - name: bdf_pars_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 229
+    - name: bdf_mag_err_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 230
+    - name: psf_mag_err_aper_8_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 231
+    - name: psf_flux_aper_8_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 232
+    - name: psf_mag_err_aper_8_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 233
+    - name: deltawin_j2000
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 234
+    - name: bdf_flux_cov_4_4
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 235
+    - name: psf_mag_aper_8_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 236
+    - name: bdf_flux_cov_3_4
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 237
+    - name: psf_flux_s2n_aper_8_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 238
+    - name: psf_flux_err_aper_8_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 239
+    - name: gap_mag_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 240
+    - name: bdf_zmy_err
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 241
+    - name: bdf_flux_cov_1_3
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 242
+    - name: bdf_rmi_err
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 243
+    - name: gap_mag_err_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 244
+    - name: gap_flux_err_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 245
+    - name: psf_mag_err_aper_8_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 246
+    - name: bdf_s2n
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 247
+    - name: bdf_g_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 248
+    - name: bdf_flux_err_g_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 249
+    - name: bdf_flux_err_i_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 250
+    - name: gap_flux_err_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 251
+    - name: bdf_mag_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 252
+    - name: psf_flux_aper_8_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 253
+    - name: bdf_flux_cov_1_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 254
+    - name: bdf_flux_cov_5_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 255
+    - name: gap_mag_err_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 256
+    - name: bdf_mag_err_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 257
+    - name: bdf_mag_r_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 258
+    - name: bdf_flux_z_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 259
+    - name: bdf_flux_g_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 260
+    - name: psf_mag_aper_8_z_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 261
+    - name: bdf_t_err
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 262
+    - name: bdf_fracdev_err
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 263
+    - name: bdf_fracdev
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 264
+    - name: bdf_flux_cov_5_3
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 265
+    - name: bdf_flux_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 266
+    - name: bdf_flux_cov_4_3
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 267
+    - name: bdf_mag_err_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 268
+    - name: psf_mag_aper_8_r_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 269
+    - name: psf_flux_s2n_aper_8_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 270
+    - name: psf_flux_s2n_aper_8_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 271
+    - name: psf_flux_s2n_aper_8_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 272
+    - name: psf_flux_s2n_aper_8_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 273
+    - name: psf_g_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 274
+    - name: psf_g_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 275
+    - name: bdf_imz_err
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 276
+    - name: bdf_mag_err_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 277
+    - name: bdf_mag_z_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 278
+    - name: xwin_image
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 279
+    - name: coadd_object_id
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 280
+    - name: alphawin_j2000
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 281
+    - name: psf_mag_aper_8_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 282
+    - name: psf_mag_aper_8_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 283
+    - name: psf_mag_err_aper_8_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 284
+    - name: psf_mag_err_aper_8_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 285
+    - name: psf_mag_aper_8_i_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 286
+    - name: bdf_flux_cov_1_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 287
+    - name: bdf_flux_cov_1_4
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 288
+    - name: bdf_flux_cov_1_5
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 289
+    - name: bdf_flux_cov_2_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 290
+    - name: bdf_flux_cov_2_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 291
+    - name: bdf_flux_cov_2_3
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 292
+    - name: bdf_flux_cov_3_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 293
+    - name: bdf_flux_cov_3_3
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 294
+    - name: bdf_flux_cov_4_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 295
+    - name: bdf_flux_cov_4_5
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 296
+    - name: bdf_flux_cov_5_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 297
+    - name: bdf_flux_cov_5_4
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 298
+    - name: bdf_flux_cov_5_5
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 299
+    - name: bdf_flux_err_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 300
+    - name: bdf_flux_err_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 301
+    - name: bdf_flux_err_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 302
+    - name: bdf_flux_err_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 303
+    - name: bdf_flux_err_r_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 304
+    - name: bdf_flux_err_y_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 305
+    - name: bdf_flux_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 306
+    - name: bdf_flux_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 307
+    - name: bdf_flux_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 308
+    - name: bdf_flux_r_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 309
+    - name: bdf_flux_i_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 310
+    - name: bdf_flux_y_corrected
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 311
+    - name: bdf_gmr_err
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 312
+    - name: bdf_g_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 313
+    - name: bdf_g_cov_1_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 314
+    - name: bdf_g_cov_1_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 315
+    - name: bdf_g_cov_2_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 316
+    - name: psf_t
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 317
+    - name: conc
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 318
+    - name: bdf_pars_1
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 319
+    - name: bdf_pars_err_2
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 320
+    - name: bdf_t_ratio
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 321
+    - name: gap_flux_err_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 322
+    - name: gap_flux_err_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 323
+    - name: gap_flux_err_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 324
+    - name: gap_flux_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 325
+    - name: gap_flux_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 326
+    - name: gap_mag_err_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 327
+    - name: gap_mag_err_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 328
+    - name: gap_mag_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 329
+    - name: psf_flux_aper_8_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 330
+    - name: psf_flux_aper_8_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 331
+    - name: psf_flux_aper_8_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 332
+    - name: psf_flux_err_aper_8_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 333
+    - name: psf_flux_err_aper_8_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 334
+    - name: psf_flux_ratio_aper_8_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 335
+    - name: psf_flux_ratio_aper_8_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 336
+    - name: psf_flux_ratio_aper_8_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 337
+  - name: y6_cluster_wazp
+    title: Y6 CLUSTER WAZP
+    description: ''
+    long_description: ''
+    attribution: ''
+    order: 4
+    license: ''
+    doi: ''
+    related_identifiers: []
+    utype: ''
+    published: '2026-06-01'
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    groups: []
+    columns:
+    - name: name
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 0
+    - name: id
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 1
+    - name: ra
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 2
+    - name: dec
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 3
+    - name: zphot
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 4
+    - name: zspec
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 5
+    - name: zspec_unc
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 6
+    - name: zspec_type
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 7
+    - name: snr
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 8
+    - name: ngals
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 9
+    - name: ngals_unc
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 10
+    - name: radius_mpc
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 11
+    - name: radius_amin
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 12
+    - name: cover_frac_1mpc
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 13
+    - name: cover_frac_1mpc_weighted
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 14
+    - name: id_cg
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 15
+    - name: ra_cg
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 16
+    - name: dec_cg
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 17
+    - name: in_cosmo
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 18
+    - name: sze_act_id
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 19
+    - name: sze_spt_id
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 20
+    - name: sze_spt_source
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 21
+  - name: y6_cluster_members_wazp
+    title: Y6 CLUSTER MEMBERS WAZP
+    description: ''
+    long_description: ''
+    attribution: ''
+    order: 3
+    license: ''
+    doi: ''
+    related_identifiers: []
+    utype: ''
+    published: '2026-06-01'
+    updated: null
+    access_level: PUBLIC
+    metadata_access_level: PUBLIC
+    groups: []
+    columns:
+    - name: id
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 0
+    - name: id_cluster
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 1
+    - name: ra
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 2
+    - name: dec
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 3
+    - name: zphot
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 4
+    - name: zspec
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 5
+    - name: zspec_source
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 6
+    - name: pmem
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 7
+    - name: flag_cg
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 8
+    - name: mag_g
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 9
+    - name: mag_r
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 10
+    - name: mag_i
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 11
+    - name: mag_z
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 12
+    - name: mag_y
+      ucd: ''
+      unit: ''
+      description: ''
+      order: 13
