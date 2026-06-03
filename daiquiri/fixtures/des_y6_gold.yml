@@ -1,7 +1,15 @@
 - name: des_y6_gold
   title: DES Y6 GOLD
-  description: ''
-  long_description: ''
+  description: >
+    DES Y6 Gold data products for the Dark Energy Survey final cosmology program: the Y6 Gold object catalog (669 million galaxies and stars over 5000 sq deg), the WaZP galaxy cluster catalog (400,000+ clusters to z ~ 1.3), and associated cluster member galaxies with membership probabilities and photometry.
+  long_description: >
+    This schema groups the principal DES Year 6 (Y6) Gold data products released for the survey's final cosmological analyses over the 5000 square-degree Southern footprint in the South Galactic Cap.
+
+    The des_y6_gold table holds the final Y6 Gold catalog of galaxies and stars, derived from six years of grizY imaging in DES Data Release 2. It contains 669 million objects to i = 23.4 (S/N = 10) with improved depth, star/galaxy classification, photometric precision, and uniformity relative to the Y3 Gold release. Survey property maps for Y6 cosmology analyses are described alongside this catalog (Bechtol et al. 2025).
+
+    The y6_cluster_wazp table lists galaxy clusters detected by the WaZP cluster finder on the full DES-Y6 dataset—over 400,000 systems with richness Ngals > 5, reaching redshifts up to z = 1.3, including a homogenized cosmology subsample of 33,000 rich clusters (Ngals > 25). Cluster properties include photometric and spectroscopic redshifts, richness, radii, footprint coverage, central-galaxy identification, and cross-matches to Sunyaev–Zel'dovich Effect detections from SPT and ACT (Benoist et al. 2025).
+
+    The y6_cluster_members_wazp table provides candidate member galaxies linked to each WaZP cluster, with membership probability Pmem, redshifts, central-galaxy flags, and grizY magnitudes used to define cluster richness in the parent catalog.
   attribution: ''
   order: 1001
   license: ''
@@ -16,8 +24,19 @@
   tables:
   - name: des_y6_gold
     title: DES Y6 GOLD
-    description: ''
-    long_description: ''
+    description: 'Final DES Y6 Gold catalog of galaxies and stars over the 5000 sq-deg Southern footprint, from six years of
+    grizY imaging in Data Release 2. Contains 669 million objects to i = 23.4 (S/N = 10) with improved depth, star/galaxy
+    classification, and photometry over Y3 Gold; also includes survey property maps for Y6 cosmology analyses.'
+    long_description: 'The Dark Energy Survey is releasing the final catalog of precise measurements of galaxies and stars within
+    the DES 5000-square-degree footprint in the South Galactic Cap. The Y6 Gold catalog is derived from Data Release 2 and
+    includes all six years of g,r,i,z,Y imaging measurements. Y6 Gold was formulated for the DES final cosmological analyses,
+    but it has very general applicability. Compared to the previous Y3 Gold catalog, the depth, star/galaxy classification,
+    photometric precision, and photometric uniformity are all substantially improved. Y6 Gold contains 669 million objects
+    to i-band of 23.4 (S/N = 10 for extended objects).
+
+    The Y6 Gold data products and data quality checks are described in (Bechtol et al. 2025) . Updated information will be
+    published here, when applicable. In addition to the Y6 Gold catalog, DES has derived a set of survey properties maps that
+    accompany these Y6 Cosmology analyses which are also available below.'
     attribution: ''
     order: 5
     license: ''
@@ -31,1700 +50,1762 @@
     groups: []
     columns:
     - name: bdf_deblend_flags
-      ucd: ''
+      ucd: meta.code;src.morph.param
       unit: ''
-      description: ''
+      description: 'Shredder deblend flag bits: 1 no deblend, 2 PSF fit failed, 4 initial deblend on coadd failed, 8 multi-fit
+        deblend failed'
       order: 0
     - name: mask_flags
-      ucd: ''
+      ucd: meta.code;obs.image
       unit: ''
-      description: ''
+      description: Flag indicating the object was masked, e.g. due to bright star masking
       order: 1
     - name: fof_size
-      ucd: ''
+      ucd: meta.number;src.morph
       unit: ''
-      description: ''
+      description: Friends-of-friends shredder group size
       order: 2
     - name: psf_flux_flags_i
-      ucd: ''
+      ucd: meta.code;instr.det.psf;phot.flux
       unit: ''
-      description: ''
+      description: 'Flags for FITVD PSF flux measurement: 0=success, 1=bad variance, 512=divide by zero, 1024=degrees of freedom
+        are zero'
       order: 3
     - name: imaflags_iso_z
-      ucd: ''
+      ucd: meta.code;obs.image
       unit: ''
-      description: ''
+      description: Flag identifying sources with missing/flagged pixels, considering all single-epoch images
       order: 4
     - name: imaflags_iso_i
-      ucd: ''
+      ucd: meta.code;obs.image
       unit: ''
-      description: ''
+      description: Flag identifying sources with missing/flagged pixels, considering all single-epoch images
       order: 5
     - name: imaflags_iso_r
-      ucd: ''
+      ucd: meta.code;obs.image
       unit: ''
-      description: ''
+      description: Flag identifying sources with missing/flagged pixels, considering all single-epoch images
       order: 6
     - name: imaflags_iso_g
-      ucd: ''
+      ucd: meta.code;obs.image
       unit: ''
-      description: ''
+      description: Flag identifying sources with missing/flagged pixels, considering all single-epoch images
       order: 7
     - name: psf_flux_flags_y
-      ucd: ''
+      ucd: meta.code;instr.det.psf;phot.flux
       unit: ''
-      description: ''
+      description: 'Flags for FITVD PSF flux measurement: 0=success, 1=bad variance, 512=divide by zero, 1024=degrees of freedom
+        are zero'
       order: 8
     - name: imaflags_iso_y
-      ucd: ''
+      ucd: meta.code;obs.image
       unit: ''
-      description: ''
+      description: Flag identifying sources with missing/flagged pixels, considering all single-epoch images
       order: 9
     - name: psf_flux_flags_r
-      ucd: ''
+      ucd: meta.code;instr.det.psf;phot.flux
       unit: ''
-      description: ''
+      description: 'Flags for FITVD PSF flux measurement: 0=success, 1=bad variance, 512=divide by zero, 1024=degrees of freedom
+        are zero'
       order: 10
     - name: psf_flux_flags_g
-      ucd: ''
+      ucd: meta.code;instr.det.psf;phot.flux
       unit: ''
-      description: ''
+      description: 'Flags for FITVD PSF flux measurement: 0=success, 1=bad variance, 512=divide by zero, 1024=degrees of freedom
+        are zero'
       order: 11
     - name: flags_footprint
-      ucd: ''
+      ucd: meta.code.qual;obs.field
       unit: ''
-      description: ''
+      description: Use FLAGS_FOOTPRINT == 1 to select objects inside the standard "Gold" footprint. See Section 5.1 of Bechtol
+        et al. (2025)
       order: 12
     - name: conc_flags
-      ucd: ''
+      ucd: meta.code;src.morph.param
       unit: ''
-      description: ''
+      description: Flag for CONC index fit failure (0 = success; 1 = failure)
       order: 13
     - name: bdf_ntry
-      ucd: ''
+      ucd: meta.number;stat.fit
       unit: ''
-      description: ''
+      description: Number of times the fit was attempted.
       order: 14
     - name: psf_flux_flags_z
-      ucd: ''
+      ucd: meta.code;instr.det.psf;phot.flux
       unit: ''
-      description: ''
+      description: 'Flags for FITVD PSF flux measurement: 0=success, 1=bad variance, 512=divide by zero, 1024=degrees of freedom
+        are zero'
       order: 15
     - name: bdf_flags
-      ucd: ''
+      ucd: meta.code;stat.fit
       unit: ''
-      description: ''
+      description: BDF fit flags
       order: 16
     - name: fitvd_flags
-      ucd: ''
+      ucd: meta.code;stat.fit
       unit: ''
-      description: ''
+      description: Flag for FITVD BDF fit failure (0=success, 1=failure)
       order: 17
     - name: flagstr
-      ucd: ''
+      ucd: meta.note;meta.code
       unit: ''
-      description: ''
+      description: Brief description of BDF quality flag. See Section 3.4 of Bechtol et al. (2025)
       order: 18
     - name: ext_coadd
-      ucd: ''
+      ucd: src.class.starGalaxy
       unit: ''
-      description: ''
+      description: 'Extended object classification from coadd SourceExtractor measurements. 0: high-confidence stars; 1: candidate
+        stars; 2: mostly galaxies; 3: high-confidence galaxies; -9: No data'
       order: 19
     - name: ext_wavg
-      ucd: ''
+      ucd: src.class.starGalaxy
       unit: ''
-      description: ''
+      description: 'Extended object classification from WAVG single-epoch measurements. 0: high-confidence stars; 1: candidate
+        stars; 2: mostly galaxies; 3: high-confidence galaxies; -9: No data'
       order: 20
     - name: ext_mash
-      ucd: ''
+      ucd: src.class.starGalaxy
       unit: ''
-      description: ''
+      description: 'Extended object classification combined for COADD, WAVG, and FITVD. 0: high-confidence stars; 1: candidate
+        stars; 2: mostly galaxies; 3: high confidence galaxies; 4: pure galaxy sample; -9: No data'
       order: 21
     - name: ext_fitvd
-      ucd: ''
+      ucd: src.class.starGalaxy
       unit: ''
-      description: ''
+      description: 'Extended object classification from FITVD multi-epoch fit. 0: high-confidence stars; 1: candidate stars;
+        2: mostly galaxies; 3: high confidence galaxies; 4: pure galaxy sample; -9: No data'
       order: 22
     - name: ext_xgb
-      ucd: ''
+      ucd: src.class.starGalaxy;stat.ml
       unit: ''
-      description: ''
+      description: 'Extended object classification based on XGBoost morphological classifier: 0: high-confidence stars; 1:
+        candidate stars; 2: mostly galaxies; 3: high confidence galaxies; 4: pure galaxy sample; -9: No data'
       order: 23
     - name: nepochs_y
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of good single-epoch detections of the coadd object
       order: 24
     - name: nepochs_g
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of good single-epoch detections of the coadd object
       order: 25
     - name: nepochs_r
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of good single-epoch detections of the coadd object
       order: 26
     - name: nepochs_i
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of good single-epoch detections of the coadd object
       order: 27
     - name: nepochs_z
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of good single-epoch detections of the coadd object
       order: 28
     - name: s_extractor_flags_g
-      ucd: ''
+      ucd: meta.code;instr.det
       unit: ''
-      description: ''
+      description: Flag for SourceExtractor measurement
       order: 29
     - name: s_extractor_flags_z
-      ucd: ''
+      ucd: meta.code;instr.det
       unit: ''
-      description: ''
+      description: Flag for SourceExtractor measurement
       order: 30
     - name: s_extractor_flags_i
-      ucd: ''
+      ucd: meta.code;instr.det
       unit: ''
-      description: ''
+      description: Flag for SourceExtractor measurement
       order: 31
     - name: s_extractor_flags_r
-      ucd: ''
+      ucd: meta.code;instr.det
       unit: ''
-      description: ''
+      description: Flag for SourceExtractor measurement
       order: 32
     - name: s_extractor_flags_y
-      ucd: ''
+      ucd: meta.code;instr.det
       unit: ''
-      description: ''
+      description: Flag for SourceExtractor measurement
       order: 33
     - name: coverfrac_grizy
-      ucd: ''
+      ucd: instr.det;phys.angArea;obs.field
       unit: ''
-      description: ''
+      description: Fractional area of HEALPix (nside=4096) pixel covered simultaneously by grizY bands
       order: 34
     - name: coverfrac_griz
-      ucd: ''
+      ucd: instr.det;phys.angArea;obs.field
       unit: ''
-      description: ''
+      description: Fractional area of HEALPix (nside=4096) pixel covered simultaneously by griz bands
       order: 35
     - name: coverfrac_rizy
-      ucd: ''
+      ucd: instr.det;phys.angArea;obs.field
       unit: ''
-      description: ''
+      description: Fractional area of HEALPix (nside=4096) pixel covered simultaneously by rizY bands
       order: 36
     - name: coverfrac_riz
-      ucd: ''
+      ucd: instr.det;phys.angArea;obs.field
       unit: ''
-      description: ''
+      description: Fractional area of HEALPix (nside=4096) pixel covered simultaneously by riz bands
       order: 37
     - name: dnf_nneighbors
-      ucd: ''
+      ucd: meta.number;stat.fit;src.redshift
       unit: ''
-      description: ''
+      description: DNF photo-z number of neighbors used for the DNF_Z estimate
       order: 38
     - name: flags_gold
-      ucd: ''
+      ucd: meta.code.qual;src
       unit: ''
-      description: ''
+      description: Flag describing object anomalies; recommend FLAGS_GOLD = 0 for most analyses. See Section 4.3 of Bechtol
+        et al. (2025)
       order: 39
     - name: flags_foreground
-      ucd: ''
+      ucd: meta.code.qual;obs.field
       unit: ''
-      description: ''
+      description: Flag describing whether the object is contained in a region with a foreground astrophysical object; recommend
+        FLAGS_FOREGROUND = 0 for general extragalactic studies. See Section 5.2 of Bechtol et al. (2025).
       order: 40
     - name: niter_model_i
-      ucd: ''
+      ucd: meta.number;stat.fit;meta.modelled
       unit: ''
-      description: ''
+      description: Number of iterations needed to converge on the MODEL parameters
       order: 41
     - name: niter_model_y
-      ucd: ''
+      ucd: meta.number;stat.fit;meta.modelled
       unit: ''
-      description: ''
+      description: Number of iterations needed to converge on the MODEL parameters
       order: 42
     - name: niter_model_z
-      ucd: ''
+      ucd: meta.number;stat.fit;meta.modelled
       unit: ''
-      description: ''
+      description: Number of iterations needed to converge on the MODEL parameters
       order: 43
     - name: niter_model_r
-      ucd: ''
+      ucd: meta.number;stat.fit;meta.modelled
       unit: ''
-      description: ''
+      description: Number of iterations needed to converge on the MODEL parameters
       order: 44
     - name: niter_model_g
-      ucd: ''
+      ucd: meta.number;stat.fit;meta.modelled
       unit: ''
-      description: ''
+      description: Number of iterations needed to converge on the MODEL parameters
       order: 45
     - name: hpix_32
-      ucd: ''
+      ucd: pos.healpix
       unit: ''
-      description: ''
+      description: HEALPix index for NSIDE = 32 in NEST schema for the object
       order: 46
     - name: bdf_nfev
-      ucd: ''
+      ucd: meta.number;stat.fit
       unit: ''
-      description: ''
+      description: Number of function evaluations during BDF fit.
       order: 47
     - name: hpix_64
-      ucd: ''
+      ucd: pos.healpix
       unit: ''
-      description: ''
+      description: HEALPix index for NSIDE = 64 in NEST schema for the object
       order: 48
     - name: n_images_y
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of (grizY)-band exposures at the object location (from the HEALPix nside=4096 map)
       order: 49
     - name: n_images_i
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of (grizY)-band exposures at the object location (from the HEALPix nside=4096 map)
       order: 50
     - name: n_images_r
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of (grizY)-band exposures at the object location (from the HEALPix nside=4096 map)
       order: 51
     - name: pfw_attempt_id
-      ucd: ''
+      ucd: meta.id;meta.software
       unit: ''
-      description: ''
+      description: DESDM internal processing index number
       order: 52
     - name: n_images_g
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of (grizY)-band exposures at the object location (from the HEALPix nside=4096 map)
       order: 53
     - name: n_images_z
-      ucd: ''
+      ucd: meta.number;obs.image;instr.det
       unit: ''
-      description: ''
+      description: Number of (grizY)-band exposures at the object location (from the HEALPix nside=4096 map)
       order: 54
     - name: tilename
-      ucd: ''
+      ucd: obs.field
       unit: ''
-      description: ''
+      description: Unique name of DES coadd tile containing the object
       order: 55
     - name: a_fiducial_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;phys.absorption.gal
+      unit: mag
+      description: Fiducial reddening correction (subtract from magnitude)
       order: 56
     - name: a_fiducial_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;phys.absorption.gal
+      unit: mag
+      description: Fiducial reddening correction (subtract from magnitude)
       order: 57
     - name: a_fiducial_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;phys.absorption.gal
+      unit: mag
+      description: Fiducial reddening correction (subtract from magnitude)
       order: 58
     - name: a_fiducial_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;phys.absorption.gal
+      unit: mag
+      description: Fiducial reddening correction (subtract from magnitude)
       order: 59
     - name: ebv_sfd98
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.color.excess;em.opt.V;em.opt.B
+      unit: mag
+      description: E(B-V) reddening coefficient from Schlegel, Finkbeiner & Davis, 1998
       order: 60
     - name: a_fiducial_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;phys.absorption.gal
+      unit: mag
+      description: Fiducial reddening correction (subtract from magnitude)
       order: 61
     - name: parent_number
-      ucd: ''
+      ucd: meta.id;meta.main;src
       unit: ''
-      description: ''
+      description: SourceExtractor parent object ID before deblending
       order: 62
     - name: object_number
-      ucd: ''
+      ucd: meta.number;meta.main
       unit: ''
-      description: ''
+      description: SourceExtractor unique running object number within a DES coadd tile
       order: 63
     - name: fof_id
-      ucd: ''
+      ucd: meta.id;src.morph
       unit: ''
-      description: ''
+      description: Friends-of-friends shredder group ID number
       order: 64
     - name: dnf_zn
-      ucd: ''
+      ucd: src.redshift
       unit: ''
-      description: ''
+      description: DNF photo-z nearest neighbor spec-z. Useful for estimating N(z) for a given sample.
       order: 65
     - name: dnf_id1
-      ucd: ''
+      ucd: meta.id;meta.main
       unit: ''
-      description: ''
+      description: DNF photo-z COADD_OBJECT_ID corresponding to the nearest neighbor in the training sample.
       order: 66
     - name: mu_threshold_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness threshold (SourceExtractor parameter)
       order: 67
     - name: mu_threshold_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness threshold (SourceExtractor parameter)
       order: 68
     - name: mu_threshold_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness threshold (SourceExtractor parameter)
       order: 69
     - name: mu_threshold_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness threshold (SourceExtractor parameter)
       order: 70
     - name: mu_threshold_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness threshold (SourceExtractor parameter)
       order: 71
     - name: hpix_1024
-      ucd: ''
+      ucd: pos.healpix
       unit: ''
-      description: ''
+      description: HEALPix index for NSIDE = 1024 in NEST schema for the object
       order: 72
     - name: wavg_mag_psf_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by weighted-average of PSF fit to single-epoch detections
       order: 73
     - name: wavg_mag_psf_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by weighted-average of PSF fit to single-epoch detections
       order: 74
     - name: wavg_mag_psf_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by weighted-average of PSF fit to single-epoch detections
       order: 75
     - name: mu_max_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness at brightest pixel
       order: 76
     - name: wavg_mag_psf_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by weighted-average of PSF fit to single-epoch detections
       order: 77
     - name: wavg_mag_psf_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by weighted-average of PSF fit to single-epoch detections
       order: 78
     - name: mu_max_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness at brightest pixel
       order: 79
     - name: mu_max_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness at brightest pixel
       order: 80
     - name: mag_detmodel_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured by a galaxy model fit (simple Sersic disk with index = 1) to the objects in the detection
+        image
       order: 81
     - name: mag_aper_4_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture with 1.9488 arcsec diameter
       order: 82
     - name: mu_max_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness at brightest pixel
       order: 83
     - name: mag_detmodel_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured by a galaxy model fit (simple Sersic disk with index = 1) to the objects in the detection
+        image
       order: 84
     - name: mag_aper_4_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture with 1.9488 arcsec diameter
       order: 85
     - name: mu_max_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Surface brightness at brightest pixel
       order: 86
     - name: mag_aper_4_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture with 1.9488 arcsec diameter
       order: 87
     - name: mag_auto_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in elliptical aperture based on Kron radius
       order: 88
     - name: mag_detmodel_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured by a galaxy model fit (simple Sersic disk with index = 1) to the objects in the detection
+        image
       order: 89
     - name: mag_auto_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in elliptical aperture based on Kron radius
       order: 90
     - name: mag_auto_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in elliptical aperture based on Kron radius
       order: 91
     - name: mag_aper_8_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture magnitude with 5.8437 arcsec diameter
       order: 92
     - name: mag_aper_8_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture magnitude with 5.8437 arcsec diameter
       order: 93
     - name: mag_aper_8_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture magnitude with 5.8437 arcsec diameter
       order: 94
     - name: mag_aper_4_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture with 1.9488 arcsec diameter
       order: 95
     - name: mag_detmodel_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured by a galaxy model fit (simple Sersic disk with index = 1) to the objects in the detection
+        image
       order: 96
     - name: mag_aper_8_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture magnitude with 5.8437 arcsec diameter
       order: 97
     - name: mag_auto_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in elliptical aperture based on Kron radius
       order: 98
     - name: mag_aper_4_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture with 1.9488 arcsec diameter
       order: 99
     - name: mag_aper_8_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in circular aperture magnitude with 5.8437 arcsec diameter
       order: 100
     - name: mag_detmodel_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured by a galaxy model fit (simple Sersic disk with index = 1) to the objects in the detection
+        image
       order: 101
     - name: mag_auto_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag
+      unit: mag
+      description: Magnitude measured in elliptical aperture based on Kron radius
       order: 102
     - name: badpix_frac
-      ucd: ''
+      ucd: instr.det.noise;obs.image;stat.fraction
       unit: ''
-      description: ''
+      description: Fraction of pixels in the FITVD fitting region labelled as bad
       order: 103
     - name: kron_radius
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.size.radius
+      unit: pixel
+      description: Kron radius measured from detection image
       order: 104
     - name: mu_eff_model_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Effective model surface brightness at the isophote which includes half of the flux from the model
       order: 105
     - name: mu_eff_model_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Effective model surface brightness at the isophote which includes half of the flux from the model
       order: 106
     - name: mu_eff_model_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Effective model surface brightness at the isophote which includes half of the flux from the model
       order: 107
     - name: mu_max_model_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Maximum surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 108
     - name: mu_mean_model_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Mean surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 109
     - name: mu_mean_model_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Mean surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 110
     - name: mu_max_model_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Maximum surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 111
     - name: mu_mean_model_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Mean surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 112
     - name: mu_max_model_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Maximum surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 113
     - name: glat
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.galactic.lat
+      unit: deg
+      description: Latitude in Galactic coordinates
       order: 114
     - name: mu_eff_model_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Effective model surface brightness at the isophote which includes half of the flux from the model
       order: 115
     - name: mu_mean_model_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Mean surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 116
     - name: mu_max_model_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Maximum surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 117
     - name: mu_eff_model_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Effective model surface brightness at the isophote which includes half of the flux from the model
       order: 118
     - name: mu_mean_model_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Mean surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 119
     - name: mu_max_model_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.sb
+      unit: mag/arcsec^2
+      description: Maximum surface brightness using the whole area inside the isophote used for MU_EFF_MODEL
       order: 120
     - name: hpix_4096
-      ucd: ''
+      ucd: pos.healpix
       unit: ''
-      description: ''
+      description: HEALPix index for NSIDE = 4096 in NEST schema for the object
       order: 121
     - name: xgb_pred
-      ucd: ''
+      ucd: src.class.starGalaxy;stat.probability;stat.ml
       unit: ''
-      description: ''
+      description: Output pseudo-probability of the XGBoost star/galaxy classifier. Galaxies have XGB_PRED ~ 0 and stars have
+        XGB_PRED ~ 1. See Section 4.2 of Bechtol et al. (2025).
       order: 122
     - name: a_image
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.angSize;instr.det
+      unit: pixel
+      description: Major axis size based on an isophotal model
       order: 123
     - name: moly_number_y
-      ucd: ''
+      ucd: meta.id;obs.field
       unit: ''
-      description: ''
+      description: Unique identifier of the MOLYGON that this object resides in.
       order: 124
     - name: glon
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.galactic.lon
+      unit: deg
+      description: Longitude in Galactic coordinates
       order: 125
     - name: flux_radius_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.size.radius;obs.image
+      unit: pixel
+      description: Half-light radius for the object, from elliptical growth-curve, modeled in 2 dimensions
       order: 126
     - name: b_image
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.angSize;instr.det
+      unit: pixel
+      description: Minor axis size based on an isophotal model
       order: 127
     - name: flux_radius_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.size.radius;obs.image
+      unit: pixel
+      description: Half-light radius for the object, from elliptical growth-curve, modeled in 2 dimensions
       order: 128
     - name: flux_radius_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.size.radius;obs.image
+      unit: pixel
+      description: Half-light radius for the object, from elliptical growth-curve, modeled in 2 dimensions
       order: 129
     - name: errb_image
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phys.angSize
+      unit: pixel
+      description: Uncertainty in minor axis size, from isophotal model
       order: 130
     - name: wavg_spreaderr_model_y
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in WAVG_SPREAD_MODEL
       order: 131
     - name: flux_radius_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.size.radius;obs.image
+      unit: pixel
+      description: Half-light radius for the object, from elliptical growth-curve, modeled in 2 dimensions
       order: 132
     - name: moly_number_z
-      ucd: ''
+      ucd: meta.id;obs.field
       unit: ''
-      description: ''
+      description: Unique identifier of the MOLYGON that this object resides in.
       order: 133
     - name: moly_number_i
-      ucd: ''
+      ucd: meta.id;obs.field
       unit: ''
-      description: ''
+      description: Unique identifier of the MOLYGON that this object resides in.
       order: 134
     - name: wavg_magerr_psf_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in WAVG_MAG_PSF
       order: 135
     - name: moly_number_r
-      ucd: ''
+      ucd: meta.id;obs.field
       unit: ''
-      description: ''
+      description: Unique identifier of the MOLYGON that this object resides in.
       order: 136
     - name: moly_number_g
-      ucd: ''
+      ucd: meta.id;obs.field
       unit: ''
-      description: ''
+      description: Unique identifier of the MOLYGON that this object resides in.
       order: 137
     - name: erra_image
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phys.angSize
+      unit: pixel
+      description: Uncertainty in major axis size, from isophotal model
       order: 138
     - name: theta_j2000
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.posAng
+      unit: deg
+      description: Position angle of source in J2000 coordinates, from non-windowed measurement
       order: 139
     - name: wavg_spreaderr_model_g
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in WAVG_SPREAD_MODEL
       order: 140
     - name: wavg_magerr_psf_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in WAVG_MAG_PSF
       order: 141
     - name: wavg_spreaderr_model_z
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in WAVG_SPREAD_MODEL
       order: 142
     - name: wavg_spreaderr_model_i
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in WAVG_SPREAD_MODEL
       order: 143
     - name: wavg_spreaderr_model_r
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in WAVG_SPREAD_MODEL
       order: 144
     - name: wavg_magerr_psf_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in WAVG_MAG_PSF
       order: 145
     - name: wavg_magerr_psf_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in WAVG_MAG_PSF
       order: 146
     - name: wavg_magerr_psf_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in WAVG_MAG_PSF
       order: 147
     - name: wavg_spread_model_y
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Weighted-average SPREAD_MODEL from single-epoch detections
       order: 148
     - name: dec
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.dec;meta.main
+      unit: deg
+      description: Declination with quantized precision for indexing (J2000 in ICRS system; see DELTAWIN_J2000 for full precision)
       order: 149
     - name: spreaderr_model_i
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in SPREAD_MODEL
       order: 150
     - name: spreaderr_model_z
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in SPREAD_MODEL
       order: 151
     - name: spreaderr_model_r
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in SPREAD_MODEL
       order: 152
     - name: magerr_detmodel_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_DETMODEL
       order: 153
     - name: magerr_detmodel_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_DETMODEL
       order: 154
     - name: magerr_auto_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_AUTO
       order: 155
     - name: magerr_aper_4_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_4
       order: 156
     - name: spreaderr_model_g
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in SPREAD_MODEL
       order: 157
     - name: magerr_detmodel_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_DETMODEL
       order: 158
     - name: magerr_aper_4_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_4
       order: 159
     - name: magerr_auto_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_AUTO
       order: 160
     - name: magerr_auto_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_AUTO
       order: 161
     - name: magerr_aper_4_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_4
       order: 162
     - name: magerr_auto_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_AUTO
       order: 163
     - name: magerr_aper_4_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_4
       order: 164
     - name: magerr_detmodel_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_DETMODEL
       order: 165
     - name: flux_radius_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.size.radius;obs.image
+      unit: pixel
+      description: Half-light radius for the object, from elliptical growth-curve, modeled in 2 dimensions
       order: 166
     - name: wavg_spread_model_z
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Weighted-average SPREAD_MODEL from single-epoch detections
       order: 167
     - name: spreaderr_model_y
-      ucd: ''
+      ucd: stat.error;stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Uncertainty in SPREAD_MODEL
       order: 168
     - name: magerr_auto_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_AUTO
       order: 169
     - name: magerr_aper_8_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_8
       order: 170
     - name: magerr_aper_8_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_8
       order: 171
     - name: magerr_aper_4_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_4
       order: 172
     - name: magerr_aper_8_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_8
       order: 173
     - name: magerr_detmodel_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_DETMODEL
       order: 174
     - name: wavg_spread_model_i
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Weighted-average SPREAD_MODEL from single-epoch detections
       order: 175
     - name: magerr_aper_8_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_8
       order: 176
     - name: wavg_spread_model_g
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Weighted-average SPREAD_MODEL from single-epoch detections
       order: 177
     - name: errtheta_image
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;pos.posAng
+      unit: deg
+      description: Uncertainty in source position, from isophotal model
       order: 178
     - name: magerr_aper_8_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag
+      unit: mag
+      description: Uncertainty in MAG_APER_8
       order: 179
     - name: wavg_spread_model_r
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Weighted-average SPREAD_MODEL from single-epoch detections
       order: 180
     - name: spread_model_z
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Likelihood ratio between PSF model fit and an exponential model fit measured on the coadd. See Desai et
+        al. (2012)
       order: 181
     - name: spread_model_i
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Likelihood ratio between PSF model fit and an exponential model fit measured on the coadd. See Desai et
+        al. (2012)
       order: 182
     - name: spread_model_r
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Likelihood ratio between PSF model fit and an exponential model fit measured on the coadd. See Desai et
+        al. (2012)
       order: 183
     - name: spread_model_g
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Likelihood ratio between PSF model fit and an exponential model fit measured on the coadd. See Desai et
+        al. (2012)
       order: 184
     - name: spread_model_y
-      ucd: ''
+      ucd: stat.likelihood;src.class.starGalaxy
       unit: ''
-      description: ''
+      description: Likelihood ratio between PSF model fit and an exponential model fit measured on the coadd. See Desai et
+        al. (2012)
       order: 185
     - name: ra
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.ra;meta.main
+      unit: deg
+      description: Right ascension with quantized precision for indexing (J2000 in ICRS system; see ALPHAWIN_J2000 for full
+        precision)
       order: 186
     - name: hpix_16384
-      ucd: ''
+      ucd: pos.healpix
       unit: ''
-      description: ''
+      description: HEALPix index for NSIDE = 16384 in NEST schema for the object
       order: 187
     - name: dnf_zerr_fit
-      ucd: ''
+      ucd: stat.error;src.redshift
       unit: ''
-      description: ''
+      description: DNF photo-z error term derived from the residuals of the regression fit
       order: 188
     - name: bdf_mag_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by FITVD BDF model. No aperture correction, top of atmosphere
       order: 189
     - name: psf_mag_aper_8_y_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model corrected for interstellar extinction (de-reddened top of Galaxy)
+        and PSF aperture ratio (APER8 system). Recommended for point-source studies.
       order: 190
     - name: bdf_mag_y_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;meta.modelled
+      unit: mag
+      description: BDF_MAG corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 191
     - name: gap_mag_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by Gaussian aperture fit
       order: 192
     - name: psf_mag_aper_8_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 193
     - name: bdf_mag_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by FITVD BDF model. No aperture correction, top of atmosphere
       order: 194
     - name: bdf_mag_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by FITVD BDF model. No aperture correction, top of atmosphere
       order: 195
     - name: dnf_de1
-      ucd: ''
+      ucd: pos.distance;src.redshift;stat.nearest
       unit: ''
-      description: ''
+      description: DNF photo-z photometric Euclidean distance to nearest neighbor.
       order: 196
     - name: dnf_d1
-      ucd: ''
+      ucd: pos.distance;src.redshift;stat.nearest
       unit: ''
-      description: ''
+      description: DNF photo-z photometric directional distance to nearest neighbor.
       order: 197
     - name: psf_mag_aper_8_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 198
     - name: bdf_flux_cov_4_2
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (z-r)
       order: 199
     - name: dnf_zerr_param
-      ucd: ''
+      ucd: stat.error;src.redshift
       unit: ''
-      description: ''
+      description: DNF photo-z error term due to magnitude/flux uncertainties propagation
       order: 200
     - name: bdf_pars_err_1
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;pos.cartesian;instr.det
+      unit: arcsec
+      description: Error on x-offset
       order: 201
     - name: bdf_mag_g_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;meta.modelled
+      unit: mag
+      description: BDF_MAG corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 202
     - name: dnf_z
-      ucd: ''
+      ucd: src.redshift;stat.fit
       unit: ''
-      description: ''
+      description: DNF photo-z primary point estimate obtained by fitting to the directional neighborhood. Useful for classification
+        in tomographic bins.
       order: 203
     - name: psf_flux_err_aper_8_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Uncertainty on PSF_FLUX_APER_8
       order: 204
     - name: psf_mag_aper_8_g_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model corrected for interstellar extinction (de-reddened top of Galaxy)
+        and PSF aperture ratio (APER8 system). Recommended for point-source studies.
       order: 205
     - name: bdf_mag_i_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;meta.modelled
+      unit: mag
+      description: BDF_MAG corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 206
     - name: bdf_flux_cov_2_4
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (r-z)
       order: 207
     - name: bdf_mag_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by FITVD BDF model. No aperture correction, top of atmosphere
       order: 208
     - name: gap_mag_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by Gaussian aperture fit
       order: 209
     - name: dnf_zsigma
-      ucd: ''
+      ucd: stat.error;src.redshift
       unit: ''
-      description: ''
+      description: DNF photo-z uncertainty estimate from photometric uncertainties and residuals from the neighborhood fit
       order: 210
     - name: gap_flux_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Gaussian Aperture fluxes with FWHM=4 arcsec
       order: 211
     - name: bdf_t
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.angSize;meta.modelled
+      unit: arcsec^2
+      description: Intrinsic squared size of best-fit BDF model, before PSF convolution
       order: 212
     - name: gap_mag_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by Gaussian aperture fit
       order: 213
     - name: psf_flux_ratio_aper_8_r
-      ucd: ''
+      ucd: phot.flux;arith.ratio;instr.det.psf
       unit: ''
-      description: ''
+      description: PSF aperture correction to put BDF corrected magnitudes onto FGCM photometric system
       order: 214
     - name: ywin_image
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.cartesian;instr.det
+      unit: pixel
+      description: Y-centroid from windowed measurements on coadded detection image
       order: 215
     - name: gap_flux_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Gaussian Aperture fluxes with FWHM=4 arcsec
       order: 216
     - name: bdf_flux_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Flux derived with BDF model. No aperture correction, top of atmosphere
       order: 217
     - name: bdf_flux_cov_3_1
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (i-g)
       order: 218
     - name: bdf_g_cov_2_2
-      ucd: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
       unit: ''
-      description: ''
+      description: Covariance of gamma 1,2 axis ratio and position angle components (2,2) term
       order: 219
     - name: gap_flux_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Gaussian Aperture fluxes with FWHM=4 arcsec
       order: 220
     - name: gap_mag_err_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on Gaussian aperture magnitude
       order: 221
     - name: psf_flux_err_aper_8_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Uncertainty on PSF_FLUX_APER_8
       order: 222
     - name: bdf_mag_err_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on BDF_MAG
       order: 223
     - name: bdf_flux_err_z_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX_CORRECTED
       order: 224
     - name: bdf_flux_cov_3_5
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (i-Y)
       order: 225
     - name: psf_flux_ratio_aper_8_g
-      ucd: ''
+      ucd: phot.flux;arith.ratio;instr.det.psf
       unit: ''
-      description: ''
+      description: PSF aperture correction to put BDF corrected magnitudes onto FGCM photometric system
       order: 226
     - name: bdf_flux_cov_2_5
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (r-Y)
       order: 227
     - name: bdf_flux_err_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX
       order: 228
     - name: bdf_pars_2
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.cartesian;instr.det
+      unit: arcsec
+      description: 'BDF fit parameter 2: col-offset fit position of object in MEDs postage stamp'
       order: 229
     - name: bdf_mag_err_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on BDF_MAG
       order: 230
     - name: psf_mag_err_aper_8_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in PSF_MAG_APER8
       order: 231
     - name: psf_flux_aper_8_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Flux measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 232
     - name: psf_mag_err_aper_8_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in PSF_MAG_APER8
       order: 233
     - name: deltawin_j2000
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.dec;meta.main
+      unit: deg
+      description: Declination with full precision (J2000 in ICRS system; not indexed)
       order: 234
     - name: bdf_flux_cov_4_4
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Diagonal variance on the BDF flux z band
       order: 235
     - name: psf_mag_aper_8_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 236
     - name: bdf_flux_cov_3_4
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (i-z)
       order: 237
     - name: psf_flux_s2n_aper_8_z
-      ucd: ''
+      ucd: stat.snr;phot.flux.density;instr.det.psf
       unit: ''
-      description: ''
+      description: S/N in PSF flux measurement from FITVD in APER8 system
       order: 238
     - name: psf_flux_err_aper_8_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Uncertainty on PSF_FLUX_APER_8
       order: 239
     - name: gap_mag_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by Gaussian aperture fit
       order: 240
     - name: bdf_zmy_err
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.color;meta.modelled
+      unit: mag
+      description: Uncertainty on z-Y color, accounting for covariance
       order: 241
     - name: bdf_flux_cov_1_3
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (g-i)
       order: 242
     - name: bdf_rmi_err
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.color;meta.modelled
+      unit: mag
+      description: Uncertainty on r-i color, accounting for covariance
       order: 243
     - name: gap_mag_err_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on Gaussian aperture magnitude
       order: 244
     - name: gap_flux_err_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on Gaussian aperture flux
       order: 245
     - name: psf_mag_err_aper_8_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in PSF_MAG_APER8
       order: 246
     - name: bdf_s2n
-      ucd: ''
+      ucd: stat.snr;meta.modelled
       unit: ''
-      description: ''
+      description: Signal-to-noise on BDF fit, combining all bands
       order: 247
     - name: bdf_g_1
-      ucd: ''
+      ucd: src.morph.param;src.ellipticity
       unit: ''
-      description: ''
+      description: First component of gamma giving axis ratio and position angle of ellipse fit
       order: 248
     - name: bdf_flux_err_g_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX_CORRECTED
       order: 249
     - name: bdf_flux_err_i_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX_CORRECTED
       order: 250
     - name: gap_flux_err_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on Gaussian aperture flux
       order: 251
     - name: bdf_mag_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by FITVD BDF model. No aperture correction, top of atmosphere
       order: 252
     - name: psf_flux_aper_8_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Flux measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 253
     - name: bdf_flux_cov_1_1
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Diagonal variance on the BDF flux g band
       order: 254
     - name: bdf_flux_cov_5_2
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (Y-r)
       order: 255
     - name: gap_mag_err_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on Gaussian aperture magnitude
       order: 256
     - name: bdf_mag_err_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on BDF_MAG
       order: 257
     - name: bdf_mag_r_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;meta.modelled
+      unit: mag
+      description: BDF_MAG corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 258
     - name: bdf_flux_z_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: BDF_FLUX corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 259
     - name: bdf_flux_g_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: BDF_FLUX corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 260
     - name: psf_mag_aper_8_z_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model corrected for interstellar extinction (de-reddened top of Galaxy)
+        and PSF aperture ratio (APER8 system). Recommended for point-source studies.
       order: 261
     - name: bdf_t_err
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phys.angSize;meta.modelled
+      unit: arcsec^2
+      description: Uncertainty on BDF_T
       order: 262
     - name: bdf_fracdev_err
-      ucd: ''
+      ucd: stat.error;stat.fit;src.morph.param
       unit: ''
-      description: ''
+      description: Uncertainty on BDF_FRACDEV
       order: 263
     - name: bdf_fracdev
-      ucd: ''
+      ucd: stat.fit;src.morph.param
       unit: ''
-      description: ''
+      description: Fraction assigned to De Vaucouleurs profile in composite model.
       order: 264
     - name: bdf_flux_cov_5_3
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (Y-i)
       order: 265
     - name: bdf_flux_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Flux derived with BDF model. No aperture correction, top of atmosphere
       order: 266
     - name: bdf_flux_cov_4_3
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (z-i)
       order: 267
     - name: bdf_mag_err_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on BDF_MAG
       order: 268
     - name: psf_mag_aper_8_r_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model corrected for interstellar extinction (de-reddened top of Galaxy)
+        and PSF aperture ratio (APER8 system). Recommended for point-source studies.
       order: 269
     - name: psf_flux_s2n_aper_8_g
-      ucd: ''
+      ucd: stat.snr;phot.flux.density;instr.det.psf
       unit: ''
-      description: ''
+      description: S/N in PSF flux measurement from FITVD in APER8 system
       order: 270
     - name: psf_flux_s2n_aper_8_r
-      ucd: ''
+      ucd: stat.snr;phot.flux.density;instr.det.psf
       unit: ''
-      description: ''
+      description: S/N in PSF flux measurement from FITVD in APER8 system
       order: 271
     - name: psf_flux_s2n_aper_8_i
-      ucd: ''
+      ucd: stat.snr;phot.flux.density;instr.det.psf
       unit: ''
-      description: ''
+      description: S/N in PSF flux measurement from FITVD in APER8 system
       order: 272
     - name: psf_flux_s2n_aper_8_y
-      ucd: ''
+      ucd: stat.snr;phot.flux.density;instr.det.psf
       unit: ''
-      description: ''
+      description: S/N in PSF flux measurement from FITVD in APER8 system
       order: 273
     - name: psf_g_1
-      ucd: ''
+      ucd: src.ellipticity;instr.det.psf
       unit: ''
-      description: ''
+      description: Ellipticity of the multi-Gaussian model fit to the PSF (component 1) at the location of the object
       order: 274
     - name: psf_g_2
-      ucd: ''
+      ucd: src.ellipticity;instr.det.psf
       unit: ''
-      description: ''
+      description: Ellipticity of the multi-Gaussian model fit to the PSF (component 2) at the location of the object
       order: 275
     - name: bdf_imz_err
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.color;meta.modelled
+      unit: mag
+      description: Uncertainty on i-z color, accounting for covariance
       order: 276
     - name: bdf_mag_err_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on BDF_MAG
       order: 277
     - name: bdf_mag_z_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;meta.modelled
+      unit: mag
+      description: BDF_MAG corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 278
     - name: xwin_image
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.cartesian;instr.det
+      unit: pixel
+      description: X-centroid from windowed measurements on coadded detection image
       order: 279
     - name: coadd_object_id
-      ucd: ''
+      ucd: meta.id;meta.main
       unit: ''
-      description: ''
+      description: Unique identifier for the coadded objects
       order: 280
     - name: alphawin_j2000
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.ra;meta.main
+      unit: deg
+      description: Right ascension with full precision (J2000 in ICRS system; not indexed)
       order: 281
     - name: psf_mag_aper_8_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 282
     - name: psf_mag_aper_8_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 283
     - name: psf_mag_err_aper_8_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in PSF_MAG_APER8
       order: 284
     - name: psf_mag_err_aper_8_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;instr.det.psf
+      unit: mag
+      description: Uncertainty in PSF_MAG_APER8
       order: 285
     - name: psf_mag_aper_8_i_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag.reddFree;instr.det.psf
+      unit: mag
+      description: Magnitude measured by FITVD PSF model corrected for interstellar extinction (de-reddened top of Galaxy)
+        and PSF aperture ratio (APER8 system). Recommended for point-source studies.
       order: 286
     - name: bdf_flux_cov_1_2
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (g-r)
       order: 287
     - name: bdf_flux_cov_1_4
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (g-z)
       order: 288
     - name: bdf_flux_cov_1_5
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (g-Y)
       order: 289
     - name: bdf_flux_cov_2_1
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (r-g)
       order: 290
     - name: bdf_flux_cov_2_2
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Diagonal variance on the BDF flux r band
       order: 291
     - name: bdf_flux_cov_2_3
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (r-i)
       order: 292
     - name: bdf_flux_cov_3_2
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (i-r)
       order: 293
     - name: bdf_flux_cov_3_3
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Diagonal variance on the BDF flux i band
       order: 294
     - name: bdf_flux_cov_4_1
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (z-g)
       order: 295
     - name: bdf_flux_cov_4_5
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (z-Y)
       order: 296
     - name: bdf_flux_cov_5_1
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (Y-g)
       order: 297
     - name: bdf_flux_cov_5_4
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Off-diagonal variance on the BDF flux difference in (Y-z)
       order: 298
     - name: bdf_flux_cov_5_5
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
+      unit: (3.63 nJy)^2
+      description: Diagonal variance on the BDF flux Y band
       order: 299
     - name: bdf_flux_err_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX
       order: 300
     - name: bdf_flux_err_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX
       order: 301
     - name: bdf_flux_err_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX
       order: 302
     - name: bdf_flux_err_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX
       order: 303
     - name: bdf_flux_err_r_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX_CORRECTED
       order: 304
     - name: bdf_flux_err_y_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: Uncertainty on BDF_FLUX_CORRECTED
       order: 305
     - name: bdf_flux_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Flux derived with BDF model. No aperture correction, top of atmosphere
       order: 306
     - name: bdf_flux_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Flux derived with BDF model. No aperture correction, top of atmosphere
       order: 307
     - name: bdf_flux_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Flux derived with BDF model. No aperture correction, top of atmosphere
       order: 308
     - name: bdf_flux_r_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: BDF_FLUX corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 309
     - name: bdf_flux_i_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: BDF_FLUX corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 310
     - name: bdf_flux_y_corrected
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled;phot.mag.reddFree
+      unit: 3.63 nJy
+      description: BDF_FLUX corrected for interstellar extinction (i.e. de-reddened; top of Galaxy) and PSF aperture ratio
+        (APER8 system)
       order: 311
     - name: bdf_gmr_err
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.color;meta.modelled
+      unit: mag
+      description: Uncertainty on g-r color, accounting for covariance
       order: 312
     - name: bdf_g_2
-      ucd: ''
+      ucd: src.morph.param;src.ellipticity
       unit: ''
-      description: ''
+      description: Second component of gamma giving axis ratio and position angle of ellipse fit
       order: 313
     - name: bdf_g_cov_1_1
-      ucd: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
       unit: ''
-      description: ''
+      description: Covariance of gamma 1,2 axis ratio and position angle components (1,1) term
       order: 314
     - name: bdf_g_cov_1_2
-      ucd: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
       unit: ''
-      description: ''
+      description: Covariance of gamma 1,2 axis ratio and position angle components (1,2) term
       order: 315
     - name: bdf_g_cov_2_1
-      ucd: ''
+      ucd: stat.covariance;phot.flux.density;meta.modelled
       unit: ''
-      description: ''
+      description: Covariance of gamma 1,2 axis ratio and position angle components (2,1) term
       order: 316
     - name: psf_t
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.angSize;instr.det.psf
+      unit: arcsec^2
+      description: Squared-size for a multi-Gaussian model fit to the PSF at the location of the object
       order: 317
     - name: conc
-      ucd: ''
+      ucd: src.class.starGalaxy;src.morph.param
       unit: ''
-      description: ''
+      description: Concentration index -- values near 0 indicate stellar object, significantly above 0 extended
       order: 318
     - name: bdf_pars_1
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.cartesian;instr.det
+      unit: arcsec
+      description: 'BDF fit parameter 1: row-offset fit position of object in MEDs postage stamp'
       order: 319
     - name: bdf_pars_err_2
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;pos.cartesian;instr.det
+      unit: arcsec
+      description: Error on y-offset
       order: 320
     - name: bdf_t_ratio
-      ucd: ''
+      ucd: phys.angSize;arith.ratio;meta.modelled
       unit: ''
-      description: ''
+      description: Ratio of BDF_T of the object to PSF_T at the location of the object (stars are near zero).
       order: 321
     - name: gap_flux_err_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on Gaussian aperture flux
       order: 322
     - name: gap_flux_err_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on Gaussian aperture flux
       order: 323
     - name: gap_flux_err_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Uncertainty on Gaussian aperture flux
       order: 324
     - name: gap_flux_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Gaussian Aperture fluxes with FWHM=4 arcsec
       order: 325
     - name: gap_flux_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;meta.modelled
+      unit: 3.63 nJy
+      description: Gaussian Aperture fluxes with FWHM=4 arcsec
       order: 326
     - name: gap_mag_err_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on Gaussian aperture magnitude
       order: 327
     - name: gap_mag_err_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.mag;meta.modelled
+      unit: mag
+      description: Uncertainty on Gaussian aperture magnitude
       order: 328
     - name: gap_mag_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;meta.modelled
+      unit: mag
+      description: Magnitude measured by Gaussian aperture fit
       order: 329
     - name: psf_flux_aper_8_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Flux measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 330
     - name: psf_flux_aper_8_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Flux measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 331
     - name: psf_flux_aper_8_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Flux measured by FITVD PSF model in APER8 system (reddened, top of atmosphere)
       order: 332
     - name: psf_flux_err_aper_8_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Uncertainty on PSF_FLUX_APER_8
       order: 333
     - name: psf_flux_err_aper_8_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: stat.error;phot.flux.density;instr.det.psf
+      unit: 3.63 nJy
+      description: Uncertainty on PSF_FLUX_APER_8
       order: 334
     - name: psf_flux_ratio_aper_8_i
-      ucd: ''
+      ucd: phot.flux;arith.ratio;instr.det.psf
       unit: ''
-      description: ''
+      description: PSF aperture correction to put BDF corrected magnitudes onto FGCM photometric system
       order: 335
     - name: psf_flux_ratio_aper_8_z
-      ucd: ''
+      ucd: phot.flux;arith.ratio;instr.det.psf
       unit: ''
-      description: ''
+      description: PSF aperture correction to put BDF corrected magnitudes onto FGCM photometric system
       order: 336
     - name: psf_flux_ratio_aper_8_y
-      ucd: ''
+      ucd: phot.flux;arith.ratio;instr.det.psf
       unit: ''
-      description: ''
+      description: PSF aperture correction to put BDF corrected magnitudes onto FGCM photometric system
       order: 337
   - name: y6_cluster_wazp
     title: Y6 CLUSTER WAZP
-    description: ''
-    long_description: ''
-    attribution: ''
+    description: 'Galaxy cluster catalog detected by the WaZP cluster finder on the full six years of DES-Y6 observations.
+      The finder does not rely on red-sequence identification. The catalog contains over 400,000 clusters with richness
+      Ngals > 5, reaching redshifts up to z = 1.3. A cosmology subsample of 33,000 rich clusters (Ngals > 25) has homogenized
+      observation depth and richness. Cluster properties include photometric and spectroscopic redshifts, richness, radii,
+      footprint coverage, central-galaxy identification, and cross-matches to Sunyaev–Zel''dovich Effect (SZE) detections
+      from SPT and ACT.
+
+      '
+    long_description: 'In Benoist et al. (2025), we present and characterize the galaxy cluster catalog detected by the WaZP
+      cluster finder on the full six years of DES-Y6 observations. WaZP is not based on red-sequence identification. The
+      full catalog contains over 400,000 detected clusters with richnesses Ngals above 5 and reaching redshifts up to z =
+      1.3. We also provide a cosmology version in which observation depth and richness are homogenized, containing 33,000
+      rich clusters (Ngals > 25), flagged by in_cosmo. Compared with the DES-Y1 WaZP catalog, essentially all clusters within
+      the common footprint and depth limit are recovered. Deeper DES-Y6 observations and a more complete spectroscopic redshift
+      sample improve cluster redshifts, with average scatter of 1.4% and offset of 0.2%. Optical clusters are cross-matched
+      with SZE samples from the South Pole Telescope (SPT) and the Atacama Cosmology Telescope (ACT): essentially all SZE clusters
+      with reasonable overlapping footprint have a WaZP counterpart; conversely, 90% of optical detections with Ngals > 150
+      have a counterpart in the deeper SZE survey regions. About 15–20% of SZE-matched systems have more than one possible
+      WaZP counterpart at the same redshift within the SZE R500c, suggesting interacting or unrelaxed systems. WaZP and SZE
+      centerings are consistent given the optical and SZE beams.
+
+      '
+    attribution: Benoist et al. (2025). WaZP galaxy cluster catalog on DES-Y6.
     order: 4
     license: ''
     doi: ''
@@ -1737,120 +1818,131 @@
     groups: []
     columns:
     - name: name
-      ucd: ''
+      ucd: meta.id;meta.main
       unit: ''
-      description: ''
+      description: Cluster name in the format WAZP DESY6 JHHMM.m+DDMM
       order: 0
     - name: id
-      ucd: ''
+      ucd: meta.id;meta.main
       unit: ''
-      description: ''
+      description: Cluster ranked by SNR, linked to members catalog
       order: 1
     - name: ra
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.ra;meta.main
+      unit: deg
+      description: Right Ascension in degrees
       order: 2
     - name: dec
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.dec;meta.main
+      unit: deg
+      description: Declination in degrees
       order: 3
     - name: zphot
-      ucd: ''
+      ucd: src.redshift.phot
       unit: ''
-      description: ''
+      description: Cluster photometric redshift
       order: 4
     - name: zspec
-      ucd: ''
+      ucd: src.redshift
       unit: ''
-      description: ''
+      description: Cluster spectroscopic redshift, when available
       order: 5
     - name: zspec_unc
-      ucd: ''
+      ucd: stat.error;src.redshift
       unit: ''
-      description: ''
+      description: Uncertainty on cluster spectroscopic redshift
       order: 6
     - name: zspec_type
-      ucd: ''
+      ucd: meta.code;src.redshift
       unit: ''
-      description: ''
+      description: Type of cluster spectroscopic redshift
       order: 7
     - name: snr
-      ucd: ''
+      ucd: stat.snr
       unit: ''
-      description: ''
+      description: Signal to Noise Ratio
       order: 8
     - name: ngals
-      ucd: ''
+      ucd: meta.number
       unit: ''
-      description: ''
+      description: Richness, sum of Pmem's down to m*+1.5 and within RADIUS_MPC
       order: 9
     - name: ngals_unc
-      ucd: ''
+      ucd: stat.error;meta.number
       unit: ''
-      description: ''
+      description: Uncertainty on NGALS
       order: 10
     - name: radius_mpc
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.size.radius
+      unit: Mpc
+      description: radius in Mpc
       order: 11
     - name: radius_amin
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phys.angSize;phys.size.radius
+      unit: arcmin
+      description: same as RADIUS_MPC in arcmin at cluster redshift
       order: 12
     - name: cover_frac_1mpc
-      ucd: ''
+      ucd: instr.det;phys.angArea;obs.field
       unit: ''
-      description: ''
+      description: Area fraction covered with a 1.0 Mpc radius disk centered on cluster
       order: 13
     - name: cover_frac_1mpc_weighted
-      ucd: ''
+      ucd: instr.det;phys.angArea;obs.field;stat.weight
       unit: ''
-      description: ''
+      description: Area fraction covered with a 1.0 Mpc radius disk centered on cluster weighted with a 2D NFW profile
       order: 14
     - name: id_cg
-      ucd: ''
+      ucd: meta.id;meta.main
       unit: ''
-      description: ''
+      description: ID of the central galaxy (-1 when unavailable)
       order: 15
     - name: ra_cg
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.ra
+      unit: deg
+      description: RA of the CG
       order: 16
     - name: dec_cg
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.dec
+      unit: deg
+      description: DEC of the CG
       order: 17
     - name: in_cosmo
-      ucd: ''
+      ucd: meta.code;src
       unit: ''
-      description: ''
+      description: Is cluster part of the cosmology sample
       order: 18
     - name: sze_act_id
-      ucd: ''
+      ucd: meta.id;meta.main
       unit: ''
-      description: ''
+      description: ID of ACT detection used in section 4.3
       order: 19
     - name: sze_spt_id
-      ucd: ''
+      ucd: meta.id;meta.main
       unit: ''
-      description: ''
+      description: ID of SPT detection used in section 4.3
       order: 20
     - name: sze_spt_source
-      ucd: ''
+      ucd: meta.bib;meta.reference
       unit: ''
-      description: ''
+      description: Reference of SPT source catalog for SZE_SPT_ID
       order: 21
   - name: y6_cluster_members_wazp
     title: Y6 CLUSTER MEMBERS WAZP
-    description: ''
-    long_description: ''
-    attribution: ''
+    description: 'Galaxy members associated with WaZP DES-Y6 clusters. Each row is a candidate member galaxy linked to a cluster
+      by id_cluster, with membership probability Pmem, photometric and spectroscopic redshifts, central-galaxy flag, and grizY
+      magnitudes. Members are used to define cluster richness Ngals in the parent catalog.
+
+      '
+    long_description: 'This table lists galaxies assigned as members of WaZP clusters detected on DES-Y6 (Benoist et al. 2025).
+      Each entry is linked to a cluster in y6_cluster_wazp via id_cluster. Membership probability Pmem is the weight used to
+      compute cluster richness Ngals (sum of Pmem down to m*+1.5 within the cluster radius). The table includes positions,
+      photometric redshifts, spectroscopic redshifts and sources when available, a flag for the central galaxy, and grizY
+      magnitudes. Improved DES-Y6 depth and spectroscopic coverage support more accurate cluster redshifts and member assignments
+      than the DES-Y1 WaZP release.
+
+      '
+    attribution: Benoist et al. (2025). WaZP galaxy cluster catalog on DES-Y6.
     order: 3
     license: ''
     doi: ''
@@ -1863,72 +1955,72 @@
     groups: []
     columns:
     - name: id
-      ucd: ''
+      ucd: meta.id;meta.main
       unit: ''
-      description: ''
+      description: ID of the galaxy
       order: 0
     - name: id_cluster
-      ucd: ''
+      ucd: meta.id;meta.main
       unit: ''
-      description: ''
+      description: ID of the host cluster
       order: 1
     - name: ra
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.ra;meta.main
+      unit: deg
+      description: RA of the galaxy
       order: 2
     - name: dec
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: pos.eq.dec;meta.main
+      unit: deg
+      description: DEC of the galaxy
       order: 3
     - name: zphot
-      ucd: ''
+      ucd: src.redshift.phot
       unit: ''
-      description: ''
+      description: photometric redshift of the galaxy
       order: 4
     - name: zspec
-      ucd: ''
+      ucd: src.redshift
       unit: ''
-      description: ''
+      description: Galaxy spectroscopic redshift, when available
       order: 5
     - name: zspec_source
-      ucd: ''
+      ucd: meta.bib;src.redshift
       unit: ''
-      description: ''
+      description: Origin of spectroscopic redshift
       order: 6
     - name: pmem
-      ucd: ''
+      ucd: stat.probability;src.class.membership
       unit: ''
-      description: ''
+      description: membership probability
       order: 7
     - name: flag_cg
-      ucd: ''
+      ucd: meta.code;src.class.membership
       unit: ''
-      description: ''
+      description: Is central galaxy
       order: 8
     - name: mag_g
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;em.opt.g
+      unit: mag
+      description: magnitude in the g band
       order: 9
     - name: mag_r
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;em.opt.r
+      unit: mag
+      description: magnitude in the r band
       order: 10
     - name: mag_i
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;em.opt.i
+      unit: mag
+      description: magnitude in the i band
       order: 11
     - name: mag_z
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;em.opt.z
+      unit: mag
+      description: magnitude in the z band
       order: 12
     - name: mag_y
-      ucd: ''
-      unit: ''
-      description: ''
+      ucd: phot.mag;em.opt.Y
+      unit: mag
+      description: magnitude in the y band
       order: 13
