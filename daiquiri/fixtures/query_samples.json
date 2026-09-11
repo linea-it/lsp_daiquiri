@@ -33,7 +33,7 @@
       "name": "DES DR2 Checking star-galaxy classification by color-color diagram",
       "description": "Checking star-galaxy classification by color-color diagram with a pure sample of bright stars",
       "query_language": "adql-2.0",
-      "query_string": "-- CHECKING STAR-GALAXY CLASSIFICATION BY COLOR-COLOR DIAGRAM WITH A PURE SAMPLE OF BRIGHT STARS\n\nSELECT top 1000 coadd_object_id, ra, dec, wavg_mag_psf_g_dered, wavg_mag_psf_r_dered, wavg_mag_psf_i_dered, wavg_mag_psf_g_dered-wavg_mag_psf_r_dered as gr_color, wavg_mag_psf_r_dered-wavg_mag_psf_i_dered as ri_color\nFROM des_dr2.main\nAND ABS(extended_class_coadd) < 1\nAND flags_g < 4\nAND flags_r < 4\nAND flags_i < 4\nAND ABS(wavg_mag_psf_g_dered) < 22.\nAND ABS(wavg_mag_psf_r_dered) < 22.\nAND ABS(wavg_mag_psf_i_dered) < 22.",
+      "query_string": "-- CHECKING STAR-GALAXY CLASSIFICATION BY COLOR-COLOR DIAGRAM WITH A PURE SAMPLE OF BRIGHT STARS\n\nSELECT top 1000 coadd_object_id, ra, dec, wavg_mag_psf_g_dered, wavg_mag_psf_r_dered, wavg_mag_psf_i_dered, wavg_mag_psf_g_dered-wavg_mag_psf_r_dered as gr_color, wavg_mag_psf_r_dered-wavg_mag_psf_i_dered as ri_color\nFROM des_dr2.main\nWHERE ABS(extended_class_coadd) < 1\nAND flags_g < 4\nAND flags_r < 4\nAND flags_i < 4\nAND ABS(wavg_mag_psf_g_dered) < 22.\nAND ABS(wavg_mag_psf_r_dered) < 22.\nAND ABS(wavg_mag_psf_i_dered) < 22.",
       "access_level": "PUBLIC",
       "groups": []
     }
