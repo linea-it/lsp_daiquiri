@@ -1,4 +1,8 @@
+import logging
+
 from django.apps import AppConfig
+
+logger = logging.getLogger(__name__)
 
 
 class LineaConfig(AppConfig):
@@ -6,13 +10,21 @@ class LineaConfig(AppConfig):
     name = "linea"
 
     def ready(self):
-        from daiquiri.jobs.viewsets import JobViewSet
-        from daiquiri.query.viewsets import QueryJobViewSet
-        from linea.authentication import ServiceJWTAuthentication
+        try:
+            from daiquiri.jobs.viewsets import JobViewSet
+            from daiquiri.query.viewsets import QueryJobViewSet
+            from linea.authentication import ServiceJWTAuthentication
 
-        for viewset in (JobViewSet, QueryJobViewSet):
-            if ServiceJWTAuthentication not in viewset.authentication_classes:
-                viewset.authentication_classes = (
-                    ServiceJWTAuthentication,
-                    *viewset.authentication_classes,
-                )
+            for viewset in (JobViewSet, QueryJobViewSet):
+                if ServiceJWTAuthentication not in viewset.authentication_classes:
+                    viewset.authentication_classes = (
+                        ServiceJWTAuthentication,
+                        *viewset.authentication_classes,
+                    )
+            logger.info(
+                "ServiceJWTAuthentication aplicado com sucesso em JobViewSet e QueryJobViewSet"
+            )
+        except Exception:
+            logger.exception(
+                "Falha ao aplicar ServiceJWTAuthentication em JobViewSet e QueryJobViewSet"
+            )
