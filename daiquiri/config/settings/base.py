@@ -1,10 +1,9 @@
 import os
 
+import daiquiri.core.env as env
 import saml2
 import saml2.saml
 from django.utils.translation import gettext_lazy as _
-
-import daiquiri.core.env as env
 
 from . import (
     ADDITIONAL_APPS,
@@ -70,7 +69,13 @@ SITE_CREATED = "2023-04-19"
 # Padrão: None
 SITE_UPDATED = "2024-06-13"
 
-LINEA_APPS = ["djangosaml2", "services", "data", "utils"]
+LINEA_APPS = ["djangosaml2", "services", "data", "utils", "linea"]
+
+# Shared secret used to validate service-to-service JWTs minted by Canvas
+# (see linea.authentication.ServiceJWTAuthentication). No default on purpose:
+# a request bearing a service token fails explicitly (401) instead of
+# silently trusting an empty/well-known secret when this is unset.
+CANVAS_SERVICE_JWT_SECRET = env.get("CANVAS_SERVICE_JWT_SECRET")
 
 WAGTAIL_APPS = [
     "wagtail.contrib.forms",

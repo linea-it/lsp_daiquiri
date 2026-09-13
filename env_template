@@ -1,0 +1,91 @@
+# Django secret key. Generate your own (never reuse this file's placeholder,
+# and never commit a real value) - e.g. `python -c "import secrets; print(secrets.token_urlsafe(50))"`.
+SECRET_KEY=
+
+# Dominio sem http:// ou https://
+# Exemplo: DOMAIN="userquery-dev.linea.org.br"
+DOMAIN=localhost
+# Site URl com http:// ou https:// e porta caso necessário mas sem / no final
+
+
+# Exemplo: SITE_URL=https://userquery-dev.linea.org.br
+BASE_HOST=http://localhost
+SITE_URL=http://localhost
+BASE_URL=/
+
+DEBUG=True
+AUTORELOAD=1
+LOG_LEVEL=DEBUG
+ASYNC=True
+
+# Auth SAML2
+AUTH_SAML2_ENABLED=False
+# SATOSA PRODUCTION
+LINEA_LOGIN_URL=$BASE_HOST/saml2/login/?idp=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==
+LINEA_REGISTER_URL=https://register.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register.linea.org.br/registry/co_petitions/start/coef:155&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9jaWxvZ29uLm9yZw==
+
+RUBIN_LOGIN_URL=$BASE_HOST/saml2/login/?idp=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9kYXRhLmxzc3QuY2xvdWQv&next=/
+RUBIN_REGISTER_URL=https://register.linea.org.br/Shibboleth.sso/Login?SAMLDS=1&target=https://register.linea.org.br/registry/co_petitions/start/coef:189&entityID=https://satosa.linea.org.br/linea/proxy/aHR0cHM6Ly9kYXRhLmxzc3QuY2xvdWQv
+
+# UWSGI
+DJANGO_GUNICORN_THREADS=1
+DJANGO_GUNICORN_WORKERS=1
+DJANGO_GUNICORN_RELOAD=True
+
+# POSTGRES
+POSTGRES_USER=postgres
+POSTGRES_DB=postgres
+POSTGRES_PASSWORD=postgres
+
+# RABBITMQ
+RABBITMQ_DEFAULT_USER=daiquiri
+RABBITMQ_DEFAULT_PASS=adminadmin
+RABBITMQ_DEFAULT_VHOST=daiquiri_vhost
+
+# Celery Configs
+CELERY_BROKER_URL=amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbit:5672/${RABBITMQ_DEFAULT_VHOST}
+
+# --------------------------------------
+# DATABASE ADMIN used in Django
+DATABASE_ADMIN_USER=${POSTGRES_USER}
+DATABASE_ADMIN_PASSWORD=${POSTGRES_PASSWORD}
+DATABASE_ADMIN_HOST=database
+DATABASE_ADMIN_PORT=5432
+DATABASE_ADMIN_DB=daiquiri_data
+
+# DATABASE_ADMIN_USER=svc_userquery_met_rw
+# DATABASE_ADMIN_PASSWORD=postgres
+# DATABASE_ADMIN_HOST=database
+# DATABASE_ADMIN_PORT=5432
+# DATABASE_ADMIN_DB=userquerydb
+
+# DATABASE Catalog used in Django
+DATABASE_CATALOG_USER=${POSTGRES_USER}
+DATABASE_CATALOG_PASSWORD=${POSTGRES_PASSWORD}
+DATABASE_CATALOG_HOST=catalog-database
+DATABASE_CATALOG_PORT=5432
+DATABASE_CATALOG_DB=daiquiri_data
+
+
+# Daiquiri/Django Databases URI
+# -------------------------------------
+DATABASE_APP=postgresql://${DATABASE_ADMIN_USER}:${DATABASE_ADMIN_PASSWORD}@${DATABASE_ADMIN_HOST}:${DATABASE_ADMIN_PORT}/${DATABASE_ADMIN_DB}
+DATABASE_DATA=postgresql://${DATABASE_CATALOG_USER}:${DATABASE_CATALOG_PASSWORD}@${DATABASE_CATALOG_HOST}:${DATABASE_CATALOG_PORT}/${DATABASE_CATALOG_DB}
+# DATABASE_DATA=postgres://user_dridev:278e41447c72@host.docker.internal:3307/prod_gavo
+
+# Shared secret used to validate service-to-service JWTs minted by Canvas
+# when it calls Daiquiri's TAP service on behalf of a logged-in user
+# (issue #197 - "filter a public catalog table -> materialize as a new
+# table in the user's own mydb schema"). Canvas mints a short-lived HS256
+# JWT per request (target.metadata.daiquiri_auth.mint_service_token) and
+# sends it as `Authorization: Bearer <token>`; this side validates it in
+# linea.authentication.ServiceJWTAuthentication, which only *resolves* an
+# already-existing local user from the token's `sub` claim - it never
+# creates one, so the same username must already exist on both sides.
+# No default on purpose: a request bearing a service token fails
+# explicitly (401) instead of silently trusting an unset/empty secret.
+# Must be set to the exact same value as DAIQUIRI_SERVICE_JWT_SECRET in
+# Canvas's own .env (the variable name differs on purpose, the value must
+# match byte-for-byte). Generate with e.g.
+# `python -c "import secrets; print(secrets.token_urlsafe(48))"`.
+CANVAS_SERVICE_JWT_SECRET=
