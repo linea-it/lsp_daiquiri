@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<main class="container py-4">
+  <div class="row justify-content-center w-100 m-0">
+    <div class="col-md-8 col-lg-6 text-center">
+      <div class="card shadow-sm border-0 rounded-4 p-4">
+        <div class="mb-3">
+          <div class="d-inline-flex align-items-center justify-content-center rounded-circle p-3" style="width: 56px; height: 56px; color: #1976d2; background-color: rgba(25, 118, 210, 0.08);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"/>
+            </svg>
+          </div>
+        </div>
+
+        <h1 class="h4 fw-bold mb-3">{% trans "Access Denied - Permission Required" %}</h1>
+
+        <p class="text-secondary mb-3">
+          {% trans "The content on this page is private and restricted by data access policies." %}
+        </p>
+
+        {% if is_anonymous %}
+          <div class="bg-light rounded-3 p-3 mb-3 text-start text-secondary border">
+            {% trans "Please log in with an authorized account to access this content." %}
+          </div>
+        {% else %}
+          <div class="alert alert-warning border-warning-subtle text-start mb-3" role="alert">
+            <div class="fw-semibold mb-1">{% trans "Insufficient Data Rights" %}</div>
+            <div>{% trans "You are currently logged in, but your account lacks permission to access this page." %}</div>
+          </div>
+          <p class="text-muted mb-0">
+            {% blocktrans trimmed %}
+              If you believe this is an error, please contact our <a href="mailto:helpdesk@linea.org.br">helpdesk team</a> to request access.
+            {% endblocktrans %}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

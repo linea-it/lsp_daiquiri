@@ -1,3 +1,4 @@
+from daiquiri.core.views import home
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -10,8 +11,6 @@ from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
-from daiquiri.core.views import home
-
 urlpatterns = [
     path("", home, name="home"),
     # Usado pelos templates do django-daiquiri (query, auth, serve, etc.)
@@ -22,7 +21,8 @@ urlpatterns = [
     path("contact/", include("daiquiri.contact.urls", namespace="contact")),
     path("datalink/", include("daiquiri.datalink.urls", namespace="datalink")),
     path("files/", include("daiquiri.files.urls", namespace="files")),
-    path("metadata/", include("daiquiri.metadata.urls", namespace="metadata")),
+    # path("metadata/", include("daiquiri.metadata.urls", namespace="metadata")),
+    path("metadata/", include("linea.metadata_urls", namespace="metadata")),
     path("oai/", include("daiquiri.oai.urls", namespace="oai")),
     path("registry/", include("daiquiri.registry.urls", namespace="registry")),
     path("serve/", include("daiquiri.serve.urls", namespace="serve")),
