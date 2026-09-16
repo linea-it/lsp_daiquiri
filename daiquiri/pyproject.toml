@@ -1,4 +1,0 @@
-[tool.isort]
-profile = "black"
-src_paths = ["isort", "test"]
-skip = ["migrations"]
