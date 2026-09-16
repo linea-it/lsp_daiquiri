@@ -20,8 +20,8 @@
   utype: ''
   published: '2025-11-18'
   updated: null
-  access_level: INTERNAL
-  metadata_access_level: INTERNAL
+  access_level: PRIVATE
+  metadata_access_level: PRIVATE
   groups:
   - lsst_dp1
   tables:

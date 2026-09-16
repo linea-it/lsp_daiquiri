@@ -11,9 +11,10 @@ class LineaConfig(AppConfig):
 
     def ready(self):
         try:
+            from linea.authentication import ServiceJWTAuthentication
+
             from daiquiri.jobs.viewsets import JobViewSet
             from daiquiri.query.viewsets import QueryJobViewSet
-            from linea.authentication import ServiceJWTAuthentication
 
             for viewset in (JobViewSet, QueryJobViewSet):
                 if ServiceJWTAuthentication not in viewset.authentication_classes:

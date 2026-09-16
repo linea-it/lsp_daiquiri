@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-
 SERVICE_PAGES = [
     {"slug": "overview", "label": "Overview", "url_name": "overview"},
     {
