@@ -7204,3 +7204,169 @@
       description: Flag set for any failure in the moments-based extendedness. Measured
         on z-band.
       order: 1279
+  - name: sssource
+    title: SSSource
+    description: LSST-computed per-source quantities. 1:1 relationship with DiaSource.
+    long_description: ''
+    attribution: ''
+    order: 2
+    license: ''
+    doi: ''
+    related_identifiers: []
+    utype: ''
+    published: '2026-09-21'
+    updated: null
+    access_level: PRIVATE
+    metadata_access_level: PRIVATE
+    groups:
+    - lsst_dp1
+    columns:
+    - name: phase_angle
+      ucd: ''
+      unit: deg
+      description: Phase angle
+      order: 0
+    - name: heliocentric_dist
+      ucd: ''
+      unit: AU
+      description: Heliocentric distance
+      order: 1
+    - name: topocentric_dist
+      ucd: ''
+      unit: AU
+      description: Topocentric distace
+      order: 2
+    - name: heliocentric_x
+      ucd: ''
+      unit: AU
+      description: Cartesian heliocentric X coordinate (at the emit time)
+      order: 3
+    - name: heliocentric_y
+      ucd: ''
+      unit: AU
+      description: Cartesian heliocentric Y coordinate (at the emit time)
+      order: 4
+    - name: heliocentric_z
+      ucd: ''
+      unit: AU
+      description: Cartesian heliocentric Z coordinate (at the emit time)
+      order: 5
+    - name: heliocentric_vx
+      ucd: ''
+      unit: AU
+      description: Cartesian heliocentric X velocity (at the emit time)
+      order: 6
+    - name: heliocentric_vy
+      ucd: ''
+      unit: AU
+      description: Cartesian heliocentric Y velocity (at the emit time)
+      order: 7
+    - name: heliocentric_vz
+      ucd: ''
+      unit: AU
+      description: Cartesian heliocentric Z velocity (at the emit time)
+      order: 8
+    - name: topocentric_x
+      ucd: ''
+      unit: AU
+      description: Cartesian topocentric X coordinate (at the emit time)
+      order: 9
+    - name: topocentric_y
+      ucd: ''
+      unit: AU
+      description: Cartesian topocentric Y coordinate (at the emit time)
+      order: 10
+    - name: topocentric_z
+      ucd: ''
+      unit: AU
+      description: Cartesian topocentric Z coordinate (at the emit time)
+      order: 11
+    - name: topocentric_vx
+      ucd: ''
+      unit: AU
+      description: Cartesian topocentric X velocity (at the emit time)
+      order: 12
+    - name: topocentric_vy
+      ucd: ''
+      unit: AU
+      description: Cartesian topocentric Y velocity (at the emit time)
+      order: 13
+    - name: topocentric_vz
+      ucd: ''
+      unit: AU
+      description: Cartesian topocentric Z velocity (at the emit time)
+      order: 14
+    - name: ss_object_id
+      ucd: meta.id;src
+      unit: ''
+      description: Unique identifier of the object.
+      order: 15
+    - name: residual_ra
+      ucd: ''
+      unit: deg
+      description: Residual R.A. vs. ephemeris
+      order: 16
+    - name: residual_dec
+      ucd: ''
+      unit: deg
+      description: Residual Dec vs. ephemeris
+      order: 17
+    - name: dia_source_id
+      ucd: meta.id;src
+      unit: ''
+      description: Unique identifier of the observation
+      order: 18
+    - name: galactic_l
+      ucd: ''
+      unit: deg
+      description: Galactic longitude
+      order: 19
+    - name: galactic_b
+      ucd: ''
+      unit: deg
+      description: Galactic latitute
+      order: 20
+    - name: ecliptic_lambda
+      ucd: ''
+      unit: deg
+      description: Ecliptic longitude
+      order: 21
+    - name: ecliptic_beta
+      ucd: ''
+      unit: deg
+      description: Ecliptic latitude
+      order: 22
+  - name: ssobject
+    title: SSObject
+    description: LSST-computed per-object quantities. 1:1 relationship with MPCORB.
+    long_description: ''
+    attribution: ''
+    order: 1
+    license: ''
+    doi: ''
+    related_identifiers: []
+    utype: ''
+    published: '2026-09-21'
+    updated: null
+    access_level: PRIVATE
+    metadata_access_level: PRIVATE
+    groups:
+    - lsst_dp1
+    columns:
+    - name: ss_object_id
+      ucd: meta.id;src
+      unit: ''
+      description: Unique identifier.
+      order: 0
+    - name: num_obs
+      ucd: ''
+      unit: ''
+      description: Number of LSST observations of this object
+      order: 1
+    - name: discovery_submission_date
+      ucd: ''
+      unit: d
+      description: The date the LSST first linked and submitted the discovery observations
+        to the MPC. May be NULL if not an LSST discovery. The date format will follow
+        general LSST conventions (MJD TAI, at the moment).
+      order: 2
