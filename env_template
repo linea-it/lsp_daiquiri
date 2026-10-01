@@ -6,7 +6,7 @@ SECRET_KEY=
 # Exemplo: DOMAIN="userquery-dev.linea.org.br"
 DOMAIN=localhost
 # Site URl com http:// ou https:// e porta caso necessário mas sem / no final
-
+WEB_PORT=80
 
 # Exemplo: SITE_URL=https://userquery-dev.linea.org.br
 BASE_HOST=http://localhost
