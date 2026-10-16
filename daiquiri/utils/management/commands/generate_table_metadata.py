@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 
 from daiquiri.core.constants import ACCESS_LEVEL_PRIVATE
 from daiquiri.metadata.models import Schema
@@ -80,8 +80,9 @@ class Command(BaseCommand):
         fixtures_path = Path.cwd().joinpath("fixtures")
         print(f"Fixtures Path: {fixtures_path}")
 
-        schema_yml = fixtures_path.joinpath(f"{schema}.yml")
-        print(f"Schema YML: {schema_yml}")
+        # Um arquivo por tabela, para não sobrescrever o <schema>.yml completo
+        schema_yml = fixtures_path.joinpath(f"{schema}.{table}.yml")
+        print(f"Table YML: {schema_yml}")
 
         columns_attributes = {}
         columns_csv_filename = options.get("columns_file")
@@ -113,8 +114,18 @@ class Command(BaseCommand):
         schema_data["metadata_access_level"] = schema_obj.metadata_access_level
         schema_data["groups"] = [group.name for group in schema_obj.groups.all()]
 
+        tables = schema_obj.tables.filter(name=table)
+        if not tables.exists():
+            known = list(
+                schema_obj.tables.order_by("name").values_list("name", flat=True)
+            )
+            raise CommandError(
+                f'Não existe tabela "{table}" nos metadados do schema "{schema}". '
+                f"Tabelas registradas: {known if known else '(nenhuma)'}"
+            )
+
         # Tables metadata
-        for table_obj in schema_obj.tables.filter(name=table):
+        for table_obj in tables:
             table_data = {}
             table_data["name"] = table_obj.name
             table_data["title"] = table_obj.title
