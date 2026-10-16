@@ -16,6 +16,13 @@ class Command(BaseCommand):
             "schema",
             help="schema name; must match fixtures/<name>.yml under the app cwd (e.g. mpc_sbn → mpc_sbn.yml)",
         )
+        parser.add_argument(
+            "--table",
+            action="append",
+            dest="tables",
+            metavar="TABLE",
+            help="atualiza apenas esta tabela do YAML (pode ser repetido: --table a --table b)",
+        )
 
     def handle(self, *args, **options):
         self.stdout.write("Update Metadata")
@@ -84,8 +91,20 @@ class Command(BaseCommand):
 
         schema_obj.refresh_from_db()
 
+        tables_data = schema_data["tables"]
+        if options["tables"]:
+            yml_names = [t["name"] for t in tables_data]
+            missing = [name for name in options["tables"] if name not in yml_names]
+            if missing:
+                raise CommandError(
+                    f"Tabela(s) {missing} não encontrada(s) em {schema_yml}. "
+                    f"Tabelas no YAML: {', '.join(yml_names)}"
+                )
+            tables_data = [t for t in tables_data if t["name"] in options["tables"]]
+            print(f"Filtering tables: {', '.join(options['tables'])}")
+
         # Percorre as tabelas do schema e atualiza os metadados
-        for table_data in schema_data["tables"]:
+        for table_data in tables_data:
             try:
                 table_obj = schema_obj.tables.get(name=table_data["name"])
             except Table.DoesNotExist as exc:

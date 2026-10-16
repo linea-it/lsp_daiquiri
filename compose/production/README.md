@@ -92,6 +92,11 @@ Este processo deve ser feito para cada um schema de catalogo [des_dr2, gaia_dr3,
     docker compose exec backend python manage.py update_table_metadata des_dr2
 ```
 
+Para atualizar apenas algumas tabelas do YAML (ex.: quando as demais ainda não existem no banco), use `--table` (pode ser repetido):
+```bash
+    docker compose exec backend python manage.py update_table_metadata lsst_dp2 --table <nome_tabela> [--table <outra_tabela>]
+```
+
 Este processo deve ser repetido para cada um dos schemas de catalogos. [des_dr2, gaia_dr3, twomass]
 
 Abaixo algumas imagens do processo de registro.
