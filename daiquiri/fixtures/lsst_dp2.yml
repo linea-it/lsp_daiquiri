@@ -1524,7 +1524,7 @@
       unit: deg
       description: Error in fiducial ICRS Declination of centroid
       order: 7
-    - name: coord_ra_dec_cov
+    - name: coord_ra_dec__cov
       ucd: stat.covariance;pos.eq.ra;pos.eq.dec;meta.main
       unit: deg**2
       description: Covariance between fiducial ICRS Right Ascension (RA*cos(Dec)) and
@@ -1581,7 +1581,7 @@
       unit: deg
       description: Error in declination, measured on u-band.
       order: 17
-    - name: u_ra_dec_cov
+    - name: u_ra_dec__cov
       ucd: stat.covariance;pos.eq.ra;pos.eq.dec
       unit: deg**2
       description: Covariance between right ascension and declination, measured on u-band.
@@ -2258,67 +2258,67 @@
       description: True when there was no flux attributed to this object after flux redistribution
         in the deblender.
       order: 141
-    - name: u_psf_model_two_gaussian_gauss1_sigma_x
+    - name: u_psf_model__two_gaussian_gauss1_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (x-axis) in the
         two-Gaussian PSF model (u-band).
       order: 142
-    - name: u_psf_model_two_gaussian_gauss1_sigma_y
+    - name: u_psf_model__two_gaussian_gauss1_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (y-axis) in the
         two-Gaussian PSF model (u-band).
       order: 143
-    - name: u_psf_model_two_gaussian_gauss1_rho
+    - name: u_psf_model__two_gaussian_gauss1_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the first Gaussian component
         in the two-Gaussian PSF model (u-band).
       order: 144
-    - name: u_psf_model_two_gaussian_gauss1_fluxfrac
+    - name: u_psf_model__two_gaussian_gauss1_fluxfrac
       ucd: ''
       unit: ''
       description: Fraction of the total flux (normalized to unity) of the first Gaussian
         component in the two-Gaussian PSF model (u-band).
       order: 145
-    - name: u_psf_model_two_gaussian_gauss2_sigma_x
+    - name: u_psf_model__two_gaussian_gauss2_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (x-axis) in the
         two-Gaussian PSF model (u-band).
       order: 146
-    - name: u_psf_model_two_gaussian_gauss2_sigma_y
+    - name: u_psf_model__two_gaussian_gauss2_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (y-axis) in the
         two-Gaussian PSF model (u-band).
       order: 147
-    - name: u_psf_model_two_gaussian_gauss2_rho
+    - name: u_psf_model__two_gaussian_gauss2_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the second Gaussian component
         in the two-Gaussian PSF model (u-band).
       order: 148
-    - name: u_psf_model_two_gaussian_n_iter
+    - name: u_psf_model__two_gaussian_n_iter
       ucd: ''
       unit: ''
       description: Number of iterations in the non-linear fit for the two-Gaussian PSF
         model (u-band).
       order: 149
-    - name: u_psf_model_two_gaussian_chi2_reduced
+    - name: u_psf_model__two_gaussian_chi2_reduced
       ucd: ''
       unit: ''
       description: Reduced chi-squared of the best-fit model parameters (chi divided the
         number of data points) for the two-Gaussian PSF model (u-band).
       order: 150
-    - name: u_psf_model_two_gaussian_unknown_flag
+    - name: u_psf_model__two_gaussian_unknown_flag
       ucd: ''
       unit: ''
       description: Flag set for failures with an unexpected or unknown cause for the two-Gaussian
         PSF model (u-band).
       order: 151
-    - name: u_psf_model_two_gaussian_no_inputs_flag
+    - name: u_psf_model__two_gaussian_no_inputs_flag
       ucd: ''
       unit: ''
       description: Flag set for objects not fit because there were no coadd PSF inputs
@@ -2628,7 +2628,7 @@
       unit: deg
       description: Error in declination, measured on g-band.
       order: 208
-    - name: g_ra_dec_cov
+    - name: g_ra_dec__cov
       ucd: stat.covariance;pos.eq.ra;pos.eq.dec
       unit: deg**2
       description: Covariance between right ascension and declination, measured on g-band.
@@ -3305,67 +3305,67 @@
       description: True when there was no flux attributed to this object after flux redistribution
         in the deblender.
       order: 332
-    - name: g_psf_model_two_gaussian_gauss1_sigma_x
+    - name: g_psf_model__two_gaussian_gauss1_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (x-axis) in the
         two-Gaussian PSF model (g-band).
       order: 333
-    - name: g_psf_model_two_gaussian_gauss1_sigma_y
+    - name: g_psf_model__two_gaussian_gauss1_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (y-axis) in the
         two-Gaussian PSF model (g-band).
       order: 334
-    - name: g_psf_model_two_gaussian_gauss1_rho
+    - name: g_psf_model__two_gaussian_gauss1_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the first Gaussian component
         in the two-Gaussian PSF model (g-band).
       order: 335
-    - name: g_psf_model_two_gaussian_gauss1_fluxfrac
+    - name: g_psf_model__two_gaussian_gauss1_fluxfrac
       ucd: ''
       unit: ''
       description: Fraction of the total flux (normalized to unity) of the first Gaussian
         component in the two-Gaussian PSF model (g-band).
       order: 336
-    - name: g_psf_model_two_gaussian_gauss2_sigma_x
+    - name: g_psf_model__two_gaussian_gauss2_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (x-axis) in the
         two-Gaussian PSF model (g-band).
       order: 337
-    - name: g_psf_model_two_gaussian_gauss2_sigma_y
+    - name: g_psf_model__two_gaussian_gauss2_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (y-axis) in the
         two-Gaussian PSF model (g-band).
       order: 338
-    - name: g_psf_model_two_gaussian_gauss2_rho
+    - name: g_psf_model__two_gaussian_gauss2_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the second Gaussian component
         in the two-Gaussian PSF model (g-band).
       order: 339
-    - name: g_psf_model_two_gaussian_n_iter
+    - name: g_psf_model__two_gaussian_n_iter
       ucd: ''
       unit: ''
       description: Number of iterations in the non-linear fit for the two-Gaussian PSF
         model (g-band).
       order: 340
-    - name: g_psf_model_two_gaussian_chi2_reduced
+    - name: g_psf_model__two_gaussian_chi2_reduced
       ucd: ''
       unit: ''
       description: Reduced chi-squared of the best-fit model parameters (chi divided the
         number of data points) for the two-Gaussian PSF model (g-band).
       order: 341
-    - name: g_psf_model_two_gaussian_unknown_flag
+    - name: g_psf_model__two_gaussian_unknown_flag
       ucd: ''
       unit: ''
       description: Flag set for failures with an unexpected or unknown cause for the two-Gaussian
         PSF model (g-band).
       order: 342
-    - name: g_psf_model_two_gaussian_no_inputs_flag
+    - name: g_psf_model__two_gaussian_no_inputs_flag
       ucd: ''
       unit: ''
       description: Flag set for objects not fit because there were no coadd PSF inputs
@@ -3675,7 +3675,7 @@
       unit: deg
       description: Error in declination, measured on r-band.
       order: 399
-    - name: r_ra_dec_cov
+    - name: r_ra_dec__cov
       ucd: stat.covariance;pos.eq.ra;pos.eq.dec
       unit: deg**2
       description: Covariance between right ascension and declination, measured on r-band.
@@ -4352,67 +4352,67 @@
       description: True when there was no flux attributed to this object after flux redistribution
         in the deblender.
       order: 523
-    - name: r_psf_model_two_gaussian_gauss1_sigma_x
+    - name: r_psf_model__two_gaussian_gauss1_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (x-axis) in the
         two-Gaussian PSF model (r-band).
       order: 524
-    - name: r_psf_model_two_gaussian_gauss1_sigma_y
+    - name: r_psf_model__two_gaussian_gauss1_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (y-axis) in the
         two-Gaussian PSF model (r-band).
       order: 525
-    - name: r_psf_model_two_gaussian_gauss1_rho
+    - name: r_psf_model__two_gaussian_gauss1_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the first Gaussian component
         in the two-Gaussian PSF model (r-band).
       order: 526
-    - name: r_psf_model_two_gaussian_gauss1_fluxfrac
+    - name: r_psf_model__two_gaussian_gauss1_fluxfrac
       ucd: ''
       unit: ''
       description: Fraction of the total flux (normalized to unity) of the first Gaussian
         component in the two-Gaussian PSF model (r-band).
       order: 527
-    - name: r_psf_model_two_gaussian_gauss2_sigma_x
+    - name: r_psf_model__two_gaussian_gauss2_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (x-axis) in the
         two-Gaussian PSF model (r-band).
       order: 528
-    - name: r_psf_model_two_gaussian_gauss2_sigma_y
+    - name: r_psf_model__two_gaussian_gauss2_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (y-axis) in the
         two-Gaussian PSF model (r-band).
       order: 529
-    - name: r_psf_model_two_gaussian_gauss2_rho
+    - name: r_psf_model__two_gaussian_gauss2_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the second Gaussian component
         in the two-Gaussian PSF model (r-band).
       order: 530
-    - name: r_psf_model_two_gaussian_n_iter
+    - name: r_psf_model__two_gaussian_n_iter
       ucd: ''
       unit: ''
       description: Number of iterations in the non-linear fit for the two-Gaussian PSF
         model (r-band).
       order: 531
-    - name: r_psf_model_two_gaussian_chi2_reduced
+    - name: r_psf_model__two_gaussian_chi2_reduced
       ucd: ''
       unit: ''
       description: Reduced chi-squared of the best-fit model parameters (chi divided the
         number of data points) for the two-Gaussian PSF model (r-band).
       order: 532
-    - name: r_psf_model_two_gaussian_unknown_flag
+    - name: r_psf_model__two_gaussian_unknown_flag
       ucd: ''
       unit: ''
       description: Flag set for failures with an unexpected or unknown cause for the two-Gaussian
         PSF model (r-band).
       order: 533
-    - name: r_psf_model_two_gaussian_no_inputs_flag
+    - name: r_psf_model__two_gaussian_no_inputs_flag
       ucd: ''
       unit: ''
       description: Flag set for objects not fit because there were no coadd PSF inputs
@@ -4722,7 +4722,7 @@
       unit: deg
       description: Error in declination, measured on i-band.
       order: 590
-    - name: i_ra_dec_cov
+    - name: i_ra_dec__cov
       ucd: stat.covariance;pos.eq.ra;pos.eq.dec
       unit: deg**2
       description: Covariance between right ascension and declination, measured on i-band.
@@ -5399,67 +5399,67 @@
       description: True when there was no flux attributed to this object after flux redistribution
         in the deblender.
       order: 714
-    - name: i_psf_model_two_gaussian_gauss1_sigma_x
+    - name: i_psf_model__two_gaussian_gauss1_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (x-axis) in the
         two-Gaussian PSF model (i-band).
       order: 715
-    - name: i_psf_model_two_gaussian_gauss1_sigma_y
+    - name: i_psf_model__two_gaussian_gauss1_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (y-axis) in the
         two-Gaussian PSF model (i-band).
       order: 716
-    - name: i_psf_model_two_gaussian_gauss1_rho
+    - name: i_psf_model__two_gaussian_gauss1_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the first Gaussian component
         in the two-Gaussian PSF model (i-band).
       order: 717
-    - name: i_psf_model_two_gaussian_gauss1_fluxfrac
+    - name: i_psf_model__two_gaussian_gauss1_fluxfrac
       ucd: ''
       unit: ''
       description: Fraction of the total flux (normalized to unity) of the first Gaussian
         component in the two-Gaussian PSF model (i-band).
       order: 718
-    - name: i_psf_model_two_gaussian_gauss2_sigma_x
+    - name: i_psf_model__two_gaussian_gauss2_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (x-axis) in the
         two-Gaussian PSF model (i-band).
       order: 719
-    - name: i_psf_model_two_gaussian_gauss2_sigma_y
+    - name: i_psf_model__two_gaussian_gauss2_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (y-axis) in the
         two-Gaussian PSF model (i-band).
       order: 720
-    - name: i_psf_model_two_gaussian_gauss2_rho
+    - name: i_psf_model__two_gaussian_gauss2_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the second Gaussian component
         in the two-Gaussian PSF model (i-band).
       order: 721
-    - name: i_psf_model_two_gaussian_n_iter
+    - name: i_psf_model__two_gaussian_n_iter
       ucd: ''
       unit: ''
       description: Number of iterations in the non-linear fit for the two-Gaussian PSF
         model (i-band).
       order: 722
-    - name: i_psf_model_two_gaussian_chi2_reduced
+    - name: i_psf_model__two_gaussian_chi2_reduced
       ucd: ''
       unit: ''
       description: Reduced chi-squared of the best-fit model parameters (chi divided the
         number of data points) for the two-Gaussian PSF model (i-band).
       order: 723
-    - name: i_psf_model_two_gaussian_unknown_flag
+    - name: i_psf_model__two_gaussian_unknown_flag
       ucd: ''
       unit: ''
       description: Flag set for failures with an unexpected or unknown cause for the two-Gaussian
         PSF model (i-band).
       order: 724
-    - name: i_psf_model_two_gaussian_no_inputs_flag
+    - name: i_psf_model__two_gaussian_no_inputs_flag
       ucd: ''
       unit: ''
       description: Flag set for objects not fit because there were no coadd PSF inputs
@@ -5769,7 +5769,7 @@
       unit: deg
       description: Error in declination, measured on z-band.
       order: 781
-    - name: z_ra_dec_cov
+    - name: z_ra_dec__cov
       ucd: stat.covariance;pos.eq.ra;pos.eq.dec
       unit: deg**2
       description: Covariance between right ascension and declination, measured on z-band.
@@ -6446,67 +6446,67 @@
       description: True when there was no flux attributed to this object after flux redistribution
         in the deblender.
       order: 905
-    - name: z_psf_model_two_gaussian_gauss1_sigma_x
+    - name: z_psf_model__two_gaussian_gauss1_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (x-axis) in the
         two-Gaussian PSF model (z-band).
       order: 906
-    - name: z_psf_model_two_gaussian_gauss1_sigma_y
+    - name: z_psf_model__two_gaussian_gauss1_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (y-axis) in the
         two-Gaussian PSF model (z-band).
       order: 907
-    - name: z_psf_model_two_gaussian_gauss1_rho
+    - name: z_psf_model__two_gaussian_gauss1_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the first Gaussian component
         in the two-Gaussian PSF model (z-band).
       order: 908
-    - name: z_psf_model_two_gaussian_gauss1_fluxfrac
+    - name: z_psf_model__two_gaussian_gauss1_fluxfrac
       ucd: ''
       unit: ''
       description: Fraction of the total flux (normalized to unity) of the first Gaussian
         component in the two-Gaussian PSF model (z-band).
       order: 909
-    - name: z_psf_model_two_gaussian_gauss2_sigma_x
+    - name: z_psf_model__two_gaussian_gauss2_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (x-axis) in the
         two-Gaussian PSF model (z-band).
       order: 910
-    - name: z_psf_model_two_gaussian_gauss2_sigma_y
+    - name: z_psf_model__two_gaussian_gauss2_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (y-axis) in the
         two-Gaussian PSF model (z-band).
       order: 911
-    - name: z_psf_model_two_gaussian_gauss2_rho
+    - name: z_psf_model__two_gaussian_gauss2_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the second Gaussian component
         in the two-Gaussian PSF model (z-band).
       order: 912
-    - name: z_psf_model_two_gaussian_n_iter
+    - name: z_psf_model__two_gaussian_n_iter
       ucd: ''
       unit: ''
       description: Number of iterations in the non-linear fit for the two-Gaussian PSF
         model (z-band).
       order: 913
-    - name: z_psf_model_two_gaussian_chi2_reduced
+    - name: z_psf_model__two_gaussian_chi2_reduced
       ucd: ''
       unit: ''
       description: Reduced chi-squared of the best-fit model parameters (chi divided the
         number of data points) for the two-Gaussian PSF model (z-band).
       order: 914
-    - name: z_psf_model_two_gaussian_unknown_flag
+    - name: z_psf_model__two_gaussian_unknown_flag
       ucd: ''
       unit: ''
       description: Flag set for failures with an unexpected or unknown cause for the two-Gaussian
         PSF model (z-band).
       order: 915
-    - name: z_psf_model_two_gaussian_no_inputs_flag
+    - name: z_psf_model__two_gaussian_no_inputs_flag
       ucd: ''
       unit: ''
       description: Flag set for objects not fit because there were no coadd PSF inputs
@@ -6816,7 +6816,7 @@
       unit: deg
       description: Error in declination, measured on y-band.
       order: 972
-    - name: y_ra_dec_cov
+    - name: y_ra_dec__cov
       ucd: stat.covariance;pos.eq.ra;pos.eq.dec
       unit: deg**2
       description: Covariance between right ascension and declination, measured on y-band.
@@ -7493,67 +7493,67 @@
       description: True when there was no flux attributed to this object after flux redistribution
         in the deblender.
       order: 1096
-    - name: y_psf_model_two_gaussian_gauss1_sigma_x
+    - name: y_psf_model__two_gaussian_gauss1_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (x-axis) in the
         two-Gaussian PSF model (y-band).
       order: 1097
-    - name: y_psf_model_two_gaussian_gauss1_sigma_y
+    - name: y_psf_model__two_gaussian_gauss1_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the first Gaussian component (y-axis) in the
         two-Gaussian PSF model (y-band).
       order: 1098
-    - name: y_psf_model_two_gaussian_gauss1_rho
+    - name: y_psf_model__two_gaussian_gauss1_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the first Gaussian component
         in the two-Gaussian PSF model (y-band).
       order: 1099
-    - name: y_psf_model_two_gaussian_gauss1_fluxfrac
+    - name: y_psf_model__two_gaussian_gauss1_fluxfrac
       ucd: ''
       unit: ''
       description: Fraction of the total flux (normalized to unity) of the first Gaussian
         component in the two-Gaussian PSF model (y-band).
       order: 1100
-    - name: y_psf_model_two_gaussian_gauss2_sigma_x
+    - name: y_psf_model__two_gaussian_gauss2_sigma_x
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (x-axis) in the
         two-Gaussian PSF model (y-band).
       order: 1101
-    - name: y_psf_model_two_gaussian_gauss2_sigma_y
+    - name: y_psf_model__two_gaussian_gauss2_sigma_y
       ucd: ''
       unit: pixel
       description: Standard deviation of the second Gaussian component (y-axis) in the
         two-Gaussian PSF model (y-band).
       order: 1102
-    - name: y_psf_model_two_gaussian_gauss2_rho
+    - name: y_psf_model__two_gaussian_gauss2_rho
       ucd: ''
       unit: ''
       description: Ellipse rho (correlation coefficient) of the second Gaussian component
         in the two-Gaussian PSF model (y-band).
       order: 1103
-    - name: y_psf_model_two_gaussian_n_iter
+    - name: y_psf_model__two_gaussian_n_iter
       ucd: ''
       unit: ''
       description: Number of iterations in the non-linear fit for the two-Gaussian PSF
         model (y-band).
       order: 1104
-    - name: y_psf_model_two_gaussian_chi2_reduced
+    - name: y_psf_model__two_gaussian_chi2_reduced
       ucd: ''
       unit: ''
       description: Reduced chi-squared of the best-fit model parameters (chi divided the
         number of data points) for the two-Gaussian PSF model (y-band).
       order: 1105
-    - name: y_psf_model_two_gaussian_unknown_flag
+    - name: y_psf_model__two_gaussian_unknown_flag
       ucd: ''
       unit: ''
       description: Flag set for failures with an unexpected or unknown cause for the two-Gaussian
         PSF model (y-band).
       order: 1106
-    - name: y_psf_model_two_gaussian_no_inputs_flag
+    - name: y_psf_model__two_gaussian_no_inputs_flag
       ucd: ''
       unit: ''
       description: Flag set for objects not fit because there were no coadd PSF inputs
@@ -7920,12 +7920,12 @@
         patch and is in the inner region of a coadd tract and is not detected in a pseudo-filter
         (see config.pseudoFilterList) and is a deblended child
       order: 1174
-    - name: deblend_parent_nchild
+    - name: deblend_parent_n_child
       ucd: ''
       unit: ''
       description: Number of children in deblended from the parent footprint.
       order: 1175
-    - name: deblend_parent_npeaks
+    - name: deblend_parent_n_peaks
       ucd: ''
       unit: ''
       description: Number of peaks the parent footprint has (even if the deblender failed
@@ -7952,7 +7952,7 @@
       description: Unique ID of the deconvolved parent source that this source was deblended
         from.
       order: 1180
-    - name: deblend_blend_nchild
+    - name: deblend_blend_n_child
       ucd: ''
       unit: ''
       description: Number of children in the deconvolved parent source that this source
@@ -7985,7 +7985,7 @@
       description: Error on the centroid (declination) from the multiband exponential
         model fit.
       order: 1186
-    - name: exponential_ra_dec_cov
+    - name: exponential_ra_dec__cov
       ucd: stat.covariance;pos.eq.ra;pos.eq.dec
       unit: deg**2
       description: Covariance between right ascension and declination from the multiband
@@ -8172,7 +8172,7 @@
       description: Error on the centroid (declination) from the multiband Sersic model
         fit.
       order: 1219
-    - name: sersic_ra_dec_cov
+    - name: sersic_ra_dec__cov
       ucd: stat.covariance;pos.eq.ra;pos.eq.dec
       unit: deg**2
       description: Covariance between right ascension and declination from the multiband
